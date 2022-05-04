@@ -1,0 +1,142 @@
+.DarkblockWidget-Header {
+  background: #000;
+  color: #fff;
+  border-bottom: 1px solid #565555;
+  padding-bottom: 40px;
+  /* max-height: 600px; */
+  min-height: 150px;
+}
+
+.DarkblockWidget-Header-Row {
+  /* background: #000;
+  color: #fff;
+  border-bottom: 1px solid #565555;
+  padding-bottom: 40px;
+  max-height: 600px;
+  min-height: 150px; */
+
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  gap: 0%;
+  min-height: 45px;
+
+  /* border-bottom: 1px solid #565555; */
+}
+
+.DarkblockWidget-Header-Content {
+  display: block;
+  flex-basis: 85%;
+}
+
+.Darkblock-Icon {
+  flex-basis: 15%;
+  min-width: 50px;
+}
+
+.Darkblock-Icon > .dbLogo {
+  margin: -15px -15px 10px 10px;
+  width: 60px;
+  height: 60px;
+  float: right;
+  position: "relative";
+}
+
+.DarkblockWidget-Header-Row > .title {
+  display: block;
+  flex-basis: 85%;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 32px;
+}
+
+.DarkblockWidget-Header-Row > .title-red {
+  display: block;
+  flex-basis: 85%;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 32px;
+  color: red;
+}
+
+.DarkblockWidget-Header-Row > .content {
+  flex-basis: 100%;
+  display: block;
+}
+
+.DarkblockWidget-Header-Row > .inner-button {
+  border-radius: 4px;
+  background: #eaeaea;
+  font-weight: 600;
+  border: 0px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  color: black;
+  padding: 0.9em;
+  margin-top: 10px;
+}
+
+.DarkblockWidget-Header-Wrapper > .content {
+  color: #c4c4c4;
+}
+
+.DarkblockWidget-Header-left > .inner-left-heading {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+}
+.DarkblockWidget-Header-left > .inner-left-heading .red {
+  color: red;
+}
+.DarkblockWidget-Header-left > .inner-left-heading-red {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  color: red;
+}
+.DarkblockWidget-Header-left > .inner-left-text {
+  font-size: 14px;
+  color: #c4c4c4;
+  font-weight: 400;
+  margin-top: 24px;
+}
+.DarkblockWidget-Header-left > .inner-button {
+  margin-top: 24px;
+  width: 206px;
+  height: 46px;
+  border-radius: 4px;
+  background: #eaeaea;
+  font-weight: 600;
+  border: 0px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  color: black;
+}
+.DarkblockWidget-Header-left > .loader-header {
+  float: right;
+  width: 200px;
+  height: 200px;
+  margin-top: -42px;
+}
+.DarkblockWidget-Header-left > .wallet-adapter-button,
+.DarkblockWidget-Header-left .wallet-adapter-button-trigger {
+  background: #eaeaea;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-family: "Inter", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+}
+.DarkblockWidget-Header-left > .wallet-adapter-button > .wallet-adapter-button-start-icon,
+.DarkblockWidget-Header-left .wallet-adapter-button-trigger > .wallet-adapter-button-start-icon {
+  display: none;
+}
