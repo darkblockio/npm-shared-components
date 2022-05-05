@@ -12,10 +12,15 @@ yarn add @darkblock.io/shared-components
 npm i @darkblock.io/shared-components --save
 ```
 
-Once the library is installed, import or require components into your codebase
+Once the library is installed, import or require components into your codebase, i.e:
 
 ```
-import "@darkblock.io/shared-components"
+import {
+  Header,
+  Panel,
+  Player,
+  utils,
+  widgetMachine
+} from "@darkblock.io/shared-components"
 
-require("@darkblock.io/shared-components")
 ```

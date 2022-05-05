@@ -1,5 +1,5 @@
 {
-  "name": "@darkblock.io/shared-components",
+  "name": "@darkblock.io/npm-shared-components",
   "version": "0.0.0",
   "description": "Darkblock.io React Shared Component Library",
   "main": "./dist/index.js",
