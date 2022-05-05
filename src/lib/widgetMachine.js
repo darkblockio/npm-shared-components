@@ -1,39 +1,30 @@
-import { createMachine } from "xstate";
-import {
-  humanFileSize,
-  shortenEthAddr,
-  getOwner,
-  getCreator,
-  getArweaveData,
-} from "./utils";
+import { createMachine } from "xstate"
+import { humanFileSize, shortenEthAddr, getCreator, getArweaveData } from "./utils"
 
 const widgetMachine = (tokenId, contractAddress, platform) => {
-  let baseLink;
+  let baseLink
 
   switch (platform) {
     case "Solana":
-      baseLink = "https://explorer.solana.com/address/";
-      break;
+      baseLink = "https://explorer.solana.com/address/"
+      break
 
     case "Ethereum":
-      baseLink = "https://opensea.io/";
-      break;
+      baseLink = "https://opensea.io/"
+      break
 
     default:
-      baseLink = "";
+      baseLink = ""
   }
 
   return createMachine({
     id: "widget",
     initial: "idle",
     context: {
-      owner: null,
       creator: null,
       arweaveData: null,
       artId: null,
       display: {
-        owner: "",
-        ownerLink: "",
         creator: "",
         creatorLink: "",
         fileFormat: "",
@@ -59,62 +50,39 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
         invoke: {
           src: () =>
             Promise.all([
-              getOwner(contractAddress, tokenId, platform),
               getCreator(contractAddress, tokenId, platform),
-              getArweaveData(
-                platform === "Ethereum"
-                  ? contractAddress + ":" + tokenId
-                  : tokenId,
-                platform
-              ),
+              getArweaveData(platform === "Ethereum" ? contractAddress + ":" + tokenId : tokenId, platform),
             ]),
           onDone: [
             {
               target: "started",
               cond: (context, event) => {
-                context.owner = event.data[0];
-                context.creator = event.data[1];
-                context.arweaveData = event.data[2];
+                context.creator = event.data[0]
+                context.arweaveData = event.data[1]
 
-                if (
-                  !!context.arweaveData.darkblock &&
-                  context.arweaveData.darkblock.tags
-                ) {
+                if (!!context.arweaveData.darkblock && context.arweaveData.darkblock.tags) {
                   context.arweaveData.darkblock.tags.forEach((tag) => {
-                    if (tag.name === "ArtId") context.artId = tag.value;
-                    if (tag.name === "Description")
-                      context.display.details = tag.value;
-                  });
+                    if (tag.name === "ArtId") context.artId = tag.value
+                    if (tag.name === "Description") context.display.details = tag.value
+                  })
                 }
 
                 if (
-                  !!context.owner.owner_address &&
                   !!context.creator.creator_address &&
                   !!context.artId &&
                   context.arweaveData.status !== "Not found" &&
                   context.arweaveData.status !== "Not Verified"
                 ) {
-                  context.display.owner =
-                    shortenEthAddr(context.owner.owner_address, platform) || "";
-                  context.display.ownerLink =
-                    context.baseLink + context.owner.owner_address;
-                  context.display.creator =
-                    shortenEthAddr(context.creator.creator_address, platform) ||
-                    "";
-                  context.display.creatorLink =
-                    context.baseLink + context.creator.creator_address;
-                  context.display.fileFormat =
-                    context.arweaveData.darkblock.data.type || "";
-                  context.display.fileSize =
-                    humanFileSize(context.arweaveData.darkblock.data.size) ||
-                    "";
-                  context.display.arweaveTX =
-                    context.arweaveData.darkblock.id || "";
-                  context.display.arweaveTXLink = `https://viewblock.io/arweave/tx/${context.display.arweaveTX}`;
+                  context.display.creator = shortenEthAddr(context.creator.creator_address, platform) || ""
+                  context.display.creatorLink = context.baseLink + context.creator.creator_address
+                  context.display.fileFormat = context.arweaveData.darkblock.data.type || ""
+                  context.display.fileSize = humanFileSize(context.arweaveData.darkblock.data.size) || ""
+                  context.display.arweaveTX = context.arweaveData.darkblock.id || ""
+                  context.display.arweaveTXLink = `https://viewblock.io/arweave/tx/${context.display.arweaveTX}`
 
-                  return true;
+                  return true
                 } else {
-                  return false;
+                  return false
                 }
               },
             },
@@ -174,7 +142,7 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
         },
       },
     },
-  });
-};
+  })
+}
 
-export default widgetMachine;
+export default widgetMachine

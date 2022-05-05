@@ -33,7 +33,7 @@ export default [
       commonjs(),
       external(),
       resolve(),
-      terser(),
+      process.env.PROD ? terser() : null,
     ],
   },
 ];

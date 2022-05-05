@@ -38,10 +38,10 @@ export async function getArweaveData(id, platform) {
   }
 }
 
-export async function getOwner(contractAddr, tokenId, platform) {
+export async function getOwner(contractAddr, tokenId, platform, owner = "") {
   try {
     const response = await fetch(
-      `https://api.darkblock.io/v1/nft/owner?platform=${platform}&contract_address=${contractAddr}&token_id=${tokenId}`
+      `https://api.darkblock.io/v1/nft/owner?platform=${platform}&contract_address=${contractAddr}&token_id=${tokenId}&owner=${owner}`
     )
     const asset = await response.json()
     return asset
