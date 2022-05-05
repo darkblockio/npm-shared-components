@@ -1,9 +1,7 @@
-import { createMachine, assign } from "xstate";
+import { createMachine } from "xstate";
 import {
-  getProxyAsset,
   humanFileSize,
   shortenEthAddr,
-  verifyAssetByDarkblock,
   getOwner,
   getCreator,
   getArweaveData,
