@@ -31,7 +31,7 @@ function Panel({ state = null }) {
         </div>
       </div>
 
-      {/* <div className="row-db">
+      <div className="row-db">
         <div className="col-full">
           <div className="meta-info">
             Unlockable Content Powered by &nbsp;
@@ -78,7 +78,7 @@ function Panel({ state = null }) {
             </svg>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   )
 }
