@@ -51,7 +51,7 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
           src: () =>
             Promise.all([
               getCreator(contractAddress, tokenId, platform),
-              getArweaveData(platform === "Ethereum" ? contractAddress + ":" + tokenId : tokenId, platform),
+              getArweaveData(platform === "Solana" ? tokenId : contractAddress + ":" + tokenId, platform),
             ]),
           onDone: [
             {

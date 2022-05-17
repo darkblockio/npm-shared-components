@@ -94,3 +94,6 @@
 .DarkblockWidget-Main > .meta-info > a {
   color: #9a9a9a;
 }
+.DarkblockWidget-Main > .meta-info > svg {
+  display: inline;
+}

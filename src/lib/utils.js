@@ -62,11 +62,16 @@ export async function getCreator(contractAddr, tokenId, platform) {
   }
 }
 
-export function getProxyAsset(artID, sessionToken, tokenId, contract, nonce, platform) {
+export function getProxyAsset(artID, sessionToken, tokenId, contract, nonce, platform, tezosPublicKey = null) {
+  let owner = ""
+  if (tezosPublicKey && tezosPublicKey.length > 0) {
+    owner = `&owner=${encodeURIComponent(tezosPublicKey)}`
+  }
+
   if (nonce) {
-    return `https://gateway.darkblock.io/proxy?artid=${artID}&session_token=${sessionToken}&token_id=${tokenId}&contract=${contract}&nonce=${nonce}&platform=${platform}`
+    return `https://gateway.darkblock.io/proxy?artid=${artID}&session_token=${sessionToken}&token_id=${tokenId}&contract=${contract}&nonce=${nonce}&platform=${platform}${owner}`
   } else {
-    return `https://gateway.darkblock.io/proxy?artid=${artID}&session_token=${sessionToken}&token_id=${tokenId}&contract=${contract}&platform=${platform}`
+    return `https://gateway.darkblock.io/proxy?artid=${artID}&session_token=${sessionToken}&token_id=${tokenId}&contract=${contract}&platform=${platform}${owner}`
   }
 }
 
