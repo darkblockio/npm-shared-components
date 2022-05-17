@@ -121,11 +121,23 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
 
   if (mediaType.indexOf("audio") > -1) {
     mediaSrc.type = "audio"
-    return <Plyr style={{ maxHeight: "600px" }} source={mediaSrc} />
+    return (
+      <div>
+        <Plyr style={{ maxHeight: "600px" }} source={mediaSrc} />
+      </div>
+    )
   }
 
-  mediaSrc.type = "video"
-  return <Plyr style={{ maxHeight: "600px" }} source={mediaSrc} loop />
+  if (mediaType.indexOf("video") > -1) {
+    mediaSrc.type = "video"
+    return (
+      <div>
+        <Plyr style={{ maxHeight: "600px" }} source={mediaSrc} loop />
+      </div>
+    )
+  }
+
+  return <p>Unknown format</p>
 }
 
 const Player = ({ mediaURL, mediaType, config }) => {
