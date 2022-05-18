@@ -1,8 +1,5 @@
 import React from "react"
 import { storiesOf } from "@storybook/react"
-import Header from "../lib/Header"
-import Panel from "../lib/Panel"
-import Player from "../lib/Player"
 import Stack from "../lib/Stack"
 import "../lib/db.css"
 
@@ -51,16 +48,7 @@ const widget = (stateval) => {
   state.value = stateval
   return (
     <div>
-      <Stack />
-      {/* <div className={config.customCssClass ? `DarkblockWidget-App ${config.customCssClass}` : `DarkblockWidget-App`}>
-        {state.value === "display" ? (
-          <Player mediaType={state.context.display.fileFormat} mediaURL={mediaURL} config={config.imgViewer} />
-        ) : (
-          <Header state={state} authenticate={() => send({ type: "SIGN" })} />
-        )}
-        <Panel state={state} />
-        {config.debug && <p>{state.value}</p>}
-      </div> */}
+      <Stack state={state} />
     </div>
   )
 }

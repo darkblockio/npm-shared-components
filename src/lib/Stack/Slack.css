@@ -1,4 +1,4 @@
 .fileRow .field {
   display: inline-block;
-  margin: 0px 30px;
+  min-width: 200px;
 }
