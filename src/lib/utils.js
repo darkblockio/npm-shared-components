@@ -30,7 +30,7 @@ export async function verifyAssetByDarkblock(txID) {
 
 export async function getArweaveData(id, platform) {
   try {
-    const response = await fetch(`https://api.darkblock.io/v1/darkblock/info?nft_id=${id}&nft_platform=${platform}`)
+    const response = await fetch(`https://dev1.darkblock.io/v1/darkblock/info?nft_id=${id}&nft_platform=${platform}`)
     const data = await response.json()
     return data
   } catch (e) {
