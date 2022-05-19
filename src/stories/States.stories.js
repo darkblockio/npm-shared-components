@@ -12,20 +12,6 @@ import "../lib/db.css"
 
 const stories = storiesOf("State Machine", module)
 
-const state = {
-  value: "",
-  context: {
-    display: {
-      fileFormat: "encrypted(image/jpeg)",
-      fileSize: "421.86 kB",
-      arweaveTXLink: "arweaveTXLink",
-      arweaveTX: "Eaw4uaBnij0tgA8QpeyIOBixcZeDXFxBSVljEA3uEtw",
-    },
-  },
-}
-const mediaURL =
-  "https://gateway.darkblock.io/proxy?artid=09e30f8a-b51a-41a3-8be0-ffc21aa5ff44&session_token=1652179213863_gVlfGyhkDIocRdfpOQatjWcB8wQKyLFPj3sx2FYcCr4hav2vMttznUWVT6TdSWTpQ5%2B16vGdOqUYMzv%2BLoinDQ%3D%3D_Solana&token_id=28qnjJqxMeVJFRyNDp8yfGwd5DRsRYtoUnQncHWtyfRb&contract=&platform=Solana"
-
 const config = {
   customCssClass: "", // pass here a class name you plan to use
   debug: true, // debug flag to console.log some variables
@@ -42,6 +28,7 @@ const widget = ({ tokenId, contractAddress, platform, stack = false }) => {
   const [address, setAddress] = useState(null)
   const [web3, setWeb3] = useState(null)
   const [mediaURL, setMediaURL] = useState("")
+  const [stackMediaURLs, setStackMediaURLs] = useState("")
   const [epochSignature, setEpochSignature] = useState(null)
 
   useEffect(() => {
@@ -103,9 +90,25 @@ const widget = ({ tokenId, contractAddress, platform, stack = false }) => {
           platform
         )
       )
+
+      let arrTemp = []
+      state.context.display.stack.map((db) => {
+        arrTemp.push(
+          utils.getProxyAsset(
+            db.artId,
+            epochSignature,
+            state.context.tokenId,
+            state.context.contractAddress,
+            null,
+            platform
+          )
+        )
+      })
+      setStackMediaURLs(arrTemp)
+
       setTimeout(() => {
         send({ type: "SUCCESS" })
-      }, 1000)
+      }, 500)
     }
 
     if (state.value === "display") {
@@ -182,9 +185,10 @@ const widget = ({ tokenId, contractAddress, platform, stack = false }) => {
         <h1>Stack DB</h1>
 
         <div>
-          <Stack state={state} />
+          <Stack state={state} authenticate={() => send({ type: "SIGN" })} urls={stackMediaURLs} />
         </div>
-        <pre>{JSON.stringify(state.context, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(stackMediaURLs, null, 2)}</pre>
+        <pre>{state.context.arweaveData && JSON.stringify(state.context.arweaveData.dbstack, null, 2)}</pre> */}
       </div>
     )
   }
@@ -208,7 +212,7 @@ const widget = ({ tokenId, contractAddress, platform, stack = false }) => {
           {config.debug && <p>{state.value}</p>}
         </div>
       </div>
-      <pre>{JSON.stringify(state.context, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(state.context, null, 2)}</pre> */}
     </div>
   )
 }
