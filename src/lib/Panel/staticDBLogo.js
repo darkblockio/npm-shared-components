@@ -1,3 +1,5 @@
+import React from "react"
+
 const StaticDBLogo = () => {
   return (
     <svg width="80" height="12" viewBox="0 0 80 12" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -64,7 +64,8 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build-lib": "rollup -c && cp ./npm-lib-files/* ./dist/",
+    "build-lib-dev": "rollup -c",
+    "build-lib": "rollup -c --environment PROD && cp ./npm-lib-files/* ./dist/",
     "to-tester": "cp ./dist/index.js ../widget-tester/src/db.js"
   }
 }
