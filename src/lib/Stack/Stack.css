@@ -1,0 +1,21 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.row {
+  padding: 10px 30px;
+}
+
+.header {
+  font-weight: bold;
+}
+
+.row .field {
+  display: inline-block;
+  min-width: 200px;
+}
+
+.fileRow:hover {
+  background-color: gray;
+}

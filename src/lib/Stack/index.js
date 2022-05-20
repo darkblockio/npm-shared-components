@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Player from "../Player"
 import Header from "../Header"
-import "./Slack.css"
+import "./Stack.css"
 
 const config = {
   customCssClass: "", // pass here a class name you plan to use
@@ -16,7 +16,7 @@ const config = {
 
 const FileRow = ({ db }) => {
   return (
-    <div className="fileRow">
+    <div className="row">
       <div className="field">{db.details}</div>
       <div className="field">{db.fileFormat}</div>
       <div className="field">{db.datecreated}</div>
@@ -34,37 +34,35 @@ const Stack = ({ state = null, authenticate, urls }) => {
   }, [state.value])
 
   return (
-    <div>
-      <div className="DarkblockWidget-App">
-        {state.value === "display" && selected ? (
-          <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
-        ) : (
-          <Header state={state} authenticate={() => authenticate()} />
-        )}
-        <ul>
-          <li>
-            <div className="fileRow">
-              <div className="field">Name</div>
-              <div className="field">File Type</div>
-              <div className="field">Creation Date</div>
-            </div>
-          </li>
-          {state.context.display.stack.map((db, i) => {
-            return (
-              <li>
-                {state.value === "display" ? (
-                  <a onClick={() => setSelected({ type: db.fileFormat, mediaURL: urls[i] })}>
-                    <FileRow db={db} />
-                  </a>
-                ) : (
+    <div className="DarkblockWidget-App">
+      {state.value === "display" && selected ? (
+        <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
+      ) : (
+        <Header state={state} authenticate={() => authenticate()} />
+      )}
+      <ul>
+        <li className="fileRow header">
+          <div className="row">
+            <div className="field">Name</div>
+            <div className="field">File Type</div>
+            <div className="field">Creation Date</div>
+          </div>
+        </li>
+        {state.context.display.stack.map((db, i) => {
+          return (
+            <li className="fileRow">
+              {state.value === "display" ? (
+                <a onClick={() => setSelected({ type: db.fileFormat, mediaURL: urls[i] })}>
                   <FileRow db={db} />
-                )}
-              </li>
-            )
-          })}
-        </ul>
-        {config.debug && <p>{state.value}</p>}
-      </div>
+                </a>
+              ) : (
+                <FileRow db={db} />
+              )}
+            </li>
+          )
+        })}
+      </ul>
+      {config.debug && <p>{state.value}</p>}
     </div>
   )
 }

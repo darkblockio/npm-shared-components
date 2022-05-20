@@ -187,8 +187,8 @@ const widget = ({ tokenId, contractAddress, platform, stack = false }) => {
         <div>
           <Stack state={state} authenticate={() => send({ type: "SIGN" })} urls={stackMediaURLs} />
         </div>
-        {/* <pre>{JSON.stringify(stackMediaURLs, null, 2)}</pre>
-        <pre>{state.context.arweaveData && JSON.stringify(state.context.arweaveData.dbstack, null, 2)}</pre> */}
+        {/* <pre>{JSON.stringify(stackMediaURLs, null, 2)}</pre> */}
+        <pre>{state.context.arweaveData && JSON.stringify(state.context.arweaveData, null, 2)}</pre>
       </div>
     )
   }
@@ -222,7 +222,7 @@ stories.add("normal db", () => {
   const contractAddress = "0x495f947276749ce646f68ac8c248420045cb7b5e"
   const platform = "Ethereum"
 
-  return widget({ tokenId, contractAddress, platform })
+  return widget({ tokenId, contractAddress, platform, stack: true })
 })
 
 stories.add("stack db", () => {
