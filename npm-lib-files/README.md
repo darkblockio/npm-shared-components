@@ -19,6 +19,7 @@ import {
   Header,
   Panel,
   Player,
+  Stack,
   utils,
   widgetMachine
 } from "@darkblock.io/shared-components"
