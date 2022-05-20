@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import Player from "../Player"
 import Header from "../Header"
 import "./Stack.css"
+import StaticDBLogo from "../Panel/staticDBLogo"
 
 const FileRow = ({ db }) => {
   return (
@@ -30,7 +31,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         <Header state={state} authenticate={() => authenticate()} />
       )}
       <ul>
-        <li className="fileRow header">
+        <li className="header">
           <div className="row">
             <div className="field">Name</div>
             <div className="field">File Type</div>
@@ -52,6 +53,10 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         })}
       </ul>
       {config.debug && <p>{state.value}</p>}
+      <p>
+        Unlockable Content Powered by &nbsp;
+        <StaticDBLogo />
+      </p>
     </div>
   )
 }
