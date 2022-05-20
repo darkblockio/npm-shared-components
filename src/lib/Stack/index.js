@@ -3,17 +3,6 @@ import Player from "../Player"
 import Header from "../Header"
 import "./Stack.css"
 
-const config = {
-  customCssClass: "", // pass here a class name you plan to use
-  debug: true, // debug flag to console.log some variables
-  imgViewer: {
-    // image viewer control parameters
-    showRotationControl: true,
-    autoHideControls: true,
-    controlsFadeDelay: true,
-  },
-}
-
 const FileRow = ({ db }) => {
   return (
     <div className="row">
@@ -24,7 +13,7 @@ const FileRow = ({ db }) => {
   )
 }
 
-const Stack = ({ state = null, authenticate, urls }) => {
+const Stack = ({ state = null, authenticate, urls, config }) => {
   const [selected, setSelected] = useState()
 
   useEffect(() => {

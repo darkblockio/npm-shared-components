@@ -14,7 +14,7 @@ const stories = storiesOf("State Machine", module)
 
 const config = {
   customCssClass: "", // pass here a class name you plan to use
-  debug: true, // debug flag to console.log some variables
+  debug: false, // debug flag to console.log some variables
   imgViewer: {
     // image viewer control parameters
     showRotationControl: true,
@@ -185,10 +185,10 @@ const widget = ({ tokenId, contractAddress, platform, stack = false }) => {
         <h1>Stack DB</h1>
 
         <div>
-          <Stack state={state} authenticate={() => send({ type: "SIGN" })} urls={stackMediaURLs} />
+          <Stack state={state} authenticate={() => send({ type: "SIGN" })} urls={stackMediaURLs} config={config} />
         </div>
         {/* <pre>{JSON.stringify(stackMediaURLs, null, 2)}</pre> */}
-        <pre>{state.context.arweaveData && JSON.stringify(state.context.arweaveData, null, 2)}</pre>
+        {/* <pre>{state.context.arweaveData && JSON.stringify(state.context.arweaveData, null, 2)}</pre> */}
       </div>
     )
   }
