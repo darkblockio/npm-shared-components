@@ -187,8 +187,8 @@ const widget = ({ tokenId, contractAddress, platform, stack = false }) => {
         <div>
           <Stack state={state} authenticate={() => send({ type: "SIGN" })} urls={stackMediaURLs} config={config} />
         </div>
-        {/* <pre>{JSON.stringify(stackMediaURLs, null, 2)}</pre> */}
-        {/* <pre>{state.context.arweaveData && JSON.stringify(state.context.arweaveData, null, 2)}</pre> */}
+        <pre>{JSON.stringify(stackMediaURLs, null, 2)}</pre>
+        <pre>{state.context.arweaveData && JSON.stringify(state.context, null, 2)}</pre>
       </div>
     )
   }
