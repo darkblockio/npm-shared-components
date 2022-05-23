@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Player from "../Player"
 import Header from "../Header"
-import "./Stack.css"
+import "../main.css"
 import StaticDBLogo from "../Panel/staticDBLogo"
 
 const FileRow = ({ db }) => {

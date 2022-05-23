@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "@storybook/react"
 import Stack from "../lib/Stack"
-import "../lib/db.css"
+import "../lib/main.css"
 
 const stories = storiesOf("Shared components - stack", module)
 const state = {
