@@ -67,7 +67,7 @@ const Header = ({ state = null, authenticate }) => {
     )
   }
 
-  if (state.value === "authenticated" || state.value === "decrypting") {
+  if (state.value === "authenticated" || state.value === "decrypting" || state.value === "display") {
     return setHeader("Ownership Authenticated", "Decrypting Darkblock...")
   }
 

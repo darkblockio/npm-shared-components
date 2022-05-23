@@ -32,6 +32,7 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
         arweaveTX: "",
         arweaveTXLink: "",
         details: "",
+        stack: [],
       },
       baseLink,
       tokenId,
@@ -79,6 +80,29 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
                   context.display.fileSize = humanFileSize(context.arweaveData.darkblock.data.size) || ""
                   context.display.arweaveTX = context.arweaveData.darkblock.id || ""
                   context.display.arweaveTXLink = `https://viewblock.io/arweave/tx/${context.display.arweaveTX}`
+
+                  if (context.arweaveData.dbstack) {
+                    context.arweaveData.dbstack.map((db) => {
+                      let artId, details, datecreated
+
+                      db.tags.forEach((tag) => {
+                        if (tag.name === "ArtId") artId = tag.value
+                        if (tag.name === "Description") details = tag.value
+                        if (tag.name === "Date-Created") datecreated = tag.value
+                      })
+
+                      context.display.stack.push({
+                        artId,
+                        details,
+                        datecreated,
+                        creatorLink: context.baseLink + context.creator.creator_address,
+                        fileFormat: db.data.type || "",
+                        fileSize: humanFileSize(db.data.size) || "",
+                        arweaveTX: db.id || "",
+                        arweaveTXLink: `https://viewblock.io/arweave/tx/${db.id}`,
+                      })
+                    })
+                  }
 
                   return true
                 } else {
