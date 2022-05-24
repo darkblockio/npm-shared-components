@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react"
 import Header from "../lib/Header"
 import Panel from "../lib/Panel"
 import Player from "../lib/Player"
-import "../lib/db.css"
+import "../lib/main.css"
 
 const stories = storiesOf("Shared components - video", module)
 const state = {
