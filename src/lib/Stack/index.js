@@ -41,7 +41,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           </li>
           {state.context.display.stack.map((db, i) => {
             return (
-              <li className="fileRow">
+              <li className="fileRow" key={i}>
                 {state.value === "display" ? (
                   <a onClick={() => setSelected({ type: db.fileFormat, mediaURL: urls[i] })}>
                     <FileRow db={db} />
