@@ -66,8 +66,6 @@ const MyGallery = ({ mediaURL, config }) => {
 }
 
 const MediaComp = ({ mediaURL, mediaType, config }) => {
-  console.log("mediaType: ", mediaType)
-
   if (mediaType == "encrypted(application/pdf)" || mediaType == "(application/pdf)")
     return (
       <iframe

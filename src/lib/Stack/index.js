@@ -54,11 +54,11 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           })}
         </ul>
       </div>
-      {config.debug && <p>{state.value}</p>}
-      <p>
+      <div className="DarkblockWidget-Footer">
         Unlockable Content Powered by &nbsp;
         <StaticDBLogo />
-      </p>
+      </div>
+      {config.debug && <p>{state.value}</p>}
     </div>
   )
 }
