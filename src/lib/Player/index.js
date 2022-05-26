@@ -4,7 +4,7 @@ import "./Player.scoped.css"
 import "./plyr.css"
 import "./photoswipe.css"
 import { VideoPlaceHolderBase64 } from "../imgBase64/VideoPlaceHolderBase64"
-import Loading from "../Animations/Loading"
+import Loading from "../Animations/Logo"
 import OpenSeadragon from "openseadragon"
 
 const MyGallery = ({ mediaURL, config }) => {
@@ -42,23 +42,25 @@ const MyGallery = ({ mediaURL, config }) => {
         onContextMenu={() => false}
         style={{ width: "100%", height: "500px", position: "relative" }}
       >
-        <div
-          id="seadragon-viewer-spinner"
-          style={{
-            display: "flex",
-            top: "39%",
-            width: "80px",
-            left: "50%",
-            textAlign: "center",
-            margin: "auto",
-            height: "100px",
-            verticalAlign: "bottom",
-            position: "absolute",
-            zIndex: "99999",
-          }}
-          ref={spinner}
-        >
-          <Loading />
+        <div id="seadragon-viewer-spinner" ref={spinner}>
+          <div
+            style={{
+              display: "flex",
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0,
+              width: "80px",
+              height: "80px",
+              textAlign: "center",
+              margin: "auto",
+              justifyContent: "center",
+              position: "absolute",
+              zIndex: "99999",
+            }}
+          >
+            <Loading />
+          </div>
         </div>
       </div>
     </>
@@ -66,8 +68,6 @@ const MyGallery = ({ mediaURL, config }) => {
 }
 
 const MediaComp = ({ mediaURL, mediaType, config }) => {
-  console.log("mediaType: ", mediaType)
-
   if (mediaType == "encrypted(application/pdf)" || mediaType == "(application/pdf)")
     return (
       <iframe
@@ -140,7 +140,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
   return <p>Unknown format</p>
 }
 
-const Player = ({ mediaURL, mediaType, config }) => {
+const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   return (
     <div className="DarkblockWidget-Player">
       <div className="DarkblockWidget-Header-left" id="headerleft">
@@ -149,5 +149,7 @@ const Player = ({ mediaURL, mediaType, config }) => {
     </div>
   )
 }
+
+const Player = React.memo(PlayerTemp)
 
 export default Player

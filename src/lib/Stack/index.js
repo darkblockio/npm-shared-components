@@ -5,17 +5,21 @@ import "./Stack.css"
 import StaticDBLogo from "../Panel/staticDBLogo"
 
 const FileRow = ({ db }) => {
+  let d = new Date(0)
+  d.setUTCMilliseconds(db.datecreated)
+  console.log(d)
   return (
     <div className="row">
       <div className="field">{db.details}</div>
       <div className="field">{db.fileFormat}</div>
-      <div className="field">{db.datecreated}</div>
+      <div className="field">{d.toLocaleString()}</div>
     </div>
   )
 }
 
 const Stack = ({ state = null, authenticate, urls, config }) => {
   const [selected, setSelected] = useState()
+  const [swapping, setSwapping] = useState(false)
 
   useEffect(() => {
     if (state.value === "display") {
@@ -23,9 +27,15 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     }
   }, [state.value])
 
+  useEffect(() => {
+    if (swapping) {
+      setSwapping(false)
+    }
+  }, [swapping])
+
   return (
     <div className={config.customCssClass ? `DarkblockWidget-App ${config.customCssClass}` : `DarkblockWidget-App`}>
-      {state.value === "display" && selected ? (
+      {state.value === "display" && selected && !swapping ? (
         <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
       ) : (
         <Header state={state} authenticate={() => authenticate()} />
@@ -43,7 +53,12 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             return (
               <li className="fileRow" key={i}>
                 {state.value === "display" ? (
-                  <a onClick={() => setSelected({ type: db.fileFormat, mediaURL: urls[i] })}>
+                  <a
+                    onClick={() => {
+                      setSwapping(true)
+                      setSelected({ type: db.fileFormat, mediaURL: urls[i] })
+                    }}
+                  >
                     <FileRow db={db} />
                   </a>
                 ) : (
@@ -54,11 +69,11 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           })}
         </ul>
       </div>
-      {config.debug && <p>{state.value}</p>}
-      <p>
+      <div className="DarkblockWidget-Footer">
         Unlockable Content Powered by &nbsp;
         <StaticDBLogo />
-      </p>
+      </div>
+      {config.debug && <p>{state.value}</p>}
     </div>
   )
 }
