@@ -140,7 +140,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
   return <p>Unknown format</p>
 }
 
-const Player = ({ mediaURL, mediaType, config }) => {
+const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   return (
     <div className="DarkblockWidget-Player">
       <div className="DarkblockWidget-Header-left" id="headerleft">
@@ -149,5 +149,7 @@ const Player = ({ mediaURL, mediaType, config }) => {
     </div>
   )
 }
+
+const Player = React.memo(PlayerTemp)
 
 export default Player
