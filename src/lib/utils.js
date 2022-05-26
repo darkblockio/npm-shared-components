@@ -11,26 +11,26 @@ export function humanFileSize(size) {
   return (size / Math.pow(1024, i)).toFixed(2) * 1 + " " + ["B", "kB", "MB", "GB", "TB"][i]
 }
 
-export async function verifyAssetByDarkblock(txID) {
-  try {
-    let formData = new FormData()
-    formData.append("ids", `${txID}`)
-    // eslint-disable-next-line
-    const response = await fetch(`https://app.darkblock.io/api/verify-id`, {
-      method: "POST",
-      body: formData,
-    })
-    const assetData = await response.json()
-    return assetData
-  } catch (e) {
-    console.log(e)
-    return []
-  }
-}
+// export async function verifyAssetByDarkblock(txID) {
+//   try {
+//     let formData = new FormData()
+//     formData.append("ids", `${txID}`)
+//     // eslint-disable-next-line
+//     const response = await fetch(`https://app.darkblock.io/api/verify-id`, {
+//       method: "POST",
+//       body: formData,
+//     })
+//     const assetData = await response.json()
+//     return assetData
+//   } catch (e) {
+//     console.log(e)
+//     return []
+//   }
+// }
 
 export async function getArweaveData(id, platform) {
   try {
-    const response = await fetch(`https://dev1.darkblock.io/v1/darkblock/info?nft_id=${id}&nft_platform=${platform}`)
+    const response = await fetch(`https://api.darkblock.io/v1/darkblock/info?nft_id=${id}&nft_platform=${platform}`)
     const data = await response.json()
     return data
   } catch (e) {

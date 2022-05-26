@@ -5,17 +5,21 @@ import "../main.css"
 import StaticDBLogo from "../Panel/staticDBLogo"
 
 const FileRow = ({ db }) => {
+  let d = new Date(0)
+  d.setUTCMilliseconds(db.datecreated)
+  console.log(d)
   return (
     <div className="row">
       <div className="field">{db.details}</div>
       <div className="field">{db.fileFormat}</div>
-      <div className="field">{db.datecreated}</div>
+      <div className="field">{d.toLocaleString()}</div>
     </div>
   )
 }
 
 const Stack = ({ state = null, authenticate, urls, config }) => {
   const [selected, setSelected] = useState()
+  const [swapping, setSwapping] = useState(false)
 
   useEffect(() => {
     if (state.value === "display") {
@@ -23,40 +27,53 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     }
   }, [state.value])
 
+  useEffect(() => {
+    if (swapping) {
+      setSwapping(false)
+    }
+  }, [swapping])
+
   return (
-    <div className="DarkblockWidget-App">
-      {state.value === "display" && selected ? (
+    <div className={config.customCssClass ? `DarkblockWidget-App ${config.customCssClass}` : `DarkblockWidget-App`}>
+      {state.value === "display" && selected && !swapping ? (
         <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
       ) : (
         <Header state={state} authenticate={() => authenticate()} />
       )}
-      <ul>
-        <li className="header">
-          <div className="row">
-            <div className="field">Name</div>
-            <div className="field">File Type</div>
-            <div className="field">Creation Date</div>
-          </div>
-        </li>
-        {state.context.display.stack.map((db, i) => {
-          return (
-            <li className="fileRow">
-              {state.value === "display" ? (
-                <a onClick={() => setSelected({ type: db.fileFormat, mediaURL: urls[i] })}>
+      <div className="DarkblockWidget-Stack-Panel">
+        <ul>
+          <li className="header">
+            <div className="row">
+              <div className="field">Name</div>
+              <div className="field">File Type</div>
+              <div className="field">Creation Date</div>
+            </div>
+          </li>
+          {state.context.display.stack.map((db, i) => {
+            return (
+              <li className="fileRow" key={i}>
+                {state.value === "display" ? (
+                  <a
+                    onClick={() => {
+                      setSwapping(true)
+                      setSelected({ type: db.fileFormat, mediaURL: urls[i] })
+                    }}
+                  >
+                    <FileRow db={db} />
+                  </a>
+                ) : (
                   <FileRow db={db} />
-                </a>
-              ) : (
-                <FileRow db={db} />
-              )}
-            </li>
-          )
-        })}
-      </ul>
-      {config.debug && <p>{state.value}</p>}
-      <p>
+                )}
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+      <div className="DarkblockWidget-Footer">
         Unlockable Content Powered by &nbsp;
         <StaticDBLogo />
-      </p>
+      </div>
+      {config.debug && <p>{state.value}</p>}
     </div>
   )
 }

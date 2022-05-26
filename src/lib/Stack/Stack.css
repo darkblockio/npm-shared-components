@@ -1,17 +1,17 @@
-ul {
+.DarkblockWidget-Stack-Panel ul {
   list-style-type: none;
   padding: 0px;
 }
 
-.row {
+.DarkblockWidget-Stack-Panel .row {
   padding: 5px 0px 5px 0px;
 }
 
-.header {
+.DarkblockWidget-Stack-Panel .header {
   font-weight: bold;
 }
 
-.row .field {
+.DarkblockWidget-Stack-Panel .row .field {
   display: inline-block;
   min-width: 31%;
   max-width: 32%;
@@ -19,6 +19,6 @@ ul {
   vertical-align: text-top;
 }
 
-.fileRow:hover {
+.DarkblockWidget-Stack-Panel .fileRow:hover {
   background-color: gray;
 }
