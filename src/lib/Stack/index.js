@@ -5,11 +5,14 @@ import "./Stack.css"
 import StaticDBLogo from "../Panel/staticDBLogo"
 
 const FileRow = ({ db }) => {
+  let d = new Date(0)
+  d.setUTCMilliseconds(db.datecreated)
+  console.log(d)
   return (
     <div className="row">
       <div className="field">{db.details}</div>
       <div className="field">{db.fileFormat}</div>
-      <div className="field">{db.datecreated}</div>
+      <div className="field">{d.toLocaleString()}</div>
     </div>
   )
 }
