@@ -5,6 +5,7 @@
   color: #fff;
   padding: 25px;
   text-align: left;
+  @apply bg-zinc-400;
 }
 .DarkblockWidget-App-logo {
   height: 40vmin;

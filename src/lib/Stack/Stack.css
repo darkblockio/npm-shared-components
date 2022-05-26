@@ -1,6 +1,7 @@
 .DarkblockWidget-Stack-Panel ul {
   list-style-type: none;
   padding: 0px;
+  @apply bg-indigo-500;
 }
 
 .DarkblockWidget-Stack-Panel .row {
