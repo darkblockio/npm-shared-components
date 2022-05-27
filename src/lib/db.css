@@ -1,12 +1,22 @@
 /* @import "@solana/wallet-adapter-react-ui/styles.css"; */
 
 .DarkblockWidget-App {
-  background: #000;
+  /* background: #000;
   color: #fff;
   padding: 25px;
-  text-align: left;
-  @apply bg-zinc-400;
+  text-align: left; */
+  @apply border rounded-lg;
 }
+
+.DarkblockWidget-App-Content {
+  /* background: #000;
+  color: #fff;
+  padding: 25px;
+  text-align: left; */
+  @apply bg-black flex flex-col;
+  @apply w-full p-0 md:p-4 shadow-none md:shadow-md border rounded-lg;
+}
+
 .DarkblockWidget-App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -17,15 +27,17 @@
   }
 }
 .DarkblockWidget-App-header {
-  background-color: #282c34;
+  /* background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: white; */
+  @apply mx-2 overflow-x-auto;
 }
+
 .DarkblockWidget-App-link {
   color: #61dafb;
 }
@@ -36,4 +48,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.DarkblockWidget-Footer {
+  @apply pt-2 text-slate-200 p-2;
+}
+
+.DarkblockWidget-Footer svg {
+  display: inline-block;
 }

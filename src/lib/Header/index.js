@@ -1,5 +1,5 @@
 import React from "react"
-import "./Header.scoped.css"
+import "./Header.css"
 import Logo from "../Animations/Logo"
 
 const setHeader = (title, text, red = false, authenticate = null) => {
