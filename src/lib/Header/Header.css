@@ -2,9 +2,10 @@
   background: #000;
   color: #fff;
   border-bottom: 1px solid #565555;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   /* max-height: 600px; */
   min-height: 150px;
+  @apply sm:m-4;
 }
 
 .DarkblockWidget-Header-Row {
@@ -40,6 +41,7 @@
   height: 60px;
   float: right;
   position: "relative";
+  padding: 3px;
 }
 
 .DarkblockWidget-Header-Row > .title {
@@ -65,7 +67,8 @@
 }
 
 .DarkblockWidget-Header-Row > .inner-button {
-  @apply bg-slate-500 text-black hover:bg-slate-400 rounded-md p-2 font-medium;
+  margin-top: 10px;
+  @apply bg-slate-400 text-black hover:bg-slate-300 rounded-md p-2 font-medium;
 }
 
 .DarkblockWidget-Header-Wrapper > .content {

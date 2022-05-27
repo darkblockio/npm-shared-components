@@ -56,52 +56,50 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
   return (
     <div className={config.customCssClass ? `DarkblockWidget-App ${config.customCssClass}` : `DarkblockWidget-App`}>
-      <div className="DarkblockWidget-App-Content">
-        {state.value === "display" && selected && !swapping ? (
-          <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
-        ) : (
-          <Header state={state} authenticate={() => authenticate()} />
-        )}
-        <div className="DarkblockWidget-Stack-Panel">
-          <table className="min-w-full border-gray-300">
-            <thead className="bg">
-              <tr>
-                <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-xs sm:pl-6">
-                  Name
-                </th>
-                <th scope="col" className="hidden sm:table-cell px-3 py-3.5 text-left text-xs">
-                  File Format
-                </th>
-                <th scope="col" className="hidden sm:table-cell px-3 py-3.5 text-left text-xs">
-                  Date Added
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {state.context.display.stack.map((db, i) => {
-                if (state.value === "display") {
-                  return (
-                    <RowContent
-                      db={db}
-                      f={() => {
-                        setSwapping(true)
-                        setSelected({ type: db.fileFormat, mediaURL: urls[i] })
-                      }}
-                    />
-                  )
-                } else {
-                  return <RowContent db={db} />
-                }
-              })}
-            </tbody>
-          </table>
-        </div>
-        <div className="DarkblockWidget-Footer">
-          Unlockable Content Powered by &nbsp;
-          <StaticDBLogo />
-        </div>
-        {config.debug && <p>{state.value}</p>}
+      {state.value === "display" && selected && !swapping ? (
+        <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
+      ) : (
+        <Header state={state} authenticate={() => authenticate()} />
+      )}
+      <div className="DarkblockWidget-Stack-Panel">
+        <table className="stack-table">
+          <thead className="bg">
+            <tr>
+              <th scope="col" className="name-header">
+                Name
+              </th>
+              <th scope="col" className="format-header">
+                File Format
+              </th>
+              <th scope="col" className="date-header">
+                Date Added
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {state.context.display.stack.map((db, i) => {
+              if (state.value === "display") {
+                return (
+                  <RowContent
+                    db={db}
+                    f={() => {
+                      setSwapping(true)
+                      setSelected({ type: db.fileFormat, mediaURL: urls[i] })
+                    }}
+                  />
+                )
+              } else {
+                return <RowContent db={db} />
+              }
+            })}
+          </tbody>
+        </table>
       </div>
+      <div className="DarkblockWidget-Footer">
+        Unlockable Content Powered by &nbsp;
+        <StaticDBLogo />
+      </div>
+      {config.debug && <p>{state.value}</p>}
     </div>
   )
 }
