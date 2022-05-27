@@ -8,13 +8,13 @@ import Stack from "../lib/Stack"
 import widgetMachine from "../lib/widgetMachine"
 import * as utils from "../lib/utils"
 import { useMachine } from "@xstate/react"
-import "../lib/db.css"
+import "../lib/main.css"
 
 const stories = storiesOf("State Machine", module)
 
 const config = {
   customCssClass: "", // pass here a class name you plan to use
-  debug: false, // debug flag to console.log some variables
+  debug: true, // debug flag to console.log some variables
   imgViewer: {
     // image viewer control parameters
     showRotationControl: true,

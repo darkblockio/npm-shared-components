@@ -1,0 +1,24 @@
+.DarkblockWidget-Player {
+  @apply drop-shadow-lg mb-2;
+}
+
+.DarkblockWidget-Player .download {
+  background: #303030;
+  color: #fff;
+  padding: 25px;
+  max-height: 600px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.DarkblockWidget-Player .download p {
+  margin-top: 0px;
+}
+
+.DarkblockWidget-Player .download a svg {
+  margin: 10px auto;
+}
+
+.DarkblockWidget-Player .download svg {
+  margin: auto;
+}

@@ -22,8 +22,14 @@ export default [
     ],
     plugins: [
       postcss({
-        plugins: [],
+        config: {
+          path: "./postcss.config.js",
+        },
+        extensions: [".css"],
         minimize: true,
+        inject: {
+          insertAt: "top",
+        },
       }),
       babel({
         exclude: "node_modules/**",
