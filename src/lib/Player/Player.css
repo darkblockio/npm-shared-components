@@ -1,24 +1,32 @@
 .DarkblockWidget-Player {
+  max-height: 500px;
   @apply drop-shadow-lg mb-2;
 }
 
-.DarkblockWidget-Player .download {
-  background: #303030;
-  color: #fff;
-  padding: 25px;
-  max-height: 600px;
-  text-align: center;
-  border-radius: 10px;
+.DarkblockWidget-Player .zip-panel {
+  @apply text-center sm:p-4 sm:my-2 bg-slate-200 pb-4 min-h-[150px];
 }
 
-.DarkblockWidget-Player .download p {
+.DarkblockWidget-Player-Content {
+  @apply object-contain;
+}
+
+.DarkblockWidget-Player-Content .videoPlayer {
+  @apply object-contain;
+}
+
+.DarkblockWidget-Player-Content .audioPlayer {
+  @apply object-contain;
+}
+
+.DarkblockWidget-Player .zip-panel p {
   margin-top: 0px;
 }
 
-.DarkblockWidget-Player .download a svg {
+.DarkblockWidget-Player .zip-panel a svg {
   margin: 10px auto;
 }
 
-.DarkblockWidget-Player .download svg {
+.DarkblockWidget-Player .zip-panel svg {
   margin: auto;
 }

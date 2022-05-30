@@ -80,10 +80,10 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
 
   if (mediaType == "encrypted(application/zip)") {
     return (
-      <div className="download">
+      <div className="zip-panel">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 19H11V22H13V19H16L12 15L8 19ZM16 4H13V1H11V4H8L12 8L16 4ZM4 9V11H20V9H4Z" fill="white" />
-          <path d="M4 12H20V14H4V12Z" fill="white" />
+          <path d="M8 19H11V22H13V19H16L12 15L8 19ZM16 4H13V1H11V4H8L12 8L16 4ZM4 9V11H20V9H4Z" fill="black" />
+          <path d="M4 12H20V14H4V12Z" fill="black" />
         </svg>
         <p>Compressed file</p>
         <a href={mediaURL}>
@@ -122,8 +122,8 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
   if (mediaType.indexOf("audio") > -1) {
     mediaSrc.type = "audio"
     return (
-      <div>
-        <Plyr style={{ maxHeight: "600px" }} source={mediaSrc} />
+      <div className="audioPlayer">
+        <Plyr source={mediaSrc} />
       </div>
     )
   }
@@ -131,8 +131,8 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
   if (mediaType.indexOf("video") > -1) {
     mediaSrc.type = "video"
     return (
-      <div>
-        <Plyr style={{ maxHeight: "600px" }} source={mediaSrc} loop />
+      <div className="videoPlayer">
+        <Plyr source={mediaSrc} loop />
       </div>
     )
   }
@@ -143,7 +143,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
 const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   return (
     <div className="DarkblockWidget-Player">
-      <div className="DarkblockWidget-Header-left" id="headerleft">
+      <div className="DarkblockWidget-Player-Content">
         <MediaComp mediaURL={mediaURL} mediaType={mediaType} config={config} />
       </div>
     </div>

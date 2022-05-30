@@ -20,14 +20,14 @@ const RenderIcon = ({ filetype }) => {
   return <FontAwesomeIcon icon={icon} className="text-slate-400" />
 }
 
-const RowContent = ({ db, f = null }) => {
+const RowContent = ({ db, sel = false, f = null }) => {
   let fn = f && typeof f === "function" ? f : () => {}
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
-  console.log(d)
+  let rowcss = sel ? "row selected" : "row"
 
   return (
-    <tr className="row" onClick={fn}>
+    <tr className={rowcss} onClick={fn}>
       <td className="name">
         <RenderIcon filetype={db.fileFormat} />
         {" " + db.details}
@@ -44,7 +44,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
   useEffect(() => {
     if (state.value === "display") {
-      setSelected({ type: state.context.display.stack[0].fileFormat, mediaURL: urls[0] })
+      console.log(selected)
+      setSelected({ type: state.context.display.stack[0].fileFormat, mediaURL: urls[0], i: 0 })
     }
   }, [state.value])
 
@@ -64,7 +65,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
       <div className="DarkblockWidget-Stack-Panel">
         <table className="stack-table">
           <thead className="bg">
-            <tr>
+            <tr className="rowheader">
               <th scope="col" className="name-header">
                 Name
               </th>
@@ -79,12 +80,14 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           <tbody>
             {state.context.display.stack.map((db, i) => {
               if (state.value === "display") {
+                let sel = selected ? selected.i === i : false
                 return (
                   <RowContent
                     db={db}
+                    sel={sel}
                     f={() => {
                       setSwapping(true)
-                      setSelected({ type: db.fileFormat, mediaURL: urls[i] })
+                      setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i })
                     }}
                   />
                 )

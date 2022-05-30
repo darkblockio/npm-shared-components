@@ -6,12 +6,15 @@ const setHeader = (title, text, red = false, authenticate = null) => {
   return (
     <div className="DarkblockWidget-Header">
       <div className="DarkblockWidget-Header-Row">
-        <div className={red ? "title-red" : "title"}>{title}</div>
         <div className="Darkblock-Icon">
           <div className="dbLogo">
             <Logo loop={false} />
           </div>
         </div>
+      </div>
+
+      <div className="DarkblockWidget-Header-Row">
+        <div className={red ? "title-red" : "title"}>{title}</div>
       </div>
       <div className="DarkblockWidget-Header-Row">
         <p className="content">{text}</p>
@@ -29,10 +32,7 @@ const setHeader = (title, text, red = false, authenticate = null) => {
 
 const Header = ({ state = null, authenticate }) => {
   if (state.value === "idle" || state.value === "loading_arweave") {
-    return setHeader(
-      "Darkblock Detected",
-      "Only the NFT owner can view the Darkblock. Authenticate ownership to decrypt and display the Darkblock."
-    )
+    return setHeader("", "")
   }
 
   if (state.value === "start_failure") {
@@ -53,14 +53,14 @@ const Header = ({ state = null, authenticate }) => {
 
   if (state.value === "started" || state.value === "signing") {
     return setHeader(
-      "Darkblock Detected",
+      "Darkblock Unlockable Content",
       "Only the NFT owner can view the Darkblock. Authenticate ownership to decrypt and display the Darkblock."
     )
   }
 
   if (state.value === "wallet_connected") {
     return setHeader(
-      "Darkblock Detected",
+      "Darkblock Unlockable Content",
       "Only the NFT owner can view the Darkblock. Authenticate ownership to decrypt and display the Darkblock.",
       false,
       authenticate
@@ -71,7 +71,7 @@ const Header = ({ state = null, authenticate }) => {
     return setHeader("Ownership Authenticated", "Decrypting Darkblock...")
   }
 
-  return setHeader("(Stateless)", "Error: the widget went into an error state", true)
+  return setHeader("Error", "The widget went into an error state", true)
 }
 
 export default Header

@@ -1,5 +1,5 @@
 .DarkblockWidget-Stack-Panel {
-  @apply flex-grow text-slate-200 bg-slate-900 py-2;
+  @apply flex-grow py-2;
 }
 
 .DarkblockWidget-Stack-Panel .stack-table {
@@ -7,22 +7,26 @@
 }
 
 .DarkblockWidget-Stack-Panel .row {
-  @apply hover:bg-slate-800 cursor-pointer;
+  @apply hover:bg-slate-200 cursor-pointer;
+}
+
+.DarkblockWidget-Stack-Panel .selected {
+  @apply bg-slate-200;
 }
 
 .DarkblockWidget-Stack-Panel .header {
   font-weight: bold;
 }
 
-.DarkblockWidget-Stack-Panel .row .name-header {
+.DarkblockWidget-Stack-Panel .rowheader .name-header {
   @apply py-3.5 pl-4 pr-3 text-left text-xs sm:pl-6;
 }
 
-.DarkblockWidget-Stack-Panel .row .format-header {
+.DarkblockWidget-Stack-Panel .rowheader .format-header {
   @apply hidden sm:table-cell px-3 py-3.5 text-left text-xs;
 }
 
-.DarkblockWidget-Stack-Panel .row .date-header {
+.DarkblockWidget-Stack-Panel .rowheader .date-header {
   @apply hidden sm:table-cell px-3 py-3.5 text-left text-xs;
 }
 

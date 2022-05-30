@@ -902,7 +902,8 @@ a.plyr__control:before {
   width: 100%;
 }
 .plyr__video-wrapper video {
-  max-height: 600px;
+  max-height: 500px;
+  /* max-height: inherit; */
 }
 .plyr__video-embed,
 .plyr__video-wrapper--fixed-ratio {
