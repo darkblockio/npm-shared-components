@@ -1,11 +1,7 @@
 /* @import "@solana/wallet-adapter-react-ui/styles.css"; */
 
 .DarkblockWidget-App {
-  /* background: #000;
-  color: #fff;
-  padding: 25px;
-  text-align: left; */
-  @apply bg-black flex flex-col w-full p-0 md:p-4 shadow-none md:shadow-md border rounded-lg;
+  @apply bg-black flex flex-col w-full p-0 md:p-4;
 }
 
 .DarkblockWidget-App-logo {

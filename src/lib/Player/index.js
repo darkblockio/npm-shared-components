@@ -122,8 +122,8 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
   if (mediaType.indexOf("audio") > -1) {
     mediaSrc.type = "audio"
     return (
-      <div>
-        <Plyr style={{ maxHeight: "600px" }} source={mediaSrc} />
+      <div className="audioPlayer">
+        <Plyr source={mediaSrc} />
       </div>
     )
   }
@@ -131,8 +131,8 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
   if (mediaType.indexOf("video") > -1) {
     mediaSrc.type = "video"
     return (
-      <div>
-        <Plyr style={{ maxHeight: "600px" }} source={mediaSrc} loop />
+      <div className="videoPlayer">
+        <Plyr source={mediaSrc} loop />
       </div>
     )
   }
@@ -143,7 +143,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
 const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   return (
     <div className="DarkblockWidget-Player">
-      <div className="DarkblockWidget-Header-left" id="headerleft">
+      <div className="DarkblockWidget-Player-Content">
         <MediaComp mediaURL={mediaURL} mediaType={mediaType} config={config} />
       </div>
     </div>

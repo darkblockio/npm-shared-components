@@ -64,7 +64,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
       <div className="DarkblockWidget-Stack-Panel">
         <table className="stack-table">
           <thead className="bg">
-            <tr>
+            <tr className="row">
               <th scope="col" className="name-header">
                 Name
               </th>

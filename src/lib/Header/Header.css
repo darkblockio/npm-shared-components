@@ -1,28 +1,10 @@
 .DarkblockWidget-Header {
-  background: #000;
-  color: #fff;
   border-bottom: 1px solid #565555;
-  padding-bottom: 20px;
-  /* max-height: 600px; */
-  min-height: 150px;
-  @apply sm:p-4 sm:my-2;
+  @apply sm:p-4 sm:my-2 bg-black text-white pb-4 min-h-[150px];
 }
 
 .DarkblockWidget-Header-Row {
-  /* background: #000;
-  color: #fff;
-  border-bottom: 1px solid #565555;
-  padding-bottom: 40px;
-  max-height: 600px;
-  min-height: 150px; */
-
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-  gap: 0%;
-  min-height: 45px;
-
-  /* border-bottom: 1px solid #565555; */
+  @apply flex items-center justify-center text-center;
 }
 
 .DarkblockWidget-Header-Content {
@@ -31,106 +13,30 @@
 }
 
 .Darkblock-Icon {
-  flex-basis: 15%;
-  min-width: 50px;
+  @apply text-center mb-4;
 }
 
 .Darkblock-Icon > .dbLogo {
-  margin: -15px -15px 10px 10px;
   width: 60px;
   height: 60px;
-  float: right;
-  position: "relative";
-  padding: 3px;
 }
 
 .DarkblockWidget-Header-Row > .title {
-  display: block;
-  flex-basis: 85%;
-  font-size: 2em;
-  font-weight: bold;
-  line-height: 32px;
+  @apply text-xl font-medium;
 }
 
 .DarkblockWidget-Header-Row > .title-red {
-  display: block;
-  flex-basis: 85%;
-  font-size: 2em;
-  font-weight: bold;
-  line-height: 32px;
-  color: red;
+  @apply text-xl font-medium text-red-100;
 }
 
 .DarkblockWidget-Header-Row > .content {
-  flex-basis: 100%;
-  display: block;
+  @apply text-base font-normal;
 }
 
 .DarkblockWidget-Header-Row > .inner-button {
-  margin-top: 10px;
-  @apply bg-slate-400 text-black hover:bg-slate-300 rounded-md p-2 font-medium;
+  @apply bg-slate-400 text-black hover:bg-slate-300 rounded-md p-2 font-medium mt-5 mb-3 text-base;
 }
 
 .DarkblockWidget-Header-Wrapper > .content {
   color: #c4c4c4;
-}
-
-.DarkblockWidget-Header-left > .inner-left-heading {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 32px;
-}
-.DarkblockWidget-Header-left > .inner-left-heading .red {
-  color: red;
-}
-.DarkblockWidget-Header-left > .inner-left-heading-red {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 32px;
-  color: red;
-}
-.DarkblockWidget-Header-left > .inner-left-text {
-  font-size: 14px;
-  color: #c4c4c4;
-  font-weight: 400;
-  margin-top: 24px;
-}
-.DarkblockWidget-Header-left > .inner-button {
-  margin-top: 24px;
-  width: 206px;
-  height: 46px;
-  border-radius: 4px;
-  background: #eaeaea;
-  font-weight: 600;
-  border: 0px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  color: black;
-}
-.DarkblockWidget-Header-left > .loader-header {
-  float: right;
-  width: 200px;
-  height: 200px;
-  margin-top: -42px;
-}
-.DarkblockWidget-Header-left > .wallet-adapter-button,
-.DarkblockWidget-Header-left .wallet-adapter-button-trigger {
-  background: #eaeaea;
-  color: black;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  font-family: "Inter", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  height: 50px;
-  line-height: 50px;
-  padding: 0 20px;
-}
-.DarkblockWidget-Header-left > .wallet-adapter-button > .wallet-adapter-button-start-icon,
-.DarkblockWidget-Header-left .wallet-adapter-button-trigger > .wallet-adapter-button-start-icon {
-  display: none;
 }
