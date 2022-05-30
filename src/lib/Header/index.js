@@ -71,7 +71,7 @@ const Header = ({ state = null, authenticate }) => {
     return setHeader("Ownership Authenticated", "Decrypting Darkblock...")
   }
 
-  return setHeader("Error", "Error: the widget went into an error state", true)
+  return setHeader("Error", "The widget went into an error state", true)
 }
 
 export default Header

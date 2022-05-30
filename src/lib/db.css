@@ -1,7 +1,7 @@
 /* @import "@solana/wallet-adapter-react-ui/styles.css"; */
 
 .DarkblockWidget-App {
-  @apply bg-black flex flex-col w-full p-0 md:p-4;
+  @apply bg-white flex flex-col w-full p-0 md:p-4;
 }
 
 .DarkblockWidget-App-logo {
@@ -39,9 +39,14 @@
 }
 
 .DarkblockWidget-Footer {
-  @apply pt-2 text-slate-200 p-2;
+  @apply pt-2 p-2 text-sm;
 }
 
 .DarkblockWidget-Footer svg {
   display: inline-block;
+  @apply stroke-black;
+}
+
+.DarkblockWidget-Footer svg path {
+  @apply fill-black;
 }
