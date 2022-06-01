@@ -7,9 +7,7 @@ const setHeader = (title, text, red = false, authenticate = null) => {
     <div className="DarkblockWidget-Header">
       <div className="DarkblockWidget-Header-Row">
         <div className="Darkblock-Icon">
-          <div className="dbLogo">
-            <Logo loop={false} />
-          </div>
+          <Logo loop={false} />
         </div>
       </div>
 
@@ -36,10 +34,7 @@ const Header = ({ state = null, authenticate }) => {
   }
 
   if (state.value === "start_failure") {
-    return setHeader(
-      "No Darkblock Detected",
-      "A Darkblock is content that can only be accessed by the NFT owner. Only the creator of the NFT can create a Darkblock."
-    )
+    return setHeader("No Darkblock Detected", "This NFT has unlockable content which only the owner can access.")
   }
 
   if (state.value === "auth_failure" || state.value === "auth_cancel") {

@@ -22,5 +22,79 @@ import {
   utils,
   widgetMachine
 } from "@darkblock.io/shared-components"
+```
+
+## Styling - css classes defined in widget
+
+On any other state than `display`
 
 ```
+.DarkblockWidget-App {
+  .DarkblockWidget-Header {
+    .DarkblockWidget-Header-Row {
+      .Darkblock-Icon {
+        .dbLogo {}
+      }
+    }
+    .DarkblockWidget-Header-Row {
+      .title { }
+    }
+    .DarkblockWidget-Header-Row {
+      .content { }
+    }
+    .DarkblockWidget-Header-Row {
+      .inner-button { }
+    }
+  }
+  .DarkblockWidget-Stack-Panel{
+    .stack-table {
+      .rowheader {
+        .name-header {}
+        .format-header {}
+        .date-header {}
+      }
+      .row {
+        .name {}
+        .fomat {}
+        .date {}
+      }
+    }
+  }
+  .DarkblockWidget-Footer{
+    svg
+  }
+}
+
+```
+
+On `display` state
+
+```
+.DarkblockWidget-App {
+  .DarkblockWidget-Player {
+    .DarkblockWidget-Player-Content {
+      .videoPlayer || .audioPlayer || #seadragon-viewer || iframe (pdf) || .zip-panel
+    }
+  }
+  .DarkblockWidget-Stack-Panel{
+    .stack-table {
+      .rowheader {
+        .name-header {}
+        .format-header {}
+        .date-header {}
+      }
+      .row {
+        .name {}
+        .fomat {}
+        .date {}
+      }
+    }
+  }
+  .DarkblockWidget-Footer{
+    svg
+  }
+}
+
+```
+
+The styling of these components can be overwritten by redifining these classes.

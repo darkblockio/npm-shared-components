@@ -83,18 +83,26 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
 
                   if (context.arweaveData.dbstack) {
                     context.arweaveData.dbstack.map((db) => {
-                      let artId, details, datecreated
+                      let artId,
+                        details = "",
+                        datecreated,
+                        name = "",
+                        downloadable = false
 
                       db.tags.forEach((tag) => {
                         if (tag.name === "ArtId") artId = tag.value
                         if (tag.name === "Description") details = tag.value
                         if (tag.name === "Date-Created") datecreated = tag.value
+                        if (tag.name === "Downloadable") downloadable = tag.value
+                        name = tag.name === "Name" ? tag.value : details
                       })
 
                       context.display.stack.push({
                         artId,
+                        name,
                         details,
                         datecreated,
+                        downloadable,
                         creatorLink: context.baseLink + context.creator.creator_address,
                         fileFormat: db.data.type || "",
                         fileSize: humanFileSize(db.data.size) || "",
@@ -102,6 +110,8 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
                         arweaveTXLink: `https://viewblock.io/arweave/tx/${db.id}`,
                       })
                     })
+
+                    context.display.stack.sort((a, b) => b.datecreated - a.datecreated)
                   }
 
                   return true
@@ -130,9 +140,6 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
           SIGN: "signing",
           DISCONNECT_WALLET: "started",
         },
-      },
-      no_wallet_connected: {
-        type: "final",
       },
       authenticated: {
         on: {

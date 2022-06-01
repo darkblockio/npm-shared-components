@@ -22,15 +22,15 @@ const RenderIcon = ({ filetype }) => {
 
 const RowContent = ({ db, sel = false, f = null }) => {
   let fn = f && typeof f === "function" ? f : () => {}
+  let rowcss = sel ? "row selected" : "row"
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
-  let rowcss = sel ? "row selected" : "row"
 
   return (
     <tr className={rowcss} onClick={fn}>
       <td className="name">
         <RenderIcon filetype={db.fileFormat} />
-        {" " + db.details}
+        {" " + db.name}
       </td>
       <td className="format">{db.fileFormat.substring(10, db.fileFormat.length - 1)}</td>
       <td className="date">{d.toLocaleString()}</td>
@@ -89,10 +89,11 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                       setSwapping(true)
                       setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i })
                     }}
+                    key={i}
                   />
                 )
               } else {
-                return <RowContent db={db} />
+                return <RowContent db={db} key={i} />
               }
             })}
           </tbody>
