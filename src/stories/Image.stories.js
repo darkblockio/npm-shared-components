@@ -54,7 +54,6 @@ const states = [
   "started",
   "start_failure",
   "wallet_connected",
-  "no_wallet_connected",
   "authenticated",
   "auth_failure",
   "decrypting",
