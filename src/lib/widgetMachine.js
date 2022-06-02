@@ -94,7 +94,9 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
                         if (tag.name === "Description") details = tag.value
                         if (tag.name === "Date-Created") datecreated = tag.value
                         if (tag.name === "Downloadable") downloadable = tag.value
-                        name = tag.name === "Name" ? tag.value : details
+                        if (tag.name === "Name") name = tag.value
+
+                        if (name === "" && details !== "") name = details
                       })
 
                       context.display.stack.push({
