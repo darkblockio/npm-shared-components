@@ -31,15 +31,6 @@ function Panel({ state = null }) {
           </div>
         </div>
       </div>
-
-      <div className="row-db">
-        <div className="col-full">
-          <div className="meta-info">
-            Unlockable Content Powered by &nbsp;
-            <StaticDBLogo />
-          </div>
-        </div>
-      </div>
     </div>
   )
 }

@@ -49,7 +49,7 @@ const Header = ({ state = null, authenticate }) => {
   if (state.value === "started") {
     return setHeader(
       "Darkblock Unlockable Content",
-      "This NFT has unlockable content which only the owner can access. Please connect your wallect."
+      "This NFT has unlockable content which only the owner can access. Please connect your wallet."
     )
   }
 
