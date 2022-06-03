@@ -1,5 +1,5 @@
 .DarkblockWidget-App {
-  @apply bg-white flex flex-col w-full p-0 md:p-4;
+  @apply bg-white text-black flex flex-col w-full p-0 md:p-4;
 }
 
 .DarkblockWidget-Footer {

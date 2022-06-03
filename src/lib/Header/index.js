@@ -49,14 +49,14 @@ const Header = ({ state = null, authenticate }) => {
   if (state.value === "started" || state.value === "signing") {
     return setHeader(
       "Darkblock Unlockable Content",
-      "Only the NFT owner can view the Darkblock. Authenticate ownership to decrypt and display the Darkblock."
+      "This NFT has unlockable content which only the owner can access. Please connect your wallect."
     )
   }
 
   if (state.value === "wallet_connected") {
     return setHeader(
       "Darkblock Unlockable Content",
-      "Only the NFT owner can view the Darkblock. Authenticate ownership to decrypt and display the Darkblock.",
+      "This NFT has unlockable content which only the owner can access.",
       false,
       authenticate
     )
