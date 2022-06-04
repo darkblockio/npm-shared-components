@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faQuestionCircle, faFilePdf, faFilm, faImage, faFileZipper, faMusic } from "@fortawesome/free-solid-svg-icons"
+import { faQuestionCircle, faFilePdf, faFilm, faImage, faFileZipper, faMusic, faCube } from "@fortawesome/free-solid-svg-icons"
 import Player from "../Player"
 import Header from "../Header"
 import "./Stack.css"
@@ -16,8 +16,10 @@ const RenderIcon = ({ filetype }) => {
   if (filetype.indexOf("image") > -1) icon = faImage
   if (filetype.indexOf("pdf") > -1) icon = faFilePdf
   if (filetype.indexOf("zip") > -1) icon = faFileZipper
+  if (filetype.indexOf("model") > -1) icon = faCube
+  if (filetype.indexOf("usdz") > -1) icon = faCube
 
-  return <FontAwesomeIcon icon={icon} className="text-slate-400" />
+  return <FontAwesomeIcon icon={icon} className="h-4 w-4 mx-auto rounded p-1 mt-1 mr-2 bg-gray-200 text-gray-900" />
 }
 
 const RowContent = ({ db, sel = false, f = null }) => {
@@ -27,13 +29,13 @@ const RowContent = ({ db, sel = false, f = null }) => {
   d.setUTCMilliseconds(db.datecreated)
 
   return (
-    <tr className={rowcss} onClick={fn}>
-      <td className="name">
+    <tr className="border-t border-gray-300 hover:bg-gray-200 cursor-pointer" onClick={fn}>
+      <td className="whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2">
         <RenderIcon filetype={db.fileFormat} />
-        {" " + db.name}
+        <span className="truncate relative -top-2">{" " + db.name}</span>
       </td>
-      <td className="format">{db.fileFormat.substring(10, db.fileFormat.length - 1)}</td>
-      <td className="date">{d.toLocaleString()}</td>
+      <td className="whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2">{db.fileFormat.substring(10, db.fileFormat.length - 1)}</td>
+      <td className="whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2">{d.toLocaleString([], {year: 'numeric', month: 'numeric', day: 'numeric'})}</td>
     </tr>
   )
 }
@@ -62,7 +64,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
       ) : (
         <Header state={state} authenticate={() => authenticate()} />
       )}
-      <div className="DarkblockWidget-Stack-Panel">
+      <div className="DarkblockWidget-Stack-Panel h-72 overflow-y-scroll">
         <table className="stack-table">
           <thead className="bg">
             <tr className="rowheader">

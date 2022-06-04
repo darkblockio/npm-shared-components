@@ -39,7 +39,7 @@ const MyGallery = ({ mediaURL, config }) => {
       <div
         id="seadragon-viewer"
         onContextMenu={() => false}
-        style={{ width: "100%", height: "500px", position: "relative" }}
+        className="h-64 md:h-72 lg:h-96"
       >
         <div id="seadragon-viewer-spinner" ref={spinner}>
           <div
@@ -71,8 +71,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
     return (
       <iframe
         allowFullScreen
-        width="100%"
-        style={{ border: "0px", minHeight: "500px", maxHeight: "600px" }}
+        className="w-full h-64 md:h-72 lg:h-96"
         src={`https://d1jjf9b695fxyn.cloudfront.net/pdf/web/viewer.html?file=${encodeURIComponent(mediaURL)}`}
       />
     )
@@ -80,7 +79,8 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
   if (mediaType == "encrypted(application/zip)") {
     return (
       <div className="zip-panel">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="mt-20">
+        <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M8 19H11V22H13V19H16L12 15L8 19ZM16 4H13V1H11V4H8L12 8L16 4ZM4 9V11H20V9H4Z" fill="black" />
           <path d="M4 12H20V14H4V12Z" fill="black" />
         </svg>
@@ -101,6 +101,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
             />
           </svg>
         </a>
+        </div>
       </div>
     )
   }
@@ -121,7 +122,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
   if (mediaType.indexOf("audio") > -1) {
     mediaSrc.type = "audio"
     return (
-      <div className="audioPlayer">
+      <div className="audioPlayer mx-4 mt-28 pt-2">
         <Plyr source={mediaSrc} />
       </div>
     )
@@ -142,7 +143,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
 const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   return (
     <div className="DarkblockWidget-Player">
-      <div className="DarkblockWidget-Player-Content">
+      <div className="DarkblockWidget-Player-Content h-64 md:h-72 lg:h-96">
         <MediaComp mediaURL={mediaURL} mediaType={mediaType} config={config} />
       </div>
     </div>

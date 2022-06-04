@@ -1,33 +1,33 @@
 .DarkblockWidget-Stack-Panel {
-  @apply flex-grow py-2;
+  @apply flex-grow py-0;
 }
 
 .DarkblockWidget-Stack-Panel .stack-table {
-  @apply min-w-full;
+  @apply w-full border-b border-gray-400;
 }
 
 .DarkblockWidget-Stack-Panel .row {
-  @apply hover:bg-slate-200 cursor-pointer;
+  @apply hover:bg-gray-200 cursor-pointer;
 }
 
 .DarkblockWidget-Stack-Panel .selected {
-  @apply bg-slate-200;
+  @apply bg-gray-200;
 }
 
 .DarkblockWidget-Stack-Panel .header {
-  font-weight: bold;
+  @apply font-bold;
 }
 
 .DarkblockWidget-Stack-Panel .rowheader .name-header {
-  @apply py-3.5 pl-4 pr-3 text-left text-xs sm:pl-6;
+  @apply py-3.5 pl-10 pr-3 text-left text-xs;
 }
 
 .DarkblockWidget-Stack-Panel .rowheader .format-header {
-  @apply hidden sm:table-cell px-3 py-3.5 text-left text-xs;
+  @apply px-2 py-3.5 text-left text-xs;
 }
 
 .DarkblockWidget-Stack-Panel .rowheader .date-header {
-  @apply hidden sm:table-cell px-3 py-3.5 text-left text-xs;
+  @apply px-2 py-3.5 text-left text-xs;
 }
 
 .DarkblockWidget-Stack-Panel .row .name {
@@ -43,5 +43,5 @@
 }
 
 .DarkblockWidget-Stack-Panel .fileRow:hover {
-  background-color: gray;
+  @apply bg-gray-200;
 }
