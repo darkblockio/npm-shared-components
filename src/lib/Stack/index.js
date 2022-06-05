@@ -24,7 +24,7 @@ const RenderIcon = ({ filetype }) => {
   return <FontAwesomeIcon icon={icon} className="h-4 w-4 mx-auto rounded p-1 mt-1 mr-2 text-gray-900" />
 }
 
-const RowContent = ({ db, sel = false, f = null }) => {
+const RowContent = ({ db, sel = false, f = null, state = null, url = null }) => {
   const [showDetails, setShowDetails] = useState(false)
   let fn = f && typeof f === "function" ? f : () => {}
   let rowcss = sel ? "row selected" : "row"
@@ -49,14 +49,16 @@ const RowContent = ({ db, sel = false, f = null }) => {
         <div className="relative w-full">
           <div className="flex flex-wrap border-b border-gray-300 py-4">{" " + db.details}</div>
           <div className="flex flex-wrap pt-4 pb-2 truncate">Arweave TX:{" " + db.arweaveTX}</div>
-          {db.downloadable && (
+          {state && state === 'display' && url && db.downloadable && (
             <div className="flex flex-wrap">
-              <button
+              <a
                 className="mt-4 inline-block bg-gray-300 font-bold rounded w-full md:w-1/3  text-black hover:text-white hover:bg-gray-500 border border-black mr-2 text-center mb-4 py-2"
-                onClick={() => console.log('download file')}
+                download="myImage.jpg"
+                href={url}
+                target="_blank"
               >
                 download
-              </button>
+              </a>
             </div>
           )}
         </div>
@@ -122,6 +124,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                       setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i })
                     }}
                     key={i}
+                    state={state.value}
+                    url={urls[i]}
                   />
                 )
               } else {

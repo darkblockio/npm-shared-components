@@ -98,6 +98,18 @@ const state = {
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: true,              
         },
+        {
+          artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
+          name: "Other file type - Sample",
+          details: "other",
+          datecreated: "1652708376981",
+          creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
+          fileFormat: "encrypted(application/other)",
+          fileSize: "5.5 MB",
+          arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          downloadable: true,
+        },
       ],
     },
   },
@@ -109,6 +121,7 @@ const stackMediaURLs = [
   "https://darkblock-media.s3.amazonaws.com/samples/model.glb",
   "https://darkblock-media.s3.amazonaws.com/samples/document.pdf",
   "https://darkblock-media.s3.amazonaws.com/samples/music.mp3",
+  "https://darkblock-media.s3.amazonaws.com/samples/archive.zip",
   "https://darkblock-media.s3.amazonaws.com/samples/archive.zip",
 ]
 
