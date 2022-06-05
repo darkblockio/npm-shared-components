@@ -32,6 +32,19 @@ const MyGallery = ({ mediaURL, config }) => {
     viewer.addOnceHandler("tile-drawn", () => {
       spinner.current.style.display = "none"
     })
+
+    // load 3d modal viewer script
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js'
+    script.async = true
+    script.type = 'module'
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    }
+
+
   }, [])
 
   return (
@@ -67,6 +80,22 @@ const MyGallery = ({ mediaURL, config }) => {
 }
 
 const MediaComp = ({ mediaURL, mediaType, config }) => {
+  if (mediaType == "encrypted(model/gltf-binary)" || mediaType == "(model/gltf-binary)")
+    return (
+      <div>
+        <model-viewer
+          alt="testing"
+          ar
+          ar-modes="webxr scene-viewer quick-look"
+          camera-controls
+          enable-pan
+          seamless-poster
+          shadow-intensity="1"
+          src="https://darkblock-media.s3.amazonaws.com/samples/model.glb"
+        />
+      </div>
+    )
+
   if (mediaType == "encrypted(application/pdf)" || mediaType == "(application/pdf)")
     return (
       <iframe
