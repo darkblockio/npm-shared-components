@@ -9,15 +9,11 @@ const setHeader = (title, text, red = false, authenticate = null) => {
         <div className="Darkblock-Icon">
           <Logo loop={false} />
         </div>
-      </div>
 
-      <div className="DarkblockWidget-Header-Row">
         <div className={red ? "title-red" : "title"}>{title}</div>
-      </div>
-      <div className="DarkblockWidget-Header-Row">
+
         <p className="content">{text}</p>
-      </div>
-      <div className="DarkblockWidget-Header-Row">
+
         {!!authenticate && (
           <button onClick={authenticate} className="inner-button">
             Authenticate Ownership
