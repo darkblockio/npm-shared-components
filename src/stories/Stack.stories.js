@@ -24,6 +24,7 @@ const state = {
           fileSize: "5.5 MB",
           arweaveTX: "sAlhYHbB5teh2Npg0uyKSvfQmg1DoGlhjdhRWOR2etQ",
           arweaveTXLink: "https://viewblock.io/arweave/tx/sAlhYHbB5teh2Npg0uyKSvfQmg1DoGlhjdhRWOR2etQ",
+          downloadable: true,
         },
         {
           artId: "ad41e546-f023-4785-a232-095e3e1fa165",
@@ -35,6 +36,7 @@ const state = {
           fileSize: "14.3 MB",
           arweaveTX: "A5JTy7JOHnR6Ayhi-te1q7T1OJOPpjX44OCHlyXZgJE",
           arweaveTXLink: "https://viewblock.io/arweave/tx/A5JTy7JOHnR6Ayhi-te1q7T1OJOPpjX44OCHlyXZgJE",
+          downloadable: false,
         },
         {
           artId: "527c9adb-e8eb-46a2-b882-0b805d4776a7",
@@ -46,6 +48,7 @@ const state = {
           fileSize: "392.7 MB",
           arweaveTX: "IbWbX6-NqaotJBmAiFllMIrcoRI3w0Yi0jDQyNAEa9E",
           arweaveTXLink: "https://viewblock.io/arweave/tx/IbWbX6-NqaotJBmAiFllMIrcoRI3w0Yi0jDQyNAEa9E",
+          downloadable: true,          
         },
         {
           artId: "527c9adb-e8eb-46a2-b882-0b805d4776a7",
@@ -57,6 +60,7 @@ const state = {
           fileSize: "810 KB",
           arweaveTX: "IbWbX6-NqaotJBmAiFllMIrcoRI3w0Yi0jDQyNAEa9E",
           arweaveTXLink: "https://viewblock.io/arweave/tx/IbWbX6-NqaotJBmAiFllMIrcoRI3w0Yi0jDQyNAEa9E",
+          downloadable: true,              
         },
         {
           artId: "9e62a33b-d596-471f-bf07-d8dc704dda39",
@@ -68,6 +72,7 @@ const state = {
           fileSize: "20.2 MB",
           arweaveTX: "llq3lkWWKohwP_K1I--7T0cNS4HIL5zK7xBonI4wWvw",
           arweaveTXLink: "https://viewblock.io/arweave/tx/llq3lkWWKohwP_K1I--7T0cNS4HIL5zK7xBonI4wWvw",
+          downloadable: true,              
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -79,6 +84,7 @@ const state = {
           fileSize: "12.2 MB",
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          downloadable: true,              
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -90,6 +96,7 @@ const state = {
           fileSize: "5.5 MB",
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          downloadable: true,              
         },
       ],
     },
