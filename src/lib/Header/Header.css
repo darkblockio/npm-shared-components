@@ -1,13 +1,13 @@
 .DarkblockWidget-Header {
-  @apply sm:p-4 sm:my-2 bg-slate-200 pb-4 h-64 md:h-72 lg:h-96 rounded;
+  @apply flex items-center justify-center text-center sm:p-4 sm:my-2 bg-slate-200 h-64 md:h-72 lg:h-96 rounded;
 }
 
 .DarkblockWidget-Header-Row {
-  @apply flex items-center justify-center text-center;
+  @apply px-4;
 }
 
 .Darkblock-Icon {
-  @apply h-8 w-8 my-2 mt-20;
+  @apply h-8 w-8 mx-auto;
 }
 
 .DarkblockWidget-Header-Row > .title {
@@ -23,5 +23,5 @@
 }
 
 .DarkblockWidget-Header-Row > .inner-button {
-  @apply bg-black text-sm text-white hover:bg-slate-400 hover:text-black rounded-md py-2 px-4 font-medium mt-5 mb-3;
+  @apply bg-black text-sm text-white hover:bg-slate-400 hover:text-black rounded-md py-2 px-4 font-medium mt-5;
 }

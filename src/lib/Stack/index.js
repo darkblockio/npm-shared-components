@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faQuestionCircle, faFilePdf, faFilm, faImage, faFileZipper, faMusic, faCube } from "@fortawesome/free-solid-svg-icons"
+import { faQuestionCircle, faFilePdf, faFilm, faImage, faFileZipper, faMusic, faCube, faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons"
 import Player from "../Player"
 import Header from "../Header"
 import "./Stack.css"
@@ -18,26 +18,52 @@ const RenderIcon = ({ filetype }) => {
   if (filetype.indexOf("zip") > -1) icon = faFileZipper
   if (filetype.indexOf("model") > -1) icon = faCube
   if (filetype.indexOf("usdz") > -1) icon = faCube
+  if (filetype.indexOf("up") > -1) icon = faAngleUp
+  if (filetype.indexOf("down") > -1) icon = faAngleDown
 
-  return <FontAwesomeIcon icon={icon} className="h-4 w-4 mx-auto rounded p-1 mt-1 mr-2 bg-gray-200 text-gray-900" />
+  return <FontAwesomeIcon icon={icon} className="h-4 w-4 mx-auto rounded p-1 mt-1 mr-2 text-gray-900" />
 }
 
 const RowContent = ({ db, sel = false, f = null }) => {
+  const [showDetails, setShowDetails] = useState(false)
   let fn = f && typeof f === "function" ? f : () => {}
   let rowcss = sel ? "row selected" : "row"
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
 
   return (
+    <>
     <tr className="border-t border-gray-300 hover:bg-gray-200 cursor-pointer" onClick={fn}>
-      <td className="whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2">
+      <td className="whitespace-nowrap truncate py-2 pr-3 text-xs md:text-sm pl-2">
         <RenderIcon filetype={db.fileFormat} />
         <span className="truncate relative -top-2">{" " + db.name}</span>
       </td>
       <td className="whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2">{db.fileSize}</td>
-      <td className="hidden md:block whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2">{db.fileFormat.substring(10, db.fileFormat.length - 1)}</td>
-      <td className="whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2">{d.toLocaleString([], {year: 'numeric', month: 'numeric', day: 'numeric'})}</td>
+      <td className="hidden md:block whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2" onClick={fn}>{db.fileFormat.substring(10, db.fileFormat.length - 1)}</td>
+      <td className="whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2" onClick={fn}>{d.toLocaleString([], {year: 'numeric', month: 'numeric', day: 'numeric'})}</td>
+      <td className="whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2" onClick={() => setShowDetails(!showDetails)}>{showDetails ? <RenderIcon filetype={'up'} /> : <RenderIcon filetype={'down'} />}</td>
     </tr>
+    {showDetails && (
+    <tr className="border-t border-gray-300 hover:bg-gray-200 cursor-pointer" onClick={fn}>
+      <td colSpan="5" className="py-2 text-xs md:text-sm px-4 bg-gray-100">
+        <div className="relative w-full">
+          <div className="flex flex-wrap border-b border-gray-300 py-4">{" " + db.details}</div>
+          <div className="flex flex-wrap pt-4 pb-2 truncate">Arweave TX:{" " + db.arweaveTX}</div>
+          {db.downloadable && (
+            <div className="flex flex-wrap">
+              <button
+                className="mt-4 inline-block bg-gray-300 font-bold rounded w-full md:w-1/3  text-black hover:text-white hover:bg-gray-500 border border-black mr-2 text-center mb-4 py-2"
+                onClick={() => console.log('download file')}
+              >
+                download
+              </button>
+            </div>
+          )}
+        </div>
+      </td>
+    </tr>
+    )}
+    </>
   )
 }
 
