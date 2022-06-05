@@ -91,7 +91,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
           enable-pan
           seamless-poster
           shadow-intensity="1"
-          src="https://darkblock-media.s3.amazonaws.com/samples/model.glb"
+          src={mediaURL}
         />
       </div>
     )
