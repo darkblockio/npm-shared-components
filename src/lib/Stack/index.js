@@ -34,7 +34,8 @@ const RowContent = ({ db, sel = false, f = null }) => {
         <RenderIcon filetype={db.fileFormat} />
         <span className="truncate relative -top-2">{" " + db.name}</span>
       </td>
-      <td className="whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2">{db.fileFormat.substring(10, db.fileFormat.length - 1)}</td>
+      <td className="whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2">{db.fileSize}</td>
+      <td className="hidden md:block whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2">{db.fileFormat.substring(10, db.fileFormat.length - 1)}</td>
       <td className="whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2">{d.toLocaleString([], {year: 'numeric', month: 'numeric', day: 'numeric'})}</td>
     </tr>
   )
@@ -72,6 +73,9 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                 Name
               </th>
               <th scope="col" className="format-header">
+                File Size
+              </th>
+              <th scope="col" className="hidden md:block format-header">
                 File Format
               </th>
               <th scope="col" className="date-header">
