@@ -112,7 +112,7 @@ const state = {
         },
         {
            artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
-           name: "Other file type - Sample",
+           name: "Other File Type - Sample",
            details: "other",
            datecreated: "1652708376981",
            creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
