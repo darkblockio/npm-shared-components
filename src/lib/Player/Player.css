@@ -10,6 +10,22 @@
   @apply object-cover h-64 md:h-72 lg:h-96;
 }
 
+.DarkblockWidget-Player-Content #seadragon-viewer {
+  @apply h-64 md:h-72 lg:h-96;
+}
+
+.DarkblockWidget-Player-Content iframe {
+  @apply w-full h-64 md:h-72 lg:h-96;
+}
+
+.DarkblockWidget-Player-Content model-viewer {
+  @apply h-64 md:h-72 lg:h-96 w-full;
+}
+
+.DarkblockWidget-Player-Content .buffer {
+  @apply h-24 md:h-28 lg:h-44;
+}
+
 .DarkblockWidget-Player-Content .videoPlayer .plyr {
   @apply object-cover w-full h-64 md:h-72 lg:h-96;
 }
@@ -19,13 +35,13 @@
 }
 
 .DarkblockWidget-Player .zip-panel p {
-  margin-top: 0px;
+  @apply pt-2;
 }
 
 .DarkblockWidget-Player .zip-panel a svg {
-  margin: 10px auto;
+  @apply mx-auto;
 }
 
 .DarkblockWidget-Player .zip-panel svg {
-  margin: auto;
+  @apply h-6 w-6 mx-auto;
 }

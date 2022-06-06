@@ -53,22 +53,17 @@ const MyGallery = ({ mediaURL, config }) => {
       <div
         id="seadragon-viewer"
         onContextMenu={() => false}
-        className="h-64 md:h-72 lg:h-96"
       >
         <div id="seadragon-viewer-spinner" ref={spinner}>
+          <div className="buffer">
+          </div>
           <div
             style={{
-              display: "flex",
-              top: 0,
-              left: 0,
-              bottom: 0,
-              right: 0,
-              width: "80px",
-              height: "80px",
+              width: "50px",
+              height: "50px",
               textAlign: "center",
               margin: "auto",
               justifyContent: "center",
-              position: "absolute",
               zIndex: "99999",
             }}
           >
@@ -95,7 +90,6 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
            seamless-poster
            shadow-intensity="1"
            src={mediaURL}
-           class="h-64 md:h-72 lg:h-96 w-full"
          />
        </div>
      )
@@ -112,7 +106,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
   if (mediaType == "encrypted(application/zip)") {
     return (
       <>
-      <div className="h-24 md:h-28 lg:h-44">
+      <div className="buffer">
       </div>
       <div className="zip-panel">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -142,7 +136,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
     mediaSrc.type = "audio"
     return (
       <>
-      <div className="h-24 md:h-28 lg:h-44">
+      <div className="buffer">
       </div>
       <div className="audioPlayer flex items-center justify-center">
         <Plyr source={mediaSrc} />
@@ -162,12 +156,12 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
 
   return (
     <>
-    <div className="h-24 md:h-28 lg:h-44">
+    <div className="buffer">
     </div>
     <div className="zip-panel">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 512 512">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
         <path d="M496 288h-96V256l64 .0002c8.838 0 16-7.164 16-15.1v-15.1c0-8.838-7.162-16-16-16L384 208c-17.67 0-32 14.33-32 32v47.1l-64 .0005v-192c0-17.64 14.36-32 32-32s32 14.36 32 32v16c0 8.836 7.164 16 16 16h32c8.838 0 16-7.164 16-16v-16c0-59.2-53.85-106-115.1-94.14C255.3 10.71 224 53.36 224 99.79v188.2L160 288V240c0-17.67-14.33-32-32-32L48 208c-8.836 0-16 7.162-16 16v15.1C32 248.8 39.16 256 48 256l64-.0002V288h-96c-8.836 0-16 7.164-16 16v32c0 8.836 7.164 16 16 16h480c8.836 0 16-7.164 16-16V304C512 295.2 504.8 288 496 288zM32 416c0 53.02 42.98 96 96 96h256c53.02 0 96-42.98 96-96v-32H32V416z" fill="black" /></svg>
-        <p className="pt-2">Other file type</p>
+        <p>Other file type</p>
      </div>
      </>
   )
@@ -176,7 +170,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
 const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   return (
     <div className="DarkblockWidget-Player">
-      <div className="DarkblockWidget-Player-Content h-64 md:h-72 lg:h-96">
+      <div className="DarkblockWidget-Player-Content">
         <MediaComp mediaURL={mediaURL} mediaType={mediaType} config={config} />
       </div>
     </div>
