@@ -1,5 +1,5 @@
 .DarkblockWidget-Header {
-  @apply flex items-center justify-center text-center sm:p-4 sm:my-2 bg-slate-200 h-64 md:h-72 lg:h-96 rounded;
+  @apply flex items-center justify-center text-center sm:p-4 sm:my-2 bg-gray-200 h-64 md:h-72 lg:h-96 rounded;
 }
 
 .DarkblockWidget-Header-Row {

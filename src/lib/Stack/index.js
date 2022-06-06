@@ -24,7 +24,7 @@ const RenderIcon = ({ filetype }) => {
   return <FontAwesomeIcon icon={icon} className="h-4 w-4 mx-auto rounded p-1 mt-1 mr-2 text-gray-900" />
 }
 
-const RowContent = ({ db, sel = false, f = null }) => {
+const RowContent = ({ db, sel = false, f = null, state = null, url = null }) => {
   const [showDetails, setShowDetails] = useState(false)
   let fn = f && typeof f === "function" ? f : () => {}
   let rowcss = sel ? "row selected" : "row"
@@ -39,24 +39,26 @@ const RowContent = ({ db, sel = false, f = null }) => {
         <span className="truncate relative -top-2">{" " + db.name}</span>
       </td>
       <td className="whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2">{db.fileSize}</td>
-      <td className="hidden md:block whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2" onClick={fn}>{db.fileFormat.substring(10, db.fileFormat.length - 1)}</td>
-      <td className="whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2" onClick={fn}>{d.toLocaleString([], {year: 'numeric', month: 'numeric', day: 'numeric'})}</td>
       <td className="whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2" onClick={() => setShowDetails(!showDetails)}>{showDetails ? <RenderIcon filetype={'up'} /> : <RenderIcon filetype={'down'} />}</td>
     </tr>
     {showDetails && (
     <tr className="border-t border-gray-300 hover:bg-gray-200 cursor-pointer" onClick={fn}>
-      <td colSpan="5" className="py-2 text-xs md:text-sm px-4 bg-gray-100">
-        <div className="relative w-full">
+      <td colspan="3" className="py-2 px-4 text-xs md:text-sm bg-gray-100">
+        <div className="w-full">
           <div className="flex flex-wrap border-b border-gray-300 py-4">{" " + db.details}</div>
-          <div className="flex flex-wrap pt-4 pb-2 truncate">Arweave TX:{" " + db.arweaveTX}</div>
-          {db.downloadable && (
+          <div className="pt-4">Date Added: {d.toLocaleString([], {year: 'numeric', month: 'numeric', day: 'numeric'})}</div>
+          <div className="pt-2 text-ellipsis whitespace-no-wrap overflow-hidden">File Type: {db.fileFormat.substring(10, db.fileFormat.length - 1)}</div>
+          <div className="pt-2 pb-2 text-ellipsis whitespace-no-wrap overflow-hidden">Arweave TX:{" " + db.arweaveTX}</div>
+          {state && state === 'display' && url && db.downloadable && (
             <div className="flex flex-wrap">
-              <button
+              <a
                 className="mt-4 inline-block bg-gray-300 font-bold rounded w-full md:w-1/3  text-black hover:text-white hover:bg-gray-500 border border-black mr-2 text-center mb-4 py-2"
-                onClick={() => console.log('download file')}
+                download="myImage.jpg"
+                href={url}
+                target="_blank"
               >
-                download
-              </button>
+                Download
+              </a>
             </div>
           )}
         </div>
@@ -91,9 +93,9 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
       ) : (
         <Header state={state} authenticate={() => authenticate()} />
       )}
-      <div className="DarkblockWidget-Stack-Panel h-72 overflow-y-scroll">
+      <div className="DarkblockWidget-Stack-Panel h-72 md:h-96 lg:h-96 overflow-x-hidden overflow-y-scroll">
         <table className="stack-table">
-          <thead className="bg">
+          <thead className="">
             <tr className="rowheader">
               <th scope="col" className="name-header">
                 Name
@@ -101,11 +103,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
               <th scope="col" className="format-header">
                 File Size
               </th>
-              <th scope="col" className="hidden md:block format-header">
-                File Format
-              </th>
-              <th scope="col" className="date-header">
-                Date Added
+              <th scope="col" className="format-header">
               </th>
             </tr>
           </thead>
@@ -122,6 +120,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                       setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i })
                     }}
                     key={i}
+                    state={state.value}
+                    url={urls[i]}
                   />
                 )
               } else {
