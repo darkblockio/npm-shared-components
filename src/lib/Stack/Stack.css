@@ -1,5 +1,5 @@
 .DarkblockWidget-Stack-Panel {
-  @apply flex-grow py-0;
+  @apply flex-grow py-0 h-72 md:h-96 lg:h-96 overflow-x-hidden overflow-y-scroll;
 }
 
 .DarkblockWidget-Stack-Panel .stack-table {
@@ -16,6 +16,58 @@
 
 .DarkblockWidget-Stack-Panel .header {
   @apply font-bold;
+}
+
+.DarkblockWidget-Stack-Panel .dbdata {
+  @apply border-t border-gray-300 hover:bg-gray-200 cursor-pointer;
+}
+
+.DarkblockWidget-Stack-Panel .dbdata .name {
+  @apply whitespace-nowrap truncate py-2 pr-3 text-xs md:text-sm pl-2;
+}
+
+.DarkblockWidget-Stack-Panel .dbdata .name span {
+  @apply truncate relative -top-2;
+}
+
+.DarkblockWidget-Stack-Panel .dbdata .size {
+  @apply whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2;
+}
+
+.DarkblockWidget-Stack-Panel .dbdata .pulldown {
+  @apply whitespace-nowrap py-2 text-right text-xs md:text-sm pl-2;
+}
+
+.DarkblockWidget-Stack-Panel .details {
+  @apply border-t border-gray-300 hover:bg-gray-200 cursor-pointer;
+}
+
+.DarkblockWidget-Stack-Panel .details .more {
+  @apply flex flex-wrap border-b border-gray-300 py-4;
+}
+
+.DarkblockWidget-Stack-Panel .details .dates {
+  @apply pt-4;
+}
+
+.DarkblockWidget-Stack-Panel .filetypes {
+  @apply pt-2 text-ellipsis overflow-hidden;
+}
+
+.DarkblockWidget-Stack-Panel .artx {
+  @apply pt-2 pb-2 text-ellipsis overflow-hidden;
+}
+
+.DarkblockWidget-Stack-Panel .awesome {
+  @apply h-4 w-4 mx-auto rounded p-1 mt-1 mr-2 text-gray-900 bg-gray-100;
+}
+
+.DarkblockWidget-Stack-Panel a.download {
+  @apply mt-4 inline-block bg-gray-300 font-bold rounded w-full md:w-1/3  text-black hover:text-white hover:bg-gray-500 border border-black mr-2 text-center mb-4 py-2;
+}
+
+.DarkblockWidget-Stack-Panel .details td {
+  @apply w-full px-4 text-xs md:text-sm bg-gray-100;
 }
 
 .DarkblockWidget-Stack-Panel .rowheader .name-header {
