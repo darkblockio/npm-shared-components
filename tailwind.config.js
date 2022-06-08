@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ["./src/lib/**/*.js"],
+  content: ["./src/lib/**/*.js"],
   theme: {
     extend: {},
   },
