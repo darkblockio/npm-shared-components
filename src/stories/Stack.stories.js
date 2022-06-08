@@ -16,6 +16,18 @@ const state = {
       stack: [
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
+          name: "3D Animated - Sample",
+          details: "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
+          datecreated: "1652708376981",
+          creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
+          fileFormat: "encrypted(model/gltf-binary)",
+          fileSize: "7.1 MB",
+          arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          downloadable: true,
+        },
+        {
+          artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
           name: "Music - Sample",
           details: "But we’ve met before. That was a long time ago, I was a kid at St. Swithin’s, It used to be funded by the Wayne Foundation. It’s an orphanage. My mum died when I was small, it was a car accident. I don’t remember it. My dad got shot a couple of years later for a gambling debt. Oh I remember that one just fine. Not a lot of people know what it feels like to be angry in your bones.",
           datecreated: "1652708376981",
@@ -99,18 +111,6 @@ const state = {
           downloadable: true,              
         },
         {
-          artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
-          name: "3D Animated - Sample",
-          details: "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
-          datecreated: "1652708376981",
-          creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
-          fileFormat: "encrypted(model/gltf-binary)",
-          fileSize: "7.1 MB",
-          arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
-          arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
-          downloadable: true,              
-        },
-        {
            artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
            name: "Other File Type - Sample",
            details: "other",
@@ -127,6 +127,7 @@ const state = {
   },
 }
 const stackMediaURLs = [
+  "https://darkblock-media.s3.amazonaws.com/samples/dancing.glb",
   "https://darkblock-media.s3.amazonaws.com/samples/music.mp3",
   "https://darkblock-media.s3.amazonaws.com/samples/image.png",
   "https://darkblock-media.s3.amazonaws.com/samples/movie.mp4",
@@ -134,7 +135,6 @@ const stackMediaURLs = [
   "https://darkblock-media.s3.amazonaws.com/samples/model.glb",
   "https://darkblock-media.s3.amazonaws.com/samples/document.pdf",
   "https://darkblock-media.s3.amazonaws.com/samples/archive.zip",
-  "https://darkblock-media.s3.amazonaws.com/samples/dancing.glb",
   "https://darkblock-media.s3.amazonaws.com/samples/archive.zip",
 ]
 
