@@ -2,12 +2,12 @@ import React from "react"
 import "./Header.css"
 import Logo from "../Animations/Logo"
 
-const setHeader = (title, text, red = false, authenticate = null) => {
+const setHeader = (title, text, red = false, authenticate = null, loading = false) => {
   return (
     <div className="DarkblockWidget-Header">
       <div className="DarkblockWidget-Header-Row">
         <div className="Darkblock-Icon">
-          <Logo loop={false} />
+          <Logo loop={loading} />
         </div>
 
         <div className={red ? "title-red" : "title"}>{title}</div>
@@ -26,7 +26,7 @@ const setHeader = (title, text, red = false, authenticate = null) => {
 
 const Header = ({ state = null, authenticate }) => {
   if (state.value === "idle" || state.value === "loading_arweave") {
-    return setHeader("", "")
+    return setHeader("", "", false, null, true)
   }
 
   if (state.value === "start_failure") {
