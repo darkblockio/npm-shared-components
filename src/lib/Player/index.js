@@ -1,6 +1,4 @@
 import React, { useEffect, useRef } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faQuestionCircle, faFilePdf, faFilm, faImage, faFileZipper, faMusic, faCube, faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons"
 import Plyr from "plyr-react"
 import "./plyr.css"
 import "./Player.css"
@@ -9,14 +7,6 @@ import Loading from "../Animations/Logo"
 import OpenSeadragon from "openseadragon"
 
 const MyGallery = ({ mediaURL, config }) => {
-  var duomo = {
-    Image: {
-      Url: mediaURL,
-      Overlap: "2",
-      type: "image",
-    },
-  }
-
   const spinner = useRef(null)
 
   useEffect(() => {
@@ -34,18 +24,6 @@ const MyGallery = ({ mediaURL, config }) => {
     viewer.addOnceHandler("tile-drawn", () => {
       spinner.current.style.display = "none"
     })
-
-    // load 3d modal viewer script
-     const script = document.createElement('script');
-     script.src = 'https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js'
-     script.async = true
-     script.type = 'module'
-     document.body.appendChild(script);
-
-     return () => {
-       document.body.removeChild(script);
-     }
-
   }, [])
 
   return (
@@ -76,7 +54,6 @@ const MyGallery = ({ mediaURL, config }) => {
 }
 
 const MediaComp = ({ mediaURL, mediaType, config }) => {
-
   if (mediaType == "encrypted(model/gltf-binary)" || mediaType == "(model/gltf-binary)")
      return (
        <div>
@@ -168,6 +145,19 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
 }
 
 const PlayerTemp = ({ mediaURL, mediaType, config }) => {
+  useEffect(() => {
+    // load 3d modal viewer script
+     const script = document.createElement('script');
+     script.src = 'https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js'
+     script.async = true
+     script.type = 'module'
+     document.body.appendChild(script);
+
+     return () => {
+       document.body.removeChild(script);
+     }
+  }, [])
+
   return (
     <div className="DarkblockWidget-Player">
       <div className="DarkblockWidget-Player-Content">

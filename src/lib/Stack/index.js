@@ -73,7 +73,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
   useEffect(() => {
     if (state.value === "display") {
-      console.log(selected)
       setSelected({ type: state.context.display.stack[0].fileFormat, mediaURL: urls[0], i: 0 })
     }
   }, [state.value])
