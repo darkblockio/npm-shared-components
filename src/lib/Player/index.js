@@ -3,7 +3,7 @@ import Plyr from "plyr-react"
 import "./plyr.css"
 import "./Player.css"
 import { VideoPlaceHolderBase64 } from "../imgBase64/VideoPlaceHolderBase64"
-import Loading from "../Animations/Logo"
+import Logo from "../Animations/Logo"
 import OpenSeadragon from "openseadragon"
 
 const MyGallery = ({ mediaURL, config }) => {
@@ -55,7 +55,7 @@ const MyGallery = ({ mediaURL, config }) => {
               zIndex: "99999",
             }}
           >
-            <Loading />
+            <Logo loop />
           </div>
           </div>
       </div>

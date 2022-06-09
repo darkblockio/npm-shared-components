@@ -7,7 +7,7 @@ const setHeader = (title, text, red = false, authenticate = null) => {
     <div className="DarkblockWidget-Header">
       <div className="DarkblockWidget-Header-Row">
         <div className="Darkblock-Icon">
-          <Logo loop={false} />
+          <Logo />
         </div>
 
         <div className={red ? "title-red" : "title"}>{title}</div>
