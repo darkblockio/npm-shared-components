@@ -20,6 +20,7 @@ const MyGallery = ({ mediaURL, config }) => {
         url: mediaURL,
         type: "image",
       },
+      toolbar:"toolbarDiv"
     })
     viewer.addOnceHandler("tile-drawn", () => {
       spinner.current.style.display = "none"
@@ -32,6 +33,15 @@ const MyGallery = ({ mediaURL, config }) => {
         id="seadragon-viewer"
         onContextMenu={() => false}
       >
+        <div id="toolbarDiv" 
+          style={{
+            position:"absolute !important", 
+            zIndex:"1", 
+            left:"1em",
+            top:"1em"
+          }}
+        >
+        </div>
         <div id="seadragon-viewer-spinner" ref={spinner}>
           <div className="buffer">
           </div>
@@ -47,7 +57,7 @@ const MyGallery = ({ mediaURL, config }) => {
           >
             <Loading />
           </div>
-        </div>
+          </div>
       </div>
     </>
   )
