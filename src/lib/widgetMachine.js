@@ -87,7 +87,7 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
                         details = "",
                         datecreated,
                         name = "",
-                        downloadable = false
+                        downloadable = "false"
 
                       db.tags.forEach((tag) => {
                         if (tag.name === "ArtId") artId = tag.value

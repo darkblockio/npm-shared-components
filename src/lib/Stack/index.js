@@ -48,7 +48,7 @@ const RowContent = ({ db, sel = false, f = null, state = null, url = null }) => 
           <div className="dates">Date Added: {d.toLocaleString([], {year: 'numeric', month: 'numeric', day: 'numeric'})}</div>
           <div className="filetypes">File Type: {db.fileFormat.substring(10, db.fileFormat.length - 1)}</div>
           <div className="artx">Arweave TX:{" " + db.arweaveTX}</div>
-          {state && state === 'display' && url && db.downloadable && (
+          {state && state === 'display' && url && db.downloadable.toString().toLowerCase() === 'true' && (
             <div className="flex flex-wrap">
               <a
                 className="download"
