@@ -43,7 +43,7 @@ const RowContent = ({ db, sel = false, f = null, state = null, url = null }) => 
     </tr>
     {showDetails && (
     <tr className="details" onClick={fn}>
-      <td colspan="3">
+      <td colSpan="3">
           <div className="more">{" " + db.details}</div>
           <div className="dates">Date Added: {d.toLocaleString([], {year: 'numeric', month: 'numeric', day: 'numeric'})}</div>
           <div className="filetypes">File Type: {db.fileFormat.substring(10, db.fileFormat.length - 1)}</div>
