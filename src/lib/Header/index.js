@@ -30,7 +30,7 @@ const Header = ({ state = null, authenticate }) => {
   }
 
   if (state.value === "start_failure") {
-    return setHeader("No Darkblock Detected", "This NFT has unlockable content which only the owner can access.")
+    return setHeader("No Darkblock Detected", "")
   }
 
   if (state.value === "auth_failure" || state.value === "auth_cancel") {
