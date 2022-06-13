@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faQuestionCircle, faFilePdf, faFilm, faImage, faFileZipper, faMusic, faCube, faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons"
+import { faGlobe, faQuestionCircle, faFilePdf, faFilm, faImage, faFileZipper, faMusic, faCube, faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons"
 import Player from "../Player"
 import Header from "../Header"
 import "./Stack.css"
@@ -11,6 +11,7 @@ import StaticDBLogo from "../Panel/staticDBLogo"
 const RenderIcon = ({ filetype }) => {
   let icon = faQuestionCircle
 
+  if (filetype.indexOf("html") > -1) icon = faGlobe
   if (filetype.indexOf("video") > -1) icon = faFilm
   if (filetype.indexOf("audio") > -1) icon = faMusic
   if (filetype.indexOf("image") > -1) icon = faImage
@@ -30,13 +31,13 @@ const RowContent = ({ db, sel = false, f = null, state = null, url = null }) => 
   let rowcss = sel ? "row selected" : "row"
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
-
+  let truncatedName = ` ${db.name.substr(0, 25)}${db.name.length > 25 ? '...' : ''}`;
   return (
     <>
     <tr className="dbdata" onClick={fn}>
       <td className="name">
         <RenderIcon filetype={db.fileFormat} />
-        <span>{" " + db.name}</span>
+        <span>{truncatedName}</span>
       </td>
       <td className="size">{db.fileSize}</td>
       <td className="pulldown" onClick={() => setShowDetails(!showDetails)}>{showDetails ? <RenderIcon filetype={'up'} /> : <RenderIcon filetype={'down'} />}</td>
