@@ -16,6 +16,18 @@ const state = {
       stack: [
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
+          name: "HTML - Sample",
+          details: "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
+          datecreated: "1652708376981",
+          creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
+          fileFormat: "encrypted(text/html)",
+          fileSize: "1 MB",
+          arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          downloadable: "false",
+        },
+        {
+          artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
           name: "3D Animated - Sample",
           details: "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
           datecreated: "1652708376981",
@@ -127,6 +139,7 @@ const state = {
   },
 }
 const stackMediaURLs = [
+  "https://darkblock-media.s3.amazonaws.com/samples/html.html",
   "https://darkblock-media.s3.amazonaws.com/samples/dancing.glb",
   "https://darkblock-media.s3.amazonaws.com/samples/music.mp3",
   "https://darkblock-media.s3.amazonaws.com/samples/image.png",

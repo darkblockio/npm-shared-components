@@ -15,7 +15,7 @@ const MyGallery = ({ mediaURL, config }) => {
       showRotationControl: config.showRotationControl,
       autoHideControls: config.autoHideControls,
       controlsFadeDelay: config.controlsFadeDelay,
-      prefixUrl: "//openseadragon.github.io/openseadragon/images/",
+      prefixUrl: "//app.darkblock.io/opensea/",
       tileSources: {
         url: mediaURL,
         type: "image",
@@ -64,24 +64,34 @@ const MyGallery = ({ mediaURL, config }) => {
 }
 
 const MediaComp = ({ mediaURL, mediaType, config }) => {
-  if (mediaType == "encrypted(model/gltf-binary)" || mediaType == "(model/gltf-binary)")
-     return (
-       <div>
-         <model-viewer
-           alt="testing"
-           ar
-           autoplay
-           ar-modes="webxr scene-viewer quick-look"
-           camera-controls
-           enable-pan
-           seamless-poster
-           shadow-intensity="1"
-           src={mediaURL}
-         />
-       </div>
-     )
+  if (mediaType == "encrypted(text/html)") {
+    return (
+      <iframe
+        allowFullScreen
+        className="w-full h-64 md:h-72 lg:h-96"
+        src={mediaURL}
+      />
+    )
+  }
 
-  if (mediaType == "encrypted(application/pdf)" || mediaType == "(application/pdf)")
+  if (mediaType == "encrypted(model/gltf-binary)" || mediaType == "(model/gltf-binary)") {
+    return (
+      <div>
+        <model-viewer
+          alt="testing"
+          ar
+          autoplay
+          ar-modes="webxr scene-viewer quick-look"
+          camera-controls
+          enable-pan
+          seamless-poster
+          shadow-intensity="1"
+          src={mediaURL}
+        />
+      </div>
+    )
+  }
+  if (mediaType == "encrypted(application/pdf)" || mediaType == "(application/pdf)") {
     return (
       <iframe
         allowFullScreen
@@ -89,7 +99,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
         src={`https://d1jjf9b695fxyn.cloudfront.net/pdf/web/viewer.html?file=${encodeURIComponent(mediaURL)}`}
       />
     )
-
+  }
   if (mediaType == "encrypted(application/zip)") {
     return (
       <>
