@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from "react"
-import Plyr from "plyr-react"
-import "./plyr.css"
-import "./Player.css"
-import { VideoPlaceHolderBase64 } from "../imgBase64/VideoPlaceHolderBase64"
-import Logo from "../Animations/Logo"
-import OpenSeadragon from "openseadragon"
+import React, { useEffect, useRef } from 'react'
+import Plyr from 'plyr-react'
+import './plyr.css'
+import './Player.css'
+import { VideoPlaceHolderBase64 } from '../imgBase64/VideoPlaceHolderBase64'
+import Logo from '../Animations/Logo'
+import OpenSeadragon from 'openseadragon'
 
 const MyGallery = ({ mediaURL, config }) => {
   const spinner = useRef(null)

@@ -62,7 +62,7 @@
   @apply h-4 w-4 mx-auto rounded p-1 mt-1 mr-2 text-gray-900 bg-gray-100;
 }
 
-.DarkblockWidget-Stack-Panel a.download {
+.DarkblockWidget-Stack-Panel button.download {
   @apply mt-4 inline-block bg-gray-300 font-bold rounded w-full md:w-1/3  text-black hover:text-white hover:bg-gray-500 border border-black mr-2 text-center mb-4 py-2;
 }
 
