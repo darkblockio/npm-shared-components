@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGlobe, faQuestionCircle, faFilePdf, faFilm, faImage, faFileZipper, faMusic, faCube, faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons"
-import Player from "../Player"
-import Header from "../Header"
-import "./Stack.css"
-import "../db.css"
+import React, { useState, useEffect } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGlobe, faQuestionCircle, faFilePdf, faFilm, faImage, faFileZipper, faMusic, faCube, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
+import Player from '../Player'
+import Header from '../Header'
+import { downloadFile } from '../utils'
+import './Stack.css'
+import '../db.css'
 
 import StaticDBLogo from "../Panel/staticDBLogo"
 
@@ -28,10 +29,11 @@ const RenderIcon = ({ filetype }) => {
 const RowContent = ({ db, sel = false, f = null, state = null, url = null }) => {
   const [showDetails, setShowDetails] = useState(false)
   let fn = f && typeof f === "function" ? f : () => {}
-  let rowcss = sel ? "row selected" : "row"
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
   let truncatedName = ` ${db.name.substr(0, 25)}${db.name.length > 25 ? '...' : ''}`;
+  const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
+
   return (
     <>
     <tr className="dbdata" onClick={fn}>
@@ -47,18 +49,14 @@ const RowContent = ({ db, sel = false, f = null, state = null, url = null }) => 
       <td colSpan="3">
           <div className="more">{" " + db.details}</div>
           <div className="dates">Date Added: {d.toLocaleString([], {year: 'numeric', month: 'numeric', day: 'numeric'})}</div>
-          <div className="filetypes">File Type: {db.fileFormat.substring(10, db.fileFormat.length - 1)}</div>
+          <div className="filetypes">File Type: {fileFormat}</div>
           <div className="artx">Arweave TX:{" " + db.arweaveTX}</div>
           {state && state === 'display' && url && db.downloadable.toString().toLowerCase() === 'true' && (
             <div className="flex flex-wrap">
-              <a
+              <button
                 className="download"
-                download="myImage.jpg"
-                href={url}
-                target="_blank"
-              >
-                Download
-              </a>
+                onClick={() => downloadFile(url, fileFormat)}
+              >download</button>
             </div>
           )}
       </td>
