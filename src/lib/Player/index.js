@@ -64,6 +64,15 @@ const MyGallery = ({ mediaURL, config }) => {
 }
 
 const MediaComp = ({ mediaURL, mediaType, config }) => {
+
+  if (mediaType == "encrypted(application/epub+zip)") {
+    return (
+      <>
+        <div>epub doc</div>
+      </>
+    )
+  }
+
   if (mediaType == "encrypted(text/html)") {
     return (
       <iframe
