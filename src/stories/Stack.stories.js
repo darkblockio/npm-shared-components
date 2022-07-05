@@ -17,11 +17,12 @@ const state = {
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
           name: "EPUB - Sample",
-          details: "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
+          details:
+            "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
           datecreated: "1652708376981",
           creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
           fileFormat: "encrypted(application/epub+zip)",
-          fileSize: "2 MB",
+          fileSize: "187 KB",
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
@@ -29,7 +30,8 @@ const state = {
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
           name: "HTML - Sample",
-          details: "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
+          details:
+            "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
           datecreated: "1652708376981",
           creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
           fileFormat: "encrypted(text/html)",
@@ -41,7 +43,8 @@ const state = {
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
           name: "3D Animated - Sample",
-          details: "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
+          details:
+            "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
           datecreated: "1652708376981",
           creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
           fileFormat: "encrypted(model/gltf-binary)",
@@ -53,7 +56,8 @@ const state = {
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
           name: "Music - Sample",
-          details: "But we’ve met before. That was a long time ago, I was a kid at St. Swithin’s, It used to be funded by the Wayne Foundation. It’s an orphanage. My mum died when I was small, it was a car accident. I don’t remember it. My dad got shot a couple of years later for a gambling debt. Oh I remember that one just fine. Not a lot of people know what it feels like to be angry in your bones.",
+          details:
+            "But we’ve met before. That was a long time ago, I was a kid at St. Swithin’s, It used to be funded by the Wayne Foundation. It’s an orphanage. My mum died when I was small, it was a car accident. I don’t remember it. My dad got shot a couple of years later for a gambling debt. Oh I remember that one just fine. Not a lot of people know what it feels like to be angry in your bones.",
           datecreated: "1652708376981",
           creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
           fileFormat: "encrypted(audio/mp3)",
@@ -61,11 +65,12 @@ const state = {
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
-        },        
+        },
         {
           artId: "d82c1f41-42c3-4257-ae9d-c9f611610be3",
           name: "Image - Sample",
-          details: "The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother’s keeper and the finder of lost children.",
+          details:
+            "The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother’s keeper and the finder of lost children.",
           datecreated: "1653018985835",
           creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
           fileFormat: "encrypted(image/png)",
@@ -77,7 +82,8 @@ const state = {
         {
           artId: "ad41e546-f023-4785-a232-095e3e1fa165",
           name: "Video - Sample",
-          details: "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
+          details:
+            "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
           datecreated: "1652708402066",
           creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
           fileFormat: "encrypted(video/mpeg)",
@@ -89,7 +95,8 @@ const state = {
         {
           artId: "527c9adb-e8eb-46a2-b882-0b805d4776a7",
           name: "Big Video - Sample",
-          details: "Now that we know who you are, I know who I am. I’m not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain’s going to be? He’s the exact opposite of the hero. And most times they’re friends, like you and me! ",
+          details:
+            "Now that we know who you are, I know who I am. I’m not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain’s going to be? He’s the exact opposite of the hero. And most times they’re friends, like you and me! ",
           datecreated: "1652708412041",
           creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
           fileFormat: "encrypted(video/mpeg)",
@@ -101,7 +108,8 @@ const state = {
         {
           artId: "9e62a33b-d596-471f-bf07-d8dc704dda39",
           name: "Comic Book PDF - Sample",
-          details: "Your bones don’t break, mine do. That’s clear. Your cells react to bacteria and viruses differently than mine. You don’t get sick, I do. That’s also clear. But for some reason, you and I react the exact same way to water.",
+          details:
+            "Your bones don’t break, mine do. That’s clear. Your cells react to bacteria and viruses differently than mine. You don’t get sick, I do. That’s also clear. But for some reason, you and I react the exact same way to water.",
           datecreated: "1652708390592",
           creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
           fileFormat: "encrypted(application/pdf)",
@@ -113,7 +121,8 @@ const state = {
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
           name: "Archive ZIP - Sample",
-          details: "Your bones don’t break, mine do. That’s clear. Your cells react to bacteria and viruses differently than mine. You don’t get sick, I do. That’s also clear. But for some reason, you and I react the exact same way to water.",
+          details:
+            "Your bones don’t break, mine do. That’s clear. Your cells react to bacteria and viruses differently than mine. You don’t get sick, I do. That’s also clear. But for some reason, you and I react the exact same way to water.",
           datecreated: "1652708376981",
           creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
           fileFormat: "encrypted(application/zip)",
@@ -123,17 +132,17 @@ const state = {
           downloadable: "true",
         },
         {
-           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
-           name: "Other File Type - Sample",
-           details: "other",
-           datecreated: "1652708376981",
-           creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
-           fileFormat: "encrypted(application/other)",
-           fileSize: "5.5 MB",
-           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
-           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
-           downloadable: "true",
-         },                
+          artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
+          name: "Other File Type - Sample",
+          details: "other",
+          datecreated: "1652708376981",
+          creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
+          fileFormat: "encrypted(application/other)",
+          fileSize: "5.5 MB",
+          arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          downloadable: "true",
+        },
       ],
     },
   },

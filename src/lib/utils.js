@@ -58,47 +58,46 @@ export function getProxyAsset(artID, sessionToken, tokenId, contract, nonce, pla
   }
 }
 
-export async function downloadFile(url, fileFormat) {
-  const res = await fetch(url, {'Access-Control-Expose-Headers': 'Content-Disposition'});
-  const raw = await res.blob();
-
-  let filename = 'db_download'
-  if (fileFormat.match(/\/aac/gi)) filename = 'db_download.aac'
-  if (fileFormat.match(/\/bmp/gi)) filename = 'db_download.bmp'
-  if (fileFormat.match(/\/cbr/gi)) filename = 'db_download.cbr'
-  if (fileFormat.match(/\/epub/gi)) filename = 'db_download.epub'
-  if (fileFormat.match(/\/flac/gi)) filename = 'db_download.flac'
-  if (fileFormat.match(/\/gif/gi)) filename = 'db_download.gif'
-  if (fileFormat.match(/\/gltf/gi)) filename = 'db_download.gltf'
-  if (fileFormat.match(/\/html/gi)) filename = 'db_download.html'
-  if (fileFormat.match(/\/jpg/gi)) filename = 'db_download.jpg'
-  if (fileFormat.match(/\/jpeg/gi)) filename = 'db_download.jpeg'
-  if (fileFormat.match(/\/m4a/gi)) filename = 'db_download.m4a'
-  if (fileFormat.match(/\/mkv/gi)) filename = 'db_download.mkv'
-  if (fileFormat.match(/\/mp3/gi)) filename = 'db_download.mp3'
-  if (fileFormat.match(/\/mp4/gi)) filename = 'db_download.mp4'
-  if (fileFormat.match(/\/mpeg/gi)) filename = 'db_download.mpeg'
-  if (fileFormat.match(/\/ogg/gi)) filename = 'db_download.ogg'
-  if (fileFormat.match(/\/ogv/gi)) filename = 'db_download.ogv'
-  if (fileFormat.match(/\/opus/gi)) filename = 'db_download.opus'
-  if (fileFormat.match(/\/other/gi)) filename = 'db_download.other'
-  if (fileFormat.match(/\/pdf/gi)) filename = 'db_download.pdf'
-  if (fileFormat.match(/\/png/gi)) filename = 'db_download.png'
-  if (fileFormat.match(/\/svg/gi)) filename = 'db_download.svg'
-  if (fileFormat.match(/\/tgz/gi)) filename = 'db_download.tgz'
-  if (fileFormat.match(/\/usdz/gi)) filename = 'db_download.usdz'
-  if (fileFormat.match(/\/wav/gi)) filename = 'db_download.wav'
-  if (fileFormat.match(/\/webm/gi)) filename = 'db_download.webm'
-  if (fileFormat.match(/\/zip/gi)) filename = 'db_download.zip'
+export async function downloadFile(url, fileFormat, filename = "") {
+  filename = !filename || filename === "" ? "unlockable" : filename
+  const res = await fetch(url, { "Access-Control-Expose-Headers": "Content-Disposition" })
+  const raw = await res.blob()
+  let ext = ""
+  if (fileFormat.match(/\/aac/gi)) ext = "aac"
+  if (fileFormat.match(/\/bmp/gi)) ext = "bmp"
+  if (fileFormat.match(/\/cbr/gi)) ext = "cbr"
+  if (fileFormat.match(/\/epub/gi)) ext = "epub"
+  if (fileFormat.match(/\/flac/gi)) ext = "flac"
+  if (fileFormat.match(/\/gif/gi)) ext = "gif"
+  if (fileFormat.match(/\/gltf/gi)) ext = "gltf"
+  if (fileFormat.match(/\/html/gi)) ext = "html"
+  if (fileFormat.match(/\/jpg/gi)) ext = "jpg"
+  if (fileFormat.match(/\/jpeg/gi)) ext = "jpeg"
+  if (fileFormat.match(/\/m4a/gi)) ext = "m4a"
+  if (fileFormat.match(/\/mkv/gi)) ext = "mkv"
+  if (fileFormat.match(/\/mp3/gi)) ext = "mp3"
+  if (fileFormat.match(/\/mp4/gi)) ext = "mp4"
+  if (fileFormat.match(/\/mpeg/gi)) ext = "mpeg"
+  if (fileFormat.match(/\/ogg/gi)) ext = "ogg"
+  if (fileFormat.match(/\/ogv/gi)) ext = "ogv"
+  if (fileFormat.match(/\/opus/gi)) ext = "opus"
+  if (fileFormat.match(/\/other/gi)) ext = "other"
+  if (fileFormat.match(/\/pdf/gi)) ext = "pdf"
+  if (fileFormat.match(/\/png/gi)) ext = "png"
+  if (fileFormat.match(/\/svg/gi)) ext = "svg"
+  if (fileFormat.match(/\/tgz/gi)) ext = "tgz"
+  if (fileFormat.match(/\/usdz/gi)) ext = "usdz"
+  if (fileFormat.match(/\/wav/gi)) ext = "wav"
+  if (fileFormat.match(/\/webm/gi)) ext = "webm"
+  if (fileFormat.match(/\/zip/gi)) ext = "zip"
 
   if (window !== undefined) {
-    const a = document.createElement('a')
+    const a = document.createElement("a")
     a.href = window.URL.createObjectURL(raw)
-    a.download = filename;
+    a.download = `${filename}.${ext}`
     document.body.appendChild(a)
-    a.click();
-    a.remove();
+    a.click()
+    a.remove()
     window.URL.revokeObjectURL(raw)
   }
-
 }

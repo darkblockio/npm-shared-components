@@ -1,11 +1,23 @@
-import React, { useState, useEffect } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGlobe, faQuestionCircle, faFilePdf, faFilm, faImage, faFileZipper, faMusic, faCube, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
-import Player from '../Player'
-import Header from '../Header'
-import { downloadFile } from '../utils'
-import './Stack.css'
-import '../db.css'
+import React, { useState, useEffect } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faGlobe,
+  faQuestionCircle,
+  faFilePdf,
+  faFilm,
+  faImage,
+  faFileZipper,
+  faMusic,
+  faCube,
+  faAngleDown,
+  faAngleUp,
+  faBook,
+} from "@fortawesome/free-solid-svg-icons"
+import Player from "../Player"
+import Header from "../Header"
+import { downloadFile } from "../utils"
+import "./Stack.css"
+import "../db.css"
 
 import StaticDBLogo from "../Panel/staticDBLogo"
 
@@ -22,6 +34,7 @@ const RenderIcon = ({ filetype }) => {
   if (filetype.indexOf("usdz") > -1) icon = faCube
   if (filetype.indexOf("up") > -1) icon = faAngleUp
   if (filetype.indexOf("down") > -1) icon = faAngleDown
+  if (filetype.indexOf("epub") > -1) icon = faBook
 
   return <FontAwesomeIcon icon={icon} className="awesome" />
 }
@@ -31,37 +44,40 @@ const RowContent = ({ db, sel = false, f = null, state = null, url = null }) => 
   let fn = f && typeof f === "function" ? f : () => {}
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
-  let truncatedName = ` ${db.name.substr(0, 25)}${db.name.length > 25 ? '...' : ''}`;
+  let truncatedName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
 
   return (
     <>
-    <tr className="dbdata" onClick={fn}>
-      <td className="name">
-        <RenderIcon filetype={db.fileFormat} />
-        <span>{truncatedName}</span>
-      </td>
-      <td className="size">{db.fileSize}</td>
-      <td className="pulldown" onClick={() => setShowDetails(!showDetails)}>{showDetails ? <RenderIcon filetype={'up'} /> : <RenderIcon filetype={'down'} />}</td>
-    </tr>
-    {showDetails && (
-    <tr className="details" onClick={fn}>
-      <td colSpan="3">
-          <div className="more">{" " + db.details}</div>
-          <div className="dates">Date Added: {d.toLocaleString([], {year: 'numeric', month: 'numeric', day: 'numeric'})}</div>
-          <div className="filetypes">File Type: {fileFormat}</div>
-          <div className="artx">Arweave TX:{" " + db.arweaveTX}</div>
-          {state && state === 'display' && url && db.downloadable.toString().toLowerCase() === 'true' && (
-            <div className="flex flex-wrap">
-              <button
-                className="download"
-                onClick={() => downloadFile(url, fileFormat)}
-              >download</button>
+      <tr className="dbdata" onClick={fn}>
+        <td className="name">
+          <RenderIcon filetype={db.fileFormat} />
+          <span>{truncatedName}</span>
+        </td>
+        <td className="size">{db.fileSize}</td>
+        <td className="pulldown" onClick={() => setShowDetails(!showDetails)}>
+          {showDetails ? <RenderIcon filetype={"up"} /> : <RenderIcon filetype={"down"} />}
+        </td>
+      </tr>
+      {showDetails && (
+        <tr className="details" onClick={fn}>
+          <td colSpan="3">
+            <div className="more">{" " + db.details}</div>
+            <div className="dates">
+              Date Added: {d.toLocaleString([], { year: "numeric", month: "numeric", day: "numeric" })}
             </div>
-          )}
-      </td>
-    </tr>
-    )}
+            <div className="filetypes">File Type: {fileFormat}</div>
+            <div className="artx">Arweave TX:{" " + db.arweaveTX}</div>
+            {state && state === "display" && url && db.downloadable.toString().toLowerCase() === "true" && (
+              <div className="flex flex-wrap">
+                <button className="download" onClick={() => downloadFile(url, fileFormat, truncatedName)}>
+                  download
+                </button>
+              </div>
+            )}
+          </td>
+        </tr>
+      )}
     </>
   )
 }
@@ -99,8 +115,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
               <th scope="col" className="format-header">
                 File Size
               </th>
-              <th scope="col" className="format-header">
-              </th>
+              <th scope="col" className="format-header"></th>
             </tr>
           </thead>
           <tbody>
