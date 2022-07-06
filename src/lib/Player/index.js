@@ -100,25 +100,23 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
 
   if (mediaType == "encrypted(application/epub+zip)") {
     return (
-      <div className="w-full h-64 md:h-72 lg:h-96">
-        <div style={{ position: "relative", height: "300px" }}>
-          <ReactReader
-            epubInitOptions={{ openAs: "epub" }}
-            location={location}
-            locationChanged={locationChanged}
-            ref={epubRef}
-            styles={epubStyles}
-            url={mediaURL}
-            getRendition={(rendition) => {
-              rendition.themes.register("custom", {
-                p: {
-                  color: "black",
-                },
-              })
-              rendition.themes.select("custom")
-            }}
-          />
-        </div>
+      <div style={{ position: "relative", height: "100%" }}>
+        <ReactReader
+          epubInitOptions={{ openAs: "epub" }}
+          location={location}
+          locationChanged={locationChanged}
+          ref={epubRef}
+          styles={epubStyles}
+          url={mediaURL}
+          getRendition={(rendition) => {
+            rendition.themes.register("custom", {
+              p: {
+                color: "black",
+              },
+            })
+            rendition.themes.select("custom")
+          }}
+        />
       </div>
     )
   }
