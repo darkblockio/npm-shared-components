@@ -16,19 +16,6 @@ const state = {
       stack: [
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
-          name: "EPUB - Sample",
-          details:
-            "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
-          datecreated: "1652708376981",
-          creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
-          fileFormat: "encrypted(application/epub+zip)",
-          fileSize: "187 KB",
-          arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
-          arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
-          downloadable: "true",
-        },
-        {
-          artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
           name: "HTML - Sample",
           details:
             "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
@@ -106,6 +93,19 @@ const state = {
           downloadable: "true",
         },
         {
+          artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
+          name: "EPUB - Sample",
+          details:
+            "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
+          datecreated: "1652708376981",
+          creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
+          fileFormat: "encrypted(application/epub+zip)",
+          fileSize: "187 KB",
+          arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          downloadable: "true",
+        },
+        {
           artId: "9e62a33b-d596-471f-bf07-d8dc704dda39",
           name: "Comic Book PDF - Sample",
           details:
@@ -133,7 +133,43 @@ const state = {
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
-          name: "Other File Type - Sample",
+          name: "Other File Type - Sample 1",
+          details: "other",
+          datecreated: "1652708376981",
+          creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
+          fileFormat: "encrypted(application/other)",
+          fileSize: "5.5 MB",
+          arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          downloadable: "true",
+        },
+        {
+          artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
+          name: "Other File Type - Sample 2",
+          details: "other",
+          datecreated: "1652708376981",
+          creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
+          fileFormat: "encrypted(application/other)",
+          fileSize: "5.5 MB",
+          arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          downloadable: "true",
+        },
+        {
+          artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
+          name: "Other File Type - Sample 3",
+          details: "other",
+          datecreated: "1652708376981",
+          creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
+          fileFormat: "encrypted(application/other)",
+          fileSize: "5.5 MB",
+          arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
+          downloadable: "true",
+        },
+        {
+          artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
+          name: "Other File Type - Sample 4",
           details: "other",
           datecreated: "1652708376981",
           creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
@@ -148,14 +184,17 @@ const state = {
   },
 }
 const stackMediaURLs = [
-  "https://darkblock-media.s3.amazonaws.com/samples/book.epub",
   "https://darkblock-media.s3.amazonaws.com/samples/html.html",
   "https://darkblock-media.s3.amazonaws.com/samples/dancing.glb",
   "https://darkblock-media.s3.amazonaws.com/samples/music.mp3",
   "https://darkblock-media.s3.amazonaws.com/samples/image.png",
   "https://darkblock-media.s3.amazonaws.com/samples/movie.mp4",
   "https://darkblock-media.s3.amazonaws.com/samples/bigmovie.mp4",
+  "https://darkblock-media.s3.amazonaws.com/samples/book.epub",
   "https://darkblock-media.s3.amazonaws.com/samples/document.pdf",
+  "https://darkblock-media.s3.amazonaws.com/samples/archive.zip",
+  "https://darkblock-media.s3.amazonaws.com/samples/archive.zip",
+  "https://darkblock-media.s3.amazonaws.com/samples/archive.zip",
   "https://darkblock-media.s3.amazonaws.com/samples/archive.zip",
   "https://darkblock-media.s3.amazonaws.com/samples/archive.zip",
 ]

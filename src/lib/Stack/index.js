@@ -39,20 +39,32 @@ const RenderIcon = ({ filetype }) => {
   return <FontAwesomeIcon icon={icon} className="awesome" />
 }
 
-const RowContent = ({ db, sel = false, f = null, state = null, url = null }) => {
+const RowContent = ({
+                      db,
+                      sel = false,
+                      f = null,
+                      state = null,
+                      url = null,
+                      counter = "",
+                      selected = false,
+                      index = 0,
+                    }) => {
   const [showDetails, setShowDetails] = useState(false)
-  let fn = f && typeof f === "function" ? f : () => {}
+
+  let fn = f && typeof f === "function" ? f : () => {
+  }
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
   let truncatedName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
+  const isRowActive = selected.i === index
 
   return (
     <>
-      <tr className="dbdata" onClick={fn}>
+      <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`} onClick={fn}>
         <td className="name">
           <RenderIcon filetype={db.fileFormat} />
-          <span>{truncatedName}</span>
+          <span>{`${counter} ${truncatedName}`}</span>
         </td>
         <td className="size">{db.fileSize}</td>
         <td className="pulldown" onClick={() => setShowDetails(!showDetails)}>
@@ -108,37 +120,48 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
       <div className="DarkblockWidget-Stack-Panel">
         <table className="stack-table">
           <thead className="">
-            <tr className="rowheader">
-              <th scope="col" className="name-header">
-                Name
-              </th>
-              <th scope="col" className="format-header">
-                File Size
-              </th>
-              <th scope="col" className="format-header"></th>
-            </tr>
+          <tr className="rowheader">
+            <th scope="col" className="name-header">
+              Name
+            </th>
+            <th scope="col" className="format-header">
+              File Size
+            </th>
+            <th scope="col" className="format-header"></th>
+          </tr>
           </thead>
           <tbody>
-            {state.context.display.stack.map((db, i) => {
-              if (state.value === "display") {
-                let sel = selected ? selected.i === i : false
-                return (
-                  <RowContent
-                    db={db}
-                    sel={sel}
-                    f={() => {
-                      setSwapping(true)
-                      setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i })
-                    }}
-                    key={i}
-                    state={state.value}
-                    url={urls[i]}
-                  />
-                )
-              } else {
-                return <RowContent db={db} key={i} />
-              }
-            })}
+          {state.context.display.stack.map((db, i) => {
+            if (state.value === "display") {
+              let sel = selected ? selected.i === i : false
+              return (
+                <RowContent
+                  db={db}
+                  sel={sel}
+                  f={() => {
+                    setSwapping(true)
+                    setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i })
+                  }}
+                  index={i}
+                  key={i}
+                  counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
+                  selected={selected}
+                  state={state.value}
+                  url={urls[i]}
+                />
+              )
+            } else {
+              return (
+                <RowContent
+                  db={db}
+                  index={i}
+                  key={i}
+                  counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
+                  selected={selected}
+                />
+              )
+            }
+          })}
           </tbody>
         </table>
       </div>

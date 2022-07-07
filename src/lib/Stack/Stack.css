@@ -19,7 +19,7 @@
 }
 
 .DarkblockWidget-Stack-Panel .dbdata {
-  @apply border-t border-gray-300 hover:bg-gray-200 cursor-pointer;
+  @apply border-t border-gray-300 hover:bg-gray-200 cursor-pointer
 }
 
 .DarkblockWidget-Stack-Panel .dbdata .name {
@@ -36,6 +36,10 @@
 
 .DarkblockWidget-Stack-Panel .dbdata .pulldown {
   @apply whitespace-nowrap py-2 text-right text-xs md:text-sm pl-2;
+}
+
+.DarkblockWidget-Stack-Panel .dbdataSelected {
+  @apply bg-gray-300
 }
 
 .DarkblockWidget-Stack-Panel .details {
