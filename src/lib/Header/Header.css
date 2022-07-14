@@ -1,27 +1,40 @@
 .DarkblockWidget-Header {
-  @apply flex items-center justify-center text-center sm:p-4 sm:my-2 bg-gray-200 h-64 md:h-72 lg:h-96 rounded;
+  @apply items-center text-left p-4 my-2 bg-gray-200 h-40 sm:h-20 rounded;
 }
 
 .DarkblockWidget-Header-Row {
-  @apply px-4;
+  @apply flex flex-col sm:flex-row self-center;
+}
+
+.DarkblockWidget-Header-Row > .logo {
+  @apply flex-none w-8 h-8 text-sm font-bold self-center;
 }
 
 .Darkblock-Icon {
-  @apply h-8 w-8 mx-auto;
+  @apply h-8 w-8;
 }
 
-.DarkblockWidget-Header-Row > .title {
-  @apply text-sm font-bold mt-2;
+.DarkblockWidget-Header-Row > .titleStack {
+  @apply flex-auto flex flex-col pl-5 text-sm font-bold self-center mt-3 mb-3 sm:mt-0 sm:mb-0;
 }
 
-.DarkblockWidget-Header-Row > .title-red {
-  @apply text-sm font-bold text-black mt-2;
+.titleStack > .title {
+  @apply flex-auto text-sm font-bold;
 }
 
-.DarkblockWidget-Header-Row > .content {
-  @apply text-xs font-normal;
+.titleStack > .title-red {
+  @apply flex-auto text-sm font-bold text-black mt-2;
 }
 
-.DarkblockWidget-Header-Row > .inner-button {
-  @apply bg-black text-sm text-white hover:bg-slate-400 hover:text-black rounded-md py-2 px-4 font-medium mt-5;
+.titleStack > .content {
+  @apply flex-auto text-xs font-normal;
 }
+
+.DarkblockWidget-Header-Row > .authButton {
+  @apply flex-auto flex flex-col pl-5 h-8 self-center;
+}
+
+.authButton > .inner-button {
+  @apply flex-auto w-60 bg-gray-50 text-gray-800 hover:text-black rounded-md font-medium;
+}
+

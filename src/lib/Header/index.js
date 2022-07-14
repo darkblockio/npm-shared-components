@@ -6,18 +6,20 @@ const setHeader = (title, text, red = false, authenticate = null) => {
   return (
     <div className="DarkblockWidget-Header">
       <div className="DarkblockWidget-Header-Row">
-        <div className="Darkblock-Icon">
-          <Logo />
+        <div className="logo">
+          <Logo className="Darkblock-Icon" />
+        </div>
+        <div className="titleStack">
+          <div className={red ? "title-red" : "title"}>{title}</div>
+          <div className="content">{text}</div>
         </div>
 
-        <div className={red ? "title-red" : "title"}>{title}</div>
-
-        <p className="content">{text}</p>
-
         {!!authenticate && (
-          <button onClick={authenticate} className="inner-button">
-            Authenticate Ownership
-          </button>
+          <div className="authButton">
+            <button onClick={authenticate} className="inner-button">
+              Authenticate Ownership
+            </button>
+          </div>
         )}
       </div>
     </div>

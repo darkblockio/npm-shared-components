@@ -98,7 +98,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
     }
   }, [setSelections, selections])
 
-  if (mediaType == "encrypted(application/epub+zip)") {
+  if (mediaType == "encrypted(application/epub+zip)" && typeof window !== "undefined") {
     return (
       <div style={{ position: "relative", height: "100%" }}>
         <ReactReader
