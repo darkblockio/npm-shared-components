@@ -16,6 +16,10 @@ import {
   faChevronRight,
   faCircleLeft,
   faCircleRight,
+  faEllipsisVertical,
+  faInfo,
+  faDownload,
+  faUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons"
 import Player from "../Player"
 import Header from "../Header"
@@ -24,6 +28,7 @@ import "./Stack.css"
 import "../db.css"
 import StaticDBLogo from "../Panel/staticDBLogo"
 import PlayerModal from "../playerModal"
+import DetailModal from "../detailModal"
 
 const RenderIcon = ({ filetype }) => {
   let icon = faQuestionCircle
@@ -43,6 +48,10 @@ const RenderIcon = ({ filetype }) => {
   if (filetype.indexOf("chevronRight") > -1) icon = faChevronRight
   if (filetype.indexOf("circleLeft") > -1) icon = faCircleLeft
   if (filetype.indexOf("circleRight") > -1) icon = faCircleRight
+  if (filetype.indexOf("ellipsisVertical") > -1) icon = faEllipsisVertical
+  if (filetype.indexOf("info") > -1) icon = faInfo
+  if (filetype.indexOf("download") > -1) icon = faDownload
+  if (filetype.indexOf("upRightFromSquare") > -1) icon = faUpRightFromSquare
 
   return <FontAwesomeIcon icon={icon} className="awesome" />
 }
@@ -65,6 +74,8 @@ const RowContent = ({
   let truncatedName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
   const isRowActive = selected.i === index
+  const [showDetailModal, setShowDetailModal] = useState(false)
+  const isDownloadable = state && state === "display" && url && db.downloadable.toString().toLowerCase() === "true"
 
   return (
     <>
@@ -73,31 +84,62 @@ const RowContent = ({
           <RenderIcon filetype={db.fileFormat} />
           <span>{`${counter} ${truncatedName}`}</span>
         </td>
-        <td className="size">{db.fileSize}</td>
-        <td className="date">{d.toLocaleString([], { year: "numeric", month: "numeric", day: "numeric" })}</td>
-        <td className="pulldown" onClick={() => setShowDetails(!showDetails)}>
-          {showDetails ? <RenderIcon filetype={"up"} /> : <RenderIcon filetype={"down"} />}
+        <td className="size" onClick={fn}>
+          {db.fileSize}
+        </td>
+        <td className="date" onClick={fn}>
+          {d.toLocaleString([], {
+            year: "numeric",
+            month: "numeric",
+            day: "numeric",
+          })}
+        </td>
+        <td className="pulldown">
+          <span onClick={() => alert("This should open dropdown")} className="cursor-pointer">
+            <RenderIcon filetype={"ellipsisVertical"} />
+          </span>
+          <span onClick={() => setShowDetailModal(true)} className="cursor-pointer">
+            <RenderIcon filetype={"info"} />
+          </span>
+          <span
+            onClick={() => {
+              if (isDownloadable) {
+                downloadFile(url, fileFormat, truncatedName)
+              } else {
+                return null
+              }
+            }}
+            className={`cursor-pointer ${!isDownloadable ? "cursor-not-allowed" : ""}`}
+          >
+            <RenderIcon filetype={"download"} />
+          </span>
+          <a target="_blank" rel="noreferrer" className="cursor-pointer" href={db.arweaveTXLink}>
+            <RenderIcon filetype={"upRightFromSquare"} />
+          </a>
+
+          {/*{showDetails ? <RenderIcon filetype={"up"} /> : <RenderIcon filetype={"down"} />}*/}
         </td>
       </tr>
-      {showDetails && (
-        <tr className="details" onClick={fn}>
-          <td colSpan="4">
-            <div className="more">{" " + db.details}</div>
-            <div className="dates">
-              Date Added: {d.toLocaleString([], { year: "numeric", month: "numeric", day: "numeric" })}
-            </div>
-            <div className="filetypes">File Type: {fileFormat}</div>
-            <div className="artx">Arweave TX:{" " + db.arweaveTX}</div>
-            {state && state === "display" && url && db.downloadable.toString().toLowerCase() === "true" && (
-              <div className="flex flex-wrap">
-                <button className="download" onClick={() => downloadFile(url, fileFormat, truncatedName)}>
-                  download
-                </button>
-              </div>
-            )}
-          </td>
-        </tr>
-      )}
+      {/*{showDetails && (*/}
+      {/*  <tr className="details" onClick={fn}>*/}
+      {/*    <td colSpan="4">*/}
+      {/*      <div className="more">{" " + db.details}</div>*/}
+      {/*      <div className="dates">*/}
+      {/*        Date Added: {d.toLocaleString([], { year: "numeric", month: "numeric", day: "numeric" })}*/}
+      {/*      </div>*/}
+      {/*      <div className="filetypes">File Type: {fileFormat}</div>*/}
+      {/*      <div className="artx">Arweave TX:{" " + db.arweaveTX}</div>*/}
+      {/*      {state && state === "display" && url && db.downloadable.toString().toLowerCase() === "true" && (*/}
+      {/*        <div className="flex flex-wrap">*/}
+      {/*          <button className="download" onClick={() => downloadFile(url, fileFormat, truncatedName)}>*/}
+      {/*            download*/}
+      {/*          </button>*/}
+      {/*        </div>*/}
+      {/*      )}*/}
+      {/*    </td>*/}
+      {/*  </tr>*/}
+      {/*)}*/}
+      <DetailModal db={db} open={showDetailModal} onClose={() => setShowDetailModal(false)} />
     </>
   )
 }
