@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react"
 import OpenSeadragon from "openseadragon"
 import Plyr from "plyr-react"
-// import { ReactReader, ReactReaderStyle } from "react-reader"
+import { ReactReader, ReactReaderStyle } from "react-reader"
 import Logo from "../Animations/Logo"
 import { VideoPlaceHolderBase64 } from "../imgBase64/VideoPlaceHolderBase64"
 import "./plyr.css"
@@ -69,14 +69,14 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
     setLocation(epubcifi)
   }
 
-  // const epubRef = useRef(null)
-  // const epubStyles = {
-  //   ...ReactReaderStyle,
-  //   arrow: {
-  //     ...ReactReaderStyle.arrow,
-  //     color: "black",
-  //   },
-  // }
+  const epubRef = useRef(null)
+  const epubStyles = {
+    ...ReactReaderStyle,
+    arrow: {
+      ...ReactReaderStyle.arrow,
+      color: "black",
+    },
+  }
 
   useEffect(() => {
     if (window !== undefined) {
@@ -98,25 +98,25 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
     }
   }, [setSelections, selections])
 
-  if (mediaType == "encrypted(application/epub+zip)") {
+  if (mediaType == "encrypted(application/epub+zip)" && typeof window !== "undefined") {
     return (
       <div style={{ position: "relative", height: "100%" }}>
-        {/*<ReactReader*/}
-        {/*  epubInitOptions={{ openAs: "epub" }}*/}
-        {/*  location={location}*/}
-        {/*  locationChanged={locationChanged}*/}
-        {/*  ref={epubRef}*/}
-        {/*  styles={epubStyles}*/}
-        {/*  url={mediaURL}*/}
-        {/*  getRendition={(rendition) => {*/}
-        {/*    rendition.themes.register("custom", {*/}
-        {/*      p: {*/}
-        {/*        color: "black",*/}
-        {/*      },*/}
-        {/*    })*/}
-        {/*    rendition.themes.select("custom")*/}
-        {/*  }}*/}
-        {/*/>*/}
+        <ReactReader
+          epubInitOptions={{ openAs: "epub" }}
+          location={location}
+          locationChanged={locationChanged}
+          ref={epubRef}
+          styles={epubStyles}
+          url={mediaURL}
+          getRendition={(rendition) => {
+            rendition.themes.register("custom", {
+              p: {
+                color: "black",
+              },
+            })
+            rendition.themes.select("custom")
+          }}
+        />
       </div>
     )
   }

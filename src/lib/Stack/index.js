@@ -81,7 +81,7 @@ const RowContent = ({
       </tr>
       {showDetails && (
         <tr className="details" onClick={fn}>
-          <td colSpan="3">
+          <td colSpan="4">
             <div className="more">{" " + db.details}</div>
             <div className="dates">
               Date Added: {d.toLocaleString([], { year: "numeric", month: "numeric", day: "numeric" })}
