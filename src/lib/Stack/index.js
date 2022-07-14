@@ -14,6 +14,8 @@ import {
   faBook,
   faChevronLeft,
   faChevronRight,
+  faCircleLeft,
+  faCircleRight,
 } from "@fortawesome/free-solid-svg-icons"
 import Player from "../Player"
 import Header from "../Header"
@@ -39,6 +41,8 @@ const RenderIcon = ({ filetype }) => {
   if (filetype.indexOf("epub") > -1) icon = faBook
   if (filetype.indexOf("chevronLeft") > -1) icon = faChevronLeft
   if (filetype.indexOf("chevronRight") > -1) icon = faChevronRight
+  if (filetype.indexOf("circleLeft") > -1) icon = faCircleLeft
+  if (filetype.indexOf("circleRight") > -1) icon = faCircleRight
 
   return <FontAwesomeIcon icon={icon} className="awesome" />
 }
@@ -64,12 +68,13 @@ const RowContent = ({
 
   return (
     <>
-      <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`} onClick={fn}>
-        <td className="name">
+      <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
+        <td className="name" onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
           <span>{`${counter} ${truncatedName}`}</span>
         </td>
         <td className="size">{db.fileSize}</td>
+        <td className="date">{d.toLocaleString([], { year: "numeric", month: "numeric", day: "numeric" })}</td>
         <td className="pulldown" onClick={() => setShowDetails(!showDetails)}>
           {showDetails ? <RenderIcon filetype={"up"} /> : <RenderIcon filetype={"down"} />}
         </td>
@@ -120,6 +125,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   }, [swapping])
 
   const previousDb = () => {
+    if (selected.i === 0) return
+
     const nextIndex = selected.i - 1
     const nextDb = state.context.display.stack[nextIndex]
 
@@ -128,6 +135,9 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   }
 
   const nextDb = () => {
+    const dbCount = state.context.display.stack.length
+    if (dbCount === selected.i + 1) return
+
     const nextIndex = selected.i + 1
     const nextDb = state.context.display.stack[nextIndex]
 
@@ -142,13 +152,17 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           <div className="text-white bg-black text-center">
             <div>{selected.db.name}</div>
             <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
-            <div>
-              <button onClick={() => previousDb()}>
-                <RenderIcon filetype={"chevronLeft"} />
-              </button>
-              <button onClick={() => nextDb()}>
-                <RenderIcon filetype={"chevronRight"} />
-              </button>
+            <div className="fa-2xl pt-3 pb-3">
+              {selected.i > 0 && (
+                <button onClick={() => previousDb()} className="pl-3 pr-3">
+                  <RenderIcon filetype={"circleLeft"} />
+                </button>
+              )}
+              {selected.i + 1 !== state.context.display.stack.length && (
+                <button onClick={() => nextDb()} className="pl-3 pr-3">
+                  <RenderIcon filetype={"circleRight"} />
+                </button>
+              )}
             </div>
           </div>
         )}
@@ -170,6 +184,9 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                 <th scope="col" className="format-header">
                   File Size
                 </th>
+                <th scope="col" className="format-header">
+                  Date Added
+                </th>
                 <th scope="col" className="format-header"></th>
               </tr>
             </thead>
@@ -184,7 +201,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                       f={() => {
                         setSwapping(true)
                         setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i, db: db })
-                        // openModal()
                         setShowModal(true)
                       }}
                       index={i}
