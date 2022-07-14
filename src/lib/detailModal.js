@@ -30,6 +30,11 @@ const DetailModal = ({ db, open, onClose }) => {
                         })}
                       </p>
                       <p>Areweave TX: {db.arweaveTX}</p>
+                      <p className="float-right">
+                        <button onClick={() => onClose(true)} className="bg-gray-800 text-white p-2 m-3">
+                          Done
+                        </button>
+                      </p>
                     </div>
                   </div>
                 </div>
