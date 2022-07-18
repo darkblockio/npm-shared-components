@@ -25,7 +25,7 @@ const state = {
           fileSize: "1 MB",
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
-          downloadable: "true",
+          downloadable: "false",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -38,7 +38,7 @@ const state = {
           fileSize: "7.1 MB",
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
-          downloadable: "true",
+          downloadable: "false",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
