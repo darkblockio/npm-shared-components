@@ -1,5 +1,5 @@
 .DarkblockWidget-Stack-Panel {
-  @apply flex-grow py-0 h-72 md:h-96 lg:h-96 overflow-x-scroll overflow-y-scroll;
+  @apply flex-grow py-0 h-72 md:h-96 lg:h-96  overflow-y-scroll;
 }
 
 .DarkblockWidget-Stack-Panel .stack-table {
@@ -31,7 +31,7 @@
 }
 
 .DarkblockWidget-Stack-Panel span {
-  @apply ml-0 py-0;
+  @apply ml-0 py-0 pt-2;
 }
 
 .DarkblockWidget-Stack-Panel .dbdata .name span {
@@ -41,34 +41,18 @@
 .DarkblockWidget-Stack-Panel .dbdata .size {
   @apply whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2;
 }
+.DarkblockWidget-Stack-Panel .icon {
+  @apply pt-1 py-3;
+}
 
-.DarkblockWidget-Stack-Panel .dbdata .date {
+.DarkblockWidget-Stack-Panel .dbdata .date .pulldown {
   @apply whitespace-nowrap py-2 text-xs md:text-sm pl-2;
 }
 
-.DarkblockWidget-Stack-Panel .dbdata .pulldown {
-  @apply whitespace-nowrap py-2 text-right text-xs md:text-sm pl-2;
-}
-
-.DarkblockWidget-Stack-Panel .ulNav {
-  @apply w-full;
-}
-
-.DarkblockWidget-Stack-Panel .liDropdown {
-  @apply px-1 cursor-pointer text-left;
-}
-
 .DarkblockWidget-Stack-Panel .boxMenu {
-  @apply flex flex-row pl-1 items-center; 
+  @apply flex flex-row pl-1 items-center left-0;
 }
 
-.DarkblockWidget-Stack-Panel .dbMenu {
-  @apply absolute h-auto;
-}
-
-.DarkblockWidget-Stack-Panel .liMenu {
-  @apply py-1 hover:bg-gray-200
-}
 
 .DarkblockWidget-Stack-Panel .dbdataSelected {
   @apply bg-gray-300;
@@ -107,7 +91,7 @@
 }
 
 .DarkblockWidget-Stack-Panel .rowheader .name-header {
-  @apply py-3.5 pl-10 pr-3 text-left text-sm;
+  @apply py-3.5 pl-2 pr-3 text-left text-sm;
 }
 
 .DarkblockWidget-Stack-Panel .rowheader .format-header {
@@ -134,6 +118,44 @@
   @apply bg-gray-200;
 }
 
+/*Dropdown Button*/
+.DarkblockWidget-Stack-Panel .dropbtn {
+  @apply text-gray-900 rounded  pb-5 text-sm;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.DarkblockWidget-Stack-Panel .dropdown {
+  @apply relative inline-block;
+}
+
+.DarkblockWidget-Stack-Panel .dropdownContent {
+  @apply hidden absolute bg-gray-100 w-44;
+}
+
+.DarkblockWidget-Stack-Panel .dropdownContent .dropbtn {
+  @apply text-black py-4 px-5 decoration-0 block;
+}
+
+.dropdownContent .boxMenu {
+  @apply bottom-0 left-0 h-16 w-16;
+}
+
+.DarkblockWidget-Stack-Panel .dropdownContent {
+  @apply bg-gray-100 z-50 right-[5%];
+}
+.boxMenu:hover {
+  @apply bg-gray-300 w-full;
+}
+/* Show the dropdown menu on hover */
+.DarkblockWidget-Stack-Panel .dropdown:hover .dropdownContent {
+  @apply block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.DarkblockWidget-Stack-Panel .dropdown:hover .dropbtn .boxMenu:hover {
+  @apply bg-gray-200;
+}
+
 .scrollbar::-webkit-scrollbar {
   width: 20px;
   height: 20px;
@@ -153,7 +175,3 @@
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background: #c0a0b9;
 }
-
-/*.dropdown:hover .dropdown-menu {*/
-/*  display: block;*/
-/*}*/
