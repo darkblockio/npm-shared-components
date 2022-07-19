@@ -77,7 +77,9 @@ const RowContent = ({
   const [showDetailModal, setShowDetailModal] = useState(false)
   const isDownloadable = state && state === "display" && url && db.downloadable.toString().toLowerCase() === "true"
   const [showPopup, setShowPopup] = useState(false)
+  const [showMenu, setShowMenu ] = useState(true)
 
+  
   return (
     <>
       <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
@@ -96,24 +98,24 @@ const RowContent = ({
           })}
         </td>
         <td className="pulldown">
-          <ul className="w-full flex">
-            <li className="group dropdown px-1 cursor-pointer text-left">
+          <ul className="ulNav">
+            <li className="liDropdown">
               <a onClick={() => setShowPopup(true)}>
                 <RenderIcon filetype={"ellipsisVertical"} />
               </a>
-              <div className={`z-100 dropdown-menu absolute h-auto ${showPopup ? "block" : "hidden"}`}>
+              <div className={`dbMenu  ${showPopup ? "block" : "hidden"}`}>
                 <ul className="top-0 w-48 bg-white shadow px-1 py-1">
-                  <li className="py-1 hover:bg-gray-200" onClick={() => setShowPopup(false)}>
-                    <a className="cursor-pointer" onClick={() => setShowDetailModal(true)}>
-                      <span className="cursor-pointer">
+                  <li className="liMenu" onClick={() => setShowPopup(false)}>
+                    <a className="boxMenu" onClick={() => setShowDetailModal(true)}>
+                      <span>
                         <RenderIcon filetype={"info"} />
                       </span>
                       Details
                     </a>
                   </li>
-                  <li className="py-1 hover:bg-gray-200" onClick={() => setShowPopup(false)}>
+                  <li className="liMenu" onClick={() => setShowPopup(false)}>
                     <a
-                      className={`${!isDownloadable ? "cursor-not-allowed text-gray-300" : ""}`}
+                      className={`boxMenu ${!isDownloadable ? "cursor-not-allowed text-gray-300" : ""}`}
                       onClick={() => {
                         if (isDownloadable) {
                           downloadFile(url, fileFormat, truncatedName)
@@ -128,8 +130,8 @@ const RowContent = ({
                       Download
                     </a>
                   </li>
-                  <li className="py-1 hover:bg-gray-200" onClick={() => setShowPopup(false)}>
-                    <a target="_blank" rel="noreferrer" className="cursor-pointer" href={db.arweaveTXLink}>
+                  <li className="liMenu" onClick={() => setShowPopup(false)}>
+                    <a target="_blank" rel="noreferrer" className="boxMenu" href={db.arweaveTXLink}>
                       <RenderIcon filetype={"upRightFromSquare"} />
                       Arweave
                     </a>

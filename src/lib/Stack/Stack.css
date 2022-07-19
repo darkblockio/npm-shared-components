@@ -19,11 +19,19 @@
 }
 
 .DarkblockWidget-Stack-Panel .dbdata {
-  @apply border-t border-gray-300 hover:bg-gray-200 cursor-pointer
+  @apply border-t border-gray-300 hover:bg-gray-200 cursor-pointer;
+}
+
+.DarkblockWidget-Stack-Panel .name {
+  @apply flex flex-row items-center;
 }
 
 .DarkblockWidget-Stack-Panel .dbdata .name {
-  @apply whitespace-nowrap truncate py-2 pr-3 text-xs md:text-sm pl-2;
+  @apply whitespace-nowrap truncate py-3  text-xs md:text-sm pl-2;
+}
+
+.DarkblockWidget-Stack-Panel span {
+  @apply ml-0 py-0;
 }
 
 .DarkblockWidget-Stack-Panel .dbdata .name span {
@@ -42,8 +50,28 @@
   @apply whitespace-nowrap py-2 text-right text-xs md:text-sm pl-2;
 }
 
+.DarkblockWidget-Stack-Panel .ulNav {
+  @apply w-full;
+}
+
+.DarkblockWidget-Stack-Panel .liDropdown {
+  @apply px-1 cursor-pointer text-left;
+}
+
+.DarkblockWidget-Stack-Panel .boxMenu {
+  @apply flex flex-row pl-1 items-center; 
+}
+
+.DarkblockWidget-Stack-Panel .dbMenu {
+  @apply absolute h-auto;
+}
+
+.DarkblockWidget-Stack-Panel .liMenu {
+  @apply py-1 hover:bg-gray-200
+}
+
 .DarkblockWidget-Stack-Panel .dbdataSelected {
-  @apply bg-gray-300
+  @apply bg-gray-300;
 }
 
 .DarkblockWidget-Stack-Panel .details {
@@ -67,11 +95,11 @@
 }
 
 .DarkblockWidget-Stack-Panel .awesome {
-  @apply h-4 w-4 mx-auto rounded p-1 mt-1 mr-2 text-gray-900 bg-gray-100;
+  @apply h-4 w-4 rounded p-2 mt-1 mr-2 text-gray-900 bg-gray-100;
 }
 
 .DarkblockWidget-Stack-Panel button.download {
-  @apply mt-4 inline-block bg-gray-300 font-bold rounded w-full md:w-1/3  text-black hover:text-white hover:bg-gray-500 border border-black mr-2 text-center mb-4 py-2;
+  @apply mt-4 flex flex-row items-center bg-gray-300 font-bold rounded w-full md:w-1/3  text-red-50 hover:text-white hover:bg-gray-500 border border-black mr-2 text-center mb-4 py-2;
 }
 
 .DarkblockWidget-Stack-Panel .details td {
@@ -79,15 +107,15 @@
 }
 
 .DarkblockWidget-Stack-Panel .rowheader .name-header {
-  @apply py-3.5 pl-10 pr-3 text-left text-xs;
+  @apply py-3.5 pl-10 pr-3 text-left text-sm;
 }
 
 .DarkblockWidget-Stack-Panel .rowheader .format-header {
-  @apply px-2 py-3.5 text-left text-xs;
+  @apply px-2 py-3.5 text-left text-sm;
 }
 
 .DarkblockWidget-Stack-Panel .rowheader .date-header {
-  @apply px-2 py-3.5 text-left text-xs;
+  @apply px-2 py-3.5 text-left text-sm;
 }
 
 .DarkblockWidget-Stack-Panel .row .name {
