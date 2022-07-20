@@ -175,3 +175,64 @@
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background: #c0a0b9;
 }
+
+.detail-subtitle {
+  @apply text-base mt-6 font-bold;
+}
+
+.detail-subtitle-text {
+  @apply text-sm text-gray-500;
+}
+
+.button-container {
+  @apply float-right mt-4
+}
+
+.done-button {
+  @apply bg-gray-800 text-white rounded-lg p-2 w-20 m-4 mt-6
+}
+
+/* it contains details title and the X button*/
+.modal-first-row{
+  @apply flex justify-between
+}
+
+.modal-first-row-container{
+  @apply flex
+}
+
+.modal-title{
+  @apply flex justify-center items-center font-bold
+}
+.detail-darkblock-name{
+  @apply text-xl font-bold
+}
+
+.detail-darkblock-detail{
+  @apply mt-8 text-sm text-gray-500 max-w-lg
+}
+
+#modal-bg{
+  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-70
+}
+
+#modal-box{
+  @apply max-w-3xl px-6 py-4 text-left bg-white rounded shadow-lg mx-8
+}
+
+.modal-box-container{
+  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-70
+}
+
+.modal-container{
+  @apply flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 m-4 outline-none focus:outline-none
+}
+
+.detail-container{
+  @apply px-2 block w-4/5
+}
+
+.cross-button{
+  @apply w-6 h-6 justify-end cursor-pointer
+}
+
