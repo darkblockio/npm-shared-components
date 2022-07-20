@@ -28,7 +28,7 @@ import "./Stack.css"
 import "../db.css"
 import StaticDBLogo from "../Panel/staticDBLogo"
 import PlayerModal from "../playerModal"
-import DetailModal from "../detailModal"
+import DetailModal from "./detailModal"
 
 const RenderIcon = ({ filetype }) => {
   let icon = faQuestionCircle
