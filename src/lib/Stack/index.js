@@ -53,7 +53,7 @@ const RenderIcon = ({ filetype }) => {
   if (filetype.indexOf("download") > -1) icon = faDownload
   if (filetype.indexOf("upRightFromSquare") > -1) icon = faUpRightFromSquare
 
-  return <FontAwesomeIcon icon={icon} className="awesome" />
+  return <FontAwesomeIcon icon={icon} className='awesome' />
 }
 
 const RowContent = ({
@@ -76,68 +76,61 @@ const RowContent = ({
   const isRowActive = selected.i === index
   const [showDetailModal, setShowDetailModal] = useState(false)
   const isDownloadable = state && state === "display" && url && db.downloadable.toString().toLowerCase() === "true"
+  //elliptical pop up
   const [showPopup, setShowPopup] = useState(false)
+
+  const onClick = () => {
+    setShowPopup(!showPopup)
+  }
 
   return (
     <>
       <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
-        <td className="name" onClick={fn}>
+        <td className='name' onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
           <span>{`${counter} ${truncatedName}`}</span>
         </td>
-        <td className="size" onClick={fn}>
+        <td className='size' onClick={fn}>
           {db.fileSize}
         </td>
-        <td className="date" onClick={fn}>
+        <td className='date' onClick={fn}>
           {d.toLocaleString([], {
             year: "numeric",
             month: "numeric",
             day: "numeric",
           })}
         </td>
-        <td className="pulldown">
-          <ul className="w-full flex">
-            <li className="group dropdown px-1 cursor-pointer text-left">
-              <a onClick={() => setShowPopup(true)}>
-                <RenderIcon filetype={"ellipsisVertical"} />
-              </a>
-              <div className={`z-100 dropdown-menu absolute h-auto ${showPopup ? "block" : "hidden"}`}>
-                <ul className="top-0 w-48 bg-white shadow px-1 py-1">
-                  <li className="py-1 hover:bg-gray-200" onClick={() => setShowPopup(false)}>
-                    <a className="cursor-pointer" onClick={() => setShowDetailModal(true)}>
-                      <span className="cursor-pointer">
-                        <RenderIcon filetype={"info"} />
-                      </span>
-                      Details
-                    </a>
-                  </li>
-                  <li className="py-1 hover:bg-gray-200" onClick={() => setShowPopup(false)}>
-                    <a
-                      className={`${!isDownloadable ? "cursor-not-allowed text-gray-300" : ""}`}
-                      onClick={() => {
-                        if (isDownloadable) {
-                          downloadFile(url, fileFormat, truncatedName)
-                        } else {
-                          return null
-                        }
-                      }}
-                    >
-                      <span>
-                        <RenderIcon filetype={"download"} />
-                      </span>
-                      Download
-                    </a>
-                  </li>
-                  <li className="py-1 hover:bg-gray-200" onClick={() => setShowPopup(false)}>
-                    <a target="_blank" rel="noreferrer" className="cursor-pointer" href={db.arweaveTXLink}>
-                      <RenderIcon filetype={"upRightFromSquare"} />
-                      Arweave
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
+        <td className='dropdown'>
+          <div className='dropbtn'>
+            <RenderIcon filetype={"ellipsisVertical"} />
+          </div>
+          <div className='dropdownContent'>
+            <a className='boxMenu' onClick={() => setShowDetailModal(true)}>
+              <span>
+                <RenderIcon filetype={"info"} />
+              </span>
+              Details
+            </a>
+            <a
+              className={`boxMenu ${!isDownloadable ? "cursor-not-allowed text-gray-300" : ""}`}
+              onClick={() => {
+                if (isDownloadable) {
+                  downloadFile(url, fileFormat, truncatedName)
+                } else {
+                  return null
+                }
+              }}
+            >
+              <span>
+                <RenderIcon filetype={"download"} />
+              </span>
+              Download
+            </a>
+            <a target='_blank' rel='noreferrer' className='boxMenu' href={db.arweaveTXLink}>
+              <RenderIcon filetype={"upRightFromSquare"} />
+              Arweave
+            </a>
+          </div>
         </td>
       </tr>
       <DetailModal db={db} open={showDetailModal} onClose={() => setShowDetailModal(false)} />
@@ -192,17 +185,17 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     <>
       <PlayerModal showModal={showModal} open={showModal} onClose={() => setShowModal(false)}>
         {state.value === "display" && selected && !swapping && (
-          <div className="text-white bg-black text-center">
+          <div className='text-white bg-black text-center'>
             <div>{selected.db.name}</div>
             <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
-            <div className="fa-2xl pt-3 pb-3">
+            <div className='fa-2xl pt-3 pb-3'>
               {selected.i > 0 && (
-                <button onClick={() => previousDb()} className="pl-3 pr-3">
+                <button onClick={() => previousDb()} className='icon'>
                   <RenderIcon filetype={"circleLeft"} />
                 </button>
               )}
               {selected.i + 1 !== state.context.display.stack.length && (
-                <button onClick={() => nextDb()} className="pl-3 pr-3">
+                <button onClick={() => nextDb()} className='icon'>
                   <RenderIcon filetype={"circleRight"} />
                 </button>
               )}
@@ -217,20 +210,20 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         ) : (
           <Header state={state} authenticate={() => authenticate()} />
         )}
-        <div className="DarkblockWidget-Stack-Panel">
-          <table className="stack-table">
-            <thead className="">
-              <tr className="rowheader">
-                <th scope="col" className="name-header">
+        <div className='DarkblockWidget-Stack-Panel'>
+          <table className='stack-table'>
+            <thead className=''>
+              <tr className='rowheader'>
+                <th scope='col' className='name-header'>
                   Name
                 </th>
-                <th scope="col" className="format-header">
+                <th scope='col' className='format-header'>
                   File Size
                 </th>
-                <th scope="col" className="format-header">
+                <th scope='col' className='format-header'>
                   Date Added
                 </th>
-                <th scope="col" className="format-header"></th>
+                <th scope='col' className='format-header'></th>
               </tr>
             </thead>
             <tbody>
@@ -269,7 +262,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             </tbody>
           </table>
         </div>
-        <div className="DarkblockWidget-Footer">
+        <div className='DarkblockWidget-Footer'>
           Unlockable Content Powered by &nbsp;
           <StaticDBLogo />
           {config.debug && <p>state: {state.value}</p>}
