@@ -17,7 +17,7 @@ import {
   faCircleLeft,
   faCircleRight,
   faEllipsisVertical,
-  faInfo,
+  faCircleInfo,
   faDownload,
   faUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons"
@@ -49,7 +49,7 @@ const RenderIcon = ({ filetype }) => {
   if (filetype.indexOf("circleLeft") > -1) icon = faCircleLeft
   if (filetype.indexOf("circleRight") > -1) icon = faCircleRight
   if (filetype.indexOf("ellipsisVertical") > -1) icon = faEllipsisVertical
-  if (filetype.indexOf("info") > -1) icon = faInfo
+  if (filetype.indexOf("info") > -1) icon = faCircleInfo
   if (filetype.indexOf("download") > -1) icon = faDownload
   if (filetype.indexOf("upRightFromSquare") > -1) icon = faUpRightFromSquare
 
@@ -79,16 +79,14 @@ const RowContent = ({
   //elliptical pop up
   const [showPopup, setShowPopup] = useState(false)
 
-  const onClick = () => {
-    setShowPopup(!showPopup)
-  }
+
 
   return (
     <>
       <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
         <td className='name' onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
-          <span>{`${counter} ${truncatedName}`}</span>
+          <span className='name'>{`${counter} ${truncatedName}`}</span>
         </td>
         <td className='size' onClick={fn}>
           {db.fileSize}
@@ -106,10 +104,10 @@ const RowContent = ({
           </div>
           <div className='dropdownContent'>
             <a className='boxMenu' onClick={() => setShowDetailModal(true)}>
-              <span>
+              <span className='icons'>
                 <RenderIcon filetype={"info"} />
               </span>
-              Details
+             <span className="placeHolder">Details</span>
             </a>
             <a
               className={`boxMenu ${!isDownloadable ? "cursor-not-allowed text-gray-300" : ""}`}
@@ -124,11 +122,11 @@ const RowContent = ({
               <span>
                 <RenderIcon filetype={"download"} />
               </span>
-              Download
+              <span className="placeHolder">Download</span>
             </a>
             <a target='_blank' rel='noreferrer' className='boxMenu' href={db.arweaveTXLink}>
               <RenderIcon filetype={"upRightFromSquare"} />
-              Arweave
+              <span className="  ">Arweave</span>
             </a>
           </div>
         </td>
