@@ -220,6 +220,7 @@ const widget = (stateval) => {
 }
 
 const states = [
+  "no_wallet",
   "idle",
   "loading_arweave",
   "started",
