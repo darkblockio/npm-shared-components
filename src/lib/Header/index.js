@@ -27,12 +27,15 @@ const setHeader = (title, text, red = false, authenticate = null) => {
 }
 
 const Header = ({ state = null, authenticate }) => {
+  if (state.value === "no_wallet") {
+    return setHeader("No wallet connected", "Please connect a wallet to view Darkblock unlockable content.")
+  }
   if (state.value === "idle" || state.value === "loading_arweave") {
     return setHeader("", "")
   }
 
   if (state.value === "start_failure") {
-    return setHeader("No Darkblock Detected", "")
+    return setHeader("An Error Ocurred", "Please try again.")
   }
 
   if (state.value === "auth_failure" || state.value === "auth_cancel") {
@@ -45,10 +48,7 @@ const Header = ({ state = null, authenticate }) => {
   }
 
   if (state.value === "started") {
-    return setHeader(
-      "Darkblock Unlockable Content",
-      "This NFT has unlockable content which only the owner can access. Please connect your wallet."
-    )
+    return setHeader("Darkblock Content", "This NFT has unlockable content which only the owner can access.")
   }
 
   if (state.value === "signing") {
@@ -57,7 +57,7 @@ const Header = ({ state = null, authenticate }) => {
 
   if (state.value === "wallet_connected") {
     return setHeader(
-      "Darkblock Unlockable Content",
+      "Darkblock Content",
       "This NFT has unlockable content which only the owner can access.",
       false,
       authenticate
@@ -65,10 +65,10 @@ const Header = ({ state = null, authenticate }) => {
   }
 
   if (state.value === "authenticated" || state.value === "decrypting" || state.value === "display") {
-    return setHeader("Ownership Authenticated", "Decrypting Darkblock...")
+    return setHeader("Ownership Authenticated", "Decrypting...")
   }
 
-  return setHeader("Error", "The widget went into an error state", true)
+  return setHeader("An Error Ocurred", "Please try again.", true)
 }
 
 export default Header
