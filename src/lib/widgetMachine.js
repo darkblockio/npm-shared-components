@@ -46,6 +46,7 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
           FETCH_ARWEAVE: {
             target: "loading_arweave",
           },
+          NO_WALLET: {},
         },
       },
       loading_arweave: {
