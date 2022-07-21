@@ -23,37 +23,40 @@
 }
 
 .DarkblockWidget-Stack-Panel .name {
-  @apply flex flex-row items-center;
+  @apply flex flex-row items-center mt-4;
 }
 
 .DarkblockWidget-Stack-Panel .dbdata .name {
-  @apply whitespace-nowrap truncate py-3  text-xs md:text-sm pl-2;
+  @apply truncate pb-0 text-base md:text-sm pl-2;
 }
 
 .DarkblockWidget-Stack-Panel span {
   @apply ml-0 py-0 pt-2;
 }
 
-.DarkblockWidget-Stack-Panel .dbdata .name span {
-  @apply truncate;
+.DarkblockWidget-Stack-Panel .size {
+  @apply whitespace-nowrap py-2 pr-3 text-sm md:text-sm pl-2;
 }
 
-.DarkblockWidget-Stack-Panel .dbdata .size {
-  @apply whitespace-nowrap py-2 pr-3 text-xs md:text-sm pl-2;
-}
 .DarkblockWidget-Stack-Panel .icon {
-  @apply pt-1 py-3;
+  @apply pt-2 py-3;
 }
 
 .DarkblockWidget-Stack-Panel .dbdata .date .pulldown {
-  @apply whitespace-nowrap py-2 text-xs md:text-sm pl-2;
+  @apply whitespace-nowrap py-2 text-sm md:text-sm pl-2;
+}
+
+.date {
+  @apply text-sm;
 }
 
 .DarkblockWidget-Stack-Panel .boxMenu {
-  @apply flex flex-row pl-1 items-center left-0;
+  @apply flex flex-row pl-1 items-center;
 }
 
-
+.DarkblockWidget-Stack-Panel .dbdata {
+  @apply max-h-[11px];
+}
 .DarkblockWidget-Stack-Panel .dbdataSelected {
   @apply bg-gray-300;
 }
@@ -62,7 +65,7 @@
   @apply border-t border-gray-300 hover:bg-gray-200 cursor-pointer;
 }
 
-.DarkblockWidget-Stack-Panel .details .more {
+.DarkblockWidget-Stack-Panel .details {
   @apply flex flex-wrap border-b border-gray-300 py-4;
 }
 
@@ -91,19 +94,24 @@
 }
 
 .DarkblockWidget-Stack-Panel .rowheader .name-header {
-  @apply py-3.5 pl-2 pr-3 text-left text-sm;
+  @apply py-3.5 pl-2 pr-3 text-left text-[13px];
 }
 
 .DarkblockWidget-Stack-Panel .rowheader .format-header {
-  @apply px-2 py-3.5 text-left text-sm;
+  @apply px-2 py-3.5 text-left text-[13px] pl-0;
 }
 
 .DarkblockWidget-Stack-Panel .rowheader .date-header {
-  @apply px-2 py-3.5 text-left text-sm;
+  @apply px-2 py-3 text-left text-[13px];
 }
+/* S */
 
 .DarkblockWidget-Stack-Panel .row .name {
-  @apply whitespace-nowrap py-2 pr-3 text-sm pl-2;
+  @apply whitespace-nowrap py-2 pr-3 md:w-[30px];
+}
+
+.DarkblockWidget-Stack-Panel .name {
+  @apply text-base pl-1;
 }
 
 .DarkblockWidget-Stack-Panel .row .format {
@@ -135,13 +143,16 @@
 .DarkblockWidget-Stack-Panel .dropdownContent .dropbtn {
   @apply text-black py-4 px-5 decoration-0 block;
 }
+.boxMenu {
+  @apply flex flex-row items-center w-full pr-40;
+}
 
 .dropdownContent .boxMenu {
-  @apply bottom-0 left-0 h-16 w-16;
+  @apply h-16 w-16 rounded  pb-1;
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent {
-  @apply bg-gray-100 z-50 right-[5%];
+  @apply bg-gray-100 z-50  rounded right-[18%] top-[40px];
 }
 .boxMenu:hover {
   @apply bg-gray-300 w-full;
@@ -176,6 +187,20 @@
   background: #c0a0b9;
 }
 
+@media screen and (max-width: 400px) {
+  .size {
+    display: none;
+  }
+  .date {
+    display: none;
+  }
+  .format-header {
+    display: none;
+  }
+
+
+}
+
 .detail-subtitle {
   @apply text-base mt-6 font-bold;
 }
@@ -185,54 +210,53 @@
 }
 
 .button-container {
-  @apply float-right mt-4
+  @apply float-right mt-4;
 }
 
 .done-button {
-  @apply bg-gray-800 text-white rounded-lg p-2 w-20 m-4 mt-6
+  @apply bg-gray-800 text-white rounded-lg p-2 w-20 m-4 mt-6;
 }
 
 /* it contains details title and the X button*/
-.modal-first-row{
-  @apply flex justify-between
+.modal-first-row {
+  @apply flex justify-between;
 }
 
-.modal-first-row-container{
-  @apply flex
+.modal-first-row-container {
+  @apply flex;
 }
 
-.modal-title{
-  @apply flex justify-center items-center font-bold
+.modal-title {
+  @apply flex justify-center items-center font-bold;
 }
-.detail-darkblock-name{
-  @apply text-xl font-bold
-}
-
-.detail-darkblock-detail{
-  @apply mt-8 text-sm text-gray-500 max-w-lg
+.detail-darkblock-name {
+  @apply text-xl font-bold;
 }
 
-#modal-bg{
-  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-70
+.detail-darkblock-detail {
+  @apply mt-8 text-sm text-gray-500 max-w-lg;
 }
 
-#modal-box{
-  @apply max-w-3xl px-6 py-4 text-left bg-white rounded shadow-lg mx-8
+#modal-bg {
+  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-70;
 }
 
-.modal-box-container{
-  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-70
+#modal-box {
+  @apply max-w-3xl px-6 py-4 text-left bg-white rounded shadow-lg mx-8;
 }
 
-.modal-container{
-  @apply flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 m-4 outline-none focus:outline-none
+.modal-box-container {
+  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-70;
 }
 
-.detail-container{
-  @apply px-2 block w-4/5
+.modal-container {
+  @apply flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 m-4 outline-none focus:outline-none;
 }
 
-.cross-button{
-  @apply w-6 h-6 justify-end cursor-pointer
+.detail-container {
+  @apply px-2 block w-4/5;
 }
 
+.cross-button {
+  @apply w-6 h-6 justify-end cursor-pointer;
+}
