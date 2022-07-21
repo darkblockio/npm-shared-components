@@ -196,7 +196,9 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
     mediaSrc.type = "video"
     return (
       <div className="videoPlayer">
-        <Plyr source={mediaSrc} loop />
+        <div className="videoPlayer-safeZone" >
+          <Plyr source={mediaSrc} loop />
+        </div>
       </div>
     )
   }
