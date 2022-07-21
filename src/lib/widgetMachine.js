@@ -40,11 +40,7 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
       platform,
     },
     states: {
-      no_wallet: {
-        on: {
-          RETRY: "idle",
-        },
-      },
+      no_wallet: {},
       idle: {
         on: {
           FETCH_ARWEAVE: {
