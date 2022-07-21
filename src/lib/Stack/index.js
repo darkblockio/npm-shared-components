@@ -86,7 +86,7 @@ const RowContent = ({
       <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
         <td className='name' onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
-          <span className='name'>{`${counter} ${truncatedName}`}</span>
+          <span >{`${counter} ${truncatedName}`}</span>
         </td>
         <td className='size' onClick={fn}>
           {db.fileSize}
