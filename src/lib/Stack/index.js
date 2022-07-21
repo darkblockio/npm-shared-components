@@ -184,7 +184,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           <div className="text-white bg-black text-center">
             <div>{selected.db.name}</div>
             <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
-            <div className="fa-2xl pt-3 pb-3">
+            <div className="fa-2xl pt-3 pb-3 mt-6">
               {selected.i > 0 && (
                 <button onClick={() => previousDb()} className="icon">
                   <RenderIcon filetype={"circleLeft"} />

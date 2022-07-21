@@ -1,25 +1,26 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClose } from "@fortawesome/free-solid-svg-icons"
+import './playerModal.css'
 
 const PlayerModal = ({ children, open, onClose }) => {
   return (
     <>
       {open ? (
         <>
-          <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-10 m-4 outline-none focus:outline-none">
+          <div className="container">
             <div
               id="modal-bg"
-              className="fixed inset-0 z-9998 items-center justify-center overflow-auto bg-black bg-opacity-90"
+              className="modal-bg"
             >
               <div id="modal-box">
                 <div
-                  className="cursor-pointer z-9997 text-white bg-black text-right pr-5"
+                  className="modal-box"
                   onClick={() => onClose(true)}
                 >
-                  <FontAwesomeIcon icon={faClose} className="awesome" /> Close
+                  <FontAwesomeIcon icon={faClose} className="awesome" />
                 </div>
-                <div className="mx-auto block w-screen h-full">{children}</div>
+                <div className="content">{children}</div>
               </div>
             </div>
           </div>
