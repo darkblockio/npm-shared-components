@@ -1,33 +1,40 @@
 .DarkblockWidget-Player {
-  @apply mb-2 bg-gray-200 h-64 md:h-72 lg:h-96 rounded;
+  @apply  bg-gray-200 rounded m-auto;
+  height: 74vh;
+  width: 90%;
 }
 
 .DarkblockWidget-Player .zip-panel {
   @apply text-center sm:p-4 sm:my-2 pb-4;
+  height: 70vh;
 }
 
 .DarkblockWidget-Player-Content {
-  @apply object-cover h-64 md:h-72 lg:h-96;
+  @apply object-cover mt-2;
+  height: 74vh;
 }
 
 .DarkblockWidget-Player-Content #seadragon-viewer {
-  @apply h-64 md:h-72 lg:h-96;
+  height: 74vh;
 }
 
 .DarkblockWidget-Player-Content iframe {
-  @apply w-full h-64 md:h-72 lg:h-96;
+  @apply w-full h-96 sm:mt-20 sm:h-[30rem] md:h-[38rem] lg:h-[40rem] xl:h-[44rem];
+  height: 74vh
 }
 
 .DarkblockWidget-Player-Content model-viewer {
-  @apply h-64 md:h-72 lg:h-96 w-full;
+  @apply h-96 sm:mt-20 sm:h-[30rem] md:h-[38rem] lg:h-[40rem] w-full xl:h-[44rem];
+  height: 74vh
 }
 
 .DarkblockWidget-Player-Content .buffer {
-  @apply h-24 md:h-28 lg:h-44;
+  @apply h-24 md:h-28 lg:h-44 ;
 }
 
 .DarkblockWidget-Player-Content .videoPlayer .plyr {
-  @apply object-cover w-full h-64 md:h-72 lg:h-96;
+  @apply object-cover w-full ;
+  height: 74vh
 }
 
 .DarkblockWidget-Player-Content .audioPlayer {

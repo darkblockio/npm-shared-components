@@ -2,12 +2,12 @@
  @apply flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-10 m-4 outline-none focus:outline-none;
 }
 
-.modal-bg{
+.modal-bg-darkblock{
  @apply fixed inset-0  items-center  justify-center overflow-auto bg-black bg-opacity-90
 }
 
-.modal-box {
- @apply cursor-pointer text-white w-60 sm:w-80 md:w-[40rem] lg:w-[45rem] h-3/4 bg-black text-right pr-5;
+.modal-box-darkblock {
+ @apply cursor-pointer text-white h-3/4 bg-black text-right pr-5;
 }
 
 .content{
