@@ -1,5 +1,5 @@
 .DarkblockWidget-Stack-Panel {
-  @apply flex-grow py-0 h-72 md:h-72 lg:h-80  overflow-y-scroll;
+  @apply flex-grow py-0 h-72 md:h-72 lg:h-80 overflow-y-scroll;
 }
 
 .DarkblockWidget-Stack-Panel .stack-table {
@@ -59,7 +59,7 @@ td {
 }
 
 .DarkblockWidget-Stack-Panel .dbdataSelected {
-  @apply bg-gray-300 h-[0px] mb-[0px];
+  @apply bg-gray-300 ;
 }
 
 .DarkblockWidget-Stack-Panel .details {
@@ -142,7 +142,7 @@ td {
 
 /* The container <div> - needed to position the dropdown content */
 .DarkblockWidget-Stack-Panel .dropdown {
-  @apply relative inline-block;
+  @apply relative ;
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent {

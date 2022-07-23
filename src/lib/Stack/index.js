@@ -100,7 +100,7 @@ const RowContent = ({
           })}
         </td>
         {/* dropdown popout box begins------------------------- */}
-        <div className='dropdown'>
+        <td className='dropdown'>
           <div className='dropbtn'>
             <RenderIcon filetype={"ellipsisVertical"} />
           </div>
@@ -134,7 +134,7 @@ const RowContent = ({
             </a>
           </div>
           {/*drop down ends*/}
-        </div>
+        </td>
       </tr>
       <DetailModal db={db} open={showDetailModal} onClose={() => setShowDetailModal(false)} />
     </>
