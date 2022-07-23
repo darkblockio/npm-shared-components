@@ -21,6 +21,8 @@ import {
   faDownload,
   faUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons"
+import { IoFilter } from "react-icons/io5"
+import {BiDownArrowAlt} from "react-icons/bi"
 import Player from "../Player"
 import Header from "../Header"
 import { downloadFile } from "../utils"
@@ -72,6 +74,7 @@ const RowContent = ({
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
   let truncatedName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
+
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
   const isRowActive = selected.i === index
   const [showDetailModal, setShowDetailModal] = useState(false)
@@ -79,14 +82,12 @@ const RowContent = ({
   //elliptical pop up
   const [showPopup, setShowPopup] = useState(false)
 
-
-
   return (
     <>
       <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
         <td className='name' onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
-          <span >{`${counter} ${truncatedName}`}</span>
+          <span>{`${counter} ${truncatedName}`}</span>
         </td>
         <td className='size' onClick={fn}>
           {db.fileSize}
@@ -98,7 +99,8 @@ const RowContent = ({
             day: "numeric",
           })}
         </td>
-        <td className='dropdown'>
+        {/* dropdown popout box begins------------------------- */}
+        <div className='dropdown'>
           <div className='dropbtn'>
             <RenderIcon filetype={"ellipsisVertical"} />
           </div>
@@ -107,7 +109,7 @@ const RowContent = ({
               <span className='icons'>
                 <RenderIcon filetype={"info"} />
               </span>
-             <span className="placeHolder">Details</span>
+              <span className='placeHolder'>Details</span>
             </a>
             <a
               className={`boxMenu ${!isDownloadable ? "cursor-not-allowed text-gray-300" : ""}`}
@@ -119,17 +121,20 @@ const RowContent = ({
                 }
               }}
             >
-              <span>
+              <span className='icons'>
                 <RenderIcon filetype={"download"} />
               </span>
-              <span className="placeHolder">Download</span>
+              <span className='placeHolder'>Download</span>
             </a>
             <a target='_blank' rel='noreferrer' className='boxMenu' href={db.arweaveTXLink}>
-              <RenderIcon filetype={"upRightFromSquare"} />
-              <span className="  ">Arweave</span>
+              <span className='icons'>
+                <RenderIcon filetype={"upRightFromSquare"} />
+              </span>
+              <span className='placeHolder'>Arweave</span>
             </a>
           </div>
-        </td>
+          {/*drop down ends*/}
+        </div>
       </tr>
       <DetailModal db={db} open={showDetailModal} onClose={() => setShowDetailModal(false)} />
     </>
@@ -218,10 +223,12 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                 <th scope='col' className='format-header'>
                   File Size
                 </th>
-                <th scope='col' className='format-header'>
-                  Date Added
+                <th scope='col' className='format-date'>
+                  Date Added<BiDownArrowAlt />
                 </th>
-                <th scope='col' className='format-header'></th>
+                <th scope='col' className='format-icon'>
+                  <IoFilter />
+                </th>
               </tr>
             </thead>
             <tbody>

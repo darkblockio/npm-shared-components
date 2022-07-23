@@ -101,6 +101,14 @@
   @apply px-2 py-3.5 text-left text-[13px] pl-0;
 }
 
+.format-icon{
+  @apply font-bold h-4 w-4;
+}
+
+.format-date{
+  @apply flex items-center py-3.5 text-left text-[13px] pl-0 px-2;
+}
+
 .DarkblockWidget-Stack-Panel .rowheader .date-header {
   @apply px-2 py-3 text-left text-[13px];
 }
@@ -119,8 +127,23 @@
 }
 
 .DarkblockWidget-Stack-Panel .row .date {
-  @apply hidden sm:table-cell whitespace-nowrap px-3 py-2 text-sm text-gray-500;
+  @apply hidden sm:table-cell  whitespace-nowrap px-3 py-2 text-sm text-gray-500;
 }
+/*hiding info on responsive */
+.DarkblockWidget-Stack-Panel .date {
+  @apply hidden sm:table-cell;
+}
+.DarkblockWidget-Stack-Panel .size {
+  @apply hidden sm:table-cell;
+}
+.DarkblockWidget-Stack-Panel .format-header {
+  @apply hidden sm:table-cell;
+}
+
+.DarkblockWidget-Stack-Panel .name {
+  @apply sm:truncate sm:text-clip sm:w-[250px] sm:p-0;
+}
+/*------------end responsive */
 
 .DarkblockWidget-Stack-Panel .fileRow:hover {
   @apply bg-gray-200;
@@ -148,12 +171,16 @@
 }
 
 .dropdownContent .boxMenu {
-  @apply h-16 w-16 rounded  pb-1;
+  @apply h-16 w-16 rounded  pb-1 ;
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent {
-  @apply bg-gray-100 z-50  rounded right-[18%] top-[40px];
+  @apply bg-white z-50 shadow-xl shadow-gray-300 rounded right-[18%] top-[40px];
 }
+
+ .icons:hover {
+  @apply rotate-45;
+ }
 .boxMenu:hover {
   @apply bg-gray-300 w-full;
 }
@@ -162,7 +189,6 @@
   @apply block;
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
 .DarkblockWidget-Stack-Panel .dropdown:hover .dropbtn .boxMenu:hover {
   @apply bg-gray-200;
 }
@@ -187,19 +213,25 @@
   background: #c0a0b9;
 }
 
-@media screen and (max-width: 400px) {
-  .size {
-    display: none;
+/*Responsive pop out box*/
+@media screen and (max-width: 640px) {
+  .name {
+    width: 50%;
   }
-  .date {
-    display: none;
+  .dropbtn {
+    margin-left: 800%;
+    height: 25px;
+    margin-bottom: 20px;
+    padding: 0;
   }
-  .format-header {
-    display: none;
+  .dbdata .dbdataSelected {
+    height: 600px;
   }
-
-
+  .DarkblockWidget-Stack-Panel {
+    height: 600px;
+  }
 }
+
 
 .detail-subtitle {
   @apply text-base mt-6 font-bold;
