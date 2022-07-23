@@ -45,3 +45,7 @@
 .DarkblockWidget-Player .zip-panel svg {
   @apply h-6 w-6 mx-auto;
 }
+
+.videoPlayer-safeZone{
+  @apply py-8 bg-black;
+}

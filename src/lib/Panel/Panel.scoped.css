@@ -1,6 +1,7 @@
-/*.DarkblockWidget-Main {
-  padding-top: 24px;
-}*/
+.DarkblockWidget-Main {
+  padding-top: 72px;
+}
+
 .DarkblockWidget-Main .simple-text {
   color: #fff;
 }

@@ -55,7 +55,7 @@ const RenderIcon = ({ filetype }) => {
   if (filetype.indexOf("download") > -1) icon = faDownload
   if (filetype.indexOf("upRightFromSquare") > -1) icon = faUpRightFromSquare
 
-  return <FontAwesomeIcon icon={icon} className='awesome' />
+  return <FontAwesomeIcon icon={icon} className="awesome" />
 }
 
 const RowContent = ({
@@ -85,14 +85,14 @@ const RowContent = ({
   return (
     <>
       <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
-        <td className='name' onClick={fn}>
+        <td className="name" onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
           <span>{`${counter} ${truncatedName}`}</span>
         </td>
-        <td className='size' onClick={fn}>
+        <td className="size" onClick={fn}>
           {db.fileSize}
         </td>
-        <td className='date' onClick={fn}>
+        <td className="date" onClick={fn}>
           {d.toLocaleString([], {
             year: "numeric",
             month: "numeric",
@@ -104,9 +104,9 @@ const RowContent = ({
           <div className='dropbtn'>
             <RenderIcon filetype={"ellipsisVertical"} />
           </div>
-          <div className='dropdownContent'>
-            <a className='boxMenu' onClick={() => setShowDetailModal(true)}>
-              <span className='icons'>
+          <div className="dropdownContent">
+            <a className="boxMenu" onClick={() => setShowDetailModal(true)}>
+              <span className="icons">
                 <RenderIcon filetype={"info"} />
               </span>
               <span className='placeHolder'>Details</span>
@@ -188,17 +188,17 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     <>
       <PlayerModal showModal={showModal} open={showModal} onClose={() => setShowModal(false)}>
         {state.value === "display" && selected && !swapping && (
-          <div className='text-white bg-black text-center'>
+          <div className="text-white bg-black text-center">
             <div>{selected.db.name}</div>
             <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
-            <div className='fa-2xl pt-3 pb-3'>
+            <div className="fa-2xl pt-3 pb-3 mt-6">
               {selected.i > 0 && (
-                <button onClick={() => previousDb()} className='icon'>
+                <button onClick={() => previousDb()} className="icon">
                   <RenderIcon filetype={"circleLeft"} />
                 </button>
               )}
               {selected.i + 1 !== state.context.display.stack.length && (
-                <button onClick={() => nextDb()} className='icon'>
+                <button onClick={() => nextDb()} className="icon">
                   <RenderIcon filetype={"circleRight"} />
                 </button>
               )}
@@ -213,6 +213,12 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         ) : (
           <Header state={state} authenticate={() => authenticate()} />
         )}
+     {state.value !== "no_wallet" &&
+     state.value !== "idle" &&
+     state.value !== "loading_arweave" &&
+     state.value !== "started" &&
+     state.value !== "start_failure" && (
+      <>
         <div className='DarkblockWidget-Stack-Panel'>
           <table className='stack-table'>
             <thead className=''>
@@ -272,6 +278,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           <StaticDBLogo />
           {config.debug && <p>state: {state.value}</p>}
         </div>
+        </>
+     )}
       </div>
     </>
   )
