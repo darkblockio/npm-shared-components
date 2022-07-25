@@ -10,15 +10,15 @@ const PlayerModal = ({ children, open, onClose }) => {
         <>
           <div className="container">
             <div
-              id="modal-bg"
-              className="modal-bg"
+              id="modal-bg-darkblock"
+              className="modal-bg-darkblock"
             >
-              <div id="modal-box">
+              <div id="modal-box-darkblock">
                 <div
-                  className="modal-box"
+                  className="modal-box-darkblock"
                   onClick={() => onClose(true)}
                 >
-                  <FontAwesomeIcon icon={faClose} className="awesome" />
+                  <FontAwesomeIcon icon={faClose} className="awesome absolute float-right" />
                 </div>
                 <div className="content">{children}</div>
               </div>

@@ -238,7 +238,7 @@
 }
 
 #modal-bg {
-  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-70;
+  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-90;
 }
 
 #modal-box {
