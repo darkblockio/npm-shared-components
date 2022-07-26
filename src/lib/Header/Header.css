@@ -1,5 +1,5 @@
 .DarkblockWidget-Header {
-  @apply items-center text-left p-4 my-2 bg-gray-200 h-40 sm:h-20 rounded;
+  @apply flex items-center text-left p-4 my-2 bg-gray-200 h-40 sm:h-20 rounded;
 }
 
 .DarkblockWidget-Header-Row {
@@ -7,7 +7,7 @@
 }
 
 .DarkblockWidget-Header-Row > .logo {
-  @apply flex-none w-8 h-8 text-sm font-bold self-center;
+  @apply flex-none w-7 h-7 text-sm font-semibold self-center;
 }
 
 .Darkblock-Icon {
@@ -19,15 +19,16 @@
 }
 
 .titleStack > .title {
-  @apply flex-auto text-sm font-bold;
+  @apply flex-auto leading-5 text-base font-semibold;
 }
 
 .titleStack > .title-red {
-  @apply flex-auto text-sm font-bold text-black mt-2;
+  @apply flex flex-auto text-base leading-5 font-semibold text-black 
 }
 
+
 .titleStack > .content {
-  @apply flex-auto text-xs font-normal;
+  @apply flex-auto text-sm font-normal;
 }
 
 .DarkblockWidget-Header-Row > .authButton {
