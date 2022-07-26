@@ -31,7 +31,7 @@
  
 /*inside table */
 .DarkblockWidget-Stack-Panel .awesome {
-  @apply h-4 w-4 rounded p-2 mt-1 mr-2 text-gray-900 bg-gray-100;
+  @apply h-4 w-4 rounded p-2 mr-2 text-gray-900 bg-gray-100;
 }
 
 .format-icon {
@@ -43,7 +43,7 @@
 }
 
 .DarkblockWidget-Stack-Panel .row .name {
-  @apply whitespace-nowrap py-2 pr-3  sm:w-[30px];
+  @apply whitespace-nowrap sm:w-[30px];
 }
 
 .DarkblockWidget-Stack-Panel .name {
@@ -68,23 +68,14 @@
 }
 
 .DarkblockWidget-Stack-Panel .dbdata .name {
-  @apply truncate md:text-sm pl-2;
+  @apply truncate pl-2;
 }
-
-.DarkblockWidget-Stack-Panel span {
-  @apply text-[16px];
-}
-
 
 .DarkblockWidget-Stack-Panel .size {
   @apply whitespace-nowrap pr-3 text-base;
 }
 td {
-  @apply h-[42px];
-}
-
-.DarkblockWidget-Stack-Panel .icon {
-  @apply pt-2 py-3 ;
+  @apply h-[48px];
 }
 
 /*pulldown is an invisible space to help align the date with header Date Added*/
@@ -102,7 +93,7 @@ td {
 }
 
 .DarkblockWidget-Stack-Panel .details {
-  @apply flex flex-wrap border-b border-gray-300 py-4  border-gray-300 hover:bg-gray-200 cursor-pointer;
+  @apply flex flex-wrap border-b border-gray-300 py-4 border-gray-300 hover:bg-gray-200 cursor-pointer;
 }
 
 .DarkblockWidget-Stack-Panel .ellIcon {
