@@ -153,9 +153,6 @@ td {
   @apply rotate-45;
 }
 
- .icons:hover {
-  @apply rotate-45;
- }
 .boxMenu:hover {
   @apply bg-gray-100 w-full;
 }
