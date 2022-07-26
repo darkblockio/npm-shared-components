@@ -1,3 +1,5 @@
+
+/*whole component*/
 .DarkblockWidget-Stack-Panel {
   @apply flex-grow py-0 h-72 md:h-72 lg:h-80 overflow-y-scroll;
 }
@@ -18,8 +20,47 @@
   @apply font-bold;
 }
 
+/*Header info*/
+.DarkblockWidget-Stack-Panel .rowheader .name-header {
+  @apply py-3.5 pl-2 pr-3 text-left text-[13px];
+}
+
+.DarkblockWidget-Stack-Panel .rowheader .format-header {
+  @apply px-2 py-3.5 text-left text-[13px] pl-0;
+}
+ 
+/*inside table */
+.DarkblockWidget-Stack-Panel .awesome {
+  @apply h-4 w-4 rounded p-2 mt-1 mr-2 text-gray-900 bg-gray-100;
+}
+
+.format-icon {
+  @apply font-bold pl-2 h-4 w-4;
+}
+
+.format-date {
+  @apply flex items-center hidden sm:flex pt-3.5 text-left text-[13px] pl-0 px-2;
+}
+
+.DarkblockWidget-Stack-Panel .row .name {
+  @apply whitespace-nowrap py-2 pr-3  sm:w-[30px];
+}
+
+.DarkblockWidget-Stack-Panel .name {
+  @apply text-[16px];
+}
+
+.DarkblockWidget-Stack-Panel .row .date {
+  @apply hidden sm:table-cell  whitespace-nowrap  py-2 text-sm text-gray-500;
+}
+
 .DarkblockWidget-Stack-Panel .dbdata {
-  @apply border-gray-300 hover:bg-gray-200 cursor-pointer;
+  @apply border-gray-300 hover:bg-gray-100 cursor-pointer;
+}
+
+/*on select after coming back from modal*/
+.DarkblockWidget-Stack-Panel .dbdataSelected {
+  @apply bg-gray-200;
 }
 
 .DarkblockWidget-Stack-Panel .name {
@@ -31,7 +72,7 @@
 }
 
 .DarkblockWidget-Stack-Panel span {
-  @apply pt-2 text-[16px];
+  @apply text-[16px];
 }
 
 
@@ -39,13 +80,14 @@
   @apply whitespace-nowrap pr-3 text-sm md:text-sm pl-2;
 }
 td {
-  @apply h-[42px]
+  @apply h-[42px];
 }
 
 .DarkblockWidget-Stack-Panel .icon {
   @apply pt-2 py-3 ;
 }
 
+/*pulldown is an invisible space to help align the date with header Date Added*/
 .DarkblockWidget-Stack-Panel .dbdata .date .pulldown {
   @apply whitespace-nowrap text-sm md:text-sm pl-2;
 }
@@ -54,24 +96,17 @@ td {
   @apply text-sm;
 }
 
+/*beginning of dropdown box on ellipsis */
 .DarkblockWidget-Stack-Panel .boxMenu {
   @apply flex flex-row pl-1 items-center;
 }
 
-.DarkblockWidget-Stack-Panel .dbdataSelected {
-  @apply bg-gray-300 ;
-}
-
 .DarkblockWidget-Stack-Panel .details {
-  @apply  border-gray-300 hover:bg-gray-200 cursor-pointer;
+  @apply flex flex-wrap border-b border-gray-300 py-4  border-gray-300 hover:bg-gray-200 cursor-pointer;
 }
 
-.DarkblockWidget-Stack-Panel .details {
-  @apply flex flex-wrap border-b border-gray-300 py-4;
-}
-
-.DarkblockWidget-Stack-Panel .awesome {
-  @apply h-4 w-4 rounded p-2 mt-1 mr-2 text-gray-900 bg-gray-100;
+.DarkblockWidget-Stack-Panel .ellIcon {
+  @apply h-4 w-4 rounded p-2 mt-1 mr-2 text-gray-900;
 }
 
 .DarkblockWidget-Stack-Panel button.download {
@@ -82,103 +117,69 @@ td {
   @apply w-full px-4 text-xs md:text-sm bg-gray-100;
 }
 
-.DarkblockWidget-Stack-Panel .rowheader .name-header {
-  @apply py-3.5 pl-2 pr-3 text-left text-[13px];
-}
 
-.DarkblockWidget-Stack-Panel .rowheader .format-header {
-  @apply px-2 py-3.5 text-left text-[13px] pl-0;
-}
 
-.format-icon{
-  @apply font-bold h-4 w-4;
-}
-
-.format-date{
-  @apply flex items-center hidden sm:flex pt-3.5 text-left text-[13px] pl-0 px-2;
-}
-
-  
-
-.DarkblockWidget-Stack-Panel .row .name {
-  @apply whitespace-nowrap py-2 pr-3 sm:w-[30px];
-}
-
-.DarkblockWidget-Stack-Panel .name {
-  @apply  pl-1 text-[16px];
-}
-
-/* .DarkblockWidget-Stack-Panel .row .format {
-  @apply hidden sm:table-cell whitespace-nowrap px-3 text-sm text-gray-500;
-} */
-
-.DarkblockWidget-Stack-Panel .row .date {
-  @apply hidden sm:table-cell  whitespace-nowrap px-3 py-2 text-sm text-gray-500;
-}
-/*hiding info on responsive */
-.DarkblockWidget-Stack-Panel .date {
-  @apply hidden sm:table-cell;
-}
-.DarkblockWidget-Stack-Panel .size {
-  @apply hidden sm:table-cell ;
-}
-.DarkblockWidget-Stack-Panel .format-header {
-  @apply hidden sm:table-cell;
-}
-
-.DarkblockWidget-Stack-Panel .name {
-  @apply sm:truncate sm:text-clip sm:w-[250px] sm:p-0;
-}
-/*------------end responsive */
-
-.DarkblockWidget-Stack-Panel .fileRow:hover {
-  @apply bg-gray-200;
-}
 
 /*Dropdown Button*/
 .DarkblockWidget-Stack-Panel .dropbtn {
-  @apply text-gray-900 rounded text-sm mb-1;
+  @apply text-gray-900 rounded text-sm mb-[1px] bg-none;
 }
 
-/* The container <div> - needed to position the dropdown content */
+/*position the dropdown content */
 .DarkblockWidget-Stack-Panel .dropdown {
-  @apply relative ;
+  @apply relative;
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent {
-  @apply hidden absolute bg-gray-100 w-44;
+  @apply hidden absolute w-44;
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent .dropbtn {
-  @apply text-black decoration-0 ;
+  @apply text-black decoration-0;
 }
 .boxMenu {
   @apply flex flex-row items-center w-full pr-40;
 }
 
 .dropdownContent .boxMenu {
-  @apply h-16 w-16 rounded  pb-1 ;
+  @apply h-12 w-16 rounded  pb-1;
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent {
   @apply bg-white z-50 shadow-xl shadow-gray-300 rounded right-[18%] top-[40px];
 }
 
- .icons:hover {
+.icons:hover {
   @apply rotate-45;
- }
+}
+
 .boxMenu:hover {
-  @apply bg-gray-300 w-full;
+  @apply bg-gray-100 w-full;
 }
 /* Show the dropdown menu on hover */
 .DarkblockWidget-Stack-Panel .dropdown:hover .dropdownContent {
   @apply block;
 }
 
-.DarkblockWidget-Stack-Panel .dropdown:hover .dropbtn .boxMenu:hover {
-  @apply bg-gray-200;
+.DarkblockWidget-Stack-Panel .dropdown:hover {
+  @apply bg-gray-100;
 }
 
+/*hiding header and table info on responsive */
+.DarkblockWidget-Stack-Panel .date {
+  @apply hidden sm:table-cell;
+}
+.DarkblockWidget-Stack-Panel .size {
+  @apply hidden sm:table-cell;
+}
+.DarkblockWidget-Stack-Panel .format-header {
+  @apply hidden sm:table-cell;
+}
+.DarkblockWidget-Stack-Panel .name {
+  @apply sm:truncate sm:text-clip sm:w-[250px] sm:p-0;
+}
+
+/*player function */
 .scrollbar::-webkit-scrollbar {
   width: 20px;
   height: 20px;
@@ -198,7 +199,6 @@ td {
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background: #c0a0b9;
 }
-
 
 .detail-subtitle {
   @apply text-base mt-6 font-bold;
