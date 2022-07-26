@@ -47,7 +47,7 @@
 }
 
 .DarkblockWidget-Stack-Panel .name {
-  @apply text-[16px];
+  @apply text-base;
 }
 
 .DarkblockWidget-Stack-Panel .row .date {
@@ -77,7 +77,7 @@
 
 
 .DarkblockWidget-Stack-Panel .size {
-  @apply whitespace-nowrap pr-3 text-sm md:text-sm ;
+  @apply whitespace-nowrap pr-3 text-base;
 }
 td {
   @apply h-[42px];
@@ -89,11 +89,11 @@ td {
 
 /*pulldown is an invisible space to help align the date with header Date Added*/
 .DarkblockWidget-Stack-Panel .dbdata .date .pulldown {
-  @apply whitespace-nowrap text-sm md:text-sm pl-2;
+  @apply whitespace-nowrap text-base pl-2;
 }
 
 .date {
-  @apply text-sm;
+  @apply text-base;
 }
 
 /*beginning of dropdown box on ellipsis */
