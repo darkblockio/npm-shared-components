@@ -23,8 +23,9 @@
 }
 
 .titleStack > .title-red {
-  @apply flex-auto text-sm font-bold text-black mt-2;
+  @apply flex flex-auto text-base leading-5 font-semibold text-black 
 }
+
 
 .titleStack > .content {
   @apply flex-auto text-sm font-normal;
