@@ -75,6 +75,7 @@
   @apply text-[16px];
 }
 
+
 .DarkblockWidget-Stack-Panel .size {
   @apply whitespace-nowrap pr-3 text-sm md:text-sm pl-2;
 }
@@ -83,7 +84,7 @@ td {
 }
 
 .DarkblockWidget-Stack-Panel .icon {
-  @apply pt-2 py-3;
+  @apply pt-2 py-3 ;
 }
 
 /*pulldown is an invisible space to help align the date with header Date Added*/
@@ -151,6 +152,10 @@ td {
 .icons:hover {
   @apply rotate-45;
 }
+
+ .icons:hover {
+  @apply rotate-45;
+ }
 .boxMenu:hover {
   @apply bg-gray-100 w-full;
 }
@@ -235,7 +240,7 @@ td {
 }
 
 #modal-bg {
-  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-70;
+  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-90;
 }
 
 #modal-box {
