@@ -21,8 +21,7 @@ import {
   faDownload,
   faUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons"
-import { IoFilter } from "react-icons/io5"
-import { BiDownArrowAlt } from "react-icons/bi"
+
 import Player from "../Player"
 import Header from "../Header"
 import { downloadFile } from "../utils"
@@ -194,10 +193,10 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     <>
       <PlayerModal showModal={showModal} open={showModal} onClose={() => setShowModal(false)}>
         {state.value === "display" && selected && !swapping && (
-          <div className="text-white bg-black text-center">
-            <div className="mt-8">{selected.db.name}</div>
+          <div className='text-white bg-black text-center'>
+            <div className='mt-8'>{selected.db.name}</div>
             <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
-            <div className="fa-2xl pt-3 pb-3 mt-4">
+            <div className='fa-2xl pt-3 pb-3 mt-4'>
               {selected.i > 0 && (
                 <button onClick={() => previousDb()} className='icon'>
                   <RenderIcon filetype={"circleLeft"} />
@@ -237,11 +236,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                       </th>
                       <th scope='col' className='format-date'>
                         Date Added
-                        <BiDownArrowAlt />
                       </th>
-                      <th scope='col' className='format-icon'>
-                        <IoFilter />
-                      </th>
+                      <th scope='col' className='format-icon'></th>
                     </tr>
                   </thead>
                   <tbody>
