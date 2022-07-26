@@ -77,7 +77,7 @@
 
 
 .DarkblockWidget-Stack-Panel .size {
-  @apply whitespace-nowrap pr-3 text-sm md:text-sm pl-2;
+  @apply whitespace-nowrap pr-3 text-sm md:text-sm ;
 }
 td {
   @apply h-[42px];
