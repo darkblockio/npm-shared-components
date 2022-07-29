@@ -1,5 +1,5 @@
 .rowheader {
-  @apply fixed top-0 flex flex-grow left-0 right-0 whitespace-nowrap text-[13px] md:mt-3 font-semibold bg-white;
+  @apply fixed top-44 md:top-24 flex flex-grow left-0 right-0 whitespace-nowrap text-[13px] md:mt-3 font-semibold bg-white;
 }
 .name-header {
   @apply ml-7 sm:ml-8 md:ml-10 sm:w-[30px];
