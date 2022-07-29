@@ -23,13 +23,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 
 import Player from "../Player"
-import Header from "../Header"
+import Titles from '../Titles'
+import Header from '../Header'
 import { downloadFile } from "../utils"
 import "./Stack.css"
 import "../db.css"
 import StaticDBLogo from "../Panel/staticDBLogo"
 import PlayerModal from "../playerModal"
 import DetailModal from "./detailModal"
+
+
 
 const RenderIcon = ({ filetype }) => {
   let icon = faQuestionCircle
@@ -73,7 +76,7 @@ const RowContent = ({
   selected = false,
   index = 0,
 }) => {
-  const [showDetails, setShowDetails] = useState(false)
+  
 
   let fn = f && typeof f === "function" ? f : () => {}
   let d = new Date(0)
@@ -85,7 +88,14 @@ const RowContent = ({
   const [showDetailModal, setShowDetailModal] = useState(false)
   const isDownloadable = state && state === "display" && url && db.downloadable.toString().toLowerCase() === "true"
   //elliptical pop up
-  const [showPopup, setShowPopup] = useState(false)
+  const [showHeaderModal, setShowHeaderModal] = useState(false)
+  const [showModal, setShowModal] = useState(true)
+
+  const setModal = () => {
+    setShowModal(false)
+    console.log("hola")
+  }
+
 
   return (
     <>
@@ -150,7 +160,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [selected, setSelected] = useState()
   const [swapping, setSwapping] = useState(false)
   const [showModal, setShowModal] = useState(false)
-
+  const [showHeaderModal, setShowHeaderModal] = useState(false)
+  
   useEffect(() => {
     if (state.value === "display") {
       setSelected({
@@ -212,12 +223,14 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         )}
       </PlayerModal>
       <div className={config.customCssClass ? `DarkblockWidget-App ${config.customCssClass}` : `DarkblockWidget-App`}>
+      
         {state.value === "display" && selected && !swapping ? (
-          // <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
+         
           <div></div>
         ) : (
-          <Header state={state} authenticate={() => authenticate()} />
-        )}
+          <Header className="popHeader" open={showHeaderModal} onClose={() => setShowHeaderModal(false)} state={state} authenticate={() => authenticate()} />
+        )} 
+        
         {state.value !== "no_wallet" &&
           state.value !== "idle" &&
           state.value !== "loading_arweave" &&
@@ -226,20 +239,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             <>
               <div className='DarkblockWidget-Stack-Panel'>
                 <table className='stack-table'>
-                  <thead className=''>
-                    <tr className='rowheader'>
-                      <th scope='col' className='name-header'>
-                        Name
-                      </th>
-                      <th scope='col' className='format-header'>
-                        File Size
-                      </th>
-                      <th scope='col' className='format-date'>
-                        Date Added
-                      </th>
-                      <th scope='col' className='format-icon'></th>
-                    </tr>
-                  </thead>
+                  <Titles />
+            
                   <tbody>
                     {state.context.display.stack.map((db, i) => {
                       if (state.value === "display") {
@@ -275,14 +276,17 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                     })}
                   </tbody>
                 </table>
+               
               </div>
               <div className='DarkblockWidget-Footer'>
                 Powered by &nbsp;
                 <StaticDBLogo />
                 {config.debug && <p>state: {state.value}</p>}
               </div>
+             
             </>
           )}
+          
       </div>
     </>
   )
