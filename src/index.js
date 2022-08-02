@@ -5,7 +5,7 @@ import Stack from "./lib/Stack"
 import widgetMachine from "./lib/widgetMachine"
 import upgradeMachine from "./lib/UpgradeMachine"
 import Upgrader from "./lib/Upgrader"
-import * as utils from "./lib/utils"
+import * as utils from "./lib/utils/utils"
 
 export default {
   Header,
