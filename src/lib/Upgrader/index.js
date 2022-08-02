@@ -36,7 +36,7 @@ const Upgrader = ({ state = null, config, apiKey = null }) => {
   } else if (!apiKeyValid) {
     return <div>Valid API key required</div>
   } else {
-    return <div></div>
+    return <div>not authorized</div>
   }
 }
 

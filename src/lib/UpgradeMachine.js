@@ -20,7 +20,7 @@ const upgradeMachine = (tokenId, contractAddress, platform) => {
   console.log("UPGRADE MACHINE !!!!!!")
 
   return createMachine({
-    id: "widget",
+    id: "upgrade_widget",
     initial: "idle",
     states: {
       idle: {

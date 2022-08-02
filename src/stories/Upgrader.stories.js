@@ -5,7 +5,7 @@ import "../lib/main.css"
 
 const stories = storiesOf("Shared components - upgrader", module)
 const state = {
-  value: "",
+  value: "idle",
 }
 
 const config = {

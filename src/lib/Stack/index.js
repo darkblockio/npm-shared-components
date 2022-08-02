@@ -75,15 +75,15 @@ const RenderDetailIcon = ({ filetype }) => {
 }
 
 const RowContent = ({
-  db,
-  sel = false,
-  f = null,
-  state = null,
-  url = null,
-  counter = "",
-  selected = false,
-  index = 0,
-}) => {
+                      db,
+                      sel = false,
+                      f = null,
+                      state = null,
+                      url = null,
+                      counter = "",
+                      selected = false,
+                      index = 0,
+                    }) => {
   const [showDetails, setShowDetails] = useState(false)
 
   let fn = f && typeof f === "function" ? f : () => {}
@@ -261,39 +261,39 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           <div className="DarkblockWidget-Stack-Panel">
             <table className="table-auto stack-table" style={{ opacity: opacity }}>
               <tbody>
-                <Titles state={state} />
-                {state.context.display.stack.map((db, i) => {
-                  if (state.value === "display") {
-                    let sel = selected ? selected.i === i : false
-                    return (
-                      <RowContent
-                        db={db}
-                        sel={sel}
-                        f={() => {
-                          setSwapping(true)
-                          setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i, db: db })
-                          setShowModal(true)
-                        }}
-                        index={i}
-                        key={i}
-                        counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
-                        selected={selected}
-                        state={state.value}
-                        url={urls[i]}
-                      />
-                    )
-                  } else {
-                    return (
-                      <RowContent
-                        db={db}
-                        index={i}
-                        key={i}
-                        counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
-                        selected={selected}
-                      />
-                    )
-                  }
-                })}
+              <Titles state={state} />
+              {state.context.display.stack.map((db, i) => {
+                if (state.value === "display") {
+                  let sel = selected ? selected.i === i : false
+                  return (
+                    <RowContent
+                      db={db}
+                      sel={sel}
+                      f={() => {
+                        setSwapping(true)
+                        setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i, db: db })
+                        setShowModal(true)
+                      }}
+                      index={i}
+                      key={i}
+                      counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
+                      selected={selected}
+                      state={state.value}
+                      url={urls[i]}
+                    />
+                  )
+                } else {
+                  return (
+                    <RowContent
+                      db={db}
+                      index={i}
+                      key={i}
+                      counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
+                      selected={selected}
+                    />
+                  )
+                }
+              })}
               </tbody>
             </table>
           </div>
