@@ -1,17 +1,24 @@
 .rowheader {
-  @apply fixed top-44 md:top-24 flex flex-grow left-0 right-0 whitespace-nowrap text-[13px] md:mt-3 font-semibold bg-white;
+  @apply fixed w-screen top-0  text-[13px] font-semibold bg-white z-30;
 }
+.DarkblockWidget-Stack-Panel .rowheader .name-header {
+  @apply py-3.5 pl-2 pr-3 text-left text-[13px];
+}
+
+.DarkblockWidget-Stack-Panel .rowheader .format-header {
+  @apply px-2 py-3.5 text-left text-[13px] pl-0;
+}
+
 .name-header {
-  @apply ml-7 sm:ml-8 md:ml-10 sm:w-[30px];
+  @apply w-[70px] sm:w-[30px] text-left p-[8px];
+}
+
+.format-header {
+  @apply p-[8px] py-3;
 }
 .format-date {
-  @apply ml-[135px] md:ml-[138px];
+  @apply py-3;
 }
-.format-header {
-  @apply ml-[535px] md:ml-[545px];
-}
-
-
 
 /*hiding header and table info on responsive */
 .DarkblockWidget-Stack-Panel .format-header {

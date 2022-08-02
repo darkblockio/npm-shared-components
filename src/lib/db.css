@@ -3,7 +3,7 @@
 }
 
 .DarkblockWidget-Footer {
-  @apply pt-4 text-xs;
+  @apply mt-20 absolute inset-x-0 bottom-0 text-xs z-30 ;
 }
 
 .DarkblockWidget-Footer svg {
