@@ -51,7 +51,8 @@ On any other state than `display`
       .rowheader {
         .name-header {}
         .format-header {}
-        .date-header {}
+        .format-date {}
+        .format-icon {}
       }
       .row {
         .name {}
