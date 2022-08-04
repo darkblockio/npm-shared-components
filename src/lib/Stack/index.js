@@ -25,6 +25,7 @@ import {
 
 import Player from "../Player"
 import Header from "../Header"
+import Titles from "../Titles"
 import { downloadFile } from "../utils"
 import "./Stack.css"
 import "../db.css"
@@ -237,20 +238,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             <>
               <div className='DarkblockWidget-Stack-Panel'>
                 <table className='stack-table'>
-                  <thead className=''>
-                    <tr className='rowheader'>
-                      <th scope='col' className='name-header'>
-                        Name
-                      </th>
-                      <th scope='col' className='format-header'>
-                        File Size
-                      </th>
-                      <th scope='col' className='format-date'>
-                        Date Added
-                      </th>
-                      <th scope='col' className='format-icon'></th>
-                    </tr>
-                  </thead>
+                  <Titles state={state}/>
+              
                   <tbody>
                     {state.context.display.stack.map((db, i) => {
                       if (state.value === "display") {

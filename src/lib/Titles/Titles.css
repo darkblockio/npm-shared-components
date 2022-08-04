@@ -1,26 +1,33 @@
-.rowheader {
-  @apply fixed w-screen top-0  text-[13px] font-semibold bg-white z-30;
+ .tableContainer{
+  @apply table-auto ml-2 text-[13px] fixed w-screen cursor-pointer text-[13px] font-semibold z-30 top-0; 
+ }
+  /* .rowheader {
+  @apply  ;
+} */
+
+/* flex-grow fixed border-gray-300 w-[98%] cursor-pointer text-[13px] font-semibold bg-white z-30 */
+
+ .name-header {
+  @apply flex flex-row  w-[800px];
+} 
+
+ .whitespace1{
+  @apply w-44
+ }
+ .whitespace2{
+  @apply w-20
+ }
+ .whitespace3{
+  @apply w-52
+ }
+.format-header{
+  @apply pl-44
 }
-.DarkblockWidget-Stack-Panel .rowheader .name-header {
-  @apply py-3.5 pl-2 pr-3 text-left text-[13px];
+.format-date{
+  @apply left-0
 }
 
-.DarkblockWidget-Stack-Panel .rowheader .format-header {
-  @apply px-2 py-3.5 text-left text-[13px] pl-0;
-}
-
-.name-header {
-  @apply w-[70px] sm:w-[30px] text-left p-[8px];
-}
-
-.format-header {
-  @apply p-[8px] py-3;
-}
-.format-date {
-  @apply py-3;
-}
-
-/*hiding header and table info on responsive */
+/*hiding parts of header and table info on responsive */
 .DarkblockWidget-Stack-Panel .format-header {
   @apply hidden sm:table-cell;
 }

@@ -1,11 +1,10 @@
-
 /*whole component*/
 .DarkblockWidget-Stack-Panel {
-  @apply  flex-grow w-[95%] mt-8 h-96 md:h-96 lg:h-80 overflow-y-scroll absolute;
+  @apply flex-grow w-[98%] mt-8 h-96 md:h-96 lg:h-80 overflow-y-scroll absolute;
 }
 
 .DarkblockWidget-Stack-Panel .stack-table {
-  @apply  w-5/6 border-gray-400 top-0 left-0 right-0;
+  @apply w-[95%]  border-gray-400 top-0 left-0 right-0;
 }
 
 .DarkblockWidget-Stack-Panel .row {
@@ -20,12 +19,9 @@
   @apply font-bold;
 }
 
-
-
- 
 /*inside table */
 .DarkblockWidget-Stack-Panel .awesome {
-  @apply h-4 w-4 rounded p-2 mr-2 text-gray-900 bg-gray-100;
+  @apply h-4 w-4  ml-2 rounded p-2 mr-2 text-gray-900 bg-gray-100;
 }
 
 .DarkblockWidget-Stack-Panel .row .name {
@@ -41,19 +37,19 @@
 }
 
 .DarkblockWidget-Stack-Panel .dbdata {
-  @apply border-gray-300 hover:bg-gray-100 cursor-pointer;
+  @apply border-gray-300 hover:bg-gray-100 cursor-pointer relative mt-10;
 }
 
 /*on select after coming back from modal*/
 .DarkblockWidget-Stack-Panel .dbdataSelected {
-  @apply bg-gray-200;
+  @apply bg-gray-200 pr-2 mt-10;
 }
 
 .DarkblockWidget-Stack-Panel .name {
   @apply flex flex-row items-center;
 }
 
-.DarkblockWidget-Stack-Panel .dbdata .name {
+.DarkblockWidget-Stack-Panel .name {
   @apply truncate;
 }
 
@@ -79,11 +75,11 @@ td {
 }
 
 .DarkblockWidget-Stack-Panel .details {
-  @apply flex flex-wrap border-b border-gray-300 py-4 border-gray-300 hover:bg-gray-200 cursor-pointer;
+  @apply flex flex-wrap border-b border-gray-300 px-2 py-4 border-gray-300 hover:bg-gray-200 cursor-pointer;
 }
 
 .DarkblockWdget-Stack-Panel .ellIcon {
-  @apply h-4 w-4 rounded p-2 mt-1 mr-2 text-gray-900;
+  @apply h-4 w-4 rounded p-1 mt-1  text-gray-900;
 }
 
 .DarkblockWidget-Stack-Panel button.download {
@@ -94,12 +90,9 @@ td {
   @apply w-full px-4 text-xs md:text-sm bg-gray-100;
 }
 
-
-
-
 /*Dropdown Button*/
 .DarkblockWidget-Stack-Panel .dropbtn {
-  @apply text-gray-900 rounded text-sm mb-[1px] bg-none;
+  @apply text-gray-900 rounded text-sm mb-[1px] bg-none p-3;
 }
 
 /*position the dropdown content */
@@ -107,8 +100,12 @@ td {
   @apply relative;
 }
 
+.icons {
+  @apply px-3
+}
+
 .DarkblockWdget-Stack-Panel .placeholder {
-  @apply ml-20
+  @apply pl-4 w-fit;
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent {
@@ -116,23 +113,22 @@ td {
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent .dropbtn {
-  @apply text-black decoration-0;
+  @apply text-black decoration-0 flex ;
 }
 .boxMenu {
-  @apply flex flex-row items-center w-full ;
+  @apply flex flex-row items-center w-60;
 }
 
 .dropdownContent .boxMenu {
-  @apply h-12 w-16 rounded  pb-1;
+  @apply h-12 w-44 rounded  pb-1;
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent {
   @apply bg-white z-50 shadow-xl shadow-gray-300 rounded right-[18%] top-[40px];
 }
 
-
-.boxMenu:hover {
-  @apply bg-gray-100 w-full;
+ .boxMenu {
+  @apply hover:bg-gray-100 hover:w-44;
 }
 /* Show the dropdown menu on hover */
 .DarkblockWidget-Stack-Panel .dropdown:hover .dropdownContent {
@@ -143,10 +139,8 @@ td {
   @apply bg-gray-100;
 }
 
-
-
 /*player function */
- .scrollbar::-webkit-scrollbar {
+.scrollbar::-webkit-scrollbar {
   width: 20px;
   height: 20px;
 }
@@ -228,5 +222,3 @@ td {
 .cross-button {
   @apply w-6 h-6 justify-end cursor-pointer;
 }
-
-

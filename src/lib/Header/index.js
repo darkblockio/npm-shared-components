@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from "react"
 import "./Header.css"
 import Logo from "../Animations/Logo"
-//import CloseButton from "./closeButton"
+import {AiOutlineClose} from 'react-icons/ai'
 
 
 
 const setHeader = (onClose, title, text, red = false, authenticate = null) => {
-  const [showHeaderModal, setShowHeaderModal] = useState(true)
-  
-  const [showModal, setShowModal] = useState(true)
-  // const setModal = () => {
-  //   setShowHeaderModal(false)
-  //   console.log("hola")
-  // }
+
   return (
     <div className='DarkblockWidget-Header'>
    
-        <button onClick={onClose}>X</button>  
+        <button className="DarkblockWidget-closeBtn" onClick={onClose}>
+          <AiOutlineClose/></button>  
       <div className='DarkblockWidget-Header-Row'>
         <div className='logo'>
           <Logo className='Darkblock-Icon' />
