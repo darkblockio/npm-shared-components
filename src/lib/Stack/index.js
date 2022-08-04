@@ -50,7 +50,7 @@ const RenderIcon = ({ filetype }) => {
   if (filetype.indexOf("circleLeft") > -1) icon = faCircleLeft
   if (filetype.indexOf("circleRight") > -1) icon = faCircleRight
 
-  return <FontAwesomeIcon icon={icon} className='awesome' />
+  return <FontAwesomeIcon icon={icon} className="awesome" />
 }
 const RenderDetailIcon = ({ filetype }) => {
   let icon = faQuestionCircle
@@ -60,7 +60,7 @@ const RenderDetailIcon = ({ filetype }) => {
   if (filetype.indexOf("download") > -1) icon = faDownload
   if (filetype.indexOf("upRightFromSquare") > -1) icon = faUpRightFromSquare
 
-  return <FontAwesomeIcon icon={icon} className='ellIcon' />
+  return <FontAwesomeIcon icon={icon} className="ellIcon" />
 }
 
 const RowContent = ({
@@ -90,14 +90,14 @@ const RowContent = ({
   return (
     <>
       <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
-        <td className='name' onClick={fn}>
-        <RenderIcon filetype={db.fileFormat} />
+        <td className="name" onClick={fn}>
+          <RenderIcon filetype={db.fileFormat} />
           <span>{`${counter} ${truncatedName}`}</span>
         </td>
-        <td className='size' onClick={fn}>
+        <td className="size" onClick={fn}>
           {db.fileSize}
         </td>
-        <td className='date' onClick={fn}>
+        <td className="date" onClick={fn}>
           {d.toLocaleString([], {
             year: "numeric",
             month: "numeric",
@@ -105,16 +105,16 @@ const RowContent = ({
           })}
         </td>
         {/* dropdown popout box begins------------------------- */}
-        <td className='dropdown'>
-          <div className='dropbtn'>
+        <td className="dropdown">
+          <div className="dropbtn">
             <RenderDetailIcon filetype={"ellipsis"} />
           </div>
-          <div className='dropdownContent'>
-            <a className='boxMenu' onClick={() => setShowDetailModal(true)}>
-              <span className='icons'>
+          <div className="dropdownContent">
+            <a className="boxMenu" onClick={() => setShowDetailModal(true)}>
+              <span className="icons">
                 <RenderDetailIcon filetype={"info"} />
               </span>
-              <span className='placeHolder'>Details</span>
+              <span className="placeHolder">Details</span>
             </a>
             <a
               className={`boxMenu ${!isDownloadable ? "cursor-not-allowed text-gray-300" : ""}`}
@@ -126,16 +126,16 @@ const RowContent = ({
                 }
               }}
             >
-              <span className='icons'>
+              <span className="icons">
                 <RenderDetailIcon filetype={"download"} />
               </span>
-              <span className='placeHolder'>Download</span>
+              <span className="placeHolder">Download</span>
             </a>
-            <a target='_blank' rel='noreferrer' className='boxMenu' href={db.arweaveTXLink}>
-              <span className='icons'>
+            <a target="_blank" rel="noreferrer" className="boxMenu" href={db.arweaveTXLink}>
+              <span className="icons">
                 <RenderDetailIcon filetype={"upRightFromSquare"} />
               </span>
-              <span className='placeHolder'>Arweave</span>
+              <span className="placeHolder">Arweave</span>
             </a>
           </div>
           {/*drop down ends*/}
@@ -193,17 +193,17 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     <>
       <PlayerModal showModal={showModal} open={showModal} onClose={() => setShowModal(false)}>
         {state.value === "display" && selected && !swapping && (
-          <div className='text-white bg-black text-center'>
-            <div className='mt-8'>{selected.db.name}</div>
+          <div className="text-white bg-black text-center">
+            <div className="mt-8">{selected.db.name}</div>
             <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
-            <div className='fa-2xl pt-3 pb-3 mt-4'>
+            <div className="fa-2xl pt-4 pb-3 mt-4">
               {selected.i > 0 && (
-                <button onClick={() => previousDb()} className='icon'>
+                <button onClick={() => previousDb()} className="icon mr-2">
                   <RenderIcon filetype={"circleLeft"} />
                 </button>
               )}
               {selected.i + 1 !== state.context.display.stack.length && (
-                <button onClick={() => nextDb()} className='icon'>
+                <button onClick={() => nextDb()} className="icon">
                   <RenderIcon filetype={"circleRight"} />
                 </button>
               )}
@@ -224,20 +224,20 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           state.value !== "started" &&
           state.value !== "start_failure" && (
             <>
-              <div className='DarkblockWidget-Stack-Panel'>
-                <table className='stack-table'>
-                  <thead className=''>
-                    <tr className='rowheader'>
-                      <th scope='col' className='name-header'>
+              <div className="DarkblockWidget-Stack-Panel">
+                <table className="stack-table">
+                  <thead className="">
+                    <tr className="rowheader">
+                      <th scope="col" className="name-header">
                         Name
                       </th>
-                      <th scope='col' className='format-header'>
+                      <th scope="col" className="format-header">
                         File Size
                       </th>
-                      <th scope='col' className='format-date'>
+                      <th scope="col" className="format-date">
                         Date Added
                       </th>
-                      <th scope='col' className='format-icon'></th>
+                      <th scope="col" className="format-icon"></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -276,7 +276,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                   </tbody>
                 </table>
               </div>
-              <div className='DarkblockWidget-Footer'>
+              <div className="DarkblockWidget-Footer">
                 Powered by &nbsp;
                 <StaticDBLogo />
                 {config.debug && <p>state: {state.value}</p>}
