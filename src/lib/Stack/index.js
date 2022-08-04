@@ -20,10 +20,12 @@ import {
   faCircleInfo,
   faDownload,
   faUpRightFromSquare,
+  faBedPulse,
 } from "@fortawesome/free-solid-svg-icons"
 
 import Player from "../Player"
 import Header from "../Header"
+import Titles from "../Titles"
 import { downloadFile } from "../utils"
 import "./Stack.css"
 import "../db.css"
@@ -83,15 +85,14 @@ const RowContent = ({
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
   const isRowActive = selected.i === index
   const [showDetailModal, setShowDetailModal] = useState(false)
+
   const isDownloadable = state && state === "display" && url && db.downloadable.toString().toLowerCase() === "true"
-  //elliptical pop up
-  const [showPopup, setShowPopup] = useState(false)
 
   return (
     <>
       <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
         <td className='name' onClick={fn}>
-        <RenderIcon filetype={db.fileFormat} />
+          <RenderIcon filetype={db.fileFormat} />
           <span>{`${counter} ${truncatedName}`}</span>
         </td>
         <td className='size' onClick={fn}>
@@ -150,6 +151,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [selected, setSelected] = useState()
   const [swapping, setSwapping] = useState(false)
   const [showModal, setShowModal] = useState(false)
+  const [showHeader, setShowHeader] = useState(false)
 
   useEffect(() => {
     if (state.value === "display") {
@@ -198,12 +200,12 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
             <div className='fa-2xl pt-3 pb-3 mt-4'>
               {selected.i > 0 && (
-                <button onClick={() => previousDb()} className='icon'>
+                <button onClick={() => previousDb()} className='playerIcon'>
                   <RenderIcon filetype={"circleLeft"} />
                 </button>
               )}
               {selected.i + 1 !== state.context.display.stack.length && (
-                <button onClick={() => nextDb()} className='icon'>
+                <button onClick={() => nextDb()} className='playerIcon'>
                   <RenderIcon filetype={"circleRight"} />
                 </button>
               )}
@@ -212,12 +214,22 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         )}
       </PlayerModal>
       <div className={config.customCssClass ? `DarkblockWidget-App ${config.customCssClass}` : `DarkblockWidget-App`}>
-        {state.value === "display" && selected && !swapping ? (
-          // <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
+        {/* {state.value === "display" && selected && !swapping ? (
+          
           <div></div>
-        ) : (
-          <Header state={state} authenticate={() => authenticate()} />
-        )}
+        ) :  */}
+        {!showHeader ? (
+          <Header
+            className='popHeader'
+            onClose={() => {
+              // setShowModal(true)
+              setShowHeader(!showHeader)}
+          }
+            state={state}
+            authenticate={() => authenticate()}
+          />
+        ) : null}
+        {/* } */}
         {state.value !== "no_wallet" &&
           state.value !== "idle" &&
           state.value !== "loading_arweave" &&
@@ -226,20 +238,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             <>
               <div className='DarkblockWidget-Stack-Panel'>
                 <table className='stack-table'>
-                  <thead className=''>
-                    <tr className='rowheader'>
-                      <th scope='col' className='name-header'>
-                        Name
-                      </th>
-                      <th scope='col' className='format-header'>
-                        File Size
-                      </th>
-                      <th scope='col' className='format-date'>
-                        Date Added
-                      </th>
-                      <th scope='col' className='format-icon'></th>
-                    </tr>
-                  </thead>
+                  <Titles state={state}/>
+              
                   <tbody>
                     {state.context.display.stack.map((db, i) => {
                       if (state.value === "display") {
