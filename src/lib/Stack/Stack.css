@@ -1,6 +1,6 @@
 /*whole component*/
 .DarkblockWidget-Stack-Panel {
-  @apply flex-grow w-[98%] mt-8 h-96 md:h-96 lg:h-80 overflow-y-scroll absolute;
+  @apply flex-grow w-screen mt-8 h-96 md:h-96 lg:h-80 overflow-y-scroll;
 }
 
 .DarkblockWidget-Stack-Panel .stack-table {
@@ -101,7 +101,7 @@ td {
 }
 
 .icons {
-  @apply px-3
+  @apply px-3;
 }
 
 .DarkblockWdget-Stack-Panel .placeholder {
@@ -113,7 +113,7 @@ td {
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent .dropbtn {
-  @apply text-black decoration-0 flex ;
+  @apply text-black decoration-0 flex;
 }
 .boxMenu {
   @apply flex flex-row items-center w-60;
@@ -127,7 +127,7 @@ td {
   @apply bg-white z-50 shadow-xl shadow-gray-300 rounded right-[18%] top-[40px];
 }
 
- .boxMenu {
+.boxMenu {
   @apply hover:bg-gray-100 hover:w-44;
 }
 /* Show the dropdown menu on hover */

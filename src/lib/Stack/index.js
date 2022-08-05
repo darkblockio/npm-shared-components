@@ -20,7 +20,6 @@ import {
   faCircleInfo,
   faDownload,
   faUpRightFromSquare,
-  faWallet,
 } from "@fortawesome/free-solid-svg-icons"
 
 import Player from "../Player"
@@ -227,15 +226,17 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           <div></div>
         ) :  */}
         {!showHeader ? (
-          <Header
-            className="popHeader"
-            onClose={() => {
-              // setShowModal(true)
-              setShowHeader(!showHeader)
-            }}
-            state={state}
-            authenticate={() => authenticate()}
-          />
+          <div className="flex justify center w-screen h-screen items-center">
+            <Header
+              className="popHeader"
+              onClose={() => {
+                // setShowModal(true)
+                setShowHeader(!showHeader)
+              }}
+              state={state}
+              authenticate={() => authenticate()}
+            />
+          </div>
         ) : null}
 
         {/* } */}
@@ -285,13 +286,13 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                   </tbody>
                 </table>
               </div>
-              <div className="DarkblockWidget-Footer">
-                Powered by &nbsp;
-                <StaticDBLogo />
-                {config.debug && <p>state: {state.value}</p>}
-              </div>
             </>
           )}
+      </div>
+      <div className="DarkblockWidget-Footer">
+        Powered by &nbsp;
+        <StaticDBLogo />
+        {config.debug && <p>state: {state.value}</p>}
       </div>
     </>
   )
