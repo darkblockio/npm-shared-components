@@ -1,25 +1,24 @@
 .DarkblockWidget-Header {
-  @apply p-1 bg-gray-100 w-60 md:w-72 w-60 top-20 left-6 md:my-8 md:mx-36 shadow-lg relative md:w-80 shadow-gray-300  h-60 rounded z-30;
+  @apply p-4 bg-gray-100 left-1/3 w-60 shadow-lg relative md:w-80 shadow-gray-300 sm:h-52 rounded z-30;
 }
 
 .DarkblockWidget-Header-Row {
-  @apply flex flex-auto justify-center items-center mt-5 sm:flex-col flex-col ;
+  @apply flex flex-auto justify-center items-center mt-5 sm:flex-col flex-col;
 }
 
 .DarkblockWidget-Header-Row > .logo {
   @apply flex-none w-7 h-7 text-sm font-semibold self-center;
 }
 
-.DarkblockWidget-closeBtn{
-@apply  absolute top-3 right-3 text-gray-500
+.DarkblockWidget-closeBtn {
+  @apply absolute top-3 right-3 text-gray-500;
 }
 .Darkblock-Icon {
   @apply h-8 w-8;
 }
 
-
 .DarkblockWidget-Header-Row > .titleStack {
-  @apply  flex flex-col justify-center p-1 text-base font-bold self-center mt-5   flex-wrap;
+  @apply flex flex-col justify-center p-1 text-base font-bold self-center mt-2   flex-wrap;
 }
 
 .titleStack > .title {
@@ -27,19 +26,17 @@
 }
 
 .titleStack > .title-red {
-  @apply flex flex-auto items-center justify-center text-center text-base flex-wrap font-semibold text-black  
+  @apply flex flex-auto items-center justify-center text-center text-base flex-wrap font-semibold text-black;
 }
-
 
 .titleStack > .content {
   @apply flex flex-auto items-center justify-center text-center text-sm font-semibold text-gray-500;
 }
 
 .DarkblockWidget-Header-Row > .authButton {
-  @apply flex flex-auto items-center justify-center  text-center font-semibold text-sm sm:flex sm:flex-auto sm:items-center sm:justify-center bg-gray-100 ;
+  @apply flex flex-auto items-center justify-center  text-center font-semibold text-sm sm:flex sm:flex-auto sm:items-center sm:justify-center bg-gray-100;
 }
 
 .authButton > .inner-button {
   @apply flex flex-auto items-center justify-center text-center font-bold p-2 w-fit h-fit bg-gray-200 text-black rounded-md font-medium;
 }
-
