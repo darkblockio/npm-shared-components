@@ -1,14 +1,14 @@
 /*whole component*/
 .DarkblockWidget-Stack-Panel {
-  @apply flex-grow w-2/3 mt-8 h-96 md:h-96 lg:h-80 overflow-y-scroll;
+  @apply flex-grow w-full overflow-y-scroll h-96 md:h-96 lg:h-80;
 }
 
 .DarkblockWidget-Stack-Panel .stack-table {
-  @apply w-full border-gray-400 top-0 left-0 right-0;
+  @apply top-0 left-0 right-0 w-full border-gray-400;
 }
 
 .DarkblockWidget-Stack-Panel .row {
-  @apply hover:bg-gray-200 cursor-pointer;
+  @apply cursor-pointer hover:bg-gray-200;
 }
 
 .DarkblockWidget-Stack-Panel .selected {
@@ -21,7 +21,7 @@
 
 /*inside table */
 .DarkblockWidget-Stack-Panel .awesome {
-  @apply h-4 w-4  ml-2 rounded p-2 mr-2 text-gray-900 bg-gray-100;
+  @apply w-4 h-4 p-2 ml-2 mr-2 text-gray-900 bg-gray-100 rounded;
 }
 
 .DarkblockWidget-Stack-Panel .row .name {
@@ -33,16 +33,16 @@
 }
 
 .DarkblockWidget-Stack-Panel .row .date {
-  @apply hidden sm:table-cell whitespace-nowrap text-sm text-gray-500;
+  @apply hidden text-sm text-gray-500 sm:table-cell whitespace-nowrap;
 }
 
 .DarkblockWidget-Stack-Panel .dbdata {
-  @apply border-gray-300 hover:bg-gray-100 cursor-pointer relative mt-10;
+  @apply relative mt-10 border-gray-300 cursor-pointer hover:bg-gray-100;
 }
 
 /*on select after coming back from modal*/
 .DarkblockWidget-Stack-Panel .dbdataSelected {
-  @apply bg-gray-200 pr-2 mt-10;
+  @apply pr-2 mt-10 bg-gray-200;
 }
 
 .DarkblockWidget-Stack-Panel .name {
@@ -54,7 +54,7 @@
 }
 
 .DarkblockWidget-Stack-Panel .size {
-  @apply whitespace-nowrap pr-3 text-base;
+  @apply pr-3 text-base whitespace-nowrap;
 }
 td {
   @apply h-[48px];
@@ -62,7 +62,7 @@ td {
 
 /*pulldown is an invisible space to help align the date with header Date Added*/
 .DarkblockWidget-Stack-Panel .dbdata .date .pulldown {
-  @apply whitespace-nowrap text-base pl-2;
+  @apply pl-2 text-base whitespace-nowrap;
 }
 
 .date {
@@ -71,23 +71,23 @@ td {
 
 /*beginning of dropdown box on ellipsis */
 .DarkblockWidget-Stack-Panel .boxMenu {
-  @apply flex flex-row pl-1 items-center;
+  @apply flex flex-row items-center pl-1;
 }
 
 .DarkblockWidget-Stack-Panel .details {
-  @apply flex flex-wrap border-b border-gray-300 px-2 py-4 border-gray-300 hover:bg-gray-200 cursor-pointer;
+  @apply flex flex-wrap px-2 py-4 border-b border-gray-300 cursor-pointer hover:bg-gray-200;
 }
 
 .DarkblockWdget-Stack-Panel .ellIcon {
-  @apply h-4 w-4 rounded p-1 mt-1  text-gray-900;
+  @apply w-4 h-4 p-1 mt-1 text-gray-900 rounded;
 }
 
 .DarkblockWidget-Stack-Panel button.download {
-  @apply mt-4 flex flex-row items-center bg-gray-300 font-bold rounded w-full md:w-1/3  text-red-50 hover:text-white hover:bg-gray-500 border border-black mr-2 text-center mb-4 py-2;
+  @apply flex flex-row items-center w-full py-2 mt-4 mb-4 mr-2 font-bold text-center bg-gray-300 border border-black rounded md:w-1/3 text-red-50 hover:text-white hover:bg-gray-500;
 }
 
 .DarkblockWidget-Stack-Panel .details td {
-  @apply w-full px-4 text-xs md:text-sm bg-gray-100;
+  @apply w-full px-4 text-xs bg-gray-100 md:text-sm;
 }
 
 /*Dropdown Button*/
@@ -109,18 +109,18 @@ td {
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent {
-  @apply hidden absolute w-44;
+  @apply absolute hidden w-44;
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent .dropbtn {
-  @apply text-black decoration-0 flex;
+  @apply flex text-black decoration-0;
 }
 .boxMenu {
   @apply flex flex-row items-center w-60;
 }
 
 .dropdownContent .boxMenu {
-  @apply h-12 w-44 rounded  pb-1;
+  @apply h-12 pb-1 rounded w-44;
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent {
@@ -160,11 +160,11 @@ td {
   background: #c0a0b9;
 }
 /* .playerIcons {
-  @apply 
+  @apply
 } */
 
 .detail-subtitle {
-  @apply text-base mt-6 font-bold;
+  @apply mt-6 text-base font-bold;
 }
 
 .detail-subtitle-text {
@@ -176,7 +176,7 @@ td {
 }
 
 .done-button {
-  @apply bg-gray-800 text-white rounded-lg p-2 w-20 m-4 mt-6;
+  @apply w-20 p-2 m-4 mt-6 text-white bg-gray-800 rounded-lg;
 }
 
 /* it contains details title and the X button*/
@@ -189,14 +189,14 @@ td {
 }
 
 .modal-title {
-  @apply flex justify-center items-center font-bold;
+  @apply flex items-center justify-center font-bold;
 }
 .detail-darkblock-name {
-  @apply text-xl font-bold pt-1;
+  @apply pt-1 text-xl font-bold;
 }
 
 .detail-darkblock-detail {
-  @apply mt-8 text-sm text-gray-500 max-w-lg;
+  @apply max-w-lg mt-8 text-sm text-gray-500;
 }
 
 #modal-bg {
@@ -204,7 +204,7 @@ td {
 }
 
 #modal-box {
-  @apply max-w-3xl px-6 py-4 text-left bg-white rounded shadow-lg mx-8;
+  @apply max-w-3xl px-6 py-4 mx-8 text-left bg-white rounded shadow-lg;
 }
 
 .modal-box-container {
@@ -212,13 +212,13 @@ td {
 }
 
 .modal-container {
-  @apply flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 m-4 outline-none focus:outline-none;
+  @apply fixed inset-0 z-50 flex items-center justify-center m-4 overflow-x-hidden overflow-y-auto outline-none focus:outline-none;
 }
 
 .detail-container {
-  @apply px-2 block w-4/5;
+  @apply block w-4/5 px-2;
 }
 
 .cross-button {
-  @apply w-6 h-6 justify-end cursor-pointer;
+  @apply justify-end w-6 h-6 cursor-pointer;
 }
