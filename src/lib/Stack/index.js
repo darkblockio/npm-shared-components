@@ -165,6 +165,14 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   }, [state.value])
 
   useEffect(() => {
+    if (state.value == "display") {
+      setTimeout(() => {
+        setShowHeader(true) //it has reverse logic
+      }, 2500)
+    }
+  }, [state.value])
+
+  useEffect(() => {
     if (swapping) {
       setSwapping(false)
     }
@@ -229,6 +237,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             authenticate={() => authenticate()}
           />
         ) : null}
+
         {/* } */}
         {state.value !== "no_wallet" &&
           state.value !== "idle" &&

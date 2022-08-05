@@ -6,9 +6,11 @@ import { AiOutlineClose } from "react-icons/ai"
 const setHeader = (onClose, title, text, red = false, authenticate = null) => {
   return (
     <div className="DarkblockWidget-Header">
-      <button className="DarkblockWidget-closeBtn" onClick={onClose}>
-        <AiOutlineClose />
-      </button>
+      {onClose !== false && (
+        <button className="DarkblockWidget-closeBtn" onClick={onClose}>
+          <AiOutlineClose />
+        </button>
+      )}
       <div className="DarkblockWidget-Header-Row">
         <div className="logo">
           <Logo className="Darkblock-Icon" />
@@ -32,36 +34,32 @@ const setHeader = (onClose, title, text, red = false, authenticate = null) => {
 
 const Header = ({ onClose, state = null, authenticate }) => {
   if (state.value === "no_wallet") {
-    return setHeader(onClose, "No wallet connected", "Please connect a wallet to view Darkblock unlockable content.")
+    return setHeader(false, "No wallet connected", "Please connect a wallet to view Darkblock unlockable content.")
   }
   if (state.value === "idle" || state.value === "loading_arweave") {
-    return setHeader(onClose, "", "")
+    return setHeader(false, "", "")
   }
 
   if (state.value === "start_failure") {
-    return setHeader(onClose, "No Darkblock Content", "")
+    return setHeader(false, "An Error Ocurred", "Please reload the page and try again")
   }
 
   if (state.value === "auth_failure" || state.value === "auth_cancel") {
     return setHeader(
-      onClose,
+      false,
       "Failed to Authenticate Ownership",
-      "This wallet does not have access to this Darkblock. Make sure you are connected with the correct wallet.",
+      "This wallet does not have access to this Darkblock.",
       true,
       authenticate
     )
   }
 
   if (state.value === "started") {
-    return setHeader(onClose, "Darkblock Content", "This NFT has unlockable content which only the owner can access.")
+    return setHeader(false, "Darkblock Content", "This NFT has unlockable content which only the owner can access.")
   }
 
   if (state.value === "signing") {
-    return setHeader(
-      onClose,
-      "Darkblock Unlockable Content",
-      "This NFT has unlockable content which only the owner can access."
-    )
+    return setHeader(false, "Signature Requested", "Please sign with your wallet")
   }
 
   if (state.value === "wallet_connected") {
@@ -74,8 +72,12 @@ const Header = ({ onClose, state = null, authenticate }) => {
     )
   }
 
-  if (state.value === "authenticated" || state.value === "decrypting" || state.value === "display") {
-    return setHeader(onClose, "Ownership Authenticated", "Decrypting...")
+  if (state.value === "authenticated" || state.value === "decrypting") {
+    return setHeader(false, "Ownership Authenticated", "Decrypting...")
+  }
+
+  if (state.value === "display") {
+    return setHeader(onClose, "Ownership Authenticated", "You can now access the content")
   }
 
   return setHeader(onClose, "An Error Ocurred", "Please try again.", true)
