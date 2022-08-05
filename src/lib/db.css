@@ -3,7 +3,7 @@
 }
 
 .DarkblockWidget-Footer {
-  @apply absolute inset-x-7 bottom-6 text-xs z-30;
+  @apply text-xs font-bold text-neutral-400 mt-2;
 }
 
 .DarkblockWidget-Footer svg {
@@ -11,5 +11,5 @@
 }
 
 .DarkblockWidget-Footer svg path {
-  @apply fill-black;
+  @apply fill-neutral-400;
 }
