@@ -20,7 +20,7 @@ import {
   faCircleInfo,
   faDownload,
   faUpRightFromSquare,
-  faBedPulse,
+  faWallet,
 } from "@fortawesome/free-solid-svg-icons"
 
 import Player from "../Player"
