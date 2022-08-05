@@ -124,7 +124,7 @@
 }
 
 .DarkblockWidget-Upgrader .minting-state-msg {
-  @apply text-sm mt-4 italic text-white;
+  @apply text-sm mt-4 text-white;
 }
 
 .DarkblockWidget-Upgrader .minting-warning {

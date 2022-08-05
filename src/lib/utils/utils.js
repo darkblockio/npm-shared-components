@@ -21,18 +21,6 @@ export async function getArweaveData(id, platform) {
   }
 }
 
-export async function getOwner(contractAddr, tokenId, platform, owner = "") {
-  try {
-    const response = await fetch(
-      `https://api.darkblock.io/v1/nft/owner?platform=${platform}&contract_address=${contractAddr}&token_id=${tokenId}&owner=${owner}`
-    )
-    const asset = await response.json()
-    return asset
-  } catch (e) {
-    return []
-  }
-}
-
 export async function getCreator(contractAddr, tokenId, platform) {
   try {
     const response = await fetch(
@@ -42,19 +30,6 @@ export async function getCreator(contractAddr, tokenId, platform) {
     return asset
   } catch (e) {
     return []
-  }
-}
-
-export function getProxyAsset(artID, sessionToken, tokenId, contract, nonce, platform, tezosPublicKey = null) {
-  let owner = ""
-  if (tezosPublicKey && tezosPublicKey.length > 0) {
-    owner = `&owner=${encodeURIComponent(tezosPublicKey)}`
-  }
-
-  if (nonce) {
-    return `https://gateway.darkblock.io/proxy?artid=${artID}&session_token=${sessionToken}&token_id=${tokenId}&contract=${contract}&nonce=${nonce}&platform=${platform}${owner}`
-  } else {
-    return `https://gateway.darkblock.io/proxy?artid=${artID}&session_token=${sessionToken}&token_id=${tokenId}&contract=${contract}&platform=${platform}${owner}`
   }
 }
 

@@ -24,7 +24,7 @@ const widget = (stateval) => {
   )
 }
 
-const states = ["idle", "no_api_key", "verify_creator", "authorized"]
+const states = ["idle", "show_upgrade"]
 
 states.forEach((s) =>
   stories.add(s, () => {

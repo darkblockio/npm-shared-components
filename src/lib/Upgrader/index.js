@@ -14,7 +14,7 @@ const Upgrader = ({ state = null, config, apiKey = null }) => {
   }, [apiKey])
 
   useEffect(() => {
-    if (state.value === "authorized") {
+    if (state.value === "show_upgrade") {
       setShowButton(true)
     }
   }, [state.value])
@@ -33,10 +33,8 @@ const Upgrader = ({ state = null, config, apiKey = null }) => {
         <UpgradeModal open={showUpgrade} onClose={() => setShowUpgrade(false)} className="upgrade-modal" />
       </div>
     )
-  } else if (!apiKeyValid) {
-    return <div>Valid API key required</div>
   } else {
-    return <div>not authorized</div>
+    return <>{state.value}</>
   }
 }
 

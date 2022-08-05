@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import FileUpload from "./fileUpload"
-import * as HashUtil from '../utils/hash-util'
+import * as HashUtil from "../utils/hash-util"
 
 const UpgradeForm = ({ nft, wallet = null, address = null, publicKey = null, platform, onClose }) => {
   const [darkblockDescription, setDarkblockDescription] = useState("")
@@ -35,11 +35,14 @@ const UpgradeForm = ({ nft, wallet = null, address = null, publicKey = null, pla
     const fileHash = await HashUtil.hashInChunks(fileState)
 
     setProgress(10)
-    setMintingStateMsg('signing file for security...')
+    setMintingStateMsg("signing file for security...")
 
-    console.log('fileHash', fileHash)
+    console.log("fileHash", fileHash)
 
-
+    setTimeout(() => {
+      setProgress(100)
+      setMintingState("error")
+    }, 5000)
   }
 
   return (
@@ -114,17 +117,14 @@ const UpgradeForm = ({ nft, wallet = null, address = null, publicKey = null, pla
             <>
               <div className="minting-container">
                 <h3 className="minting-complete-header">Success!</h3>
-                <p className="minting-complete-info">
-                  Your unlockable content creation is complete. It may take a few minutes before the Darkblock content
-                  appears.
-                </p>
+                <p className="minting-complete-info">Your unlockable content has been created</p>
                 <button
                   className="minting-complete-add-another"
                   onClick={() => {
                     setMinting(false)
                   }}
                 >
-                  Add Another
+                  Make Another
                 </button>
                 <button className="minting-complete-done" onClick={onClose}>
                   I&apos;m Done
