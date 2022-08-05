@@ -1,5 +1,5 @@
 .DarkblockWidget-Header {
-  @apply p-4 bg-gray-100 inset-10 sm:inset-10 w-72  sm:my-20 sm:mx-44 md:my-24 md:mx-60 shadow-lg relative md:w-80 shadow-gray-300  sm:h-52 rounded z-30;
+  @apply p-1 bg-gray-100 w-60 md:w-72 w-60 top-20 left-6 md:my-8 md:mx-36 shadow-lg relative md:w-80 shadow-gray-300  h-60 rounded z-30;
 }
 
 .DarkblockWidget-Header-Row {
@@ -17,8 +17,9 @@
   @apply h-8 w-8;
 }
 
+
 .DarkblockWidget-Header-Row > .titleStack {
-  @apply  flex flex-col justify-center p-1 text-base font-bold self-center mt-2   flex-wrap;
+  @apply  flex flex-col justify-center p-1 text-base font-bold self-center mt-5   flex-wrap;
 }
 
 .titleStack > .title {

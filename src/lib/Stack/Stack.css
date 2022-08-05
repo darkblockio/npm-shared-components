@@ -1,10 +1,10 @@
 /*whole component*/
 .DarkblockWidget-Stack-Panel {
-  @apply flex-grow w-2/3 mt-8 h-96 md:h-96 lg:h-80 overflow-y-scroll absolute;
+  @apply flex-grow md:w-2/3 mt-8 h-96 md:h-96 lg:h-80 overflow-y-scroll absolute;
 }
 
 .DarkblockWidget-Stack-Panel .stack-table {
-  @apply w-2/3 border-gray-400 top-0 left-0 right-0;
+  @apply w-full border-gray-400 top-0 left-0 right-0;
 }
 
 .DarkblockWidget-Stack-Panel .row {
