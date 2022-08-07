@@ -5,32 +5,22 @@ const Titles = ({ state }) => {
   const db = state.context.display.stack.length
 
   return (
-    <table className='tableContainer'>
-      <tbody>
-        <tr className='rowheader'>
-          <td scope='col' className='name-header`  '>
-            <span>Name</span>
-            <span> ({db})</span>
-          </td>
-          <td className='whitespace1'>
-            <span></span>
-          </td>
-          <td className='whitespace2'>
-            <span></span>
-          </td>
-          <td scope='col' className='format-header'>
-            File Size
-          </td>
-          <td scope='col' className='format-date'>
-            Date Added
-          </td>
-          <td scope='col' className='format-icon'></td>
-          <td className='whitespace3'>
-            <span></span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <tr className='rowheader'>
+      <th scope='col' className='pl-3 text-left name-header`  '>
+        <span>Name</span>
+        <span> ({db})</span>
+      </th>
+      <th scope='col' className='pr-2 text-right format-header'>
+        File Size
+      </th>
+      <th scope='col' className='text-left format-date'>
+        Date Added
+      </th>
+      <th scope='col' className='format-icon'>
+        <span></span>
+      </th>
+    </tr>
   )
 }
+
 export default Titles

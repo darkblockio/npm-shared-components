@@ -94,7 +94,7 @@ const RowContent = ({
           <RenderIcon filetype={db.fileFormat} />
           <span>{`${counter} ${truncatedName}`}</span>
         </td>
-        <td className="size" onClick={fn}>
+        <td className="text-right size" onClick={fn}>
           {db.fileSize}
         </td>
         <td className="date" onClick={fn}>
@@ -199,15 +199,15 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   }
 
   return (
-    <>
+    <div>
       <PlayerModal showModal={showModal} open={showModal} onClose={() => setShowModal(false)}>
         {state.value === "display" && selected && !swapping && (
-          <div className="text-white bg-black text-center">
+          <div className="text-center text-white bg-black">
             <div className="mt-8">{selected.db.name}</div>
             <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
-            <div className="fa-2xl pt-4 pb-3 mt-4">
+            <div className="pt-4 pb-3 mt-4 fa-2xl">
               {selected.i > 0 && (
-                <button onClick={() => previousDb()} className="icon mr-2">
+                <button onClick={() => previousDb()} className="mr-2 icon">
                   <RenderIcon filetype={"circleLeft"} />
                 </button>
               )}
@@ -222,11 +222,11 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
       </PlayerModal>
       <div className={config.customCssClass ? `DarkblockWidget-App ${config.customCssClass}` : `DarkblockWidget-App`}>
         {/* {state.value === "display" && selected && !swapping ? (
-          
+
           <div></div>
         ) :  */}
         {!showHeader ? (
-          <div className="flex justify center w-screen h-screen items-center">
+          <div className="flex items-center w-screen h-screen justify center">
             <Header
               className="popHeader"
               onClose={() => {
@@ -247,10 +247,9 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           state.value !== "start_failure" && (
             <>
               <div className="DarkblockWidget-Stack-Panel">
-                <table className="stack-table">
-                  <Titles state={state} />
-
+                <table className="table-auto stack-table">
                   <tbody>
+                    <Titles state={state} />
                     {state.context.display.stack.map((db, i) => {
                       if (state.value === "display") {
                         let sel = selected ? selected.i === i : false
@@ -288,13 +287,13 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
               </div>
             </>
           )}
+        <div className="DarkblockWidget-Footer">
+          Powered by &nbsp;
+          <StaticDBLogo />
+          {config.debug && <p>state: {state.value}</p>}
+        </div>
       </div>
-      <div className="DarkblockWidget-Footer">
-        Powered by &nbsp;
-        <StaticDBLogo />
-        {config.debug && <p>state: {state.value}</p>}
-      </div>
-    </>
+    </div>
   )
 }
 
