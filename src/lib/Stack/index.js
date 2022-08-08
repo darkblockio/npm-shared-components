@@ -285,7 +285,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
               </div>
             </>
           ) :
-          <div className="sm:h-64">
+          <div className="h-64">
           </div>}
         <div className="DarkblockWidget-Footer">
           Powered by &nbsp;
