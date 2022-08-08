@@ -167,7 +167,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     if (state.value == "display") {
       setTimeout(() => {
         setShowHeader(true) //it has reverse logic
-      }, 2500)
+      }, 1500)
     }
   }, [state.value])
 

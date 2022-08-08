@@ -1,5 +1,5 @@
 .DarkblockWidget-Header {
-  @apply p-4 bg-gray-100 w-60 shadow-lg absolute md:left-[50%] md:top-[25%] lg:left-[53%] lg:top-[30%] 2xl:left-[51%] 2xl:top-[15%] md:w-80 shadow-gray-300 sm:h-52 rounded z-30;
+  @apply p-4 bg-gray-100 border-gray-100 border-2 w-60 shadow-lg absolute md:left-[50%] md:top-[25%] lg:left-[53%] lg:top-[30%] 2xl:left-[51%] 2xl:top-[15%] md:w-80 shadow-gray-300 sm:h-52 rounded z-30;
 }
 
 .DarkblockWidget-Header-Row {

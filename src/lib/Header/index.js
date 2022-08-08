@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import "./Header.css"
 import Logo from "../Animations/Logo"
 import { AiOutlineClose } from "react-icons/ai"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faWallet, faCircleCheck, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
 
-const RenderIcon = ({ filetype }) => {
-  let icon = ""
-
-  if (filetype == "check") icon = faCircleCheck
-  if (filetype == "wallet") icon = faWallet
-  return <FontAwesomeIcon icon={icon} className="awesome w-6 h-6" />
-}
-
 const setHeader = (onClose, state, title, text, red = false, authenticate = null) => {
   return (
-    <div className="DarkblockWidget-Header">
+    <div
+      className="DarkblockWidget-Header"
+      style={{
+        borderColor:
+          state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error"
+            ? "#EF4444"
+            : state.value === "display"
+            ? "#22C55E"
+            : "rgb(243 244 246",
+      }}
+    >
       {onClose !== false && (
         <button className="DarkblockWidget-closeBtn" onClick={onClose}>
           <AiOutlineClose />
