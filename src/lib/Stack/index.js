@@ -49,7 +49,7 @@ const RenderIcon = ({ filetype }) => {
   if (filetype.indexOf("epub") > -1) icon = faBook
   if (filetype.indexOf("chevronLeft") > -1) icon = faChevronLeft
   if (filetype.indexOf("chevronRight") > -1) icon = faChevronRight
-  
+
 
   return <FontAwesomeIcon icon={icon} className='awesome' />
 }
@@ -216,7 +216,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           <div>
             <div  className='playerModal'>
               <div>{selected.db.name}</div>
-              
+
             </div>
               <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
           </div>
@@ -241,17 +241,15 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           <div></div>
         ) :  */}
         {!showHeader ? (
-          <div className='flex items-center w-screen h-screen justify center'>
-            <Header
-              className='popHeader'
-              onClose={() => {
-                // setShowModal(true)
-                setShowHeader(!showHeader)
-              }}
-              state={state}
-              authenticate={() => authenticate()}
-            />
-          </div>
+          <Header
+            className='popHeader'
+            onClose={() => {
+              // setShowModal(true)
+              setShowHeader(!showHeader)
+            }}
+            state={state}
+            authenticate={() => authenticate()}
+          />
         ):null}
 
         {/* } */}
@@ -301,8 +299,10 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                 </table>
               </div>
             </>
-          ): null}
-        <div className='DarkblockWidget-Footer'>
+          ) :
+          <div className="h-64">
+          </div>}
+        <div className="DarkblockWidget-Footer">
           Powered by &nbsp;
           <StaticDBLogo />
           {config.debug && <p>state: {state.value}</p>}

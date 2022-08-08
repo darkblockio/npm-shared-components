@@ -25,45 +25,47 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
           </button>
         )}
 
-          {onClose !== false && (
-            <button className="DarkblockWidget-closeBtn" onClick={onClose}>
-              <AiOutlineClose />
-            </button>
+        {onClose !== false && (
+          <button className="DarkblockWidget-closeBtn" onClick={onClose}>
+            <AiOutlineClose />
+          </button>
+        )}
+
+        <div className="DarkblockWidget-Header-Row">
+          {state.value === "signing" && <FontAwesomeIcon icon={faWallet} className="w-6 h-6 awesome" />}
+          {state.value === "display" && (
+            <FontAwesomeIcon icon={faCircleCheck} className="w-6 h-6 text-green-500 awesome" />
           )}
 
-          <div className="DarkblockWidget-Header-Row">
-            {state.value === "signing" && <FontAwesomeIcon icon={faWallet} className="w-6 h-6 awesome" />}
-            {state.value === "display" && (
-              <FontAwesomeIcon icon={faCircleCheck} className="w-6 h-6 text-green-500 awesome" />
-            )}
+          {(state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error") && (
+            <FontAwesomeIcon icon={faTriangleExclamation} className="w-6 h-6 text-red-500 awesome" />
+          )}
 
-            {(state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error") && (
-              <FontAwesomeIcon icon={faTriangleExclamation} className="w-6 h-6 text-red-500 awesome" />
-            )}
-
-            {state.value !== "auth_failure" &&
-              state.value !== "start_failure" &&
-              state.value !== "decrypt_error" &&
-              state.value !== "signing" &&
-              state.value !== "display" && (
-                <div className="logo">
-                  <Logo className="Darkblock-Icon" />
-                </div>
-              )}
-
-            <div className="titleStack">
-              <div className={red ? "title-red" : "title"}>{title}</div>
-              <div className="content">{text}</div>
-            </div>
-
-            {!!authenticate && (
-              <div className="authButton">
-                <button onClick={authenticate} className="inner-button">
-                  Authenticate Ownership
-                </button>
+          {state.value !== "auth_failure" &&
+            state.value !== "start_failure" &&
+            state.value !== "decrypt_error" &&
+            state.value !== "signing" &&
+            state.value !== "display" && (
+              <div className="logo">
+                <Logo className="Darkblock-Icon" />
               </div>
             )}
-          </div>
+
+          { (title || text) && (
+            <div className="titleStack">
+              <div className={red ? "title title-red" : "title"}>{title}</div>
+              <div className="content">{text}</div>
+            </div>
+          )}
+
+          {!!authenticate && (
+            <div className="authButton">
+              <button onClick={authenticate} className="inner-button">
+                Authenticate Ownership
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
@@ -115,10 +117,10 @@ const Header = ({ onClose, state = null, authenticate }) => {
   if (state.value === "wallet_connected") {
     return setHeader(
       onClose,
+      state,
       "Darkblock Content",
       "This NFT has unlockable content which only the owner can access.",
       false,
-      state,
       authenticate
     )
   }
