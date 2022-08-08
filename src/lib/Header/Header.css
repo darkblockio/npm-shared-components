@@ -1,10 +1,10 @@
 .DarkblockWidget-Header {
-  @apply flex p-4 bg-gray-100 border-gray-100 border-2 w-60 shadow-lg absolute md:left-[50%] md:top-[25%] lg:left-[53%] lg:top-[30%] 2xl:left-[51%] 2xl:top-[15%] md:w-80 shadow-gray-300 sm:h-52 rounded z-30;
-  /* @apply relative z-30 h-fullbg left-1/3 ; */
+  @apply absolute z-30 flex p-4 m-auto bg-gray-100 border-2 border-gray-100 rounded shadow-lg w-60 md:w-80 shadow-gray-300 sm:h-52;
+  @apply transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
 }
 
 .DarkblockWidget-Header-Row {
-  @apply flex flex-col items-center justify-center flex-auto mt-5 sm:flex-col;
+  @apply flex flex-col items-center justify-center flex-auto sm:flex-col;
 }
 
 .DarkblockWidget-Header-Row > .logo {
