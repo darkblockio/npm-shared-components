@@ -159,10 +159,10 @@ td {
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background: #c0a0b9;
 }
-/* .playerIcons {
-  @apply
-} */
 
+.playerModal {
+  @apply  text-white bg-[rgb(43,43,43)] flex flex-col
+}
 .detail-subtitle {
   @apply mt-6 text-base font-bold;
 }

@@ -1,3 +1,5 @@
+const { faRightToBracket } = require("@fortawesome/free-solid-svg-icons");
+
 module.exports = {
   mode: 'jit',
   content: ["./src/lib/**/*.js"],
@@ -14,3 +16,4 @@ module.exports = {
   },
   plugins: [],
 }
+
