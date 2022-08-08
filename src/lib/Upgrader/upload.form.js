@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import FileUpload from "./fileUpload"
 import * as HashUtil from "../utils/hash-util"
 
-const UpgradeForm = ({ nft, wallet = null, address = null, publicKey = null, platform, onClose }) => {
+const UpgradeForm = ({ state, nft, wallet = null, address = null, publicKey = null, platform, onClose }) => {
   const [darkblockDescription, setDarkblockDescription] = useState("")
   const [name, setName] = useState("")
   const [isDownloadable, setIsDownloadable] = useState(false)
@@ -39,10 +39,10 @@ const UpgradeForm = ({ nft, wallet = null, address = null, publicKey = null, pla
 
     console.log("fileHash", fileHash)
 
-    setTimeout(() => {
-      setProgress(100)
-      setMintingState("error")
-    }, 5000)
+    // setTimeout(() => {
+    //   setProgress(100)
+    //   setMintingState("error")
+    // }, 5000)
   }
 
   return (

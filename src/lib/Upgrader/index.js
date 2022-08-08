@@ -30,11 +30,16 @@ const Upgrader = ({ state = null, config, apiKey = null }) => {
           <FontAwesomeIcon icon={faPlus} />
           Add Content
         </button>
-        <UpgradeModal open={showUpgrade} onClose={() => setShowUpgrade(false)} className="upgrade-modal" />
+        <UpgradeModal
+          state={state}
+          open={showUpgrade}
+          onClose={() => setShowUpgrade(false)}
+          className="upgrade-modal"
+        />
       </div>
     )
   } else {
-    return <>{state.value}</>
+    return <></>
   }
 }
 

@@ -17,14 +17,10 @@ const apiKey = "0ta7b7hp0sm59vq79d0j63che64c" //internal DB key - not for public
 
 const widget = (stateval) => {
   state.value = stateval
-  return (
-    <div>
-      <Upgrader state={state} config={config} apiKey={state.value === "no_api_key" ? null : apiKey} />
-    </div>
-  )
+  return <Upgrader state={state} config={config} apiKey={state.value === "no_api_key" ? null : apiKey} />
 }
 
-const states = ["idle", "show_upgrade"]
+const states = ["idle", "loading_arweave", "show_upgrade"]
 
 states.forEach((s) =>
   stories.add(s, () => {

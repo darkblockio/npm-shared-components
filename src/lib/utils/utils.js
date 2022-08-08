@@ -11,11 +11,41 @@ export function humanFileSize(size) {
   return (size / Math.pow(1024, i)).toFixed(2) * 1 + " " + ["B", "kB", "MB", "GB", "TB"][i]
 }
 
+export async function getNFTData(contract, id, platform) {
+  const pageSize = 50
+  return await fetch(
+    `https://api.darkblock.io/v1/nft/metadata?platform=${platform}&contract=${contract}&token=${id}&offest=0&page_size=${pageSize}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      return {
+        nft: data.data,
+      }
+    })
+    .catch((error) => {
+      return {
+        nft: null,
+      }
+    })
+}
+
 export async function getArweaveData(id, platform) {
   try {
     const response = await fetch(`https://api.darkblock.io/v1/darkblock/info?nft_id=${id}&nft_platform=${platform}`)
     const data = await response.json()
     return data
+  } catch (e) {
+    return []
+  }
+}
+
+export async function getOwner(contractAddr, tokenId, platform, owner = "") {
+  try {
+    const response = await fetch(
+      `https://api.darkblock.io/v1/nft/owner?platform=${platform}&contract_address=${contractAddr}&token_id=${tokenId}&owner=${owner}`
+    )
+    const asset = await response.json()
+    return asset
   } catch (e) {
     return []
   }
@@ -30,6 +60,19 @@ export async function getCreator(contractAddr, tokenId, platform) {
     return asset
   } catch (e) {
     return []
+  }
+}
+
+export function getProxyAsset(artID, sessionToken, tokenId, contract, nonce, platform, tezosPublicKey = null) {
+  let owner = ""
+  if (tezosPublicKey && tezosPublicKey.length > 0) {
+    owner = `&owner=${encodeURIComponent(tezosPublicKey)}`
+  }
+
+  if (nonce) {
+    return `https://gateway.darkblock.io/proxy?artid=${artID}&session_token=${sessionToken}&token_id=${tokenId}&contract=${contract}&nonce=${nonce}&platform=${platform}${owner}`
+  } else {
+    return `https://gateway.darkblock.io/proxy?artid=${artID}&session_token=${sessionToken}&token_id=${tokenId}&contract=${contract}&platform=${platform}${owner}`
   }
 }
 
