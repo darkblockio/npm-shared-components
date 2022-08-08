@@ -1,6 +1,6 @@
 /*whole component*/
 .DarkblockWidget-Stack-Panel {
-  @apply flex-grow w-full overflow-y-scroll h-96 md:h-96 lg:h-80 relative;
+  @apply relative flex-grow w-full overflow-y-scroll h-96 md:h-96 lg:h-80;
 }
 
 .DarkblockWidget-Stack-Panel .stack-table {
@@ -97,7 +97,7 @@ td {
 
 /*position the dropdown content */
 .DarkblockWidget-Stack-Panel .dropdown {
-  @apply relative;
+  @apply relative text-center;
 }
 
 .icons {
@@ -208,7 +208,7 @@ td {
 }
 
 .modal-box-container {
-  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-70;
+  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-gray-200 bg-opacity-5;
 }
 
 .modal-container {

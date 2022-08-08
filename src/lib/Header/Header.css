@@ -1,6 +1,6 @@
 .DarkblockWidget-Header {
-  @apply absolute z-30 flex p-4 m-auto bg-gray-100 border-2 border-gray-100 rounded shadow-lg w-60 max-h-72 md:w-80 shadow-gray-300 sm:h-52;
-  @apply transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 mobile:h-56;
+  @apply absolute z-30 flex p-4 m-auto bg-gray-100 border-2 border-gray-100 rounded shadow-lg w-60 max-h-72 md:w-80 shadow-gray-300 h-52;
+  @apply transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
 }
 
 .DarkblockWidget-Header-Row {
@@ -23,11 +23,11 @@
 }
 
 .titleStack > .title {
-  @apply flex items-center justify-center p-1 mobile:p-0 text-base font-bold flex-auto;
+  @apply flex items-center justify-center flex-auto py-1 text-base font-bold;
 }
 
 .titleStack > .title-red {
-  @apply flex flex-wrap items-center justify-center flex-auto text-base font-semibold text-center text-black;
+  @apply flex flex-wrap items-center justify-center flex-auto text-base text-center text-black;
 }
 
 .titleStack > .content {
@@ -39,5 +39,5 @@
 }
 
 .authButton > .inner-button {
-  @apply flex items-center justify-center flex-auto p-2 font-medium font-bold text-center text-black bg-gray-200 rounded-md w-fit h-fit;
+  @apply flex items-center justify-center flex-auto px-4 py-2 font-medium font-bold text-center text-black bg-gray-200 rounded-md w-fit h-fit;
 }
