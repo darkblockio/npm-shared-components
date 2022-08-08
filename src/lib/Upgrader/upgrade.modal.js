@@ -1,7 +1,7 @@
 import React from "react"
 import UpgradeForm from "./upload.form"
 
-const UpgradeModal = ({ state, open, onClose }) => {
+const UpgradeModal = ({ state, open, onClose, authenticate }) => {
   return (
     <>
       {open ? (
@@ -22,7 +22,7 @@ const UpgradeModal = ({ state, open, onClose }) => {
                   </div>
                   <hr className="my-4" />
                   <div className="upgrade-container">
-                    <UpgradeForm state={state} />
+                    <UpgradeForm state={state} onClose={() => onClose(true)} authenticate={authenticate} />
                   </div>
                 </div>
               </div>

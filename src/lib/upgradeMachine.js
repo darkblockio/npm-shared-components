@@ -6,16 +6,14 @@ const upgradeMachine = (tokenId, contractAddress, platform) => {
     id: "widget-upgrade",
     initial: "idle",
     context: {
-      creator: null,
-      nftData: null,
-      artId: null,
-      display: {
-        blockchain: "",
-        creator: "",
-      },
-      tokenId,
       contractAddress,
+      creator: null,
+      fileHash: null,
+      nftData: null,
       platform,
+      signature: null,
+      tokenId,
+      uploadPercent: 0,
     },
     states: {
       no_wallet: {},
@@ -44,8 +42,6 @@ const upgradeMachine = (tokenId, contractAddress, platform) => {
                 context.nftData = event.data[1]
 
                 if (!!context.creator.creator_address && !!context.nftData) {
-                  context.display.creator = context.creator.creator_address
-                  context.display.blockchain = context.nftData.nftData
                   return true
                 } else {
                   return false
@@ -79,7 +75,19 @@ const upgradeMachine = (tokenId, contractAddress, platform) => {
           RETRY: "idle",
         },
       },
-      show_upgrade: {},
+      show_upgrade: {
+        on: {
+          SIGN: "signing",
+        },
+      },
+      signing: {
+        on: {
+          SUCCESS: "upload_file",
+          // FAIL: "auth_failure",
+          // CANCEL: "wallet_connected",
+        },
+      },
+      upload_file: {},
     },
   })
 }

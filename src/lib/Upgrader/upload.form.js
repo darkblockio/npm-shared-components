@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import FileUpload from "./fileUpload"
 import * as HashUtil from "../utils/hash-util"
 
-const UpgradeForm = ({ state, nft, wallet = null, address = null, publicKey = null, platform, onClose }) => {
+const UpgradeForm = ({ state, onClose, authenticate }) => {
   const [darkblockDescription, setDarkblockDescription] = useState("")
   const [name, setName] = useState("")
   const [isDownloadable, setIsDownloadable] = useState(false)
@@ -18,12 +18,62 @@ const UpgradeForm = ({ state, nft, wallet = null, address = null, publicKey = nu
     }
   }, [fileState])
 
-  const getDarkblockSignature = async (platform, contract, token, fileHash) => {
-    console.log("getDarkblockSignature")
-    console.log("platform", platform)
-    console.log("contract", contract)
-    console.log("token", token)
-    console.log("fileHash", fileHash)
+
+  useEffect(() => {
+    console.log('UPLOAD FORM STATE', state.value, state)
+
+    if (state.value === 'upload_file') {
+      setProgress(state.context.uploadPercent)
+    }
+
+
+  }, [state.value])
+  const getDarkblockSignature = async (fileHash) => {
+    let signatureData, signature
+    let platform = state.context.platform
+    let contract = state.context.nftData.nft.contract
+    let token = state.context.nftData.nft.token
+
+    state.value = "signing"
+    try {
+      switch (platform.toLowerCase()) {
+        case "avalanche":
+        case "ethereum":
+        case "polygon":
+          signatureData = `${platform}${contract}:${token}${fileHash}`
+
+          console.log("eth signatureData", signatureData)
+          signature = "testing 1"
+          // signature = await signTypedData(signatureData, wallet, platform).then((response) => {
+          //   return response
+          // })
+          break
+        case "solana":
+          signatureData = `${platform}${token}${fileHash}`
+
+          console.log("solana signatureData", signatureData)
+          signature = "testing 2"
+          // const encodedMessage = new TextEncoder().encode(signatureData)
+          // const signedMessage = await window.solana.signMessage(encodedMessage, 'utf8')
+          // signature = btoa(String.fromCharCode.apply(null, signedMessage.signature))
+          break
+        case "tezos":
+          signatureData = `${platform}${contract}:${token}${fileHash}`
+
+          console.log("tezos signatureData", signatureData)
+          signature = "testing 3"
+          // signature = await signTezosData(signatureData, wallet).then((response) => {
+          //   return response
+          // })
+
+          break
+        default:
+          break
+      }
+    } catch (e) {
+      console.error(e)
+    }
+    return signature
   }
 
   const initDarkblockCreation = async (e) => {
@@ -38,11 +88,59 @@ const UpgradeForm = ({ state, nft, wallet = null, address = null, publicKey = nu
     setMintingStateMsg("signing file for security...")
 
     console.log("fileHash", fileHash)
+    state.context.fileHash = fileHash
 
-    // setTimeout(() => {
-    //   setProgress(100)
-    //   setMintingState("error")
-    // }, 5000)
+    console.log("TRIGGER SIGNING HERE")
+    authenticate()
+
+    let darkblockSignature = await getDarkblockSignature(fileHash)
+
+    console.log("darkblockSignature", darkblockSignature)
+
+    // let darkblockSignature = await getDarkblockSignature(platform, nft.contract, nft.token, fileHash)
+
+    let nftBlockchain = state.context.nftData.nft.blockchain.replace("ERC", "ERC-")
+
+    console.log("+++++++++++++++")
+    console.log("creator_address", state.context.wallet_address)
+    console.log("nft_contract", state.context.nftData.nft.contract)
+    console.log("nft_token", state.context.nftData.nft.token)
+    console.log("nft_platform", state.context.platform)
+    console.log("nft_standard", nftBlockchain)
+    console.log("darkblock_description", darkblockDescription)
+    console.log("name", name)
+    console.log("download", isDownloadable)
+
+    let data = new FormData()
+    data.set("file", fileState)
+
+    data.set("creator_address", state.context.wallet_address)
+    data.set("nft_contract", state.context.nftData.nft.contract)
+    data.set("nft_token", state.context.nftData.nft.token)
+    data.set("nft_platform", state.context.platform)
+    data.set("nft_standard", nftBlockchain)
+    data.set("darkblock_description", darkblockDescription)
+    // data.set('darkblock_signature', darkblockSignature)
+    data.set("name", name)
+    data.set("download", isDownloadable)
+
+    const options = {
+      headers: {
+        "Content-Type": "multipart/form-data; boundary=---011000010111000001101001",
+      },
+      timeout: 900000, // 15 minutes
+      onUploadProgress: (progressEvent) => {
+        const { loaded, total } = progressEvent
+        let percent = Math.floor((loaded * 100) / total)
+
+        if (percent > 10 && percent <= 100) {
+          setMintingStateMsg("uploading file...")
+          setProgress(percent)
+        }
+      },
+    }
+
+    setMintingStateMsg("starting file upload...")
   }
 
   return (
@@ -83,7 +181,12 @@ const UpgradeForm = ({ state, nft, wallet = null, address = null, publicKey = nu
           />
           <label className="downloadable-text">Allow download</label>
 
-          <button type="submit" id="darkblock-submit" className="upgrade-create-button">
+          <button
+            disabled={!fileState || !fileState.name || !name}
+            type="submit"
+            id="darkblock-submit"
+            className="upgrade-create-button"
+          >
             Create
           </button>
         </form>
