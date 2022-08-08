@@ -1,5 +1,5 @@
 .DarkblockWidget-App {
-  @apply flex flex-col w-full p-2 text-black rounded;
+  @apply flex flex-col w-full p-2 text-black rounded relative;
 }
 
 .DarkblockWidget-Footer {
