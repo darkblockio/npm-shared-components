@@ -238,11 +238,11 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         ) : null}
 
         {/* } */}
-        {state.value !== "no_wallet" &&
+        {(state.value !== "no_wallet" &&
           state.value !== "idle" &&
           state.value !== "loading_arweave" &&
           state.value !== "started" &&
-          state.value !== "start_failure" && (
+          state.value !== "start_failure") ? (
             <>
               <div className="DarkblockWidget-Stack-Panel">
                 <table className="table-auto stack-table">
@@ -284,7 +284,9 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                 </table>
               </div>
             </>
-          )}
+          ) :
+          <div className="sm:h-64">
+          </div>}
         <div className="DarkblockWidget-Footer">
           Powered by &nbsp;
           <StaticDBLogo />

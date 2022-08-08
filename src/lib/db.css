@@ -1,9 +1,9 @@
 .DarkblockWidget-App {
-  @apply flex flex-col w-full p-2 text-black rounded relative;
+  @apply relative flex flex-col w-full p-2 text-black rounded;
 }
 
 .DarkblockWidget-Footer {
-  @apply mt-2 text-xs font-bold text-neutral-400;
+  @apply relative bottom-0 mt-2 mt-auto text-xs font-bold text-neutral-400;
 }
 
 .DarkblockWidget-Footer svg {

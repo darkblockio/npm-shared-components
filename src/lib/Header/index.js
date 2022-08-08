@@ -18,44 +18,52 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
             : "rgb(243 244 246",
       }}
     >
-      {onClose !== false && (
-        <button className="DarkblockWidget-closeBtn" onClick={onClose}>
-          <AiOutlineClose />
-        </button>
-      )}
-
-      <div className="DarkblockWidget-Header-Row">
-        {state.value === "signing" && <FontAwesomeIcon icon={faWallet} className="awesome w-6 h-6" />}
-        {state.value === "display" && (
-          <FontAwesomeIcon icon={faCircleCheck} className="awesome text-green-500 w-6 h-6" />
+      <div className="m-auto">
+        {onClose !== false && (
+          <button className="DarkblockWidget-closeBtn" onClick={onClose}>
+            <AiOutlineClose />
+          </button>
         )}
 
-        {(state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error") && (
-          <FontAwesomeIcon icon={faTriangleExclamation} className="awesome text-red-500 w-6 h-6" />
-        )}
-
-        {state.value !== "auth_failure" &&
-          state.value !== "start_failure" &&
-          state.value !== "decrypt_error" &&
-          state.value !== "signing" &&
-          state.value !== "display" && (
-            <div className="logo">
-              <Logo className="Darkblock-Icon" />
-            </div>
+          {onClose !== false && (
+            <button className="DarkblockWidget-closeBtn" onClick={onClose}>
+              <AiOutlineClose />
+            </button>
           )}
 
-        <div className="titleStack">
-          <div className={red ? "title-red" : "title"}>{title}</div>
-          <div className="content">{text}</div>
-        </div>
+          <div className="DarkblockWidget-Header-Row">
+            {state.value === "signing" && <FontAwesomeIcon icon={faWallet} className="w-6 h-6 awesome" />}
+            {state.value === "display" && (
+              <FontAwesomeIcon icon={faCircleCheck} className="w-6 h-6 text-green-500 awesome" />
+            )}
 
-        {!!authenticate && (
-          <div className="authButton">
-            <button onClick={authenticate} className="inner-button">
-              Authenticate Ownership
-            </button>
+            {(state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error") && (
+              <FontAwesomeIcon icon={faTriangleExclamation} className="w-6 h-6 text-red-500 awesome" />
+            )}
+
+            {state.value !== "auth_failure" &&
+              state.value !== "start_failure" &&
+              state.value !== "decrypt_error" &&
+              state.value !== "signing" &&
+              state.value !== "display" && (
+                <div className="logo">
+                  <Logo className="Darkblock-Icon" />
+                </div>
+              )}
+
+            <div className="titleStack">
+              <div className={red ? "title-red" : "title"}>{title}</div>
+              <div className="content">{text}</div>
+            </div>
+
+            {!!authenticate && (
+              <div className="authButton">
+                <button onClick={authenticate} className="inner-button">
+                  Authenticate Ownership
+                </button>
+              </div>
+            )}
           </div>
-        )}
       </div>
     </div>
   )
