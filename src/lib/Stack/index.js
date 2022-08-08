@@ -226,17 +226,15 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           <div></div>
         ) :  */}
         {!showHeader ? (
-          <div className="flex items-center w-screen h-screen justify center">
-            <Header
-              className="popHeader"
-              onClose={() => {
-                // setShowModal(true)
-                setShowHeader(!showHeader)
-              }}
-              state={state}
-              authenticate={() => authenticate()}
-            />
-          </div>
+          <Header
+            className="popHeader"
+            onClose={() => {
+              // setShowModal(true)
+              setShowHeader(!showHeader)
+            }}
+            state={state}
+            authenticate={() => authenticate()}
+          />
         ) : null}
 
         {/* } */}
