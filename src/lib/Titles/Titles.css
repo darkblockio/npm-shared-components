@@ -13,7 +13,7 @@
 }
 
 .format-header {
-  @apply pl-44 pr-2 text-right
+  @apply pl-44 pr-6 text-right
 }
 
 .format-date {

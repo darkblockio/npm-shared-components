@@ -4,8 +4,7 @@
 }
 
 .DarkblockWidget-Stack-Panel .stack-table {
-  @apply w-full text-gray-500 border-gray-400;
-
+  @apply w-full text-gray-500 border-gray-400 opacity-40;
 }
 
 .DarkblockWidget-Stack-Panel .row {
@@ -162,7 +161,7 @@ td {
 }
 
 .playerModal {
-  @apply  text-white bg-[rgb(43,43,43)] flex flex-col
+  @apply text-white bg-[rgb(43,43,43)] flex flex-col;
 }
 .detail-subtitle {
   @apply mt-6 text-base font-bold;
