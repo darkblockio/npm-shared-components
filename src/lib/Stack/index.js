@@ -32,6 +32,7 @@ import "../db.css"
 import StaticDBLogo from "../Panel/staticDBLogo"
 import PlayerModal from "../playerModal"
 import DetailModal from "./detailModal"
+import EmptyTable from "../EmptyTable"
 
 const RenderIcon = ({ filetype }) => {
   let icon = faQuestionCircle
@@ -251,55 +252,55 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           />
         ):null}
 
-        {(state.value !== "no_wallet" &&
+        {/* {(state.value !== "no_wallet" &&
           state.value !== "idle" &&
           state.value !== "loading_arweave" &&
           state.value !== "started" &&
-          state.value !== "start_failure") ? (
-            <>
-              <div className='DarkblockWidget-Stack-Panel'>
-                <table className='stack-table'>
-                  <tbody>
-                    <Titles state={state} />
-                    {state.context.display.stack.map((db, i) => {
-                      if (state.value === "display") {
-                        let sel = selected ? selected.i === i : false
-                        return (
-                          <RowContent
-                            db={db}
-                            sel={sel}
-                            f={() => {
-                              setSwapping(true)
-                              setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i, db: db })
-                              setShowModal(true)
-                            }}
-                            index={i}
-                            key={i}
-                            counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
-                            selected={selected}
-                            state={state.value}
-                            url={urls[i]}
-                          />
-                        )
-                      } else {
-                        return (
-                          <RowContent
-                            db={db}
-                            index={i}
-                            key={i}
-                            counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
-                            selected={selected}
-                          />
-                        )
-                      }
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </>
-          ) :
-          <div className="h-64">
-          </div>}
+          state.value !== "start_failure") ? ( */}
+
+        {(false) ? (
+          <div className='DarkblockWidget-Stack-Panel'>
+            <table className='stack-table'>
+              <tbody>
+                <Titles state={state} />
+                {state.context.display.stack.map((db, i) => {
+                  if (state.value === "display") {
+                    let sel = selected ? selected.i === i : false
+                    return (
+                      <RowContent
+                        db={db}
+                        sel={sel}
+                        f={() => {
+                          setSwapping(true)
+                          setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i, db: db })
+                          setShowModal(true)
+                        }}
+                        index={i}
+                        key={i}
+                        counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
+                        selected={selected}
+                        state={state.value}
+                        url={urls[i]}
+                      />
+                    )
+                  } else {
+                    return (
+                      <RowContent
+                        db={db}
+                        index={i}
+                        key={i}
+                        counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
+                        selected={selected}
+                      />
+                    )
+                  }
+                })}
+              </tbody>
+            </table>
+          </div>
+        ) :
+          <EmptyTable />
+        }
         <div className="DarkblockWidget-Footer">
           Powered by &nbsp;
           <StaticDBLogo />

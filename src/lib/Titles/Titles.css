@@ -9,7 +9,7 @@
 /* flex-grow fixed border-gray-300 w-[98%] cursor-pointer text-[13px] font-semibold bg-white z-30 */
 
 .name-header {
-  @apply pl-3 text-left;
+  @apply pl-2 text-left;
 }
 
 .format-header {
@@ -18,6 +18,10 @@
 
 .format-date {
   @apply left-0 text-left;
+}
+
+.format-icon {
+  @apply pr-2;
 }
 
 /*hiding parts of header and table info on responsive */
