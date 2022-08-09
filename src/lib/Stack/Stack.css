@@ -172,7 +172,7 @@ td {
 }
 
 .button-container {
-  @apply float-right mt-4;
+  @apply float-right mt-3;
 }
 
 .done-button {
