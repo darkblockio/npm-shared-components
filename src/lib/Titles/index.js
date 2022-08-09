@@ -10,7 +10,7 @@ const Titles = ({ state }) => {
         <span>Name</span>
         <span> ({db})</span>
       </th>
-      <th scope='col' className='pr-2 text-right format-header'>
+      <th scope='col' className='pr-6 text-right format-header'>
         File Size
       </th>
       <th scope='col' className='text-left format-date'>
