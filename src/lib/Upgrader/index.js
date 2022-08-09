@@ -15,8 +15,6 @@ const Upgrader = ({ state = null, config, apiKey = null, authenticate }) => {
 
   useEffect(() => {
     if (state.value === "show_upgrade") {
-      console.log("===========  state===== ", state)
-
       setShowButton(true)
     }
   }, [state.value])
@@ -33,6 +31,7 @@ const Upgrader = ({ state = null, config, apiKey = null, authenticate }) => {
           Add Content
         </button>
         <UpgradeModal
+          apiKey={apiKey}
           state={state}
           open={showUpgrade}
           onClose={() => setShowUpgrade(false)}

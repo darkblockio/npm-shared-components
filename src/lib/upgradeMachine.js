@@ -13,7 +13,6 @@ const upgradeMachine = (tokenId, contractAddress, platform) => {
       platform,
       signature: null,
       tokenId,
-      uploadPercent: 0,
     },
     states: {
       no_wallet: {},
@@ -55,38 +54,38 @@ const upgradeMachine = (tokenId, contractAddress, platform) => {
       },
       started: {
         on: {
-          CONNECT_WALLET: "wallet_connected",
-          CONNECT_FAILED: "start_failure",
+          CONNECT_WALLET: { target: "wallet_connected" },
+          CONNECT_FAILED: { target: "start_failure" },
         },
       },
       wallet_connected: {
         on: {
-          VERIFY_OWNER: "verify_owner",
+          VERIFY_OWNER: { target: "verify_owner" },
         },
       },
       verify_owner: {
         on: {
-          SUCCESS: "show_upgrade",
-          FAIL: "start_failure",
+          SUCCESS: { target: "show_upgrade" },
+          FAIL: { target: "start_failure" },
         },
       },
       start_failure: {
         on: {
-          RETRY: "idle",
+          RETRY: { target: "idle" },
         },
       },
       show_upgrade: {
         on: {
-          SIGN: "signing",
+          SIGN: { target: "signing" },
         },
       },
       signing: {
         on: {
-          SUCCESS: "upload_file",
-          // FAIL: "auth_failure",
-          // CANCEL: "wallet_connected",
+          SIGNING_SUCCESS: { target: "upload_file" },
+          SIGNING_FAIL: { target: "show_upgrade" },
         },
       },
+      signing_fail: { target: "show_upgrade" },
       upload_file: {},
     },
   })
