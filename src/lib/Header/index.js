@@ -14,11 +14,11 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
           state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error"
             ? "#EF4444"
             : state.value === "display"
-            ? "#22C55E"
-            : "rgb(243 244 246",
+              ? "#22C55E"
+              : "rgb(243 244 246",
       }}
     >
-      <div className="m-auto">
+      <div className="DarkblockWidget-HeaderContent">
         {onClose !== false && (
           <button className="DarkblockWidget-closeBtn" onClick={onClose}>
             <AiOutlineClose />
@@ -51,7 +51,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
               </div>
             )}
 
-          { (title || text) && (
+          {(title || text) && (
             <div className="titleStack">
               <div className={red ? "title title-red" : "title"}>{title}</div>
               <div className="content">{text}</div>

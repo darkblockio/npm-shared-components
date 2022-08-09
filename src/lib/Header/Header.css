@@ -41,3 +41,7 @@
 .authButton > .inner-button {
   @apply flex items-center justify-center flex-auto px-4 py-2 font-medium font-bold text-center text-black bg-gray-200 rounded-md w-fit h-fit;
 }
+
+.DarkblockWidget-HeaderContent {
+  @apply m-auto;
+}
