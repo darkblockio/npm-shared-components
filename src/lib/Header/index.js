@@ -116,7 +116,7 @@ const Header = ({ onClose, state = null, authenticate }) => {
 
   if (state.value === "wallet_connected") {
     return setHeader(
-      onClose,
+      false,
       state,
       "Darkblock Content",
       "This NFT has unlockable content which only the owner can access.",
