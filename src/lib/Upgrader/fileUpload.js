@@ -28,15 +28,15 @@ const formats = [
   "zip",
 ]
 
-const FileUpload = ({ fileState, setFileState, showHeader = true }) => {
+const FileUpload = ({ fileState, setFileState }) => {
   return (
     <div className="fileupload-container">
       <div>
-        {showHeader && <h4 className="fileupload-header">Upload a file</h4>}
+        <h4 className="fileupload-header">Upload a file</h4>
         <p className="fileupload-header-supported">Supported File Formats:</p>
         <p className="fileupload-formats">{formats.join(", ")}</p>
-        <p className="fileupload-info">Max file size on this site is 10MB. Or through our API, it is over 350MB.</p>
-        <div style={{ display: "flex", alignItems: "center" }} id="responsetwo" className="hidden">
+        <p className="fileupload-info">Max file size 350MB</p>
+        <div style={{ display: "flex", alignItems: "center" }} className="hidden">
           <span id="size" />
         </div>
       </div>

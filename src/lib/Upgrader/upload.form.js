@@ -18,15 +18,12 @@ const UpgradeForm = ({ state, onClose, authenticate }) => {
     }
   }, [fileState])
 
-
   useEffect(() => {
-    console.log('UPLOAD FORM STATE', state.value, state)
+    console.log("UPLOAD FORM STATE", state.value, state)
 
-    if (state.value === 'upload_file') {
+    if (state.value === "upload_file") {
       setProgress(state.context.uploadPercent)
     }
-
-
   }, [state.value])
   const getDarkblockSignature = async (fileHash) => {
     let signatureData, signature
@@ -123,22 +120,6 @@ const UpgradeForm = ({ state, onClose, authenticate }) => {
     // data.set('darkblock_signature', darkblockSignature)
     data.set("name", name)
     data.set("download", isDownloadable)
-
-    const options = {
-      headers: {
-        "Content-Type": "multipart/form-data; boundary=---011000010111000001101001",
-      },
-      timeout: 900000, // 15 minutes
-      onUploadProgress: (progressEvent) => {
-        const { loaded, total } = progressEvent
-        let percent = Math.floor((loaded * 100) / total)
-
-        if (percent > 10 && percent <= 100) {
-          setMintingStateMsg("uploading file...")
-          setProgress(percent)
-        }
-      },
-    }
 
     setMintingStateMsg("starting file upload...")
   }
