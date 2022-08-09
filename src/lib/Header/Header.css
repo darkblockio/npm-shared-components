@@ -45,3 +45,15 @@
 .DarkblockWidget-HeaderContent {
   @apply m-auto;
 }
+
+.FaWalletIcon {
+  @apply w-6 h-6;
+}
+
+.FaCheckIcon {
+  @apply w-6 h-6 text-green-500;
+}
+
+.FaTriangleIcon {
+  @apply w-6 h-6 text-red-500;
+}
