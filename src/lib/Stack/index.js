@@ -54,7 +54,7 @@ const RenderIcon = ({ filetype }) => {
   return <FontAwesomeIcon icon={icon} className='awesome' />
 }
 
-const RenderArrowIcon = ({filetype}) => {
+const RenderArrowIcon = ({ filetype }) => {
   let icon = faQuestionCircle
 
   if (filetype.indexOf("faArrowLeft") > -1) icon = faArrowLeft
@@ -86,7 +86,7 @@ const RowContent = ({
 }) => {
   const [showDetails, setShowDetails] = useState(false)
 
-  let fn = f && typeof f === "function" ? f : () => {}
+  let fn = f && typeof f === "function" ? f : () => { }
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
   let truncatedName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
@@ -161,6 +161,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [swapping, setSwapping] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [showHeader, setShowHeader] = useState(false)
+  const [opacity, setOpacity] = useState(0.4)
 
   useEffect(() => {
     if (state.value === "display") {
@@ -175,6 +176,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
   useEffect(() => {
     if (state.value == "display") {
+      setOpacity(1)
       setTimeout(() => {
         setShowHeader(true) //it has reverse logic
       }, 1500)
@@ -213,17 +215,17 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
       <PlayerModal state={state} urls={urls}  authenticate={() => authenticate()} showModal={showModal} open={showModal} onClose={() => setShowModal(false)}>
         {state.value === "display" && selected && !swapping && (
           <>
-          <div>
-            <div  className='playerModal'>
-              <div>{selected.db.name}</div>
+            <div>
+              <div className='playerModal'>
+                <div>{selected.db.name}</div>
 
-            </div>
+              </div>
               <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
           </div>
             <div className='pt-3 pb-3 mt-1 fa-2xl'>
               {selected.i > 0 && (
                 <button onClick={() => previousDb()} className='playerBtn '>
-                  <RenderArrowIcon  filetype={"faArrowLeft"}/>
+                  <RenderArrowIcon filetype={"faArrowLeft"} />
                 </button>
               )}
               {selected.i + 1 !== state.context.display.stack.length && (
@@ -232,7 +234,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                 </button>
               )}
             </div>
-            </>
+          </>
         )}
       </PlayerModal>
       <div className={config.customCssClass ? `DarkblockWidget-App ${config.customCssClass}` : `DarkblockWidget-App`}>
@@ -250,7 +252,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             state={state}
             authenticate={() => authenticate()}
           />
-        ):null}
+        ) : null}
 
         {/* } */}
         {(state.value !== "no_wallet" &&
@@ -258,48 +260,48 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           state.value !== "loading_arweave" &&
           state.value !== "started" &&
           state.value !== "start_failure") ? (
-            <>
-              <div className='DarkblockWidget-Stack-Panel'>
-                <table className='table-auto stack-table'>
-                  <tbody>
-                    <Titles state={state} />
-                    {state.context.display.stack.map((db, i) => {
-                      if (state.value === "display") {
-                        let sel = selected ? selected.i === i : false
-                        return (
-                          <RowContent
-                            db={db}
-                            sel={sel}
-                            f={() => {
-                              setSwapping(true)
-                              setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i, db: db })
-                              setShowModal(true)
-                            }}
-                            index={i}
-                            key={i}
-                            counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
-                            selected={selected}
-                            state={state.value}
-                            url={urls[i]}
-                          />
-                        )
-                      } else {
-                        return (
-                          <RowContent
-                            db={db}
-                            index={i}
-                            key={i}
-                            counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
-                            selected={selected}
-                          />
-                        )
-                      }
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </>
-          ) :
+          <>
+            <div className='DarkblockWidget-Stack-Panel'>
+              <table className='table-auto stack-table' style={{ opacity: opacity }}>
+                <tbody>
+                  <Titles state={state} />
+                  {state.context.display.stack.map((db, i) => {
+                    if (state.value === "display") {
+                      let sel = selected ? selected.i === i : false
+                      return (
+                        <RowContent
+                          db={db}
+                          sel={sel}
+                          f={() => {
+                            setSwapping(true)
+                            setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i, db: db })
+                            setShowModal(true)
+                          }}
+                          index={i}
+                          key={i}
+                          counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
+                          selected={selected}
+                          state={state.value}
+                          url={urls[i]}
+                        />
+                      )
+                    } else {
+                      return (
+                        <RowContent
+                          db={db}
+                          index={i}
+                          key={i}
+                          counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
+                          selected={selected}
+                        />
+                      )
+                    }
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </>
+        ) :
           <div className="h-64">
           </div>}
         <div className="DarkblockWidget-Footer">
