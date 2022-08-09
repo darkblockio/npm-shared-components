@@ -244,7 +244,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           <Header
             className='popHeader'
             onClose={() => {
-              // setShowModal(true)
               setShowHeader(!showHeader)
             }}
             state={state}
@@ -252,7 +251,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           />
         ):null}
 
-        {/* } */}
         {(state.value !== "no_wallet" &&
           state.value !== "idle" &&
           state.value !== "loading_arweave" &&
@@ -260,7 +258,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           state.value !== "start_failure") ? (
             <>
               <div className='DarkblockWidget-Stack-Panel'>
-                <table className='table-auto stack-table'>
+                <table className='stack-table'>
                   <tbody>
                     <Titles state={state} />
                     {state.context.display.stack.map((db, i) => {

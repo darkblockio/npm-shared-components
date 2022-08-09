@@ -3,29 +3,21 @@
  }
 
 .rowheader {
-  @apply sticky top-0 z-10 h-10 text-sm font-semibold bg-white cursor-pointer;
+  @apply sticky top-0 z-10 h-10 text-sm font-semibold text-gray-500 bg-white cursor-pointer;
 }
 
 /* flex-grow fixed border-gray-300 w-[98%] cursor-pointer text-[13px] font-semibold bg-white z-30 */
 
- .name-header {
-  @apply flex flex-row  w-[800px];
+.name-header {
+  @apply pl-3 text-left;
 }
 
- .whitespace1{
-  @apply w-44
- }
- .whitespace2{
-  @apply w-20
- }
- .whitespace3{
-  @apply w-52
- }
-.format-header{
-  @apply pl-44
+.format-header {
+  @apply pl-44 pr-2 text-right
 }
-.format-date{
-  @apply left-0
+
+.format-date {
+  @apply left-0 text-left;
 }
 
 /*hiding parts of header and table info on responsive */
