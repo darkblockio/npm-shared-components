@@ -1,7 +1,7 @@
 .DarkblockWidget-Player {
   @apply  bg-gray-200 rounded m-auto;
   height: 74vh;
-  width: 90%;
+  width: 100%;
 }
 
 .DarkblockWidget-Player .zip-panel {
@@ -33,7 +33,7 @@
 }
 
 .DarkblockWidget-Player-Content .videoPlayer .plyr {
-  @apply object-cover w-full ;
+  @apply object-cover h-full w-full ;
   height: 74vh
 }
 
@@ -54,5 +54,13 @@
 }
 
 .videoPlayer-safeZone{
-  @apply py-8 bg-black;
+  @apply py-3 bg-[rgb(43,43,43)];
+}
+
+.playerBtn{
+  @apply mr-2 bg-[rgb(20,20,20)] rounded-full mt-1
+}
+
+.arrowIcons{
+  @apply h-4 w-4 p-2
 }
