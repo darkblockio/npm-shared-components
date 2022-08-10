@@ -1,5 +1,5 @@
 import { createMachine } from "xstate"
-import { getCreator, getNFTData } from "./utils/utils"
+import { getCreator, getNFTData } from "./utils"
 
 const upgradeMachine = (tokenId, contractAddress, platform) => {
   return createMachine({

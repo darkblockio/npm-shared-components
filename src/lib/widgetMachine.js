@@ -1,5 +1,5 @@
 import { createMachine } from "xstate"
-import { humanFileSize, shortenEthAddr, getCreator, getArweaveData } from "./utils/utils"
+import { humanFileSize, shortenEthAddr, getCreator, getArweaveData } from "./utils"
 
 const widgetMachine = (tokenId, contractAddress, platform) => {
   let baseLink
