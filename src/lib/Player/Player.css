@@ -54,7 +54,7 @@
 }
 
 .videoPlayer-safeZone{
-  @apply py-3 bg-[rgb(43,43,43)];
+  @apply py-1 bg-[rgb(43,43,43)];
 }
 
 .playerBtn{

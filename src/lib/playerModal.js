@@ -1,31 +1,26 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClose } from "@fortawesome/free-solid-svg-icons"
 import "./playerModal.css"
 
-const PlayerModal = ({ state = null, urls, children, open, onClose }) => {
- 
- 
-
+const PlayerModal = ({ state = null, children, open, onClose }) => {
   return (
     <>
-      {open ?
-        (
-            <>
-              <div className='container'>
-                <div className='modal-bg-darkblock'>
-   
-                    <div onClick={() => onClose(true)}>
-                      <FontAwesomeIcon icon={faClose} className='awesomePlayerButton' />
-                     
-                    </div>
+      {open ?  (
+        <>
+          <div className='container'>
+            <div className='modal-bg-darkblock'>
+              <div id='modal-box-darkblock'>
+                <div onClick={() => onClose(true)}>
+                  <FontAwesomeIcon icon={faClose} className='awesomePlayerButton' />
                   
-                  <div className='content'>{children}</div>
                 </div>
               </div>
-            </>
-          )
-        : null}
+                <div className='content'>{children}</div>
+            </div>
+          </div>
+        </>
+      ) : null}
     </>
   )
 }

@@ -222,7 +222,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
               </div>
               <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
           </div>
-            <div className='pt-3 pb-3 mt-1 fa-2xl'>
+            <div className='px-3 mt-1 mb-1 fa-2xl'>
               {selected.i > 0 && (
                 <button onClick={() => previousDb()} className='playerBtn '>
                   <RenderArrowIcon filetype={"faArrowLeft"} />
