@@ -51,8 +51,7 @@ const RenderIcon = ({ filetype }) => {
   if (filetype.indexOf("chevronLeft") > -1) icon = faChevronLeft
   if (filetype.indexOf("chevronRight") > -1) icon = faChevronRight
 
-
-  return <FontAwesomeIcon icon={icon} className='awesome' />
+  return <FontAwesomeIcon icon={icon} className="awesome" />
 }
 
 const RenderArrowIcon = ({ filetype }) => {
@@ -61,7 +60,7 @@ const RenderArrowIcon = ({ filetype }) => {
   if (filetype.indexOf("faArrowLeft") > -1) icon = faArrowLeft
   if (filetype.indexOf("faArrowRight") > -1) icon = faArrowRight
 
-  return <FontAwesomeIcon icon={icon} className='arrowIcons' />
+  return <FontAwesomeIcon icon={icon} className="arrowIcons" />
 }
 
 const RenderDetailIcon = ({ filetype }) => {
@@ -72,7 +71,7 @@ const RenderDetailIcon = ({ filetype }) => {
   if (filetype.indexOf("download") > -1) icon = faDownload
   if (filetype.indexOf("upRightFromSquare") > -1) icon = faUpRightFromSquare
 
-  return <FontAwesomeIcon icon={icon} className='ellIcon' />
+  return <FontAwesomeIcon icon={icon} className="ellIcon" />
 }
 
 const RowContent = ({
@@ -87,7 +86,7 @@ const RowContent = ({
 }) => {
   const [showDetails, setShowDetails] = useState(false)
 
-  let fn = f && typeof f === "function" ? f : () => { }
+  let fn = f && typeof f === "function" ? f : () => {}
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
   let truncatedName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
@@ -101,14 +100,14 @@ const RowContent = ({
   return (
     <>
       <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
-        <td className='name' onClick={fn}>
+        <td className="name" onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
           <span>{`${counter} ${truncatedName}`}</span>
         </td>
-        <td className='text-right size' onClick={fn}>
+        <td className="text-right size" onClick={fn}>
           {db.fileSize}
         </td>
-        <td className='date' onClick={fn}>
+        <td className="date" onClick={fn}>
           {d.toLocaleString([], {
             year: "numeric",
             month: "numeric",
@@ -116,16 +115,16 @@ const RowContent = ({
           })}
         </td>
         {/* dropdown popout box begins------------------------- */}
-        <td className='dropdown'>
-          <div className='dropbtn'>
+        <td className="dropdown">
+          <div className="dropbtn">
             <RenderDetailIcon filetype={"ellipsis"} />
           </div>
-          <div className='dropdownContent'>
-            <a className='boxMenu' onClick={() => setShowDetailModal(true)}>
-              <span className='icons'>
+          <div className="dropdownContent">
+            <a className="boxMenu" onClick={() => setShowDetailModal(true)}>
+              <span className="icons">
                 <RenderDetailIcon filetype={"info"} />
               </span>
-              <span className='placeHolder'>Details</span>
+              <span className="placeHolder">Details</span>
             </a>
             <a
               className={`boxMenu ${!isDownloadable ? "cursor-not-allowed text-gray-300" : ""}`}
@@ -137,16 +136,16 @@ const RowContent = ({
                 }
               }}
             >
-              <span className='icons'>
+              <span className="icons">
                 <RenderDetailIcon filetype={"download"} />
               </span>
-              <span className='placeHolder'>Download</span>
+              <span className="placeHolder">Download</span>
             </a>
-            <a target='_blank' rel='noreferrer' className='boxMenu' href={db.arweaveTXLink}>
-              <span className='icons'>
+            <a target="_blank" rel="noreferrer" className="boxMenu" href={db.arweaveTXLink}>
+              <span className="icons">
                 <RenderDetailIcon filetype={"upRightFromSquare"} />
               </span>
-              <span className='placeHolder'>Arweave</span>
+              <span className="placeHolder">Arweave</span>
             </a>
           </div>
           {/*drop down ends*/}
@@ -213,24 +212,23 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
   return (
     <div>
-      <PlayerModal  showModal={showModal} open={showModal} onClose={() => setShowModal(false)}>
+      <PlayerModal showModal={showModal} open={showModal} onClose={() => setShowModal(false)}>
         {state.value === "display" && selected && !swapping && (
           <>
             <div>
-              <div className='playerModal'>
+              <div className="playerModal">
                 <div>{selected.db.name}</div>
-
               </div>
               <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
-          </div>
-            <div className='px-3 mt-1 mb-1 fa-2xl'>
+            </div>
+            <div className="px-3 mt-1 mb-1 fa-2xl">
               {selected.i > 0 && (
-                <button onClick={() => previousDb()} className='playerBtn '>
+                <button onClick={() => previousDb()} className="playerBtn ">
                   <RenderArrowIcon filetype={"faArrowLeft"} />
                 </button>
               )}
               {selected.i + 1 !== state.context.display.stack.length && (
-                <button onClick={() => nextDb()} className='playerBtn'>
+                <button onClick={() => nextDb()} className="playerBtn">
                   <RenderArrowIcon filetype={"faArrowRight"} />
                 </button>
               )}
@@ -245,7 +243,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         ) :  */}
         {!showHeader ? (
           <Header
-            className='popHeader'
+            className="popHeader"
             onClose={() => {
               setShowHeader(!showHeader)
             }}
@@ -254,13 +252,14 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           />
         ) : null}
 
-        {(state.value !== "no_wallet" &&
-          state.value !== "idle" &&
-          state.value !== "loading_arweave" &&
-          state.value !== "started" &&
-          state.value !== "start_failure") ? (
-          <div className='DarkblockWidget-Stack-Panel'>
-            <table className='table-auto stack-table' style={{ opacity: opacity }}>
+        {state.value !== "no_wallet" &&
+        state.value !== "idle" &&
+        state.value !== "loading_arweave" &&
+        state.value !== "started" &&
+        state.value !== "start_failure" &&
+        state.value !== "no_darkblock" ? (
+          <div className="DarkblockWidget-Stack-Panel">
+            <table className="table-auto stack-table" style={{ opacity: opacity }}>
               <tbody>
                 <Titles state={state} />
                 {state.context.display.stack.map((db, i) => {
@@ -298,9 +297,9 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
               </tbody>
             </table>
           </div>
-        ) :
+        ) : (
           <EmptyTable />
-        }
+        )}
         <div className="DarkblockWidget-Footer">
           Powered by &nbsp;
           <StaticDBLogo />
