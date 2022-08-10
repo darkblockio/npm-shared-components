@@ -4,7 +4,7 @@
 }
 
 .DarkblockWidget-Stack-Panel .stack-table {
-  @apply top-0 left-0 right-0 w-full border-gray-400;
+  @apply w-full text-gray-500 border-gray-400 opacity-40;
 }
 
 .DarkblockWidget-Stack-Panel .row {
@@ -29,7 +29,7 @@
 }
 
 .DarkblockWidget-Stack-Panel .name {
-  @apply text-base;
+  @apply text-base text-gray-900;
 }
 
 .DarkblockWidget-Stack-Panel .row .date {
@@ -37,7 +37,7 @@
 }
 
 .DarkblockWidget-Stack-Panel .dbdata {
-  @apply relative mt-10 border-gray-300 cursor-pointer hover:bg-gray-100;
+  @apply mt-10 border border-gray-200 cursor-pointer hover:bg-gray-100;
 }
 
 /*on select after coming back from modal*/
@@ -161,7 +161,7 @@ td {
 }
 
 .playerModal {
-  @apply  text-white bg-[rgb(43,43,43)] flex flex-col
+  @apply text-white bg-[rgb(43,43,43)] flex flex-col;
 }
 .detail-subtitle {
   @apply mt-6 text-base font-bold;
@@ -172,7 +172,7 @@ td {
 }
 
 .button-container {
-  @apply float-right mt-4;
+  @apply float-right mt-3;
 }
 
 .done-button {

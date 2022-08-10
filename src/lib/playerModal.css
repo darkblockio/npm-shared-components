@@ -3,11 +3,11 @@
 }
 
 .modal-bg-darkblock {
-  @apply fixed inset-0  items-center  justify-center overflow-auto bg-[rgb(43,43,43)];
+  @apply fixed inset-0  items-center cursor-pointer text-white text-right justify-center pt-2 bg-[rgb(43,43,43)];
 }
 
 #modal-box-darkblock {
-  @apply cursor-pointer text-white text-right mt-2 pr-5 ;
+  @apply cursor-pointer text-white text-right pr-3 ;
 }
 
 .content {
@@ -15,5 +15,13 @@
 }
 
 .awesomePlayerButton {
-  @apply bg-[rgb(23,23,23)] text-white p-1 pl-2 pr-2 rounded-full;
+  @apply bg-[rgb(23,23,23)] text-white p-2 pl-3 pr-3 mr-8 rounded-full;
+}
+
+.titlePlayer{
+  @apply flex items-center justify-end px-3 py-2
+}
+
+.dbName{
+  @apply pr-[39%]
 }

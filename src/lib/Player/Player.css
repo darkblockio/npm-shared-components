@@ -19,12 +19,12 @@
 }
 
 .DarkblockWidget-Player-Content iframe {
-  @apply w-full h-96 sm:mt-20 sm:h-[30rem] md:h-[38rem] lg:h-[40rem] xl:h-[44rem];
+  @apply w-full h-96  sm:h-[30rem] md:h-[38rem] lg:h-[40rem] xl:h-[44rem];
   height: 74vh
 }
 
 .DarkblockWidget-Player-Content model-viewer {
-  @apply h-96 sm:mt-20 sm:h-[30rem] md:h-[38rem] lg:h-[40rem] w-full xl:h-[44rem];
+  @apply h-96 sm:h-[30rem] md:h-[38rem] lg:h-[40rem] w-full xl:h-[44rem];
   height: 74vh
 }
 
@@ -54,7 +54,7 @@
 }
 
 .videoPlayer-safeZone{
-  @apply py-3 bg-[rgb(43,43,43)];
+  @apply py-1 bg-[rgb(43,43,43)];
 }
 
 .playerBtn{
@@ -64,3 +64,4 @@
 .arrowIcons{
   @apply h-4 w-4 p-2
 }
+

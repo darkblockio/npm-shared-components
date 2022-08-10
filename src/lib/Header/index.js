@@ -14,11 +14,11 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
           state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error"
             ? "#EF4444"
             : state.value === "display"
-            ? "#22C55E"
-            : "rgb(243 244 246",
+              ? "#22C55E"
+              : "rgb(243 244 246",
       }}
     >
-      <div className="m-auto">
+      <div className="DarkblockWidget-HeaderContent">
         {onClose !== false && (
           <button className="DarkblockWidget-closeBtn" onClick={onClose}>
             <AiOutlineClose />
@@ -32,13 +32,13 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
         )}
 
         <div className="DarkblockWidget-Header-Row">
-          {state.value === "signing" && <FontAwesomeIcon icon={faWallet} className="w-6 h-6 awesome" />}
+          {state.value === "signing" && <FontAwesomeIcon icon={faWallet} className="FaWalletIcon awesome" />}
           {state.value === "display" && (
-            <FontAwesomeIcon icon={faCircleCheck} className="w-6 h-6 text-green-500 awesome" />
+            <FontAwesomeIcon icon={faCircleCheck} className="FaCheckIcon awesome" />
           )}
 
           {(state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error") && (
-            <FontAwesomeIcon icon={faTriangleExclamation} className="w-6 h-6 text-red-500 awesome" />
+            <FontAwesomeIcon icon={faTriangleExclamation} className="FaTriangleIcon awesome" />
           )}
 
           {state.value !== "auth_failure" &&
@@ -51,7 +51,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
               </div>
             )}
 
-          { (title || text) && (
+          {(title || text) && (
             <div className="titleStack">
               <div className={red ? "title title-red" : "title"}>{title}</div>
               <div className="content">{text}</div>
@@ -116,7 +116,7 @@ const Header = ({ onClose, state = null, authenticate }) => {
 
   if (state.value === "wallet_connected") {
     return setHeader(
-      onClose,
+      false,
       state,
       "Darkblock Content",
       "This NFT has unlockable content which only the owner can access.",

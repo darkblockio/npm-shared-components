@@ -6,14 +6,14 @@ const Titles = ({ state }) => {
 
   return (
     <tr className='rowheader'>
-      <th scope='col' className='pl-3 text-left name-header`  '>
+      <th scope='col' className='name-header'>
         <span>Name</span>
         <span> ({db})</span>
       </th>
-      <th scope='col' className='pr-2 text-right format-header'>
+      <th scope='col' className='format-header'>
         File Size
       </th>
-      <th scope='col' className='text-left format-date'>
+      <th scope='col' className='format-date'>
         Date Added
       </th>
       <th scope='col' className='format-icon'>

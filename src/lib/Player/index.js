@@ -50,6 +50,7 @@ const MyGallery = ({ mediaURL, config }) => {
               margin: "auto",
               justify: "center",
               zIndex: "99999",
+              marginTop: "50px"
             }}
           >
             <Logo loop />
@@ -122,7 +123,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
   }
 
   if (mediaType == "encrypted(text/html)") {
-    return <iframe id='pdf-html-iframe' allowFullScreen className='w-full h-64 md:h-72 lg:h-96' src={mediaURL} />
+    return <iframe id='pdf-html-iframe' allowFullScreen className='h-64 md:h-72 lg:h-96' src={mediaURL} />
   }
 
   if (mediaType == "encrypted(model/gltf-binary)" || mediaType == "(model/gltf-binary)") {
@@ -185,7 +186,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
     return (
       <>
         <div className='buffer'></div>
-        <div className='audioPlayer flex items-center justify-center'>
+        <div className='audioPlayer flex items-center justify-center pt-12'>
           <Plyr source={mediaSrc} />
         </div>
       </>
