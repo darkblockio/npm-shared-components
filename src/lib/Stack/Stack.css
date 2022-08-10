@@ -161,7 +161,7 @@ td {
 }
 
 .playerModal {
-  @apply text-white bg-[rgb(43,43,43)] flex flex-col;
+  @apply text-white bg-[rgb(43,43,43)] my-4 w-[90%] pl-24 ;
 }
 .detail-subtitle {
   @apply mt-6 text-base font-bold;

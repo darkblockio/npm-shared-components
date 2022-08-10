@@ -7,7 +7,7 @@
 }
 
 #modal-box-darkblock {
-  @apply cursor-pointer text-white text-right pr-3 ;
+  @apply cursor-pointer text-white text-right pr-3 mb-1 my-3 w-[10%] float-right;
 }
 
 .content {
@@ -15,7 +15,7 @@
 }
 
 .awesomePlayerButton {
-  @apply bg-[rgb(23,23,23)] text-white p-2 pl-3 pr-3 mr-8 rounded-full;
+  @apply bg-[rgb(23,23,23)] text-white p-2 pl-3 pr-3 mr-7 rounded-full;
 }
 
 .titlePlayer{
