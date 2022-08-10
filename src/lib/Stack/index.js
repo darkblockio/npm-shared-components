@@ -163,7 +163,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [showModal, setShowModal] = useState(false)
   const [showHeader, setShowHeader] = useState(false)
   const [opacity, setOpacity] = useState(0.4)
-
+  const [showPlayerModal, setShowPlayerModal] = useState(false)
   useEffect(() => {
     if (state.value === "display") {
       setSelected({
@@ -213,7 +213,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
   return (
     <div>
-      <PlayerModal state={state} urls={urls}  authenticate={() => authenticate()} showModal={showModal} open={showModal} onClose={() => setShowModal(false)}>
+      <PlayerModal  showModal={showModal} open={showModal} onClose={() => setShowModal(false)}>
         {state.value === "display" && selected && !swapping && (
           <>
             <div>
