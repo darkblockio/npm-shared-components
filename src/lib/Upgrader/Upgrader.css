@@ -127,8 +127,12 @@
   @apply text-sm mt-4 text-white;
 }
 
+.DarkblockWidget-Upgrader .minting-warning-container {
+  @apply flex items-center justify-center;
+}
+
 .DarkblockWidget-Upgrader .minting-warning {
-  @apply text-white rounded-xl bg-gray-900 my-8 mx-20 py-4;
+  @apply text-white text-center rounded-xl bg-gray-900 p-1 justify-center w-1/2 ;
 }
 
 .DarkblockWidget-Upgrader .minting-complete-header {

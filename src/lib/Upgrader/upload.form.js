@@ -12,6 +12,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
   const [mintingStateMsg, setMintingStateMsg] = useState("")
   const [minting, setMinting] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     if (fileState && fileState.name) {
@@ -38,6 +39,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
       setMintingStateMsg("")
       setMinting(false)
       setProgress(0)
+      setOpen(false)
     }
   }, [mintingState])
 
@@ -98,11 +100,14 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
     setName("")
     setMintingStateMsg("")
     setMinting(false)
+    setOpen(false)
     setProgress(0)
   }
 
   const initDarkblockCreation = async (e) => {
     e.preventDefault()
+
+    setOpen(true)
     setMinting(true)
     setProgress(5)
     setMintingStateMsg("hashing the file...")
@@ -164,68 +169,74 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
             Create
           </button>
         </form>
-      ) : (
-        <div>
-          {mintingState === "starting" && (
-            <>
-              <div className="minting-container">
-                <h3 className="minting-header-text">Your unlockable content is being created...</h3>
-                <div>
-                  <video autoPlay playsInline loop className="minting-video-loop">
-                    <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
-                  </video>
-                </div>
-                <div className="minting-progress-container">
-                  <div className="minting-progress-bar" style={{ width: `${progress}%` }}>
-                    {progress}%
+      ) : null}
+      {open ? (
+        <div className="upgrade-modal-container">
+          <div id="upgrade-modal-bg">
+            <div>
+              {mintingState === "starting" && (
+                <>
+                  <div className="minting-container">
+                    <h3 className="minting-header-text">Your unlockable content is being created...</h3>
+                    <div>
+                      <video autoPlay playsInline loop className="minting-video-loop">
+                        <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
+                      </video>
+                    </div>
+                    <div className="minting-progress-container">
+                      <div className="minting-progress-bar" style={{ width: `${progress}%` }}>
+                        {progress}%
+                      </div>
+                    </div>
+                    <div className="minting-state-msg">{mintingStateMsg}</div>
+                    <div className="minting-warning-container">
+                      <p className="minting-warning">
+                        Please DO NOT close this page until this process is finished. Depending on the file size and
+                        your internet connection the upload time may take up to a few minutes.
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="minting-state-msg">{mintingStateMsg}</div>
-                <div>
-                  <p className="minting-warning">
-                    Please DO NOT close this page until this process is finished. Depending on the file size and your
-                    internet connection the upload time may take up to a few minutes.
-                  </p>
-                </div>
-              </div>
-            </>
-          )}
-          {mintingState === "complete" && (
-            <>
-              <div className="minting-container">
-                <h3 className="minting-complete-header">Success!</h3>
-                <p className="minting-complete-info">Your unlockable content has been created</p>
-                <button
-                  className="minting-complete-add-another"
-                  onClick={() => {
-                    setMinting(false)
-                  }}
-                >
-                  Make Another
-                </button>
-                <button className="minting-complete-done" onClick={onClose}>
-                  I&apos;m Done
-                </button>
-              </div>
-            </>
-          )}
-          {mintingState === "error" && (
-            <>
-              <div className="minting-container">
-                <h3 className="minting-error-msg">Error Trying to Upload File</h3>
-                <button
-                  className="minting-try-again"
-                  onClick={() => {
-                    setMintingState("starting")
-                  }}
-                >
-                  Try Again
-                </button>
-              </div>
-            </>
-          )}
+                </>
+              )}
+              {mintingState === "complete" && (
+                <>
+                  <div className="minting-container">
+                    <h3 className="minting-complete-header">Success!</h3>
+                    <p className="minting-complete-info">Your unlockable content has been created</p>
+                    <button
+                      className="minting-complete-add-another"
+                      onClick={() => {
+                        setMinting(false)
+                        setOpen(false)
+                      }}
+                    >
+                      Make Another
+                    </button>
+                    <button className="minting-complete-done" onClick={onClose}>
+                      I&apos;m Done
+                    </button>
+                  </div>
+                </>
+              )}
+              {mintingState === "error" && (
+                <>
+                  <div className="minting-container">
+                    <h3 className="minting-error-msg">Error Trying to Upload File</h3>
+                    <button
+                      className="minting-try-again"
+                      onClick={() => {
+                        setMintingState("starting")
+                      }}
+                    >
+                      Try Again
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
         </div>
-      )}
+      ) : null}
     </div>
   )
 }
