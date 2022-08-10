@@ -225,6 +225,7 @@ const states = [
   "loading_arweave",
   "started",
   "start_failure",
+  "no_darkblock",
   "wallet_connected",
   "authenticated",
   "auth_failure",

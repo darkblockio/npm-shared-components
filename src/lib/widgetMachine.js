@@ -73,8 +73,9 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
                 if (
                   !!context.creator.creator_address &&
                   !!context.artId &&
-                  context.arweaveData.status !== "Not found" &&
-                  context.arweaveData.status !== "Not Verified"
+                  !!context.arweaveData.darkblock &&
+                  !!context.arweaveData.dbstack &&
+                  context.arweaveData.dbstack.length > 0
                 ) {
                   context.display.creator = shortenEthAddr(context.creator.creator_address, platform) || ""
                   context.display.creatorLink = context.baseLink + context.creator.creator_address
@@ -124,7 +125,7 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
                 }
               },
             },
-            { target: "start_failure" },
+            { target: "no_darkblock" },
           ],
           onError: { target: "start_failure" },
         },
@@ -132,6 +133,11 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
       started: {
         on: {
           CONNECT_WALLET: "wallet_connected",
+        },
+      },
+      no_darkblock: {
+        on: {
+          RETRY: "idle",
         },
       },
       start_failure: {

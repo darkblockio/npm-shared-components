@@ -14,8 +14,8 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
           state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error"
             ? "#EF4444"
             : state.value === "display"
-              ? "#22C55E"
-              : "rgb(243 244 246",
+            ? "#22C55E"
+            : "rgb(243 244 246",
       }}
     >
       <div className="DarkblockWidget-HeaderContent">
@@ -33,9 +33,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
 
         <div className="DarkblockWidget-Header-Row">
           {state.value === "signing" && <FontAwesomeIcon icon={faWallet} className="FaWalletIcon awesome" />}
-          {state.value === "display" && (
-            <FontAwesomeIcon icon={faCircleCheck} className="FaCheckIcon awesome" />
-          )}
+          {state.value === "display" && <FontAwesomeIcon icon={faCircleCheck} className="FaCheckIcon awesome" />}
 
           {(state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error") && (
             <FontAwesomeIcon icon={faTriangleExclamation} className="FaTriangleIcon awesome" />
@@ -86,6 +84,15 @@ const Header = ({ onClose, state = null, authenticate }) => {
 
   if (state.value === "start_failure") {
     return setHeader(false, state, "An Error Ocurred", "Please reload the page and try again")
+  }
+
+  if (state.value === "no_darkblock") {
+    return setHeader(
+      false,
+      state,
+      "No Darkblock Content",
+      "There is no unlockable content here or if a new NFT, there might be a slight delay between creation of NFT and unlockables because of indexing"
+    )
   }
 
   if (state.value === "auth_failure" || state.value === "auth_cancel") {
