@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import axios from "axios"
+// import axios from "axios"
 import FileUpload from "./fileUpload"
 import * as HashUtil from "../utils/hash-util"
 
@@ -41,7 +41,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
           setOpen(true)
         }, 500)
       }
-      
+
       if (state.value === "show_upgrade_error") {
         setMinting(false)
         setTimeout(() => {
@@ -53,7 +53,6 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
           setOpen(true)
         }, 500)
       }
-
     }
   }, [state.value])
 
@@ -104,19 +103,19 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
     }
 
     const URL = `https://api.darkblock.io/v1/darkblock/upgrade?apikey=${apiKey}`
-    axios
-      .post(URL, data, options)
-      .then((response) => {
-        setDarkblockDescription("")
-        setFileState(null)
-        setMintingState("complete")
-        setIsDownloadable(false)
-
-        return response
-      })
-      .catch(() => {
-        showErrorState()
-      })
+    // axios
+    //   .post(URL, data, options)
+    //   .then((response) => {
+    //     setDarkblockDescription("")
+    //     setFileState(null)
+    //     setMintingState("complete")
+    //     setIsDownloadable(false)
+    //
+    //     return response
+    //   })
+    //   .catch(() => {
+    //     showErrorState()
+    //   })
   }
 
   const showErrorState = () => {

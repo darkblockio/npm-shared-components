@@ -10,7 +10,9 @@ const Upgrader = ({ state = null, config, apiKey = null, authenticate }) => {
   const [showUpgrade, setShowUpgrade] = useState(false)
 
   useEffect(() => {
-    setApiKeyValid(apiKey && apiKey.length > 0)
+    if (apiKey && apiKey.length > 0) {
+      setApiKeyValid(apiKey)
+    }
   }, [apiKey])
 
   useEffect(() => {
@@ -30,18 +32,21 @@ const Upgrader = ({ state = null, config, apiKey = null, authenticate }) => {
           config.customCssClass ? `DarkblockWidget-Upgrader ${config.customCssClass}` : `DarkblockWidget-Upgrader`
         }
       >
-        <button type={"button"} onClick={() => setShowUpgrade(true)} className="upgrade-add-content">
-          <FontAwesomeIcon icon={faPlus} />
-          Add Content
-        </button>
-        <UpgradeModal
-          apiKey={apiKey}
-          state={state}
-          open={showUpgrade}
-          onClose={() => setShowUpgrade(false)}
-          className="upgrade-modal"
-          authenticate={authenticate}
-        />
+        <>
+          <div>shared library button</div>
+          <button type={"button"} onClick={() => setShowUpgrade(true)} className="upgrade-add-content">
+            <FontAwesomeIcon icon={faPlus} />
+            Add Content
+          </button>
+          <UpgradeModal
+            apiKey={apiKey}
+            state={state}
+            open={showUpgrade}
+            onClose={() => setShowUpgrade(false)}
+            className="upgrade-modal"
+            authenticate={authenticate}
+          />
+        </>
       </div>
     )
   } else {
