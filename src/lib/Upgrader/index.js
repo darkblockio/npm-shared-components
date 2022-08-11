@@ -14,7 +14,11 @@ const Upgrader = ({ state = null, config, apiKey = null, authenticate }) => {
   }, [apiKey])
 
   useEffect(() => {
-    if (state.value === "show_upgrade") {
+    if (
+      state.value === "show_upgrade" ||
+      state.value === "show_upgrade_complete" ||
+      state.value === "show_upgrade_error"
+    ) {
       setShowButton(true)
     }
   }, [state.value])

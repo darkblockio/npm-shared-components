@@ -1,6 +1,7 @@
 import React from "react"
 import { storiesOf } from "@storybook/react"
 import Upgrader from "../lib/Upgrader"
+import { send } from "xstate"
 import "../lib/main.css"
 
 const stories = storiesOf("Shared components - upgrader", module)
@@ -17,10 +18,17 @@ const apiKey = "0ta7b7hp0sm59vq79d0j63che64c" //internal DB key - not for public
 
 const widget = (stateval) => {
   state.value = stateval
-  return <Upgrader state={state} config={config} apiKey={state.value === "no_api_key" ? null : apiKey} />
+  return (
+    <Upgrader
+      state={state}
+      config={config}
+      apiKey={state.value === "no_api_key" ? null : apiKey}
+      authenticate={() => send({ type: "SIGN" })}
+    />
+  )
 }
 
-const states = ["idle", "loading_arweave", "show_upgrade"]
+const states = ["idle", "loading_arweave", "show_upgrade", "show_upgrade_complete", "show_upgrade_error"]
 
 states.forEach((s) =>
   stories.add(s, () => {

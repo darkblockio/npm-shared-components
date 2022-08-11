@@ -21,12 +21,39 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
   }, [fileState])
 
   useEffect(() => {
-    if (state.value === "upload_file") {
-      uploadFile()
-    }
+    if (state) {
+      if (state.value === "upload_file") {
+        uploadFile()
+      }
 
-    if (state.event.type === "SIGNING_FAIL") {
-      setMintingState("error")
+      if (state.event && state.event.type && state.event.type === "SIGNING_FAIL") {
+        setMintingState("error")
+      }
+
+      if (state.value === "show_upgrade_complete") {
+        setMinting(false)
+        setTimeout(() => {
+          setMinting(true)
+          setDarkblockDescription("")
+          setFileState(null)
+          setIsDownloadable(false)
+          setMintingState("complete")
+          setOpen(true)
+        }, 500)
+      }
+      
+      if (state.value === "show_upgrade_error") {
+        setMinting(false)
+        setTimeout(() => {
+          setMinting(true)
+          setDarkblockDescription("")
+          setFileState(null)
+          setIsDownloadable(false)
+          setMintingState("error")
+          setOpen(true)
+        }, 500)
+      }
+
     }
   }, [state.value])
 
@@ -117,7 +144,9 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
     setProgress(10)
     setMintingStateMsg("signing file for security...")
 
-    state.context.fileHash = fileHash
+    if (state && state.context && state.context.fileHash) {
+      state.context.fileHash = fileHash
+    }
 
     authenticate()
   }
