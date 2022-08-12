@@ -33,7 +33,6 @@ const Upgrader = ({ state = null, config, apiKey = null, authenticate }) => {
         }
       >
         <>
-          <div>shared library button</div>
           <button type={"button"} onClick={() => setShowUpgrade(true)} className="upgrade-add-content">
             <FontAwesomeIcon icon={faPlus} />
             Add Content

@@ -4,7 +4,7 @@
 }
 
 .DarkblockWidget-Upgrader .upgrade-add-content {
-  @apply flex flex-row items-center bg-gray-100 text-black rounded px-4 py-1
+  @apply flex flex-row items-center bg-gray-100 text-black rounded px-4 py-1 cursor-pointer
 }
 
 .DarkblockWidget-Upgrader svg {

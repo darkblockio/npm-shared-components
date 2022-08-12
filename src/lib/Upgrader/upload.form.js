@@ -73,6 +73,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
     let nftBlockchain = state.context.nftData.nft.blockchain.replace("ERC", "ERC-")
     let data = new FormData()
 
+    console.log("fileState", fileState)
     data.set("file", fileState)
     data.set("creator_address", state.context.wallet_address)
     data.set("nft_contract", state.context.nftData.nft.contract)
@@ -103,6 +104,46 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
     }
 
     const URL = `https://api.darkblock.io/v1/darkblock/upgrade?apikey=${apiKey}`
+
+    const xhr = new XMLHttpRequest()
+    xhr.open("POST", URL, true)
+    xhr.timeout = 900000
+
+    // xhr.setRequestHeader("Content-type", "multipart/form-data; boundary=---011000010111000001101001")
+    // xhr.setRequestHeader("Connection", "close")
+    // xhr.setRequestHeader("Accept", "application/json, text/plain, */*")
+
+    // xhr.setRequestHeader("Connection", "close")
+    // xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest")
+    xhr.upload.onprogress = function (e) {
+      let percentComplete = Math.ceil((e.loaded / e.total) * 100)
+      console.log("percentComplete", percentComplete)
+
+      if (percentComplete > 10 && percentComplete <= 100) {
+        setMintingStateMsg("uploading file...")
+        setProgress(percentComplete)
+      }
+    }
+
+    xhr.onload = function () {
+      // do something to response
+      console.log("response here:", xhr.responseText)
+    }
+    xhr.onerror = function () {
+      console.log("error", xhr.responseText)
+    }
+
+    xhr.onreadystatechange = function () {
+      console.log("this.readyState", this.readyState)
+      if (this.readyState == 4 && this.status == 200) {
+        alert("success")
+      }
+    }
+
+    console.log("send data", data)
+
+    xhr.send(data)
+
     // axios
     //   .post(URL, data, options)
     //   .then((response) => {
@@ -138,12 +179,16 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
     setProgress(5)
     setMintingStateMsg("hashing the file...")
 
-    const fileHash = await HashUtil.hashInChunks(fileState)
+    const fileHash = await HashUtil.getSHA256OfFile(fileState)
+
+    console.log("fileHash", fileHash)
 
     setProgress(10)
     setMintingStateMsg("signing file for security...")
 
-    if (state && state.context && state.context.fileHash) {
+    if (state && state.context) {
+      console.log("setting state fileHash here!!!!", fileHash)
+
       state.context.fileHash = fileHash
     }
 
