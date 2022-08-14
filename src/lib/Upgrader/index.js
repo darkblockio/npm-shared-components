@@ -4,7 +4,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import UpgradeModal from "./upgrade.modal"
 import "./Upgrader.css"
 
-const Upgrader = ({ state = null, config, apiKey = null, authenticate }) => {
+const Upgrader = ({ state = null, config, apiKey = null, authenticate, reset }) => {
   const [showButton, setShowButton] = useState(false)
   const [apiKeyValid, setApiKeyValid] = useState(false)
   const [showUpgrade, setShowUpgrade] = useState(false)
@@ -18,6 +18,7 @@ const Upgrader = ({ state = null, config, apiKey = null, authenticate }) => {
   useEffect(() => {
     if (
       state.value === "show_upgrade" ||
+      state.value === "show_upgrade_signing" ||
       state.value === "show_upgrade_complete" ||
       state.value === "show_upgrade_error"
     ) {
@@ -44,6 +45,7 @@ const Upgrader = ({ state = null, config, apiKey = null, authenticate }) => {
             onClose={() => setShowUpgrade(false)}
             className="upgrade-modal"
             authenticate={authenticate}
+            reset={reset}
           />
         </>
       </div>

@@ -86,7 +86,11 @@ const upgradeMachine = (tokenId, contractAddress, platform) => {
         },
       },
       signing_fail: { target: "show_upgrade" },
-      upload_file: {},
+      upload_file: {
+        on: {
+          RESET: { target: "verify_owner" },
+        },
+      },
     },
   })
 }

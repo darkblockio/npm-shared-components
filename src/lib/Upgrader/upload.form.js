@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import FileUpload from "./fileUpload"
 import * as HashUtil from "../utils/hash-util"
 
-const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
+const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
   const [darkblockDescription, setDarkblockDescription] = useState("")
   const [name, setName] = useState("")
   const [isDownloadable, setIsDownloadable] = useState(false)
@@ -12,6 +12,16 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
   const [minting, setMinting] = useState(false)
   const [progress, setProgress] = useState(0)
   const [open, setOpen] = useState(false)
+
+  const clearForm = () => {
+    setDarkblockDescription("")
+    setName("")
+    setIsDownloadable(false)
+    setFileState(null)
+    setMintingStateMsg("")
+    setProgress(0)
+    setMinting(false)
+  }
 
   useEffect(() => {
     if (fileState && fileState.name) {
@@ -26,7 +36,21 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
       }
 
       if (state.event && state.event.type && state.event.type === "SIGNING_FAIL") {
+        clearForm()
         setMintingState("error")
+      }
+
+      if (state.value === "show_upgrade_signing") {
+        setMinting(false)
+        setTimeout(() => {
+          setMinting(true)
+          setDarkblockDescription("")
+          setFileState(null)
+          setIsDownloadable(false)
+          setMintingState("starting")
+          setOpen(true)
+          setProgress(25)
+        }, 500)
       }
 
       if (state.value === "show_upgrade_complete") {
@@ -57,88 +81,64 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
 
   useEffect(() => {
     if (mintingState === "starting") {
-      setDarkblockDescription("")
-      setIsDownloadable(false)
-      setName("")
-      setFileState({})
-      setMintingStateMsg("")
-      setMinting(false)
-      setProgress(0)
+      clearForm()
       setOpen(false)
     }
   }, [mintingState])
 
   const uploadFile = async () => {
-    let nftBlockchain = state.context.nftData.nft.blockchain.replace("ERC", "ERC-")
-    let data = new FormData()
+    if (fileState && state.context.wallet_address && name) {
+      let nftBlockchain = state.context.nftData.nft.blockchain.replace("ERC", "ERC-")
+      let data = new FormData()
 
-    data.set("file", fileState)
-    data.set("creator_address", state.context.wallet_address)
-    data.set("nft_contract", state.context.nftData.nft.contract)
-    data.set("nft_token", state.context.nftData.nft.token)
-    data.set("nft_platform", state.context.platform)
-    data.set("nft_standard", nftBlockchain)
-    data.set("darkblock_description", darkblockDescription)
-    data.set("darkblock_signature", state.context.signature)
-    data.set("name", name)
-    data.set("download", isDownloadable)
+      data.set("file", fileState)
+      data.set("creator_address", state.context.wallet_address)
+      data.set("nft_contract", state.context.nftData.nft.contract)
+      data.set("nft_token", state.context.nftData.nft.token)
+      data.set("nft_platform", state.context.platform)
+      data.set("nft_standard", nftBlockchain)
+      data.set("darkblock_description", darkblockDescription)
+      data.set("darkblock_signature", state.context.signature)
+      data.set("name", name)
+      data.set("download", isDownloadable)
 
-    setMintingStateMsg("starting file upload...")
+      setMintingStateMsg("starting file upload...")
 
-    const URL = `https://api.darkblock.io/v1/darkblock/upgrade?apikey=${apiKey}`
+      const URL = `https://api.darkblock.io/v1/darkblock/upgrade?apikey=${apiKey}`
 
-    const xhr = new XMLHttpRequest()
-    xhr.open("POST", URL, true)
-    xhr.timeout = 900000
+      const xhr = new XMLHttpRequest()
+      xhr.open("POST", URL, true)
+      xhr.timeout = 900000
 
-    // xhr.setRequestHeader("Content-type", "multipart/form-data; boundary=---011000010111000001101001")
-    // xhr.setRequestHeader("Connection", "close")
-    // xhr.setRequestHeader("Accept", "application/json, text/plain, */*")
+      xhr.upload.onprogress = function(e) {
+        let percentComplete = Math.ceil((e.loaded / e.total) * 100)
 
-    // xhr.setRequestHeader("Connection", "close")
-    // xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest")
-    xhr.upload.onprogress = function(e) {
-      let percentComplete = Math.ceil((e.loaded / e.total) * 100)
-
-      if (percentComplete > 10 && percentComplete <= 100) {
-        setMintingStateMsg("uploading file...")
-        setProgress(percentComplete)
+        if (percentComplete > 10 && percentComplete <= 100) {
+          setMintingStateMsg("uploading file...")
+          setProgress(percentComplete)
+        }
       }
-    }
 
-    xhr.onload = function() {
-      // do something to response
-      console.log("response here:", xhr.responseText)
-    }
-    xhr.onerror = function() {
-      console.log("error", xhr.responseText)
-    }
-
-    xhr.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        setDarkblockDescription("")
-        setFileState(null)
-        setMintingState("complete")
-        setIsDownloadable(false)
+      xhr.onerror = function() {
+        setMintingState("error")
       }
-      if (this.status == 400 || this.status == 500) {
-        showErrorState()
+
+      xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          setProgress(100)
+          setTimeout(() => {
+            clearForm()
+            setMintingState("complete")
+          }, 500)
+        }
+        if (this.status == 400 || this.status == 500) {
+          clearForm()
+          setMintingState("error")
+        }
       }
+
+      xhr.send(data)
     }
-
-    xhr.send(data)
-  }
-
-  const showErrorState = () => {
-    setDarkblockDescription("")
-    setFileState(null)
-    setMintingState("error")
-    setIsDownloadable(false)
-    setName("")
-    setMintingStateMsg("")
-    setMinting(false)
-    setOpen(false)
-    setProgress(0)
   }
 
   const initDarkblockCreation = async (e) => {
@@ -240,22 +240,34 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
               {mintingState === "complete" && (
                 <>
                   <div className="minting-container">
-                    <h3 className="minting-complete-header">Your unlockable content has been created</h3>
+                    <h3 className="minting-header-text">Your unlockable content has been created</h3>
                     <div>
-                      <video autoPlay playsInline loop className="minting-video-loop">
+                      <video className="minting-video-loop">
                         <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
                       </video>
                     </div>
                     <button
                       className="minting-complete-add-another"
                       onClick={() => {
+                        clearForm()
+                        setMintingState("starting")
                         setMinting(false)
                         setOpen(false)
+                        reset()
                       }}
                     >
                       Make Another
                     </button>
-                    <button className="minting-complete-done" onClick={onClose}>
+                    <button
+                      className="minting-complete-done"
+                      onClick={() => {
+                        setMintingState("starting")
+                        setMinting(false)
+                        setOpen(false)
+                        onClose(true)
+                        reset()
+                      }}
+                    >
                       I&apos;m Done
                     </button>
                   </div>
@@ -264,9 +276,9 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
               {mintingState === "error" && (
                 <>
                   <div className="minting-container">
-                    <h3 className="minting-error-msg">Error Trying to Upload File</h3>
+                    <h3 className="minting-header-text">Error Trying to Upload File</h3>
                     <div>
-                      <video autoPlay playsInline loop className="minting-video-loop">
+                      <video className="minting-video-loop">
                         <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
                       </video>
                     </div>
@@ -274,6 +286,9 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate }) => {
                       className="minting-try-again"
                       onClick={() => {
                         setMintingState("starting")
+                        setMinting(false)
+                        setOpen(false)
+                        reset()
                       }}
                     >
                       Try Again

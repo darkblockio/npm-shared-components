@@ -28,7 +28,14 @@ const widget = (stateval) => {
   )
 }
 
-const states = ["idle", "loading_arweave", "show_upgrade", "show_upgrade_complete", "show_upgrade_error"]
+const states = [
+  "idle",
+  "loading_arweave",
+  "show_upgrade",
+  "show_upgrade_signing",
+  "show_upgrade_complete",
+  "show_upgrade_error",
+]
 
 states.forEach((s) =>
   stories.add(s, () => {
