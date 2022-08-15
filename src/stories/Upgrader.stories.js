@@ -14,7 +14,7 @@ const config = {
   debug: false, // debug flag to console.log some variables
 }
 
-const apiKey = "0ta7b7hp0sm59vq79d0j63che64c" //internal DB key - not for public use
+const apiKey = "dgtqh26mv8mtgemq4tys47d4a2ax" //internal DB key - not for public use
 
 const widget = (stateval) => {
   state.value = stateval
