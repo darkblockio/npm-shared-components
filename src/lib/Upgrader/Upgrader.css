@@ -1,14 +1,13 @@
-
 .DarkblockWidget-Upgrader {
   @apply flex items-center w-1/3;
 }
 
 .DarkblockWidget-Upgrader .upgrade-add-content {
-  @apply flex flex-row items-center bg-gray-100 text-black rounded px-4 py-1 cursor-pointer
+  @apply flex flex-row items-center bg-gray-100 text-black rounded px-4 py-1 cursor-pointer;
 }
 
 .DarkblockWidget-Upgrader svg {
-  @apply text-black mr-1
+  @apply text-black mr-1;
 }
 
 .DarkblockWidget-Upgrader .upgrade-modal-container {
@@ -76,7 +75,7 @@
 }
 
 .DarkblockWidget-Upgrader .downloadable-check {
-  @apply appearance-none h-4 w-4 cursor-pointer border border-gray-500 rounded-sm bg-white checked:bg-gray-600 checked:border-gray-600 focus:outline-none transition duration-200 bg-no-repeat bg-center bg-contain mr-2 ;
+  @apply appearance-none h-4 w-4 cursor-pointer border border-gray-500 rounded-sm bg-white checked:bg-gray-600 checked:border-gray-600 focus:outline-none transition duration-200 bg-no-repeat bg-center bg-contain mr-2;
 }
 
 .DarkblockWidget-Upgrader .fileupload-container {
@@ -104,7 +103,7 @@
 }
 
 .DarkblockWidget-Upgrader .minting-container {
-  @apply bg-black rounded-xl text-center pb-4 px-3
+  @apply bg-black rounded-xl text-center pb-4 px-3;
 }
 
 .DarkblockWidget-Upgrader .minting-header-text {
@@ -112,15 +111,15 @@
 }
 
 .DarkblockWidget-Upgrader .minting-video-loop {
-  @apply mx-auto border-2 border-gray-900 mb-4;
+  @apply mx-auto mb-4;
 }
 
 .DarkblockWidget-Upgrader .minting-progress-container {
-  @apply w-1/2 border border-white mx-auto mt-8 bg-black rounded-full;
+  @apply w-1/2 border border-white mx-auto mt-8 bg-black rounded-2xl;
 }
 
 .DarkblockWidget-Upgrader .minting-progress-bar {
-  @apply bg-white text-xs font-medium text-black p-0.5 leading-none rounded-l-full;
+  @apply bg-white text-xs font-medium text-black p-0.5 leading-none rounded-l-2xl;
 }
 
 .DarkblockWidget-Upgrader .minting-state-msg {
@@ -132,7 +131,7 @@
 }
 
 .DarkblockWidget-Upgrader .minting-warning {
-  @apply text-white text-center rounded-xl bg-gray-900 p-1 justify-center w-1/2 ;
+  @apply text-white text-center bg-zinc-800 p-3 justify-center w-1/2;
 }
 
 .DarkblockWidget-Upgrader .minting-complete-info {
