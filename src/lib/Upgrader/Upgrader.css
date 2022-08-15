@@ -1,17 +1,18 @@
+
 .DarkblockWidget-Upgrader {
-  @apply flex items-center w-1/3;
+  @apply flex items-center w-auto;
 }
 
 .DarkblockWidget-Upgrader .upgrade-add-content {
-  @apply flex flex-row items-center bg-gray-100 text-black rounded px-4 py-1 cursor-pointer;
+  @apply flex flex-row items-center bg-gray-100 text-black rounded px-4 py-1 cursor-pointer
 }
 
 .DarkblockWidget-Upgrader svg {
-  @apply text-black mr-1;
+  @apply text-black mr-1
 }
 
 .DarkblockWidget-Upgrader .upgrade-modal-container {
-  @apply flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 m-4 outline-none focus:outline-none;
+  @apply flex justify-center w-full items-center overflow-x-hidden overflow-y-scroll fixed inset-0 z-50 m-4 outline-none focus:outline-none;
 }
 
 .DarkblockWidget-Upgrader .upgrade-modal-box-container {
@@ -38,12 +39,8 @@
   @apply px-2 block w-4/5;
 }
 
-.DarkblockWidget-Upgrader .upgrade-button-container {
-  @apply float-right mt-4;
-}
-
 .DarkblockWidget-Upgrader .upgrade-create-button {
-  @apply float-right bg-black hover:bg-gray-800 px-6 py-2 rounded font-bold text-white mr-2;
+  @apply float-right bg-gray-800 hover:bg-gray-600 px-6 py-2 rounded font-semibold text-gray-200 mr-2;
 }
 
 #upgrade-modal-bg {
@@ -51,15 +48,19 @@
 }
 
 #upgrade-modal-box {
-  @apply max-w-3xl px-6 py-4 text-left bg-white rounded shadow-lg mx-8;
+  @apply max-w-xl max-h-fit px-6 py-4 text-left bg-white rounded shadow-lg mx-8;
 }
 
 .DarkblockWidget-Upgrader .upgrade-form {
   @apply bg-white mx-4;
 }
 
+.DarkblockWidget-Upgrader .upgrade-title-input{
+  @apply font-bold text-sm
+}
+
 .DarkblockWidget-Upgrader .upgrade-name-input {
-  @apply my-4 p-2 focus:ring-gray-500 focus:border-gray-500 w-full text-gray-800 sm:text-sm border-gray-300 border rounded;
+  @apply mb-4 mt-1 p-2 focus:ring-gray-500 focus:border-gray-500 w-full text-gray-800 sm:text-sm border-gray-300 border rounded;
 }
 
 .DarkblockWidget-Upgrader .upgrade-description-input {
@@ -67,31 +68,39 @@
 }
 
 .DarkblockWidget-Upgrader .upgrade-description-char-count {
-  @apply hidden md:block mt-2 text-xs text-gray-400;
+  @apply hidden md:block mt-2 text-xs text-gray-600;
+}
+
+.DarkblockWidget-Upgrader .allowDownload {
+  @apply flex flex-row items-center
 }
 
 .DarkblockWidget-Upgrader .downloadable-text {
-  @apply inline-block text-gray-800;
+  @apply inline-block text-gray-800 text-sm font-bold ;
 }
 
 .DarkblockWidget-Upgrader .downloadable-check {
-  @apply appearance-none h-4 w-4 cursor-pointer border border-gray-500 rounded-sm bg-white checked:bg-gray-600 checked:border-gray-600 focus:outline-none transition duration-200 bg-no-repeat bg-center bg-contain mr-2;
+  @apply appearance-none h-4 w-4 cursor-pointer border border-gray-800 border-2 rounded-sm bg-white checked:bg-gray-600 checked:border-gray-600 focus:outline-none transition duration-200 bg-no-repeat bg-center bg-contain mr-2 ;
 }
 
 .DarkblockWidget-Upgrader .fileupload-container {
-  @apply text-black bg-white p-4 rounded-xl;
+  @apply text-black  py-4 rounded-xl;
+}
+
+.DarkblockWidget-Upgrader .fileupload-button{
+  @apply font-bold 
 }
 
 .DarkblockWidget-Upgrader .fileupload-header {
-  @apply hidden md:block text-base pb-0 md:pb-4 border-b border-gray-300 font-bold md:mb-4;
+  @apply hidden md:block text-base pb-0 md:pb-4 font-bold md:mb-4;
 }
 
 .DarkblockWidget-Upgrader .fileupload-header-supported {
-  @apply text-sm font-bold pb-0 md:pb-2;
+  @apply text-sm font-bold pb-0 leading-relaxed md:pb-2;
 }
 
 .DarkblockWidget-Upgrader .fileupload-formats {
-  @apply text-xs text-gray-600 py-0 md:py-2;
+  @apply text-xs font-semibold leading-relaxed text-gray-600 py-0 md:py-1;
 }
 
 .DarkblockWidget-Upgrader .fileupload-info {
@@ -99,11 +108,11 @@
 }
 
 .DarkblockWidget-Upgrader .fileupload-input-container {
-  @apply w-full bg-gray-100 mt-2 md:mt-4 px-4 py-4 rounded text-sm text-gray-500;
+  @apply w-full bg-gray-200 mt-2 md:mt-4 px-4 py-4 rounded text-sm text-gray-500;
 }
 
 .DarkblockWidget-Upgrader .minting-container {
-  @apply bg-black rounded-xl text-center pb-4 px-3;
+  @apply bg-black rounded-xl text-center pb-4 px-3
 }
 
 .DarkblockWidget-Upgrader .minting-header-text {
@@ -111,15 +120,15 @@
 }
 
 .DarkblockWidget-Upgrader .minting-video-loop {
-  @apply mx-auto mb-4;
+  @apply mx-auto border-2 border-gray-900 mb-4;
 }
 
 .DarkblockWidget-Upgrader .minting-progress-container {
-  @apply w-1/2 border border-white mx-auto mt-8 bg-black rounded-2xl;
+  @apply w-1/2 border border-white mx-auto mt-8 bg-black rounded-full;
 }
 
 .DarkblockWidget-Upgrader .minting-progress-bar {
-  @apply bg-white text-xs font-medium text-black p-0.5 leading-none rounded-l-2xl;
+  @apply bg-white text-xs font-medium text-black p-0.5 leading-none rounded-l-full;
 }
 
 .DarkblockWidget-Upgrader .minting-state-msg {
@@ -131,7 +140,7 @@
 }
 
 .DarkblockWidget-Upgrader .minting-warning {
-  @apply text-white text-center bg-zinc-800 p-3 justify-center w-1/2;
+  @apply text-white text-center rounded-xl bg-gray-900 p-1 justify-center w-1/2 ;
 }
 
 .DarkblockWidget-Upgrader .minting-complete-info {
@@ -148,4 +157,16 @@
 
 .DarkblockWidget-Upgrader .minting-try-again {
   @apply inline-block bg-black rounded w-1/3 text-white hover:bg-gray-500 border border-white text-center mb-4 mt-2 p-2;
+}
+
+.DarkblockWidget-Upgrader-Footer {
+  @apply relative bottom-0 text-center py-5 mt-10 text-xs font-bold text-neutral-400;
+}
+
+.DarkblockWidget-Upgrader-Footer svg {
+  @apply inline-block;
+}
+
+.DarkblockWidget-Upgrader-Footer svg path {
+  @apply fill-neutral-400;
 }

@@ -44,6 +44,7 @@ const FileUpload = ({ fileState, setFileState }) => {
         <input
           id="file-upload" //maybe not change this one
           type="file"
+          className="fileupload-button"
           name="fileUpload"
           accept={formats.join(" ")}
           onChange={(e) => {
