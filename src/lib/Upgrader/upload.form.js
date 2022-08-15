@@ -114,10 +114,19 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
       xhr.upload.onprogress = function (e) {
         let percentComplete = Math.ceil((e.loaded / e.total) * 100)
 
-        if (percentComplete > 10 && percentComplete <= 100) {
-          setMintingStateMsg("uploading file...")
+        if (percentComplete > 10 && percentComplete <= 50) {
+          setMintingStateMsg("Generating content signature...")
           setProgress(percentComplete)
         }
+
+        if (percentComplete > 50 && percentComplete <= 90) {
+          setMintingStateMsg("Uploading to server...")
+          setProgress(percentComplete)
+        } else {
+          setProgress(90)
+          setMintingStateMsg("Uploading to arweave...")
+        }
+
       }
 
       xhr.onerror = function () {
@@ -148,16 +157,17 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
     setOpen(true)
     setMinting(true)
     setProgress(5)
-    setMintingStateMsg("hashing the file...")
+    setMintingStateMsg("Hashing the file...")
 
     const fileHash = await HashUtil.getSHA256OfFile(fileState)
 
     setProgress(10)
-    setMintingStateMsg("signing file for security...")
+    setMintingStateMsg("Signing file for security...")
 
     if (state && state.context) {
       state.context.fileHash = fileHash
     }
+
 
     authenticate()
   }
@@ -216,6 +226,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
           <div id='upgrade-modal-bg'>
             <div>
               {mintingState === "starting" && (
+
                 <>
                   <div className='minting-container'>
                     <h3 className='minting-header-text'>Your unlockable content is being created...</h3>
