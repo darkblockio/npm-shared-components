@@ -290,6 +290,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                         key={i}
                         counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
                         selected={selected}
+                       
                       />
                     )
                   }
