@@ -1,7 +1,6 @@
 import React from "react"
 import UpgradeForm from "./upload.form"
 
-
 const UpgradeModal = ({ apiKey, state, open, onClose, authenticate, reset }) => {
   return (
     <>
@@ -37,7 +36,6 @@ const UpgradeModal = ({ apiKey, state, open, onClose, authenticate, reset }) => 
           </div>
         </div>
       ) : null}
- 
     </>
   )
 }

@@ -89,8 +89,10 @@ const upgradeMachine = (tokenId, contractAddress, platform) => {
       upload_file: {
         on: {
           RESET: { target: "verify_owner" },
+          COMPLETE: { target: "upload_complete" },
         },
       },
+      upload_complete: { target: "verify_owner" },
     },
   })
 }
