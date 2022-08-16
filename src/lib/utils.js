@@ -11,6 +11,24 @@ export function humanFileSize(size) {
   return (size / Math.pow(1024, i)).toFixed(2) * 1 + " " + ["B", "kB", "MB", "GB", "TB"][i]
 }
 
+export async function getNFTData(contract, id, platform) {
+  const pageSize = 50
+  return await fetch(
+    `https://api.darkblock.io/v1/nft/metadata?platform=${platform}&contract=${contract}&token=${id}&offest=0&page_size=${pageSize}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      return {
+        nft: data.data,
+      }
+    })
+    .catch((error) => {
+      return {
+        nft: null,
+      }
+    })
+}
+
 export async function getArweaveData(id, platform) {
   try {
     const response = await fetch(`https://api.darkblock.io/v1/darkblock/info?nft_id=${id}&nft_platform=${platform}`)

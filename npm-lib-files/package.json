@@ -1,6 +1,6 @@
 {
   "name": "@darkblock.io/shared-components",
-  "version": "0.1.16",
+  "version": "0.2.0-beta.60",
   "description": "Darkblock.io React Shared Component Library",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
@@ -13,6 +13,11 @@
     "widget",
     "NFT"
   ],
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
