@@ -62,14 +62,13 @@ td {
 
 /*pulldown is an invisible space to help align the date with header Date Added*/
 .DarkblockWidget-Stack-Panel .dbdata .date .pulldown {
-  @apply pl-2 text-base whitespace-nowrap;
+  @apply  text-base whitespace-nowrap;
 }
 
 .date {
   @apply text-base;
 }
 
-/*beginning of dropdown box on ellipsis */
 .DarkblockWidget-Stack-Panel .boxMenu {
   @apply flex flex-row items-center pl-1;
 }
@@ -79,29 +78,44 @@ td {
 }
 
 .DarkblockWdget-Stack-Panel .ellIcon {
-  @apply w-4 h-4 p-1 mt-1 text-gray-900 rounded;
+  @apply  h-4 p-5 mt-1 text-gray-900 rounded;
 }
 
 .DarkblockWidget-Stack-Panel button.download {
   @apply flex flex-row items-center w-full py-2 mt-4 mb-4 mr-2 font-bold text-center bg-gray-300 border border-black rounded md:w-1/3 text-red-50 hover:text-white hover:bg-gray-500;
 }
 
-.DarkblockWidget-Stack-Panel .details td {
-  @apply w-full px-4 text-xs bg-gray-100 md:text-sm;
+.DarkblockWidget-Stack-Panel .details {
+  @apply w-full px-4  text-xs bg-gray-100 md:text-sm;
 }
 
-/*Dropdown Button*/
-.DarkblockWidget-Stack-Panel .dropbtn {
+
+.DarkblockWidget-Stack-Panel .dropbtn .toggleIcon{
   @apply text-gray-900 rounded text-sm mb-[1px] bg-none p-3;
 }
 
-/*position the dropdown content */
-.DarkblockWidget-Stack-Panel .dropdown {
-  @apply relative text-center;
+.toggleBtn {
+  @apply w-2 h-2 
+}
+.ellContainer .DarkblockWdget-Stack-Panel{
+  @apply hidden
+}
+.opacContainer .DarkblockWdget-Stack-Panel{
+  @apply opacity-40
+}
+.titleBoxMenu {
+  @apply pl-4 pb-1 flex flex-row justify-between text-black
+}
+.toggle {
+ @apply  h-4 w-4 text-black
 }
 
 .icons {
   @apply px-3;
+}
+
+ .dropdownContent{
+  @apply inset-0 m-auto 
 }
 
 .DarkblockWdget-Stack-Panel .placeholder {
@@ -109,30 +123,32 @@ td {
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent {
-  @apply absolute hidden w-44;
+  @apply absolute;
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent .dropbtn {
-  @apply flex text-black decoration-0;
+  @apply flex text-black decoration-0 ;
 }
 .boxMenu {
   @apply flex flex-row items-center w-60;
 }
 
+
+
 .dropdownContent .boxMenu {
-  @apply h-12 pb-1 rounded w-44;
+  @apply h-12 pb-1 rounded w-80 hover:bg-gray-200;
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent {
-  @apply bg-white z-50 shadow-xl shadow-gray-300 rounded right-[18%] top-[40px];
+  @apply bg-gray-100 z-40 w-72 h-fit p-5;
 }
 
-.boxMenu {
-  @apply hover:bg-gray-100 hover:w-44;
+
+.boxMenu  {
+  @apply text-black hover:bg-gray-100 hover:w-60;
 }
-/* Show the dropdown menu on hover */
-.DarkblockWidget-Stack-Panel .dropdown:hover .dropdownContent {
-  @apply block;
+.titleEll{
+  @apply text-base
 }
 
 .DarkblockWidget-Stack-Panel .dropdown:hover {
@@ -161,7 +177,7 @@ td {
 }
 
 .playerModal {
-  @apply text-white bg-[rgb(43,43,43)] my-4 w-[90%] pl-24 ;
+  @apply text-white bg-[rgb(43,43,43)] z-40 my-4 w-[90%] pl-24 ;
 }
 .detail-subtitle {
   @apply mt-6 text-base font-bold;

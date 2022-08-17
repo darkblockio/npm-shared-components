@@ -32,7 +32,7 @@ import "../db.css"
 import PlayerModal from "../playerModal"
 import DetailModal from "./detailModal"
 import EmptyTable from "../EmptyTable"
-
+import EllipsisModal from "./ellipsisModal"
 
 const RenderIcon = ({ filetype }) => {
   let icon = faQuestionCircle
@@ -74,7 +74,16 @@ const RenderDetailIcon = ({ filetype }) => {
   return <FontAwesomeIcon icon={icon} className='ellIcon' />
 }
 
+const RenderEllipsisIcon = ({ filetype }) => {
+  let icon = faQuestionCircle
+
+  if (filetype.indexOf("ellipsis") > -1) icon = faEllipsisVertical
+
+  return <FontAwesomeIcon icon={icon} className='toggleIcon' />
+}
+
 const RowContent = ({
+  
   db,
   sel = false,
   f = null,
@@ -84,8 +93,6 @@ const RowContent = ({
   selected = false,
   index = 0,
 }) => {
-  const [showDetails, setShowDetails] = useState(false)
-
   let fn = f && typeof f === "function" ? f : () => {}
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
@@ -93,13 +100,23 @@ const RowContent = ({
 
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
   const isRowActive = selected.i === index
-  const [showDetailModal, setShowDetailModal] = useState(false)
 
-  const isDownloadable = state && state === "display" && url && db.downloadable.toString().toLowerCase() === "true"
+  const [showEll, setShowEll] = useState(false)
+
+
+  const showToggle = (e) => {
+    setShowEll(!showEll)
+  }
+
+  const closeToggle = () => {
+    setShowEll(!showEll)
+  }
+ 
+  
 
   return (
     <>
-      <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
+      <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`} >
         <td className='name' onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
           <span>{`${counter} ${truncatedName}`}</span>
@@ -114,44 +131,17 @@ const RowContent = ({
             day: "numeric",
           })}
         </td>
-        {/* dropdown popout box begins------------------------- */}
-        <td className='dropdown'>
-          <div className='dropbtn'>
-            <RenderDetailIcon filetype={"ellipsis"} />
+
+        <td className='toggleBtn'>
+          <div onClick={() => showToggle()} className='toggleContainer'>
+            <button className='toggle'>
+              <RenderEllipsisIcon filetype={"ellipsis"} />
+            </button>
           </div>
-          <div className='dropdownContent'>
-            <a className='boxMenu' onClick={() => setShowDetailModal(true)}>
-              <span className='icons'>
-                <RenderDetailIcon filetype={"info"} />
-              </span>
-              <span className='placeHolder'>Details</span>
-            </a>
-            <a
-              className={`boxMenu ${!isDownloadable ? "cursor-not-allowed text-gray-300" : ""}`}
-              onClick={() => {
-                if (isDownloadable) {
-                  downloadFile(url, fileFormat, truncatedName)
-                } else {
-                  return null
-                }
-              }}
-            >
-              <span className='icons'>
-                <RenderDetailIcon filetype={"download"} />
-              </span>
-              <span className='placeHolder'>Download</span>
-            </a>
-            <a target='_blank' rel='noreferrer' className='boxMenu' href={db.arweaveTXLink}>
-              <span className='icons'>
-                <RenderDetailIcon filetype={"upRightFromSquare"} />
-              </span>
-              <span className='placeHolder'>Arweave</span>
-            </a>
-          </div>
-          {/*drop down ends*/}
+              <EllipsisModal db={db} open={showEll}  closeToggle={closeToggle} />
+         
         </td>
       </tr>
-      <DetailModal db={db} open={showDetailModal} onClose={() => setShowDetailModal(false)} />
     </>
   )
 }
@@ -162,7 +152,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [showModal, setShowModal] = useState(false)
   const [showHeader, setShowHeader] = useState(false)
   const [opacity, setOpacity] = useState(0.4)
-  const [showPlayerModal, setShowPlayerModal] = useState(false)
+
   useEffect(() => {
     if (state.value === "display") {
       setSelected({
@@ -268,6 +258,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                     return (
                       <RowContent
                         db={db}
+                       
                         sel={sel}
                         f={() => {
                           setSwapping(true)
@@ -290,7 +281,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                         key={i}
                         counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
                         selected={selected}
-                       
                       />
                     )
                   }
