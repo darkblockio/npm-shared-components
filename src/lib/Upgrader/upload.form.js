@@ -90,7 +90,10 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
   const uploadFile = async () => {
     if (fileState && state.context.wallet_address && name) {
       setMintingStateMsg("Generating content signature...")
+      
       let nftBlockchain = state.context.nftData.nft.blockchain.replace("ERC", "ERC-")
+      if (["avalanche", "polygon"].includes(nftBlockchain.toLowerCase())) nftBlockchain = "ERC-1155"
+
       let data = new FormData()
 
       data.set("file", fileState)
