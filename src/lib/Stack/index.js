@@ -291,6 +291,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                           setDetailDB(value)
                           setShowDetails(true)
                         }}
+                      
+                  
                       />
                     )
                   }
