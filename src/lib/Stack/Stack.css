@@ -28,12 +28,8 @@
   @apply whitespace-nowrap sm:w-[30px];
 }
 
-.DarkblockWidget-Stack-Panel .name {
-  @apply text-base text-gray-900;
-}
-
 .DarkblockWidget-Stack-Panel .row .date {
-  @apply hidden text-sm text-gray-500 sm:table-cell whitespace-nowrap;
+  @apply hidden text-base text-gray-500 sm:table-cell whitespace-nowrap;
 }
 
 .DarkblockWidget-Stack-Panel .dbdata {
@@ -46,11 +42,7 @@
 }
 
 .DarkblockWidget-Stack-Panel .name {
-  @apply flex flex-row items-center;
-}
-
-.DarkblockWidget-Stack-Panel .name {
-  @apply truncate;
+  @apply flex flex-row items-center truncate text-base text-gray-900;
 }
 
 .DarkblockWidget-Stack-Panel .size {
@@ -58,15 +50,6 @@
 }
 td {
   @apply h-[48px];
-}
-
-/*pulldown is an invisible space to help align the date with header Date Added*/
-.DarkblockWidget-Stack-Panel .dbdata .date .pulldown {
-  @apply  text-base whitespace-nowrap;
-}
-
-.date {
-  @apply text-base;
 }
 
 .DarkblockWidget-Stack-Panel .boxMenu {
@@ -97,12 +80,7 @@ td {
 .toggleBtn {
   @apply w-2 h-2 
 }
-.ellContainer .DarkblockWdget-Stack-Panel{
-  @apply hidden
-}
-.opacContainer .DarkblockWdget-Stack-Panel{
-  @apply opacity-40
-}
+
 .titleBoxMenu {
   @apply pl-4 pb-1 flex flex-row justify-between text-black
 }
@@ -114,46 +92,35 @@ td {
   @apply px-3;
 }
 
- .dropdownContent{
-  @apply inset-0 m-auto 
-}
-
 .DarkblockWdget-Stack-Panel .placeholder {
   @apply pl-4 w-fit;
-}
-
-.DarkblockWidget-Stack-Panel .dropdownContent {
-  @apply absolute;
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent .dropbtn {
   @apply flex text-black decoration-0 ;
 }
-.boxMenu {
-  @apply flex flex-row items-center w-60;
+
+.dropdownContent{
+ @apply inset-0 m-auto rounded shadow-lg shadow-gray-300
 }
-
-
 
 .dropdownContent .boxMenu {
   @apply h-12 pb-1 rounded w-80 hover:bg-gray-200;
 }
 
 .DarkblockWidget-Stack-Panel .dropdownContent {
-  @apply bg-gray-100 z-40 w-72 h-fit p-5;
-}
-
-
-.boxMenu  {
-  @apply text-black hover:bg-gray-100 hover:w-60;
-}
-.titleEll{
-  @apply text-base
+  @apply bg-gray-100 z-40 w-72 h-fit p-5 absolute;
 }
 
 .DarkblockWidget-Stack-Panel .dropdown:hover {
   @apply bg-gray-100;
 }
+
+.boxMenu  {
+  @apply flex flex-row items-center w-60 text-black hover:bg-gray-100 hover:w-60;
+}
+
+
 
 /*player function */
 .scrollbar::-webkit-scrollbar {
