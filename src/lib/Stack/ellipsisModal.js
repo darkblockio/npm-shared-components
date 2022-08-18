@@ -19,26 +19,29 @@ const RenderDetailIcon = ({ filetype }) => {
   if (filetype.indexOf("download") > -1) icon = faDownload
   if (filetype.indexOf("upRightFromSquare") > -1) icon = faUpRightFromSquare
 
-  return <FontAwesomeIcon icon={icon} className='ellIcon' />
+  return <FontAwesomeIcon icon={icon} className="ellIcon" />
 }
-export default function EllipsisModal ({ db, state = null, url = null, open, closeToggle, onClose }) {
+export default function EllipsisModal({ db, state = null, url = null, open, closeToggle, onClose }) {
   const isDownloadable = state && state === "display" && url && db.downloadable.toString().toLowerCase() === "true"
   const [showDetailModal, setShowDetailModal] = useState(false)
- 
+
   return (
     <>
       {open ? (
-        <div >
-          <div className='dropdown'>
-            <div className='dropdownContent'>
-              <div className='titleBoxMenu'>{db.name}
-              <button onClick={closeToggle}><AiOutlineClose /></button>
+        <div>
+          <div className="dropdown">
+            <div className="dropdownContent">
+              <div className="titleBoxMenu">
+                {db.name}
+                <button onClick={closeToggle}>
+                  <AiOutlineClose />
+                </button>
               </div>
-              <a className='boxMenu' onClick={() => setShowDetailModal(true)}>
-                <span className='icons'>
+              <a className="boxMenu" onClick={() => setShowDetailModal(true)}>
+                <span className="icons">
                   <RenderDetailIcon filetype={"info"} />
                 </span>
-                <span className='placeHolder'>Details</span>
+                <span className="placeHolder">Details</span>
               </a>
               <a
                 className={`boxMenu ${!isDownloadable ? "cursor-not-allowed text-gray-300" : ""}`}
@@ -50,21 +53,21 @@ export default function EllipsisModal ({ db, state = null, url = null, open, clo
                   }
                 }}
               >
-                <span className='icons'>
+                <span className="icons">
                   <RenderDetailIcon filetype={"download"} />
                 </span>
-                <span className='placeHolder'>Download</span>
+                <span className="placeHolder">Download</span>
               </a>
-              <a target='_blank' rel='noreferrer' className='boxMenu' href={db.arweaveTXLink}>
-                <span className='icons'>
+              <a target="_blank" rel="noreferrer" className="boxMenu" href={db.arweaveTXLink}>
+                <span className="icons">
                   <RenderDetailIcon filetype={"upRightFromSquare"} />
                 </span>
-                <span className='placeHolder'>Arweave</span>
+                <span className="placeHolder">Arweave</span>
               </a>
             </div>
           </div>
         </div>
-     ) : null} 
+      ) : null}
       <DetailModal db={db} open={showDetailModal} onClose={() => setShowDetailModal(!showDetailModal)} />
     </>
   )
