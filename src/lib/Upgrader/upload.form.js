@@ -95,6 +95,12 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
       let nftBlockchain = state.context.nftData.nft.blockchain.replace("ERC", "ERC-")
       if (["avalanche", "polygon"].includes(nftBlockchain.toLowerCase())) nftBlockchain = "ERC-1155"
 
+
+      console.log('state', state)
+      console.log('state.context.platform', state.context.platform)
+      console.log('state.context.wallet_address', state.context.wallet_address)
+
+
       let data = new FormData()
 
       data.set("file", fileState)
@@ -114,7 +120,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
       xhr.open("POST", URL, true)
       xhr.timeout = 900000
 
-      xhr.upload.onprogress = function (e) {
+      xhr.upload.onprogress = function(e) {
         let percentComplete = Math.ceil((e.loaded / e.total) * 100)
 
         if (percentComplete > 10 && percentComplete <= 90) {
@@ -123,11 +129,11 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
         }
       }
 
-      xhr.onerror = function () {
+      xhr.onerror = function() {
         setMintingState("error")
       }
 
-      xhr.onreadystatechange = function () {
+      xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           setProgress(100)
           setTimeout(() => {
