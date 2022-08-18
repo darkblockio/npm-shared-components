@@ -2,14 +2,15 @@
   @apply table-auto ml-2 text-[13px] fixed w-screen cursor-pointer font-semibold z-30 top-0;
  }
 
-.rowheader {
-  @apply sticky top-0 z-10 h-10 text-sm font-semibold text-gray-500 bg-white border cursor-pointer;
+
+ .rowheader {
+  @apply sticky top-0 z-10 h-[48px] text-sm font-semibold text-gray-500 bg-white cursor-pointer;
 }
 
 /* flex-grow fixed border-gray-300 w-[98%] cursor-pointer text-[13px] font-semibold bg-white z-30 */
 
 .name-header {
-  @apply pl-2 text-left;
+  @apply pl-2  text-left;
 }
 
 .format-header {
