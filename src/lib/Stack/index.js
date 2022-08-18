@@ -18,19 +18,17 @@ import {
   faArrowLeft,
   faArrowRight,
   faEllipsisVertical,
-  faCircleInfo,
-  faDownload,
-  faUpRightFromSquare,
+
 } from "@fortawesome/free-solid-svg-icons"
 import FooterSharedComponents from "../Footer"
 import Player from "../Player"
 import Header from "../Header"
 import Titles from "../Titles"
-import { downloadFile } from "../utils"
+
 import "./Stack.css"
 import "../db.css"
 import PlayerModal from "../playerModal"
-import DetailModal from "./detailModal"
+
 import EmptyTable from "../EmptyTable"
 import EllipsisModal from "./ellipsisModal"
 
@@ -63,16 +61,6 @@ const RenderArrowIcon = ({ filetype }) => {
   return <FontAwesomeIcon icon={icon} className="arrowIcons" />
 }
 
-const RenderDetailIcon = ({ filetype }) => {
-  let icon = faQuestionCircle
-
-  if (filetype.indexOf("ellipsis") > -1) icon = faEllipsisVertical
-  if (filetype.indexOf("info") > -1) icon = faCircleInfo
-  if (filetype.indexOf("download") > -1) icon = faDownload
-  if (filetype.indexOf("upRightFromSquare") > -1) icon = faUpRightFromSquare
-
-  return <FontAwesomeIcon icon={icon} className="ellIcon" />
-}
 
 const RenderEllipsisIcon = ({ filetype }) => {
   let icon = faQuestionCircle
@@ -84,10 +72,8 @@ const RenderEllipsisIcon = ({ filetype }) => {
 
 const RowContent = ({
   db,
-  sel = false,
+ 
   f = null,
-  state = null,
-  url = null,
   counter = "",
   selected = false,
   index = 0,
@@ -155,7 +141,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [opacity, setOpacity] = useState(0.4)
   const [showDetails, setShowDetails] = useState(false)
   const [detailDB, setDetailDB] = useState(null)
-
+  
   useEffect(() => {
     if (state.value === "display") {
       setSelected({
@@ -277,6 +263,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                           setDetailDB(value)
                           setShowDetails(true)
                         }}
+                        
                       />
                     )
                   } else {
@@ -291,7 +278,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                           setDetailDB(value)
                           setShowDetails(true)
                         }}
-                      
+            
                   
                       />
                     )

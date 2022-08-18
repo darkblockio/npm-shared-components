@@ -50,7 +50,7 @@ const MyGallery = ({ mediaURL, config }) => {
               margin: "auto",
               justify: "center",
               zIndex: "99999",
-              marginTop: "50px"
+              marginTop: "5rem"
             }}
           >
             <Logo loop />
@@ -186,7 +186,7 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
     return (
       <>
         <div className='buffer'></div>
-        <div className='audioPlayer flex items-center justify-center pt-12'>
+        <div className='audioPlayer flex items-center justify-center mt-20'>
           <Plyr source={mediaSrc} />
         </div>
       </>
