@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import FileUpload from "./fileUpload"
 import * as HashUtil from "../utils/hash-util"
 import FooterUpgrader from "../FooterUpgrader"
-import Minter from "./minter"
 
 const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
   const [darkblockDescription, setDarkblockDescription] = useState("")
@@ -94,17 +93,13 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
 
       let nftBlockchain = state.context.nftData.nft.blockchain.replace("ERC", "ERC-")
       if (["avalanche", "polygon"].includes(nftBlockchain.toLowerCase())) nftBlockchain = "ERC-1155"
-
-
-      console.log('state', state)
-      console.log('state.context.platform', state.context.platform)
-      console.log('state.context.wallet_address', state.context.wallet_address)
-
+      const creatorAddress =
+        state.context.platform.toLowerCase() === "tezos" ? state.context.tezos_public_key : state.context.wallet_address
 
       let data = new FormData()
 
       data.set("file", fileState)
-      data.set("creator_address", state.context.wallet_address)
+      data.set("creator_address", creatorAddress)
       data.set("nft_contract", state.context.nftData.nft.contract)
       data.set("nft_token", state.context.nftData.nft.token)
       data.set("nft_platform", state.context.platform)
@@ -120,7 +115,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
       xhr.open("POST", URL, true)
       xhr.timeout = 900000
 
-      xhr.upload.onprogress = function(e) {
+      xhr.upload.onprogress = function (e) {
         let percentComplete = Math.ceil((e.loaded / e.total) * 100)
 
         if (percentComplete > 10 && percentComplete <= 90) {
@@ -129,11 +124,11 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
         }
       }
 
-      xhr.onerror = function() {
+      xhr.onerror = function () {
         setMintingState("error")
       }
 
-      xhr.onreadystatechange = function() {
+      xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           setProgress(100)
           setTimeout(() => {
@@ -199,8 +194,9 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
               setDarkblockDescription(e.target.value)
             }}
           ></textarea>
-          <p className="upgrade-description-char-count">{`${charLimit - darkblockDescription.length
-            }/${charLimit} characters remaining`}</p>
+          <p className="upgrade-description-char-count">{`${
+            charLimit - darkblockDescription.length
+          }/${charLimit} characters remaining`}</p>
           <br />
           <div className="allowDownload">
             <input
@@ -224,7 +220,96 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
         </form>
       ) : null}
       {open ? (
-        <Minter state={mintingState} progress={progress} mintingStateMsg={mintingStateMsg} />
+        <div className="upgrade-modal-container">
+          <div id="upgrade-modal-bg">
+            <div>
+              {mintingState === "starting" && (
+                <>
+                  <div className="minting-container">
+                    <h3 className="minting-header-text">Your unlockable content is being created...</h3>
+                    <div>
+                      <video autoPlay playsInline loop className="minting-video-loop">
+                        <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
+                      </video>
+                    </div>
+                    <div className="minting-progress-container">
+                      <div className="minting-progress-bar" style={{ width: `${progress}%` }}>
+                        {progress}%
+                      </div>
+                    </div>
+                    <div className="minting-state-msg">{mintingStateMsg}</div>
+                    <div className="minting-warning-container">
+                      <p className="minting-warning">
+                        Please DO NOT close this page until this process is finished. Depending on the file size and
+                        your internet connection the upload time may take up to a few minutes.
+                      </p>
+                    </div>
+                  </div>
+                </>
+              )}
+              {mintingState === "complete" && (
+                <>
+                  <div className="minting-container">
+                    <h3 className="minting-header-text">Your unlockable content has been created</h3>
+                    <div>
+                      <video className="minting-video-loop">
+                        <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
+                      </video>
+                    </div>
+                    <button
+                      className="minting-complete-add-another"
+                      onClick={() => {
+                        clearForm()
+                        setMintingState("starting")
+                        setMinting(false)
+                        setOpen(false)
+                        reset()
+                      }}
+                    >
+                      Make Another
+                    </button>
+                    <button
+                      className="minting-complete-done"
+                      onClick={() => {
+                        clearForm()
+                        setMintingState("starting")
+                        setMinting(false)
+                        setOpen(false)
+                        reset("finished")
+                        onClose(true)
+                      }}
+                    >
+                      I&apos;m Done
+                    </button>
+                  </div>
+                </>
+              )}
+              {mintingState === "error" && (
+                <>
+                  <div className="minting-container">
+                    <h3 className="minting-header-text">Error Trying to Upload File</h3>
+                    <div>
+                      <video className="minting-video-loop">
+                        <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
+                      </video>
+                    </div>
+                    <button
+                      className="minting-try-again"
+                      onClick={() => {
+                        setMintingState("starting")
+                        setMinting(false)
+                        setOpen(false)
+                        reset()
+                      }}
+                    >
+                      Try Again
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
       ) : null}
       <FooterUpgrader />
     </div>
