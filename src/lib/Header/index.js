@@ -14,8 +14,8 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
           state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error"
             ? "#EF4444"
             : state.value === "display"
-            ? "#22C55E"
-            : "rgb(243 244 246",
+              ? "#22C55E"
+              : "rgb(243 244 246",
       }}
     >
       <div className='DarkblockWidget-HeaderContent'>
@@ -56,12 +56,12 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
             </div>
           )}
 
-          {!!authenticate &&  (
+          {!!authenticate && (
             <div className='authButton'>
               <button onClick={authenticate} className='inner-button'>
                 Authenticate Ownership
               </button>
-            
+
             </div>
           )}
         </div>
@@ -71,78 +71,74 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
 }
 
 const Header = ({ onClose, state = null, authenticate }) => {
-  if (state.value === "no_wallet") {
-    return setHeader(
-      false,
-      state,
-      "No wallet connected",
-      "Please connect a wallet to view Darkblock unlockable content."
-    )
-  }
-  if (state.value === "idle" || state.value === "loading_arweave") {
-    return setHeader(false, state, "", "")
+  var title = ''
+  var text = ''
+
+  switch (state.value) {
+    case "no_wallet":
+      title = "No wallet connected"
+      text = "Please connect a wallet to view Darkblock unlockable content."
+
+      break
+    case "start_failure":
+      title = "An Error Ocurred"
+      text = "Please reload the page and try again"
+      break
+
+    case "no_darkblock":
+      title = "No Darkblock Content"
+      text = "There is no unlockable content here or if a new NFT, there might be a slight delay between creation of NFT and unlockables because of indexing"
+      break
+    case ("auth_failure"):
+      title = "Failed to Authenticate Ownership"
+      text = "This wallet does not have access to this Darkblock."
+      break
+    case ("auth_cancel"):
+      title = "Failed to Authenticate Ownership"
+      text = "This wallet does not have access to this Darkblock."
+      break
+    case ("started"):
+      console.log('erer')
+      title = "Darkblock Content"
+      text = "This NFT has unlockable content which only the owner can access."
+      break
+    case ("wallet_connected"):
+      console.log('erer')
+      title = "Darkblock Content"
+      text = "This NFT has unlockable content which only the owner can access."
+      break
+    case "decrypt_error":
+      title = "An Error Ocurred"
+      text = "Please try again."
+      break
+    case "signing":
+      title = "Signature Requested"
+      text = "Please sign with your wallet"
+      break
+    case ("authenticated"):
+      title = "Ownership Authenticated"
+      text = "Decrypting..."
+      break
+    case ("decrypting"):
+      title = "Ownership Authenticated"
+      text = "Decrypting..."
+      break
+    case ("display"):
+      title = "Ownership Authenticated"
+      text = "You can now access the content"
+      break
+    default:
+
   }
 
-  if (state.value === "start_failure") {
-    return setHeader(false, state, "An Error Ocurred", "Please reload the page and try again")
-  }
-
-  if (state.value === "no_darkblock") {
-    return setHeader(
-      false,
-      state,
-      "No Darkblock Content",
-      "There is no unlockable content here or if a new NFT, there might be a slight delay between creation of NFT and unlockables because of indexing"
-    )
-  }
-
-  if (state.value === "auth_failure" || state.value === "auth_cancel") {
-    return setHeader(
-      false,
-      state,
-      "Failed to Authenticate Ownership",
-      "This wallet does not have access to this Darkblock.",
-      true,
-      authenticate
-    )
-  }
-
-  if (state.value === "started") {
-    return setHeader(
-      false,
-      state,
-      "Darkblock Content",
-      "This NFT has unlockable content which only the owner can access."
-    )
-  }
-  if (state.value === "decrypt_error") {
-    return setHeader(onClose, state, "An Error Ocurred", "Please try again.", true)
-  }
-  if (state.value === "signing") {
-    return setHeader(false, state, "Signature Requested", "Please sign with your wallet")
-  }
-
-  if (state.value === "wallet_connected") {
-    return setHeader(
-      onClose,
-      
-      state,
-      "Darkblock Content",
-      "This NFT has unlockable content which only the owner can access.",
-      false,
-      authenticate
-    )
-  }
-
-  if (state.value === "authenticated" || state.value === "decrypting") {
-    return setHeader(false, state, "Ownership Authenticated", "Decrypting...")
-  }
-
-  if (state.value === "display") {
-    return setHeader(onClose, state, "Ownership Authenticated", "You can now access the content")
-  }
-
-  return setHeader(onClose, state, "An Error Ocurred", "Please try again.", true)
+  return setHeader(
+    onClose,
+    state,
+    title,
+    text,
+    (state.value === "auth_failure" || state.value === "auth_cancel") ? true : false,
+    ((state.value === "auth_failure" || state.value === "auth_cancel" || state.value === "wallet_connected") ? authenticate : null)
+  )
 }
 
 export default Header
