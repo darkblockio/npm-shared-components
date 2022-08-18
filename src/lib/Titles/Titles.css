@@ -21,7 +21,7 @@
 }
 
 .format-icon {
-  @apply pr-2;
+  @apply  text-center p-4;
 }
 
 /*hiding parts of header and table info on responsive */
