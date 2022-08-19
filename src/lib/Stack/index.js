@@ -18,7 +18,6 @@ import {
   faArrowLeft,
   faArrowRight,
   faEllipsisVertical,
-
 } from "@fortawesome/free-solid-svg-icons"
 import FooterSharedComponents from "../Footer"
 import Player from "../Player"
@@ -61,7 +60,6 @@ const RenderArrowIcon = ({ filetype }) => {
   return <FontAwesomeIcon icon={icon} className="arrowIcons" />
 }
 
-
 const RenderEllipsisIcon = ({ filetype }) => {
   let icon = faQuestionCircle
 
@@ -72,7 +70,7 @@ const RenderEllipsisIcon = ({ filetype }) => {
 
 const RowContent = ({
   db,
- 
+
   f = null,
   counter = "",
   selected = false,
@@ -84,6 +82,7 @@ const RowContent = ({
   d.setUTCMilliseconds(db.datecreated)
   let truncatedName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
 
+  console.log("truncatedName", truncatedName)
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
   const isRowActive = selected.i === index
 
@@ -102,7 +101,8 @@ const RowContent = ({
       <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
         <td className="name" onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
-          <span>{`${counter} ${truncatedName}`}</span>
+          <span>{`${counter} ${db.name}`}</span>
+          {/*<span>{`${counter} ${truncatedName}`}</span>*/}
         </td>
         <td className="text-right size" onClick={fn}>
           {db.fileSize}
@@ -141,7 +141,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [opacity, setOpacity] = useState(0.4)
   const [showDetails, setShowDetails] = useState(false)
   const [detailDB, setDetailDB] = useState(null)
-  
+
   useEffect(() => {
     if (state.value === "display") {
       setSelected({
@@ -201,16 +201,20 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
               <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
             </div>
             <div className="px-3 mt-1 mb-1 fa-2xl">
-              {selected.i > 0 && (
-                <button onClick={() => previousDb()} className="playerBtn ">
-                  <RenderArrowIcon filetype={"faArrowLeft"} />
-                </button>
-              )}
-              {selected.i + 1 !== state.context.display.stack.length && (
-                <button onClick={() => nextDb()} className="playerBtn">
-                  <RenderArrowIcon filetype={"faArrowRight"} />
-                </button>
-              )}
+              <button
+                onClick={() => previousDb()}
+                className={selected.i > 0 ? "playerBtn" : "playerBtn playerBtnDisabled"}
+              >
+                <RenderArrowIcon filetype={"faArrowLeft"} />
+              </button>
+              <button
+                onClick={() => nextDb()}
+                className={
+                  selected.i + 1 !== state.context.display.stack.length ? "playerBtn" : "playerBtn playerBtnDisabled"
+                }
+              >
+                <RenderArrowIcon filetype={"faArrowRight"} />
+              </button>
             </div>
           </>
         )}
@@ -263,7 +267,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                           setDetailDB(value)
                           setShowDetails(true)
                         }}
-                        
                       />
                     )
                   } else {
@@ -278,8 +281,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                           setDetailDB(value)
                           setShowDetails(true)
                         }}
-            
-                  
                       />
                     )
                   }

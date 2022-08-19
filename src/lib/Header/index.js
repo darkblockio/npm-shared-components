@@ -14,8 +14,8 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
           state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error"
             ? "#EF4444"
             : state.value === "display"
-            ? "#22C55E"
-            : "rgb(243 244 246",
+              ? "#22C55E"
+              : "rgb(243 244 246",
       }}
     >
       <div className="DarkblockWidget-HeaderContent">
@@ -25,11 +25,11 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
           </button>
         )}
 
-        {onClose !== false && (
-          <button className="DarkblockWidget-closeBtn" onClick={onClose}>
-            <AiOutlineClose />
-          </button>
-        )}
+        {/*{onClose !== false && (*/}
+        {/*  <button className="DarkblockWidget-closeBtn" onClick={onClose}>*/}
+        {/*    <AiOutlineClose />*/}
+        {/*  </button>*/}
+        {/*)}*/}
 
         <div className="DarkblockWidget-Header-Row">
           {state.value === "signing" && <FontAwesomeIcon icon={faWallet} className="FaWalletIcon awesome" />}
@@ -102,8 +102,15 @@ const Header = ({ onClose, state = null, authenticate }) => {
       text = "This NFT has unlockable content which only the owner can access."
       break
     case "wallet_connected":
-      title = "Darkblock Content"
-      text = "This NFT has unlockable content which only the owner can access."
+      return setHeader(
+        false,
+        state,
+        "Darkblock Content",
+        "This NFT has unlockable content which only the owner can access.",
+        false,
+        authenticate
+      )
+
       break
     case "decrypt_error":
       title = "An Error Ocurred"

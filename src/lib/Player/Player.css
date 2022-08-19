@@ -61,6 +61,10 @@
   @apply mr-2 bg-[rgb(20,20,20)] rounded-full mt-1;
 }
 
+.playerBtnDisabled {
+  @apply opacity-40 cursor-default
+}
+
 .arrowIcons {
   @apply h-4 w-4 p-2;
 }
