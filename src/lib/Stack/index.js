@@ -209,6 +209,17 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           />
         ) : null}
 
+        {detailDB && showDetails && (
+          <EllipsisModal
+            db={detailDB}
+            open={showDetails}
+            closeToggle={() => {
+              setDetailDB(null)
+              setShowDetails(false)
+            }}
+          />
+        )}
+
         {state.value !== "no_wallet" &&
         state.value !== "idle" &&
         state.value !== "loading_arweave" &&
@@ -264,16 +275,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                 })}
               </tbody>
             </table>
-            {detailDB && showDetails && (
-              <EllipsisModal
-                db={detailDB}
-                open={showDetails}
-                closeToggle={() => {
-                  setDetailDB(null)
-                  setShowDetails(false)
-                }}
-              />
-            )}
           </div>
         ) : (
           <EmptyTable />
