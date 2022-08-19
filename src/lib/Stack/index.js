@@ -18,7 +18,6 @@ import {
   faArrowLeft,
   faArrowRight,
   faEllipsisVertical,
-
 } from "@fortawesome/free-solid-svg-icons"
 import FooterSharedComponents from "../Footer"
 import Player from "../Player"
@@ -61,7 +60,6 @@ const RenderArrowIcon = ({ filetype }) => {
   return <FontAwesomeIcon icon={icon} className="arrowIcons" />
 }
 
-
 const RenderEllipsisIcon = ({ filetype }) => {
   let icon = faQuestionCircle
 
@@ -70,32 +68,13 @@ const RenderEllipsisIcon = ({ filetype }) => {
   return <FontAwesomeIcon icon={icon} className="toggleIcon" />
 }
 
-const RowContent = ({
-  db,
- 
-  f = null,
-  counter = "",
-  selected = false,
-  index = 0,
-  showDetailModal,
-}) => {
+const RowContent = ({ db, f = null, counter = "", selected = false, index = 0, showDetailModal }) => {
   let fn = f && typeof f === "function" ? f : () => {}
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
   let truncatedName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
 
-  const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
   const isRowActive = selected.i === index
-
-  const [showEll, setShowEll] = useState(false)
-
-  const showToggle = (e) => {
-    setShowEll(!showEll)
-  }
-
-  const closeToggle = () => {
-    setShowEll(!showEll)
-  }
 
   return (
     <>
@@ -119,7 +98,6 @@ const RowContent = ({
           <div
             onClick={() => {
               showDetailModal(db)
-              // showToggle()
             }}
             className="toggleContainer"
           >
@@ -141,7 +119,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [opacity, setOpacity] = useState(0.4)
   const [showDetails, setShowDetails] = useState(false)
   const [detailDB, setDetailDB] = useState(null)
-  
+
   useEffect(() => {
     if (state.value === "display") {
       setSelected({
@@ -201,25 +179,25 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
               <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
             </div>
             <div className="px-3 mt-1 mb-1 fa-2xl">
-              {selected.i > 0 && (
-                <button onClick={() => previousDb()} className="playerBtn ">
-                  <RenderArrowIcon filetype={"faArrowLeft"} />
-                </button>
-              )}
-              {selected.i + 1 !== state.context.display.stack.length && (
-                <button onClick={() => nextDb()} className="playerBtn">
-                  <RenderArrowIcon filetype={"faArrowRight"} />
-                </button>
-              )}
+              <button
+                onClick={() => previousDb()}
+                className={selected.i > 0 ? "playerBtn" : "playerBtn playerBtnDisabled"}
+              >
+                <RenderArrowIcon filetype={"faArrowLeft"} />
+              </button>
+              <button
+                onClick={() => nextDb()}
+                className={
+                  selected.i + 1 !== state.context.display.stack.length ? "playerBtn" : "playerBtn playerBtnDisabled"
+                }
+              >
+                <RenderArrowIcon filetype={"faArrowRight"} />
+              </button>
             </div>
           </>
         )}
       </PlayerModal>
       <div className={config.customCssClass ? `DarkblockWidget-App ${config.customCssClass}` : `DarkblockWidget-App`}>
-        {/* {state.value === "display" && selected && !swapping ? (
-
-          <div></div>
-        ) :  */}
         {!showHeader ? (
           <Header
             className="popHeader"
@@ -230,6 +208,17 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             authenticate={() => authenticate()}
           />
         ) : null}
+
+        {detailDB && showDetails && (
+          <EllipsisModal
+            db={detailDB}
+            open={showDetails}
+            closeToggle={() => {
+              setDetailDB(null)
+              setShowDetails(false)
+            }}
+          />
+        )}
 
         {state.value !== "no_wallet" &&
         state.value !== "idle" &&
@@ -263,7 +252,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                           setDetailDB(value)
                           setShowDetails(true)
                         }}
-                        
                       />
                     )
                   } else {
@@ -278,24 +266,15 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                           setDetailDB(value)
                           setShowDetails(true)
                         }}
-            
-                  
+                        f={() => {
+                          setShowHeader(!showHeader)
+                        }}
                       />
                     )
                   }
                 })}
               </tbody>
             </table>
-            {detailDB && showDetails && (
-              <EllipsisModal
-                db={detailDB}
-                open={showDetails}
-                closeToggle={() => {
-                  setDetailDB(null)
-                  setShowDetails(false)
-                }}
-              />
-            )}
           </div>
         ) : (
           <EmptyTable />

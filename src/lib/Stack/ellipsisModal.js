@@ -28,7 +28,7 @@ export default function EllipsisModal({ db, state = null, url = null, open, clos
   return (
     <>
       {open ? (
-        <div>
+        <div className="Detail-modal">
           <div className="dropdown">
             <div className="dropdownContent">
               <div className="titleBoxMenu">
