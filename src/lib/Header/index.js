@@ -1,21 +1,22 @@
-import React from "react"
+import React, { useState } from "react"
 import "./Header.css"
 import Logo from "../Animations/Logo"
 import { AiOutlineClose } from "react-icons/ai"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faWallet, faCircleCheck, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
 
-const setHeader = (onClose, state, title, text, red = false, authenticate = null) => {
+const setHeader = (show = true, onClose, state, title, text, red = false, authenticate = null) => {
   return (
     <div
       className="DarkblockWidget-Header"
       style={{
+        display: !show ? "none" : "block",
         borderColor:
           state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error"
             ? "#EF4444"
             : state.value === "display"
-              ? "#22C55E"
-              : "rgb(243 244 246",
+            ? "#22C55E"
+            : "rgb(243 244 246",
       }}
     >
       <div className="DarkblockWidget-HeaderContent">
@@ -24,12 +25,6 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
             <AiOutlineClose />
           </button>
         )}
-
-        {/*{onClose !== false && (*/}
-        {/*  <button className="DarkblockWidget-closeBtn" onClick={onClose}>*/}
-        {/*    <AiOutlineClose />*/}
-        {/*  </button>*/}
-        {/*)}*/}
 
         <div className="DarkblockWidget-Header-Row">
           {state.value === "signing" && <FontAwesomeIcon icon={faWallet} className="FaWalletIcon awesome" />}
@@ -69,7 +64,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
   )
 }
 
-const Header = ({ onClose, state = null, authenticate }) => {
+const Header = ({ onClose, state = null, authenticate, show = true }) => {
   var title = ""
   var text = ""
 
@@ -102,15 +97,9 @@ const Header = ({ onClose, state = null, authenticate }) => {
       text = "This NFT has unlockable content which only the owner can access."
       break
     case "wallet_connected":
-      return setHeader(
-        false,
-        state,
-        "Darkblock Content",
-        "This NFT has unlockable content which only the owner can access.",
-        false,
-        authenticate
-      )
-
+      onClose = false
+      title = "Darkblock Content"
+      text = "This NFT has unlockable content which only the owner can access."
       break
     case "decrypt_error":
       title = "An Error Ocurred"
@@ -136,6 +125,7 @@ const Header = ({ onClose, state = null, authenticate }) => {
   }
 
   return setHeader(
+    show,
     onClose,
     state,
     title,

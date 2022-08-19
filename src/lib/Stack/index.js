@@ -68,41 +68,20 @@ const RenderEllipsisIcon = ({ filetype }) => {
   return <FontAwesomeIcon icon={icon} className="toggleIcon" />
 }
 
-const RowContent = ({
-  db,
-
-  f = null,
-  counter = "",
-  selected = false,
-  index = 0,
-  showDetailModal,
-}) => {
+const RowContent = ({ db, f = null, counter = "", selected = false, index = 0, showDetailModal }) => {
   let fn = f && typeof f === "function" ? f : () => {}
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
   let truncatedName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
 
-  console.log("truncatedName", truncatedName)
-  const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
   const isRowActive = selected.i === index
-
-  const [showEll, setShowEll] = useState(false)
-
-  const showToggle = (e) => {
-    setShowEll(!showEll)
-  }
-
-  const closeToggle = () => {
-    setShowEll(!showEll)
-  }
 
   return (
     <>
       <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
         <td className="name" onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
-          <span>{`${counter} ${db.name}`}</span>
-          {/*<span>{`${counter} ${truncatedName}`}</span>*/}
+          <span>{`${counter} ${truncatedName}`}</span>
         </td>
         <td className="text-right size" onClick={fn}>
           {db.fileSize}
@@ -119,7 +98,6 @@ const RowContent = ({
           <div
             onClick={() => {
               showDetailModal(db)
-              // showToggle()
             }}
             className="toggleContainer"
           >
@@ -220,10 +198,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         )}
       </PlayerModal>
       <div className={config.customCssClass ? `DarkblockWidget-App ${config.customCssClass}` : `DarkblockWidget-App`}>
-        {/* {state.value === "display" && selected && !swapping ? (
-
-          <div></div>
-        ) :  */}
         {!showHeader ? (
           <Header
             className="popHeader"
@@ -232,6 +206,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             }}
             state={state}
             authenticate={() => authenticate()}
+            show={!showDetails}
           />
         ) : null}
 
