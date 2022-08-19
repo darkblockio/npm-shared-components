@@ -1,7 +1,7 @@
 .DarkblockWidget-Player {
-  @apply  bg-gray-200 rounded m-auto;
+  @apply bg-gray-200 rounded m-auto;
   height: 74vh;
-  width: 100%;
+  width: 100%
 }
 
 .DarkblockWidget-Player .zip-panel {
@@ -10,7 +10,7 @@
 }
 
 .DarkblockWidget-Player-Content {
-  @apply object-cover mt-2;
+  @apply object-cover h-[74vh];
   height: 74vh;
 }
 
@@ -20,21 +20,21 @@
 
 .DarkblockWidget-Player-Content iframe {
   @apply w-full h-96  sm:h-[30rem] md:h-[38rem] lg:h-[40rem] xl:h-[44rem];
-  height: 74vh
+  height: 74vh;
 }
 
 .DarkblockWidget-Player-Content model-viewer {
   @apply h-96 sm:h-[30rem] md:h-[38rem] lg:h-[40rem] w-full xl:h-[44rem];
-  height: 74vh
+  height: 74vh;
 }
 
 .DarkblockWidget-Player-Content .buffer {
-  @apply h-44 md:h-44 lg:h-44
+  @apply h-52 md:h-52 lg:h-52;
 }
 
 .DarkblockWidget-Player-Content .videoPlayer .plyr {
-  @apply object-cover h-full w-full ;
-  height: 74vh
+  @apply object-cover h-full w-full;
+  height: 74vh;
 }
 
 .DarkblockWidget-Player-Content .audioPlayer {
@@ -53,15 +53,14 @@
   @apply h-6 w-6 mx-auto;
 }
 
-.videoPlayer-safeZone{
+.videoPlayer-safeZone {
   @apply py-1 bg-[rgb(43,43,43)];
 }
 
-.playerBtn{
-  @apply mr-2 bg-[rgb(20,20,20)] rounded-full mt-1
+.playerBtn {
+  @apply mr-2 bg-[rgb(20,20,20)] rounded-full mt-1;
 }
 
-.arrowIcons{
-  @apply h-4 w-4 p-2
+.arrowIcons {
+  @apply h-4 w-4 p-2;
 }
-
