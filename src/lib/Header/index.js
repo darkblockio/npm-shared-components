@@ -1,16 +1,15 @@
-import React, { useState } from "react"
+import React from "react"
 import "./Header.css"
 import Logo from "../Animations/Logo"
 import { AiOutlineClose } from "react-icons/ai"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faWallet, faCircleCheck, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
 
-const setHeader = (show = true, onClose, state, title, text, red = false, authenticate = null) => {
+const setHeader = (onClose, state, title, text, red = false, authenticate = null) => {
   return (
     <div
       className="DarkblockWidget-Header"
       style={{
-        display: !show ? "none" : "block",
         borderColor:
           state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error"
             ? "#EF4444"
@@ -97,7 +96,6 @@ const Header = ({ onClose, state = null, authenticate, show = true }) => {
       text = "This NFT has unlockable content which only the owner can access."
       break
     case "wallet_connected":
-      onClose = false
       title = "Darkblock Content"
       text = "This NFT has unlockable content which only the owner can access."
       break
@@ -125,7 +123,6 @@ const Header = ({ onClose, state = null, authenticate, show = true }) => {
   }
 
   return setHeader(
-    show,
     onClose,
     state,
     title,

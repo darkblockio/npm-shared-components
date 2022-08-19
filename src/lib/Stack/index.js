@@ -206,7 +206,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             }}
             state={state}
             authenticate={() => authenticate()}
-            show={!showDetails}
           />
         ) : null}
 
@@ -255,6 +254,9 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                         showDetailModal={(value) => {
                           setDetailDB(value)
                           setShowDetails(true)
+                        }}
+                        f={() => {
+                          setShowHeader(!showHeader)
                         }}
                       />
                     )
