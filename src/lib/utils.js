@@ -11,6 +11,17 @@ export function humanFileSize(size) {
   return (size / Math.pow(1024, i)).toFixed(2) * 1 + " " + ["B", "kB", "MB", "GB", "TB"][i]
 }
 
+export async function getJsonData(url) {
+  return await fetch(url)
+    .then((res) => res.json())
+    .then((resJSON) => {
+      return resJSON
+    })
+    .catch((error) => {
+      return { error: error }
+    })
+}
+
 export async function getNFTData(contract, id, platform) {
   const pageSize = 50
   return await fetch(
