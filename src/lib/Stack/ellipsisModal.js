@@ -28,8 +28,7 @@ export default function EllipsisModal({ db, state = null, url = null, open, clos
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
   let truncateName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
 
- console.log(truncateName, "Hiiiiiiiiiiiiiiiiii") 
-console.log(fileFormat, "HOlaaaaaaaaaaaaaaa")
+
   return (
     <>
       {open ? (
