@@ -185,8 +185,8 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
     mediaSrc.type = "audio"
     return (
       <>
-        <div className='buffer'></div>
-        <div className='audioPlayer flex items-center justify-center '>
+       
+        <div className='audioPlayer'>
           <Plyr source={mediaSrc} />
         </div>
       </>

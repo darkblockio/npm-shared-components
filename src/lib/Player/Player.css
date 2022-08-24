@@ -1,21 +1,20 @@
 .DarkblockWidget-Player {
-  @apply bg-gray-200 rounded m-auto;
-  height: 74vh;
-  width: 100%
+  @apply bg-gray-200 rounded m-auto relative;
+
 }
 
 .DarkblockWidget-Player .zip-panel {
   @apply text-center sm:p-4 sm:my-2 pb-4;
-  height: 70vh;
+ 
 }
 
 .DarkblockWidget-Player-Content {
   @apply object-cover h-[74vh];
-  height: 74vh;
+ 
 }
 
 .DarkblockWidget-Player-Content #seadragon-viewer {
-  height: 74vh;
+  @apply h-[74vh]
 }
 
 .DarkblockWidget-Player-Content iframe {
@@ -28,8 +27,11 @@
   height: 74vh;
 }
 
-.DarkblockWidget-Player-Content .buffer {
+/* .DarkblockWidget-Player-Content .buffer {
   @apply h-52 md:h-52 lg:h-52;
+} */
+ .audioPlayer {
+  @apply flex items-center justify-center absolute inset-0
 }
 
 .DarkblockWidget-Player-Content .videoPlayer .plyr {
