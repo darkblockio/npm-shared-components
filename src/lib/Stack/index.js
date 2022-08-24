@@ -69,6 +69,7 @@ const RenderEllipsisIcon = ({ filetype }) => {
 }
 
 
+
 const RowContent = ({
   db,
 
@@ -78,6 +79,7 @@ const RowContent = ({
   index = 0,
   showDetailModal,
 }) => {
+
 
   let fn = f && typeof f === "function" ? f : () => {}
   let d = new Date(0)
