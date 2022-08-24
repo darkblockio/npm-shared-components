@@ -48,7 +48,7 @@ const RenderIcon = ({ filetype }) => {
   if (filetype.indexOf("chevronLeft") > -1) icon = faChevronLeft
   if (filetype.indexOf("chevronRight") > -1) icon = faChevronRight
 
-  return <FontAwesomeIcon icon={icon} className="awesome" />
+  return <FontAwesomeIcon icon={icon} className='awesome' />
 }
 
 const RenderArrowIcon = ({ filetype }) => {
@@ -57,7 +57,7 @@ const RenderArrowIcon = ({ filetype }) => {
   if (filetype.indexOf("faArrowLeft") > -1) icon = faArrowLeft
   if (filetype.indexOf("faArrowRight") > -1) icon = faArrowRight
 
-  return <FontAwesomeIcon icon={icon} className="arrowIcons" />
+  return <FontAwesomeIcon icon={icon} className='arrowIcons' />
 }
 
 const RenderEllipsisIcon = ({ filetype }) => {
@@ -65,10 +65,12 @@ const RenderEllipsisIcon = ({ filetype }) => {
 
   if (filetype.indexOf("ellipsis") > -1) icon = faEllipsisVertical
 
-  return <FontAwesomeIcon icon={icon} className="toggleIcon" />
+  return <FontAwesomeIcon icon={icon} className='toggleIcon' />
 }
 
+
 const RowContent = ({ db, f = null, counter = "", selected = false, index = 0, showDetailModal }) => {
+
   let fn = f && typeof f === "function" ? f : () => {}
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
@@ -76,17 +78,18 @@ const RowContent = ({ db, f = null, counter = "", selected = false, index = 0, s
 
   const isRowActive = selected.i === index
 
+
   return (
     <>
       <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
-        <td className="name" onClick={fn}>
+        <td className='name' onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
           <span>{`${counter} ${truncatedName}`}</span>
         </td>
-        <td className="text-right size" onClick={fn}>
+        <td className='text-right size' onClick={fn}>
           {db.fileSize}
         </td>
-        <td className="date" onClick={fn}>
+        <td className='date' onClick={fn}>
           {d.toLocaleString([], {
             year: "numeric",
             month: "numeric",
@@ -94,14 +97,14 @@ const RowContent = ({ db, f = null, counter = "", selected = false, index = 0, s
           })}
         </td>
 
-        <td className="toggleBtn">
+        <td className='toggleBtn'>
           <div
             onClick={() => {
               showDetailModal(db)
             }}
-            className="toggleContainer"
+            className='toggleContainer'
           >
-            <button className="toggle">
+            <button className='toggle'>
               <RenderEllipsisIcon filetype={"ellipsis"} />
             </button>
           </div>
@@ -173,11 +176,12 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         {state.value === "display" && selected && !swapping && (
           <>
             <div>
-              <div className="playerModal">
+              <div className='playerModal'>
                 <div>{selected.db.name}</div>
               </div>
               <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
             </div>
+
             <div className="px-3 mt-1 mb-1 fa-2xl">
               <button
                 onClick={() => previousDb()}
@@ -193,6 +197,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
               >
                 <RenderArrowIcon filetype={"faArrowRight"} />
               </button>
+
             </div>
           </>
         )}
@@ -200,7 +205,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
       <div className={config.customCssClass ? `DarkblockWidget-App ${config.customCssClass}` : `DarkblockWidget-App`}>
         {!showHeader ? (
           <Header
-            className="popHeader"
+            className='popHeader'
             onClose={() => {
               setShowHeader(!showHeader)
             }}
@@ -226,8 +231,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         state.value !== "started" &&
         state.value !== "start_failure" &&
         state.value !== "no_darkblock" ? (
-          <div className="DarkblockWidget-Stack-Panel">
-            <table className="table-auto stack-table" style={{ opacity: opacity }}>
+          <div className='DarkblockWidget-Stack-Panel'>
+            <table className='table-auto stack-table' style={{ opacity: opacity }}>
               <tbody>
                 <Titles state={state} />
                 {state.context.display.stack.map((db, i) => {
@@ -248,7 +253,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                         selected={selected}
                         state={state.value}
                         url={urls[i]}
-                        showDetailModal={(value) => {
+                        showDetailModal={value => {
                           setDetailDB(value)
                           setShowDetails(true)
                         }}
@@ -262,19 +267,37 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                         key={i}
                         counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
                         selected={selected}
-                        showDetailModal={(value) => {
+                        showDetailModal={value => {
                           setDetailDB(value)
                           setShowDetails(true)
                         }}
+
                         f={() => {
                           setShowHeader(!showHeader)
                         }}
+
                       />
                     )
                   }
                 })}
               </tbody>
             </table>
+
+
+            {detailDB && showDetails && (
+              <EllipsisModal
+                state={state}
+                url={urls}
+               
+                db={detailDB}
+                open={showDetails}
+                closeToggle={() => {
+                  setDetailDB(null)
+                  setShowDetails(false)
+                }}
+              />
+            )}
+
           </div>
         ) : (
           <EmptyTable />

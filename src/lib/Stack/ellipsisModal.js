@@ -21,9 +21,13 @@ const RenderDetailIcon = ({ filetype }) => {
 
   return <FontAwesomeIcon icon={icon} className="ellIcon" />
 }
-export default function EllipsisModal({ db, state = null, url = null, open, closeToggle, onClose }) {
-  const isDownloadable = state && state === "display" && url && db.downloadable.toString().toLowerCase() === "true"
+export default function EllipsisModal({ db, state = null, url = null, open, closeToggle }) {
+  
+  const isDownloadable = state && state.value === "display" && url && db.downloadable.toString().toLowerCase() === "true"
   const [showDetailModal, setShowDetailModal] = useState(false)
+  const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
+  let truncateName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
+
 
   return (
     <>
@@ -47,7 +51,7 @@ export default function EllipsisModal({ db, state = null, url = null, open, clos
                 className={`boxMenu ${!isDownloadable ? "cursor-not-allowed text-gray-300" : ""}`}
                 onClick={() => {
                   if (isDownloadable) {
-                    downloadFile(url, fileFormat, truncatedName)
+                    downloadFile(url, fileFormat, truncateName)
                   } else {
                     return null
                   }
