@@ -41,20 +41,7 @@ const MyGallery = ({ mediaURL, config }) => {
           }}
         ></div>
         <div id='seadragon-viewer-spinner' ref={spinner}>
-          <div className='buffer'></div>
-          <div
-            style={{
-              width: "50px",
-              height: "50px",
-              textAlign: "center",
-              margin: "auto",
-              justify: "center",
-              zIndex: "99999",
-             
-            }}
-          >
-            <Logo loop />
-          </div>
+          <Logo loop='true' />
         </div>
       </div>
     </>
@@ -156,7 +143,6 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
   if (mediaType == "encrypted(application/zip)") {
     return (
       <>
-        <div className='buffer'></div>
         <div className='zip-panel'>
           <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path d='M8 19H11V22H13V19H16L12 15L8 19ZM16 4H13V1H11V4H8L12 8L16 4ZM4 9V11H20V9H4Z' fill='black' />
@@ -185,7 +171,6 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
     mediaSrc.type = "audio"
     return (
       <>
-       
         <div className='audioPlayer'>
           <Plyr source={mediaSrc} />
         </div>
@@ -206,7 +191,6 @@ const MediaComp = ({ mediaURL, mediaType, config }) => {
 
   return (
     <>
-      <div className='buffer'></div>
       <div className='zip-panel'>
         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
           <path

@@ -18,7 +18,6 @@ import {
   faArrowLeft,
   faArrowRight,
   faEllipsisVertical,
-
 } from "@fortawesome/free-solid-svg-icons"
 import FooterSharedComponents from "../Footer"
 import Player from "../Player"
@@ -49,7 +48,7 @@ const RenderIcon = ({ filetype }) => {
   if (filetype.indexOf("chevronLeft") > -1) icon = faChevronLeft
   if (filetype.indexOf("chevronRight") > -1) icon = faChevronRight
 
-  return <FontAwesomeIcon icon={icon} className="awesome" />
+  return <FontAwesomeIcon icon={icon} className='awesome' />
 }
 
 const RenderArrowIcon = ({ filetype }) => {
@@ -58,21 +57,20 @@ const RenderArrowIcon = ({ filetype }) => {
   if (filetype.indexOf("faArrowLeft") > -1) icon = faArrowLeft
   if (filetype.indexOf("faArrowRight") > -1) icon = faArrowRight
 
-  return <FontAwesomeIcon icon={icon} className="arrowIcons" />
+  return <FontAwesomeIcon icon={icon} className='arrowIcons' />
 }
-
 
 const RenderEllipsisIcon = ({ filetype }) => {
   let icon = faQuestionCircle
 
   if (filetype.indexOf("ellipsis") > -1) icon = faEllipsisVertical
 
-  return <FontAwesomeIcon icon={icon} className="toggleIcon" />
+  return <FontAwesomeIcon icon={icon} className='toggleIcon' />
 }
 
 const RowContent = ({
   db,
- 
+
   f = null,
   counter = "",
   selected = false,
@@ -89,7 +87,7 @@ const RowContent = ({
 
   const [showEll, setShowEll] = useState(false)
 
-  const showToggle = (e) => {
+  const showToggle = e => {
     setShowEll(!showEll)
   }
 
@@ -100,14 +98,14 @@ const RowContent = ({
   return (
     <>
       <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
-        <td className="name" onClick={fn}>
+        <td className='name' onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
           <span>{`${counter} ${truncatedName}`}</span>
         </td>
-        <td className="text-right size" onClick={fn}>
+        <td className='text-right size' onClick={fn}>
           {db.fileSize}
         </td>
-        <td className="date" onClick={fn}>
+        <td className='date' onClick={fn}>
           {d.toLocaleString([], {
             year: "numeric",
             month: "numeric",
@@ -115,15 +113,15 @@ const RowContent = ({
           })}
         </td>
 
-        <td className="toggleBtn">
+        <td className='toggleBtn'>
           <div
             onClick={() => {
               showDetailModal(db)
               // showToggle()
             }}
-            className="toggleContainer"
+            className='toggleContainer'
           >
-            <button className="toggle">
+            <button className='toggle'>
               <RenderEllipsisIcon filetype={"ellipsis"} />
             </button>
           </div>
@@ -141,7 +139,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [opacity, setOpacity] = useState(0.4)
   const [showDetails, setShowDetails] = useState(false)
   const [detailDB, setDetailDB] = useState(null)
-  
+
   useEffect(() => {
     if (state.value === "display") {
       setSelected({
@@ -195,19 +193,19 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         {state.value === "display" && selected && !swapping && (
           <>
             <div>
-              <div className="playerModal">
+              <div className='playerModal'>
                 <div>{selected.db.name}</div>
               </div>
               <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
             </div>
-            <div className="px-3 mt-1 mb-1 fa-2xl">
+            <div className='px-3 mt-1 mb-1 fa-2xl'>
               {selected.i > 0 && (
-                <button onClick={() => previousDb()} className="playerBtn ">
+                <button onClick={() => previousDb()} className='playerBtn '>
                   <RenderArrowIcon filetype={"faArrowLeft"} />
                 </button>
               )}
               {selected.i + 1 !== state.context.display.stack.length && (
-                <button onClick={() => nextDb()} className="playerBtn">
+                <button onClick={() => nextDb()} className='playerBtn'>
                   <RenderArrowIcon filetype={"faArrowRight"} />
                 </button>
               )}
@@ -222,7 +220,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         ) :  */}
         {!showHeader ? (
           <Header
-            className="popHeader"
+            className='popHeader'
             onClose={() => {
               setShowHeader(!showHeader)
             }}
@@ -237,8 +235,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         state.value !== "started" &&
         state.value !== "start_failure" &&
         state.value !== "no_darkblock" ? (
-          <div className="DarkblockWidget-Stack-Panel">
-            <table className="table-auto stack-table" style={{ opacity: opacity }}>
+          <div className='DarkblockWidget-Stack-Panel'>
+            <table className='table-auto stack-table' style={{ opacity: opacity }}>
               <tbody>
                 <Titles state={state} />
                 {state.context.display.stack.map((db, i) => {
@@ -259,11 +257,10 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                         selected={selected}
                         state={state.value}
                         url={urls[i]}
-                        showDetailModal={(value) => {
+                        showDetailModal={value => {
                           setDetailDB(value)
                           setShowDetails(true)
                         }}
-                        
                       />
                     )
                   } else {
@@ -274,20 +271,21 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                         key={i}
                         counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
                         selected={selected}
-                        showDetailModal={(value) => {
+                        showDetailModal={value => {
                           setDetailDB(value)
                           setShowDetails(true)
                         }}
-            
-                  
                       />
                     )
                   }
                 })}
               </tbody>
             </table>
+
             {detailDB && showDetails && (
               <EllipsisModal
+                state={state}
+                urls={urls}
                 db={detailDB}
                 open={showDetails}
                 closeToggle={() => {

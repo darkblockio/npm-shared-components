@@ -4,7 +4,7 @@
 }
 
 .DarkblockWidget-Player .zip-panel {
-  @apply text-center sm:p-4 sm:my-2 pb-4;
+  @apply text-center sm:p-4 sm:my-2 pb-4 text-black;
  
 }
 
@@ -17,6 +17,10 @@
   @apply h-[74vh]
 }
 
+#seadragon-viewer-spinner {
+  @apply w-12 h-12 text-center m-auto justify-center z-50 absolute inset-0
+}
+
 .DarkblockWidget-Player-Content iframe {
   @apply w-full h-96  sm:h-[30rem] md:h-[38rem] lg:h-[40rem] xl:h-[44rem];
   height: 74vh;
@@ -27,33 +31,27 @@
   height: 74vh;
 }
 
-/* .DarkblockWidget-Player-Content .buffer {
-  @apply h-52 md:h-52 lg:h-52;
-} */
+
  .audioPlayer {
   @apply flex items-center justify-center absolute inset-0
 }
 
 .DarkblockWidget-Player-Content .videoPlayer .plyr {
-  @apply object-cover h-full w-full;
-  height: 74vh;
+  @apply object-cover h-full w-full h-[74vh];
 }
 
 .DarkblockWidget-Player-Content .audioPlayer {
   @apply object-contain;
 }
 
-.DarkblockWidget-Player .zip-panel p {
-  @apply pt-2;
+.zip-panel {
+  @apply absolute inset-0 flex flex-col justify-center items-center
 }
 
-.DarkblockWidget-Player .zip-panel a svg {
-  @apply mx-auto;
-}
 
-.DarkblockWidget-Player .zip-panel svg {
-  @apply h-6 w-6 mx-auto;
-}
+.zip-panel svg {
+  @apply h-6 w-6 ;
+} 
 
 .videoPlayer-safeZone {
   @apply py-1 bg-[rgb(43,43,43)];
