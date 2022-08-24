@@ -285,7 +285,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             {detailDB && showDetails && (
               <EllipsisModal
                 state={state}
-                urls={urls}
+                url={urls}
+               
                 db={detailDB}
                 open={showDetails}
                 closeToggle={() => {
