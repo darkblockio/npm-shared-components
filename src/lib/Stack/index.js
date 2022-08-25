@@ -134,6 +134,16 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [showDetails, setShowDetails] = useState(false)
   const [detailDB, setDetailDB] = useState(null)
 
+
+
+  const handleOnClose = e => {
+    e.preventDefault()
+    setShowModal(true)
+    location.reload()
+  }
+
+
+
   useEffect(() => {
     if (state.value === "display") {
       setSelected({
@@ -183,7 +193,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
   return (
     <div>
-      <PlayerModal showModal={showModal} open={showModal} onClose={() => setShowModal(false)}>
+      <PlayerModal showModal={showModal} open={showModal} onClose={(e) => handleOnClose(e)}>
         {state.value === "display" && selected && !swapping && (
           <>
             <div>

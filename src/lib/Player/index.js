@@ -62,6 +62,8 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
     setLocation(epubcifi)
   }
 
+
+
   const epubRef = useRef(null)
   const epubStyles = {
     ...ReactReaderStyle,
@@ -124,7 +126,8 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
     )
   }
 
-  if (mediaType == "encrypted(text/html)") {
+  if (mediaType == "encrypted(text/html)") {  
+    
     return <iframe id="pdf-html-iframe" allowFullScreen className="h-64 md:h-72 lg:h-96" src={mediaURL} />
   }
 
