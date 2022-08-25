@@ -38,7 +38,7 @@ const EmptyRow = () => {
 
 const EmptyTable = () => {
   return (
-    <table className="w-full border border-grey-400">
+    <tbody className="w-full border border-grey-400">
       <tr className='mt-10 border border-gray-200 cursor-pointer rowheader'>
         <th scope='col' className=''>
           <EmptyElement />
@@ -57,7 +57,7 @@ const EmptyTable = () => {
       <EmptyRow />
       <EmptyRow />
       <EmptyRow />
-    </table>
+    </tbody>
   )
 }
 

@@ -69,7 +69,17 @@ const RenderEllipsisIcon = ({ filetype }) => {
 }
 
 
-const RowContent = ({ db, f = null, counter = "", selected = false, index = 0, showDetailModal }) => {
+
+const RowContent = ({
+  db,
+
+  f = null,
+  counter = "",
+  selected = false,
+  index = 0,
+  showDetailModal,
+}) => {
+
 
   let fn = f && typeof f === "function" ? f : () => {}
   let d = new Date(0)
@@ -77,6 +87,7 @@ const RowContent = ({ db, f = null, counter = "", selected = false, index = 0, s
   let truncatedName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
 
   const isRowActive = selected.i === index
+
 
 
   return (
@@ -122,6 +133,16 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [opacity, setOpacity] = useState(0.4)
   const [showDetails, setShowDetails] = useState(false)
   const [detailDB, setDetailDB] = useState(null)
+
+
+
+  const handleOnClose = e => {
+    e.preventDefault()
+    setShowModal(true)
+    location.reload()
+  }
+
+
 
   useEffect(() => {
     if (state.value === "display") {
@@ -172,7 +193,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
   return (
     <div>
-      <PlayerModal showModal={showModal} open={showModal} onClose={() => setShowModal(false)}>
+      <PlayerModal showModal={showModal} open={showModal} onClose={(e) => handleOnClose(e)}>
         {state.value === "display" && selected && !swapping && (
           <>
             <div>

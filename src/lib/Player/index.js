@@ -42,20 +42,10 @@ const MyGallery = ({ mediaURL, config }) => {
           }}
         ></div>
 
-        <div id="seadragon-viewer-spinner" ref={spinner}>
-          <div className="buffer"></div>
-          <div
-            style={{
-              width: "50px",
-              height: "50px",
-              textAlign: "center",
-              margin: "auto",
-              justify: "center",
-              zIndex: "99999",
-            }}
-          >
-            <Logo loop />
-          </div>
+
+        <div id='seadragon-viewer-spinner' ref={spinner}>
+          <Logo loop='true' />
+
 
         </div>
       </div>
@@ -71,6 +61,8 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
   const locationChanged = (epubcifi) => {
     setLocation(epubcifi)
   }
+
+
 
   const epubRef = useRef(null)
   const epubStyles = {
@@ -134,7 +126,8 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
     )
   }
 
-  if (mediaType == "encrypted(text/html)") {
+  if (mediaType == "encrypted(text/html)") {  
+    
     return <iframe id="pdf-html-iframe" allowFullScreen className="h-64 md:h-72 lg:h-96" src={mediaURL} />
   }
 
