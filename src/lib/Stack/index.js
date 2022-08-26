@@ -130,7 +130,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
   const handleOnClose = (e) => {
     e.preventDefault()
-    setShowModal(true)
+    setShowModal(false)
   }
 
   useEffect(() => {
