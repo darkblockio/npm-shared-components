@@ -230,7 +230,6 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
     if (mediaType == "encrypted(application/json)") {
       await getJsonData(mediaURL).then((json) => {
         if (json && json.type && json.type.toLowerCase() === "movie" && json.url) {
-          console.log("is movie")
           setMUrl(json.url)
           setMType("json/video")
 

@@ -21,13 +21,13 @@ const RenderDetailIcon = ({ filetype }) => {
 
   return <FontAwesomeIcon icon={icon} className="ellIcon" />
 }
-export default function EllipsisModal({ db, state = null, url = null, open, closeToggle }) {
-  
-  const isDownloadable = state && state.value === "display" && url && db.downloadable.toString().toLowerCase() === "true"
+export default function EllipsisModal({ db, state = null, open, closeToggle }) {
+  const url = db && db.url ? db.url : null
+  const isDownloadable =
+    state && state.value === "display" && url && db.downloadable.toString().toLowerCase() === "true"
   const [showDetailModal, setShowDetailModal] = useState(false)
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
   let truncateName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
-
 
   return (
     <>
@@ -41,14 +41,14 @@ export default function EllipsisModal({ db, state = null, url = null, open, clos
                   <AiOutlineClose />
                 </button>
               </div>
-              <a className="boxMenu" onClick={() => setShowDetailModal(true)}>
+              <a className="boxMenu cursor-pointer" onClick={() => setShowDetailModal(true)}>
                 <span className="icons">
                   <RenderDetailIcon filetype={"info"} />
                 </span>
                 <span className="placeHolder">Details</span>
               </a>
               <a
-                className={`boxMenu ${!isDownloadable ? "cursor-not-allowed text-gray-300" : ""}`}
+                className={`boxMenu ${!isDownloadable ? "cursor-not-allowed text-gray-300" : "cursor-pointer"}`}
                 onClick={() => {
                   if (isDownloadable) {
                     downloadFile(url, fileFormat, truncateName)
