@@ -55,6 +55,10 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
   const [selections, setSelections] = useState([])
   const [location, setLocation] = useState(0)
 
+  if (typeof window === "undefined") {
+    return <></>
+  }
+
   const locationChanged = (epubcifi) => {
     setLocation(epubcifi)
   }
@@ -79,7 +83,7 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
   }
 
   useEffect(() => {
-    if (window !== undefined) {
+    if (typeof window !== "undefined") {
       if (renditionRef.current) {
         const setRenderSelection = (cfiRange, contents) => {
           setSelections(
@@ -215,14 +219,16 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
 
   useEffect(() => {
     // load 3d modal viewer script
-    const script = document.createElement("script")
-    script.src = "https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-    script.async = true
-    script.type = "module"
-    document.body.appendChild(script)
+    if (typeof window !== "undefined") {
+      const script = document.createElement("script")
+      script.src = "https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+      script.async = true
+      script.type = "module"
+      document.body.appendChild(script)
 
-    return () => {
-      document.body.removeChild(script)
+      return () => {
+        document.body.removeChild(script)
+      }
     }
   }, [])
 

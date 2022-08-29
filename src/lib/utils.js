@@ -120,7 +120,7 @@ export async function downloadFile(url, fileFormat, filename = "") {
   if (fileFormat.match(/\/webm/gi)) ext = "webm"
   if (fileFormat.match(/\/zip/gi)) ext = "zip"
 
-  if (window !== undefined) {
+  if (typeof window !== "undefined") {
     const a = document.createElement("a")
     a.href = window.URL.createObjectURL(raw)
     a.download = `${filename}.${ext}`
