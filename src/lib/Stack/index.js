@@ -227,6 +227,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           <EllipsisModal
             db={detailDB}
             open={showDetails}
+            state={state}
             closeToggle={() => {
               setDetailDB(null)
               setShowDetails(false)
@@ -263,6 +264,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                         state={state.value}
                         url={urls[i]}
                         showDetailModal={(value) => {
+                          value.url = urls[i]
                           setDetailDB(value)
                           setShowDetails(true)
                         }}
@@ -277,6 +279,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                         counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
                         selected={selected}
                         showDetailModal={(value) => {
+                          value.url = null
                           setDetailDB(value)
                           setShowDetails(true)
                         }}
@@ -289,19 +292,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                 })}
               </tbody>
             </table>
-
-            {detailDB && showDetails && (
-              <EllipsisModal
-                state={state}
-                url={urls}
-                db={detailDB}
-                open={showDetails}
-                closeToggle={() => {
-                  setDetailDB(null)
-                  setShowDetails(false)
-                }}
-              />
-            )}
           </div>
         ) : (
           <EmptyTable />
