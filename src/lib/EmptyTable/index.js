@@ -29,7 +29,7 @@ const EmptyRow = () => {
       <td className="hidden sm:table-cell">
         <EmptyElement />
       </td>
-      <td className='w-20'>
+      <td className="w-20">
         <EmptyElement />
       </td>
     </tr>
@@ -38,27 +38,29 @@ const EmptyRow = () => {
 
 const EmptyTable = () => {
   return (
-    <tbody className="w-full border border-grey-400">
-      <tr className='mt-10 border border-gray-200 cursor-pointer rowheader'>
-        <th scope='col' className=''>
-          <EmptyElement />
-        </th>
-        <th scope='col' className='hidden w-20 sm:table-cell'>
-          <EmptyElement />
-        </th>
-        <th scope='col' className='hidden w-20 sm:table-cell'>
-          <EmptyElement />
-        </th>
-        <th scope='col' className='w-20'>
-          <EmptyElement />
-        </th>
-      </tr>
-      <EmptyRow />
-      <EmptyRow />
-      <EmptyRow />
-      <EmptyRow />
-    </tbody>
+    <table>
+      <tbody className="w-full border border-grey-400">
+        <tr className="mt-10 border border-gray-200 cursor-pointer rowheader">
+          <th scope="col" className="">
+            <EmptyElement />
+          </th>
+          <th scope="col" className="hidden w-20 sm:table-cell">
+            <EmptyElement />
+          </th>
+          <th scope="col" className="hidden w-20 sm:table-cell">
+            <EmptyElement />
+          </th>
+          <th scope="col" className="w-20">
+            <EmptyElement />
+          </th>
+        </tr>
+        <EmptyRow />
+        <EmptyRow />
+        <EmptyRow />
+        <EmptyRow />
+      </tbody>
+    </table>
   )
 }
 
-export default EmptyTable;
+export default EmptyTable
