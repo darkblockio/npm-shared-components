@@ -77,7 +77,7 @@ const RowContent = ({
   index = 0,
   showDetailModal,
 }) => {
-  let fn = f && typeof f === "function" ? f : () => {}
+  let fn = f && typeof f === "function" ? f : () => { }
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
   let truncatedName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
@@ -235,67 +235,67 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           />
         )}
 
-        {state.value !== "no_wallet" &&
-        state.value !== "idle" &&
-        state.value !== "loading_arweave" &&
-        state.value !== "started" &&
-        state.value !== "start_failure" &&
-        state.value !== "no_darkblock" ? (
-          <div className="DarkblockWidget-Stack-Panel">
-            <table className="table-auto stack-table" style={{ opacity: opacity }}>
-              <tbody>
-                <Titles state={state} />
-                {state.context.display.stack.map((db, i) => {
-                  if (state.value === "display") {
-                    let sel = selected ? selected.i === i : false
-                    return (
-                      <RowContent
-                        db={db}
-                        sel={sel}
-                        f={() => {
-                          setSwapping(true)
-                          setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i, db: db })
-                          setShowModal(true)
-                        }}
-                        index={i}
-                        key={i}
-                        counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
-                        selected={selected}
-                        state={state.value}
-                        url={urls[i]}
-                        showDetailModal={(value) => {
-                          value.url = urls[i]
-                          setDetailDB(value)
-                          setShowDetails(true)
-                        }}
-                      />
-                    )
-                  } else {
-                    return (
-                      <RowContent
-                        db={db}
-                        index={i}
-                        key={i}
-                        counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
-                        selected={selected}
-                        showDetailModal={(value) => {
-                          value.url = null
-                          setDetailDB(value)
-                          setShowDetails(true)
-                        }}
-                        f={() => {
-                          setShowHeader(!showHeader)
-                        }}
-                      />
-                    )
-                  }
-                })}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <EmptyTable />
-        )}
+        {
+          state.value !== "idle" &&
+            state.value !== "loading_arweave" &&
+            state.value !== "started" &&
+            state.value !== "start_failure" &&
+            state.value !== "no_darkblock" ? (
+            <div className="DarkblockWidget-Stack-Panel">
+              <table className="table-auto stack-table" style={{ opacity: opacity }}>
+                <tbody>
+                  <Titles state={state} />
+                  {state.context.display.stack.map((db, i) => {
+                    if (state.value === "display") {
+                      let sel = selected ? selected.i === i : false
+                      return (
+                        <RowContent
+                          db={db}
+                          sel={sel}
+                          f={() => {
+                            setSwapping(true)
+                            setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i, db: db })
+                            setShowModal(true)
+                          }}
+                          index={i}
+                          key={i}
+                          counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
+                          selected={selected}
+                          state={state.value}
+                          url={urls[i]}
+                          showDetailModal={(value) => {
+                            value.url = urls[i]
+                            setDetailDB(value)
+                            setShowDetails(true)
+                          }}
+                        />
+                      )
+                    } else {
+                      return (
+                        <RowContent
+                          db={db}
+                          index={i}
+                          key={i}
+                          counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
+                          selected={selected}
+                          showDetailModal={(value) => {
+                            value.url = null
+                            setDetailDB(value)
+                            setShowDetails(true)
+                          }}
+                          f={() => {
+                            setShowHeader(!showHeader)
+                          }}
+                        />
+                      )
+                    }
+                  })}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <EmptyTable />
+          )}
         <FooterSharedComponents config={config} state={state} />
       </div>
     </div>
