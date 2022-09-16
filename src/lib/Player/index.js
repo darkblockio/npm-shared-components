@@ -152,7 +152,7 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
         id="pdf-iframe"
         allowFullScreen
         className="w-full h-64 md:h-72 lg:h-96"
-        src={`https://d1jjf9b695fxyn.cloudfront.net/pdf/web/viewer.html?file=${encodeURIComponent(mediaURL)}`}
+        src={`https://darkblockio.github.io/pdf.viewer.io/pdfjs/web/viewer.html?file=${encodeURIComponent(mediaURL)}`}
       />
     )
   }
