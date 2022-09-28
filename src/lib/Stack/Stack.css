@@ -161,7 +161,7 @@ td {
 }
 
 .playerModal {
-  @apply text-white bg-[rgb(43,43,43)] z-40 my-7 min-h-[10px] w-[90%] pl-24 ;
+  @apply text-white bg-[rgb(43,43,43)] z-40 my-7 min-h-[30px] w-[90%] pl-24 ;
 }
 
 .detail-subtitle {
