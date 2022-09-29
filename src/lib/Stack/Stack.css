@@ -3,8 +3,8 @@
   @apply relative flex-grow w-full overflow-y-scroll h-96 md:h-96 lg:h-80;
 }
 
-.DarkblockWidget-Stack-Panel .stack-table {
-  @apply w-full text-gray-500 border-gray-400 opacity-40;
+.DarkblockWidget-Stack-Panel .db-stack-table {
+  @apply w-full text-gray-500 border-gray-400 opacity-40 table-auto;
 }
 
 .DarkblockWidget-Stack-Panel .row {
@@ -24,11 +24,11 @@
   @apply w-4 h-4 p-2 ml-2 mr-2 text-gray-900 bg-gray-100 rounded;
 }
 
-.DarkblockWidget-Stack-Panel .row .name {
+.DarkblockWidget-Stack-Panel .row .db-name {
   @apply whitespace-nowrap sm:w-[30px];
 }
 
-.DarkblockWidget-Stack-Panel .name {
+.DarkblockWidget-Stack-Panel .db-name {
   @apply flex flex-row items-center truncate text-base text-gray-900;
 }
 
@@ -53,8 +53,8 @@ td {
   @apply h-[48px];
 }
 
-.DarkblockWidget-Stack-Panel .boxMenu {
-  @apply flex flex-row items-center pl-1;
+.DarkblockWidget-Stack-Panel .db-box-menu {
+  @apply flex flex-row items-center pl-1 cursor-pointer;
 }
 
 .DarkblockWidget-Stack-Panel .details {
@@ -73,21 +73,24 @@ td {
   @apply w-full px-4  text-xs bg-gray-100 md:text-sm;
 }
 
-
 .DarkblockWidget-Stack-Panel .dropbtn .toggleIcon {
   @apply text-gray-900 rounded text-sm mb-[1px] bg-none p-3;
 }
 
-.toggleBtn {
-  @apply w-2 h-2
+.db-is-not-downloadable {
+  @apply cursor-not-allowed text-gray-300;
 }
 
-.titleBoxMenu {
-  @apply pl-4 pb-1 flex flex-row justify-between text-black
+.db-toggleBtn {
+  @apply w-2 h-2;
 }
 
-.toggle {
-  @apply h-4 w-4 text-black
+.db-titlebox-menu {
+  @apply pl-4 pb-1 flex flex-row justify-between text-black;
+}
+
+.db-toggle {
+  @apply h-4 w-4 text-black;
 }
 
 .icons {
@@ -98,45 +101,45 @@ td {
   @apply pl-4 w-fit;
 }
 
-.DarkblockWidget-Stack-Panel .dropdownContent .dropbtn {
-  @apply flex text-black decoration-0 ;
+.DarkblockWidget-Stack-Panel .db-dropdown-content .dropbtn {
+  @apply flex text-black decoration-0;
 }
 
-.dropdownContent {
-  @apply inset-0 m-auto rounded shadow-lg shadow-gray-300
+.db-dropdown-content {
+  @apply inset-0 m-auto rounded shadow-lg shadow-gray-300;
 }
 
-.dropdownContent .boxMenu {
+.db-dropdown-content .db-box-menu {
   @apply h-12 pb-1 rounded w-80 hover:bg-gray-200;
 }
 
-.DarkblockWidget-Stack-Panel .dropdownContent {
+.DarkblockWidget-Stack-Panel .db-dropdown-content {
   @apply bg-gray-100 z-40 w-72 h-fit p-5 absolute;
 }
 
-.DarkblockWidget-Stack-Panel .dropdown:hover {
+.DarkblockWidget-Stack-Panel .db-dropdown:hover {
   @apply bg-gray-100;
 }
 
-.boxMenu {
+.db-box-menu {
   @apply flex flex-row items-center w-60 text-black hover:bg-gray-100 hover:w-60;
 }
 
-.Detail-modal {
+.db-elipsis-detail-modal {
   @apply absolute z-30 flex p-4 m-auto bg-gray-100 border-2 border-gray-100 rounded shadow-lg w-72 max-h-72 md:w-80 shadow-gray-300 h-52;
   @apply transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
 }
 
-.Detail-modal .dropdown:hover {
+.db-elipsis-detail-modal .db-dropdown:hover {
   @apply bg-gray-100;
 }
 
-.Detail-modal .dropdownContent {
+.db-elipsis-detail-modal .db-dropdown-content {
   @apply p-5 absolute;
 }
 
-.Detail-modal .titleBoxMenu {
-  @apply pl-4 pb-1 flex flex-row justify-between text-black
+.db-elipsis-detail-modal .db-titlebox-menu {
+  @apply pl-4 pb-1 flex flex-row justify-between text-black;
 }
 
 /*player function */
@@ -160,67 +163,79 @@ td {
   background: #c0a0b9;
 }
 
-.playerModal {
-  @apply text-white bg-[rgb(43,43,43)] z-40 my-7 min-h-[30px] w-[90%] pl-24 ;
+.db-player-modal {
+  @apply text-white bg-[rgb(43,43,43)] z-40 my-7 min-h-[30px] w-[90%] pl-24;
 }
 
-.detail-subtitle {
+.db-detail-subtitle {
   @apply mt-6 text-base font-bold;
 }
 
-.detail-subtitle-text {
+.db-detail-subtitle-text {
   @apply text-sm text-gray-500;
 }
 
-.button-container {
+.db-button-container {
   @apply float-right mt-3;
 }
 
-.done-button {
+.db-done-button {
   @apply w-20 p-2 m-4 mt-6 text-white bg-gray-800 rounded-lg;
 }
 
 /* it contains details title and the X button*/
-.modal-first-row {
+.db-modal-first-row {
   @apply flex justify-between;
 }
 
-.modal-first-row-container {
+.db-modal-first-row-container {
   @apply flex;
 }
 
-.modal-title {
+.db-modal-title {
   @apply flex items-center justify-center font-bold;
 }
 
-.detail-darkblock-name {
+.db-darkblock-name {
   @apply pt-1 text-xl font-bold;
 }
 
-.detail-darkblock-detail {
+.db-darkblock-detail {
   @apply max-w-lg mt-8 text-sm text-gray-500;
 }
 
-#modal-bg {
+#db-modal-bg {
   @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-90;
 }
 
-#modal-box {
+#db-modal-box {
   @apply max-w-3xl px-6 py-4 mx-8 text-left bg-white rounded shadow-lg;
 }
 
-.modal-box-container {
+.db-modal-box-container {
   @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-gray-200 bg-opacity-5;
 }
 
-.modal-container {
+.db-modal-container {
   @apply fixed inset-0 z-50 flex items-center justify-center m-4 overflow-x-hidden overflow-y-auto outline-none focus:outline-none;
 }
 
-.detail-container {
+.db-detail-container {
   @apply block w-4/5 px-2;
 }
 
-.cross-button {
+.db-cross-button {
   @apply justify-end w-6 h-6 cursor-pointer;
+}
+
+.db-divider {
+  @apply my-4;
+}
+
+.db-arrows-container {
+  @apply px-3 mt-1 mb-1;
+}
+
+.db-right-text {
+  @apply text-right size;
 }
