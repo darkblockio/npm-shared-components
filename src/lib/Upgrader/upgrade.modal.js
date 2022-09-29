@@ -20,7 +20,7 @@ const UpgradeModal = ({ apiKey, state, open, onClose, authenticate, reset }) => 
                       src="https://img.icons8.com/ios/50/000000/multiply.png"
                     />
                   </div>
-                  <hr className="my-4" />
+                  <hr className="upgrade-line-break" />
                   <div className="upgrade-container">
                     <UpgradeForm
                       apiKey={apiKey}
