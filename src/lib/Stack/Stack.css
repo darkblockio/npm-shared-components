@@ -81,7 +81,7 @@ td {
   @apply cursor-not-allowed text-gray-300;
 }
 
-.db-is-downloadable {
+.db-cursor-pointer {
   @apply cursor-pointer;
 }
 

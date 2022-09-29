@@ -41,14 +41,14 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
                   <AiOutlineClose />
                 </button>
               </div>
-              <a className="db-box-menu " onClick={() => setShowDetailModal(true)}>
+              <a className="db-box-menu db-cursor-pointer" onClick={() => setShowDetailModal(true)}>
                 <span className="icons">
                   <RenderDetailIcon filetype={"info"} />
                 </span>
                 <span className="placeholder">Details</span>
               </a>
               <a
-                className={`db-box-menu ${!isDownloadable ? "db-is-not-downloadable" : "db-is-downloadable"}`}
+                className={`db-box-menu ${!isDownloadable ? "db-is-not-downloadable" : "db-cursor-pointer"}`}
                 onClick={() => {
                   if (isDownloadable) {
                     downloadFile(url, fileFormat, truncateName)
