@@ -17,6 +17,18 @@
   @apply h-[74vh]
 }
 
+.pdfPlayer {
+  @apply w-full h-64 md:h-72 lg:h-96
+}
+
+.reactReader {
+  @apply relative h-[100%]
+}
+
+#toobarDiv {
+  @apply absolute z-50 left-1 top-1
+}
+
 #seadragon-viewer-spinner {
   @apply w-12 h-12 text-center m-auto justify-center z-50 absolute inset-0
 }
@@ -47,7 +59,9 @@
 .zip-panel {
   @apply absolute inset-0 flex flex-col justify-center items-center
 }
-
+.htmlPlayer {
+  @apply h-64 md:h-72 lg:h-96
+}
 
 .zip-panel svg {
   @apply h-6 w-6 ;
