@@ -34,7 +34,7 @@ const MyGallery = ({ mediaURL, config }) => {
       <div id="seadragon-viewer" onContextMenu={() => false}>
         <div
           id="toolbarDiv"
-          style={{
+          dbstyle={{
             position: "absolute !important",
             zIndex: "1",
             left: "1em",
@@ -104,13 +104,13 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
 
   if (mediaType == "encrypted(application/epub+zip)" && typeof window !== "undefined") {
     return (
-      <div style={{ position: "relative", height: "100%" }}>
+      <div dbstyle={{ position: "relative", height: "100%" }}>
         <ReactReader
           epubInitOptions={{ openAs: "epub" }}
           location={location}
           locationChanged={locationChanged}
           ref={epubRef}
-          styles={epubStyles}
+          dbstyles={epubStyles}
           url={mediaURL}
           getRendition={(rendition) => {
             rendition.themes.register("custom", {
@@ -126,7 +126,7 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
   }
 
   if (mediaType == "encrypted(text/html)") {
-    return <iframe id="pdf-html-iframe" allowFullScreen className="h-64 md:h-72 lg:h-96" src={mediaURL} />
+    return <iframe id="pdf-html-iframe" allowFullScreen className="htmlPlayer" src={mediaURL} />
   }
 
   if (mediaType == "encrypted(model/gltf-binary)" || mediaType == "(model/gltf-binary)") {

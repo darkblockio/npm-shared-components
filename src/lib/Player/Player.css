@@ -47,7 +47,9 @@
 .zip-panel {
   @apply absolute inset-0 flex flex-col justify-center items-center
 }
-
+.htmlPlayer {
+  @apply h-64 md:h-72 lg:h-96
+}
 
 .zip-panel svg {
   @apply h-6 w-6 ;
