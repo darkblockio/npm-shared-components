@@ -32,23 +32,23 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
   return (
     <>
       {open ? (
-        <div className="Detail-modal">
-          <div className="dropdown">
-            <div className="dropdownContent">
-              <div className="titleBoxMenu">
+        <div className="db-elipsis-detail-modal">
+          <div className="db-dropdown">
+            <div className="db-dropdown-content">
+              <div className="db-titlebox-menu">
                 {db.name}
                 <button onClick={closeToggle}>
                   <AiOutlineClose />
                 </button>
               </div>
-              <a className="boxMenu cursor-pointer" onClick={() => setShowDetailModal(true)}>
+              <a className="db-box-menu db-cursor-pointer" onClick={() => setShowDetailModal(true)}>
                 <span className="icons">
                   <RenderDetailIcon filetype={"info"} />
                 </span>
-                <span className="placeHolder">Details</span>
+                <span className="placeholder">Details</span>
               </a>
               <a
-                className={`boxMenu ${!isDownloadable ? "cursor-not-allowed text-gray-300" : "cursor-pointer"}`}
+                className={`db-box-menu ${!isDownloadable ? "db-is-not-downloadable" : "db-cursor-pointer"}`}
                 onClick={() => {
                   if (isDownloadable) {
                     downloadFile(url, fileFormat, truncateName)
@@ -60,13 +60,13 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
                 <span className="icons">
                   <RenderDetailIcon filetype={"download"} />
                 </span>
-                <span className="placeHolder">Download</span>
+                <span className="placeholder">Download</span>
               </a>
-              <a target="_blank" rel="noreferrer" className="boxMenu" href={db.arweaveTXLink}>
+              <a target="_blank" rel="noreferrer" className="db-box-menu" href={db.arweaveTXLink}>
                 <span className="icons">
                   <RenderDetailIcon filetype={"upRightFromSquare"} />
                 </span>
-                <span className="placeHolder">Arweave</span>
+                <span className="placeholder">Arweave</span>
               </a>
             </div>
           </div>
