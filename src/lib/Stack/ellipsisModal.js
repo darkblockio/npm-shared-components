@@ -48,7 +48,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
                 <span className="placeholder">Details</span>
               </a>
               <a
-                className={`db-box-menu ${!isDownloadable && "db-is-not-downloadable"}`}
+                className={`db-box-menu ${!isDownloadable ? "db-is-not-downloadable" : "db-is-downloadable"}`}
                 onClick={() => {
                   if (isDownloadable) {
                     downloadFile(url, fileFormat, truncateName)

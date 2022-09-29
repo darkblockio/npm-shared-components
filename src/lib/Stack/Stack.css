@@ -73,12 +73,16 @@ td {
   @apply w-full px-4  text-xs bg-gray-100 md:text-sm;
 }
 
-.DarkblockWidget-Stack-Panel .dropbtn .toggleIcon {
+.DarkblockWidget-Stack-Panel .db-dropbtn .toggleIcon {
   @apply text-gray-900 rounded text-sm mb-[1px] bg-none p-3;
 }
 
 .db-is-not-downloadable {
   @apply cursor-not-allowed text-gray-300;
+}
+
+.db-is-downloadable {
+  @apply cursor-pointer;
 }
 
 .db-toggleBtn {
@@ -101,7 +105,7 @@ td {
   @apply pl-4 w-fit;
 }
 
-.DarkblockWidget-Stack-Panel .db-dropdown-content .dropbtn {
+.DarkblockWidget-Stack-Panel .db-dropdown-content .db-dropbtn {
   @apply flex text-black decoration-0;
 }
 
