@@ -34,12 +34,7 @@ const MyGallery = ({ mediaURL, config }) => {
       <div id="seadragon-viewer" onContextMenu={() => false}>
         <div
           id="toolbarDiv"
-          dbstyle={{
-            position: "absolute !important",
-            zIndex: "1",
-            left: "1em",
-            top: "1em",
-          }}
+      
         ></div>
 
         <div id="seadragon-viewer-spinner" ref={spinner}>
@@ -104,13 +99,13 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
 
   if (mediaType == "encrypted(application/epub+zip)" && typeof window !== "undefined") {
     return (
-      <div dbstyle={{ position: "relative", height: "100%" }}>
+      <div className="reactReader">
         <ReactReader
           epubInitOptions={{ openAs: "epub" }}
           location={location}
           locationChanged={locationChanged}
           ref={epubRef}
-          dbstyles={epubStyles}
+          styles={epubStyles}
           url={mediaURL}
           getRendition={(rendition) => {
             rendition.themes.register("custom", {
@@ -151,7 +146,7 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
       <iframe
         id="pdf-iframe"
         allowFullScreen
-        className="w-full h-64 md:h-72 lg:h-96"
+        className="pdfPlayer"
         src={`https://darkblockio.github.io/pdf.viewer.io/pdfjs/web/viewer.html?file=${encodeURIComponent(mediaURL)}`}
       />
     )
