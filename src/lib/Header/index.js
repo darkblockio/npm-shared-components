@@ -15,7 +15,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
             ? "#EF4444"
             : state.value === "display"
             ? "#22C55E"
-            : "rgb(243 244 246",
+            : "rgb(243 244 246)",
       }}
     >
       <div className="DarkblockWidget-HeaderContent">
@@ -38,21 +38,21 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
             state.value !== "decrypt_error" &&
             state.value !== "signing" &&
             state.value !== "display" && (
-              <div className="logo">
+              <div className="DarkblockWidget-Header-logo">
                 <Logo className="Darkblock-Icon" />
               </div>
             )}
 
           {(title || text) && (
-            <div className="titleStack">
-              <div className={red ? "title title-red" : "title"}>{title}</div>
-              <div className="content">{text}</div>
+            <div className="DarkblockWidget-Header-titleStack">
+              <div className={red ? "db-title db-title-red" : "db-title"}>{title}</div>
+              <div className="db-content">{text}</div>
             </div>
           )}
 
           {!!authenticate && (
-            <div className="authButton">
-              <button onClick={authenticate} className="inner-button">
+            <div className="DarkblockWidget-Header-authButton">
+              <button onClick={authenticate} className="db-inner-button">
                 Authenticate Ownership
               </button>
             </div>

@@ -19,7 +19,7 @@ const EmptyNameElement = () => {
 
 const EmptyRow = () => {
   return (
-    <tr className="border border-gray-200 ">
+    <tr className="w-full border border-gray-200">
       <td>
         <EmptyNameElement />
       </td>
