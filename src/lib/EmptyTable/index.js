@@ -1,35 +1,36 @@
 import React from "react"
+import "./emptyTable.css"
 
 const EmptyElement = () => {
   return (
-    <div className="mx-2 my-4 animate-pulse">
-      <div className="h-4 bg-gray-100 rounded"></div>
+    <div className="EmptyElement">
+      <div className="EmptyElementDiv"></div>
     </div>
   )
 }
 
 const EmptyNameElement = () => {
   return (
-    <div className="flex items-center pt-0 my-4 text-left animate-pulse">
-      <div className="w-6 h-6 p-2 ml-2 mr-2 bg-gray-100 rounded"></div>
-      <div className="h-4 bg-gray-100 rounded w-44"></div>
+    <div className="EmptyNameElement">
+      <div className="EmptyNameElement1"></div>
+      <div className="EmptyNameElement2"></div>
     </div>
   )
 }
 
 const EmptyRow = () => {
   return (
-    <tr className="w-full border border-gray-200">
+    <tr className="EmptyRowContainter">
       <td>
         <EmptyNameElement />
       </td>
-      <td className="hidden sm:table-cell ">
+      <td className="EmptyDataCell ">
         <EmptyElement />
       </td>
-      <td className="hidden sm:table-cell">
+      <td className="EmptyDataCell">
         <EmptyElement />
       </td>
-      <td className="w-20">
+      <td className="EmptyDataCellLast">
         <EmptyElement />
       </td>
     </tr>
@@ -39,18 +40,18 @@ const EmptyRow = () => {
 const EmptyTable = () => {
   return (
     <table>
-      <tbody className="w-full border border-grey-400">
-        <tr className="mt-10 border border-gray-200 cursor-pointer rowheader">
+      <tbody className="EmptyTableContainer">
+        <tr className="EmptyTableRow">
           <th scope="col" className="">
             <EmptyElement />
           </th>
-          <th scope="col" className="hidden w-20 sm:table-cell">
+          <th scope="col" className="EmptyTableColumn">
             <EmptyElement />
           </th>
-          <th scope="col" className="hidden w-20 sm:table-cell">
+          <th scope="col" className="EmptyTableColumn">
             <EmptyElement />
           </th>
-          <th scope="col" className="w-20">
+          <th scope="col" className="EmptyDataCellLast">
             <EmptyElement />
           </th>
         </tr>

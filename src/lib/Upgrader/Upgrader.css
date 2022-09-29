@@ -35,6 +35,10 @@
   @apply justify-end w-6 h-6 cursor-pointer;
 }
 
+.DarkblockWidget-Upgrader .upgrade-line-break {
+  @apply my-4
+}
+
 .DarkblockWidget-Upgrader .upgrade-detail-container {
   @apply block w-4/5 px-2;
 }

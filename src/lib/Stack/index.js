@@ -87,11 +87,11 @@ const RowContent = ({
   return (
     <>
       <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
-        <td className="name" onClick={fn}>
+        <td className="db-name" onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
           <span>{`${counter} ${truncatedName}`}</span>
         </td>
-        <td className="text-right size" onClick={fn}>
+        <td className="db-right-text" onClick={fn}>
           {db.fileSize}
         </td>
         <td className="date" onClick={fn}>
@@ -102,14 +102,14 @@ const RowContent = ({
           })}
         </td>
 
-        <td className="toggleBtn">
+        <td className="db-toggleBtn">
           <div
             onClick={() => {
               showDetailModal(db)
             }}
-            className="toggleContainer"
+            className="db-toggle-container"
           >
-            <button className="toggle">
+            <button className="db-toggle">
               <RenderEllipsisIcon filetype={"ellipsis"} />
             </button>
           </div>
@@ -186,13 +186,13 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         {state.value === "display" && selected && !swapping && (
           <>
             <div>
-              <div className="playerModal">
+              <div className="db-player-modal">
                 <div>{selected.db.name}</div>
               </div>
               <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
             </div>
 
-            <div className="px-3 mt-1 mb-1 fa-2xl">
+            <div className="db-arrows-container fa-2xl">
               <button
                 onClick={() => previousDb()}
                 className={selected.i > 0 ? "playerBtn" : "playerBtn playerBtnDisabled"}
@@ -242,7 +242,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             state.value !== "start_failure" &&
             state.value !== "no_darkblock" ? (
             <div className="DarkblockWidget-Stack-Panel">
-              <table className="table-auto stack-table" style={{ opacity: opacity }}>
+              <table className="db-stack-table" style={{ opacity: opacity }}>
                 <tbody>
                   <Titles state={state} />
                   {state.context.display.stack.map((db, i) => {
