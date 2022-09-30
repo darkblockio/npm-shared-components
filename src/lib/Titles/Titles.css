@@ -3,26 +3,26 @@
  }
 
 
- .rowheader {
+ .Darkblock-rowheader {
   @apply sticky top-0 z-10 h-[48px] text-sm font-semibold text-gray-500 bg-white cursor-pointer;
 }
 
 /* flex-grow fixed border-gray-300 w-[98%] cursor-pointer text-[13px] font-semibold bg-white z-30 */
 
-.name-header {
-  @apply pl-2  text-left;
+.Darkblock-name-header {
+  @apply pl-2 text-left;
 }
 
-.format-header {
+.Darkblock-format-header {
   @apply pl-44 pr-6 text-right
 }
 
-.format-date {
+.Darkblock-format-date {
   @apply left-0 text-left;
 }
 
-.format-icon {
-  @apply  text-center p-4;
+.Darkblock-format-icon {
+  @apply  p-4 text-center;
 }
 
 /*hiding parts of header and table info on responsive */

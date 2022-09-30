@@ -30,21 +30,21 @@ const formats = [
 
 const FileUpload = ({ fileState, setFileState }) => {
   return (
-    <div className="fileupload-container">
+    <div className="Darkblock-fileupload-container">
       <div>
-        <h4 className="fileupload-header">Upload a file</h4>
-        <p className="fileupload-header-supported">Supported File Formats:</p>
-        <p className="fileupload-formats">{formats.join(", ")}</p>
-        <p className="fileupload-info">Max file size 350MB</p>
+        <h4 className="Darkblock-fileupload-header">Upload a file</h4>
+        <p className="Darkblock-fileupload-header-supported">Supported File Formats:</p>
+        <p className="Darkblock-fileupload-formats">{formats.join(", ")}</p>
+        <p className="Darkblock-fileupload-info">Max file size 350MB</p>
         <div style={{ display: "flex", alignItems: "center" }} className="hidden">
           <span id="size" />
         </div>
       </div>
-      <div className="fileupload-input-container">
+      <div className="Darkblock-fileupload-input-container">
         <input
           id="file-upload" //maybe not change this one
           type="file"
-          className="fileupload-button"
+          className="Darkblock-fileupload-button"
           name="fileUpload"
           accept={formats.join(" ")}
           onChange={(e) => {
@@ -55,7 +55,7 @@ const FileUpload = ({ fileState, setFileState }) => {
           }}
         />
 
-        <label htmlFor="file-upload">
+        <label htmlFor="Darkblock-file-upload">
           {fileState && /\.(?=gif|jpg|png|jpeg)/gi.test(fileState.name) && (
             <img src={URL.createObjectURL(fileState)} width="100px" height="100px" />
           )}

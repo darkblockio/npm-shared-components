@@ -5,23 +5,23 @@ const UpgradeModal = ({ apiKey, state, open, onClose, authenticate, reset }) => 
   return (
     <>
       {open ? (
-        <div className="upgrade-modal-container">
-          <div id="upgrade-modal-bg">
-            <div id="upgrade-modal-box">
-              <div className="upgrade-modal-box-container">
-                <div id="upgrade-modal-box">
-                  <div className="upgrade-modal-first-row">
-                    <div className="upgrade-modal-first-row-container"></div>
-                    <div className="upgrade-modal-title">Create Unlockable Content</div>
+        <div className="Darkblock-upgrade-modal-container">
+          <div id="Darkblock-upgrade-modal-bg">
+            <div id="Darkblock-upgrade-modal-box">
+              <div className="Darkblock-upgrade-modal-box-container">
+                <div id="Darkblock-upgrade-modal-box">
+                  <div className="Darkblock-upgrade-modal-first-row">
+                    <div className="Darkblock-upgrade-modal-first-row-container"></div>
+                    <div className="Darkblock-upgrade-modal-title">Create Unlockable Content</div>
                     <img
                       alt={"close"}
-                      className="upgrade-cross-button"
+                      className="Darkblock-upgrade-cross-button"
                       onClick={() => onClose(true)}
                       src="https://img.icons8.com/ios/50/000000/multiply.png"
                     />
                   </div>
-                  <hr className="upgrade-line-break" />
-                  <div className="upgrade-container">
+                  <hr className="Darkblock-upgrade-line-break" />
+                  <div className="Darkblock-upgrade-container">
                     <UpgradeForm
                       apiKey={apiKey}
                       state={state}

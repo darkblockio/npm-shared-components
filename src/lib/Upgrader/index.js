@@ -34,7 +34,7 @@ const Upgrader = ({ state = null, config, apiKey = null, authenticate, reset }) 
         }
       >
         <>
-          <button type={"button"} onClick={() => setShowUpgrade(true)} className="upgrade-add-content">
+          <button type={"button"} onClick={() => setShowUpgrade(true)} className="Darkblock-upgrade-add-content">
             <FontAwesomeIcon icon={faPlus} />
             Add Content
           </button>
@@ -43,7 +43,7 @@ const Upgrader = ({ state = null, config, apiKey = null, authenticate, reset }) 
             state={state}
             open={showUpgrade}
             onClose={() => setShowUpgrade(false)}
-            className="upgrade-modal"
+            className="Darkblock-upgrade-modal"
             authenticate={authenticate}
             reset={reset}
           />
