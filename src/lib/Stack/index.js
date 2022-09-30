@@ -87,11 +87,11 @@ const RowContent = ({
   return (
     <>
       <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
-        <td className="db-name" onClick={fn}>
+        <td className="darkblock-name" onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
           <span>{`${counter} ${truncatedName}`}</span>
         </td>
-        <td className="db-right-text" onClick={fn}>
+        <td className="darkblock-right-text" onClick={fn}>
           {db.fileSize}
         </td>
         <td className="date" onClick={fn}>
@@ -102,14 +102,14 @@ const RowContent = ({
           })}
         </td>
 
-        <td className="db-toggleBtn">
+        <td className="darkblock-toggleBtn">
           <div
             onClick={() => {
               showDetailModal(db)
             }}
-            className="db-toggle-container"
+            className="darkblock-toggle-container"
           >
-            <button className="db-toggle">
+            <button className="darkblock-toggle">
               <RenderEllipsisIcon filetype={"ellipsis"} />
             </button>
           </div>
@@ -186,13 +186,13 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
         {state.value === "display" && selected && !swapping && (
           <>
             <div>
-              <div className="db-player-modal">
+              <div className="darkblock-player-modal">
                 <div>{selected.db.name}</div>
               </div>
               <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
             </div>
 
-            <div className="db-arrows-container fa-2xl">
+            <div className="darkblock-arrows-container fa-2xl">
               <button
                 onClick={() => previousDb()}
                 className={selected.i > 0 ? "playerBtn" : "playerBtn playerBtnDisabled"}
@@ -242,7 +242,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             state.value !== "start_failure" &&
             state.value !== "no_darkblock" ? (
             <div className="DarkblockWidget-Stack-Panel">
-              <table className="db-stack-table" style={{ opacity: opacity }}>
+              <table className="darkblock-stack-table" style={{ opacity: opacity }}>
                 <tbody>
                   <Titles state={state} />
                   {state.context.display.stack.map((db, i) => {

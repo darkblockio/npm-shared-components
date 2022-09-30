@@ -3,7 +3,7 @@
   @apply relative flex-grow w-full overflow-y-scroll h-96 md:h-96 lg:h-80;
 }
 
-.DarkblockWidget-Stack-Panel .db-stack-table {
+.DarkblockWidget-Stack-Panel .darkblock-stack-table {
   @apply w-full text-gray-500 border-gray-400 opacity-40 table-auto;
 }
 
@@ -24,11 +24,11 @@
   @apply w-4 h-4 p-2 ml-2 mr-2 text-gray-900 bg-gray-100 rounded;
 }
 
-.DarkblockWidget-Stack-Panel .row .db-name {
+.DarkblockWidget-Stack-Panel .row .darkblock-name {
   @apply whitespace-nowrap sm:w-[30px];
 }
 
-.DarkblockWidget-Stack-Panel .db-name {
+.DarkblockWidget-Stack-Panel .darkblock-name {
   @apply flex flex-row items-center truncate text-base text-gray-900;
 }
 
@@ -53,7 +53,7 @@ td {
   @apply h-[48px];
 }
 
-.DarkblockWidget-Stack-Panel .db-box-menu {
+.DarkblockWidget-Stack-Panel .darkblock-box-menu {
   @apply flex flex-row items-center pl-1 cursor-pointer;
 }
 
@@ -73,76 +73,76 @@ td {
   @apply w-full px-4  text-xs bg-gray-100 md:text-sm;
 }
 
-.DarkblockWidget-Stack-Panel .db-dropbtn .toggleIcon {
+.DarkblockWidget-Stack-Panel .darkblock-dropbtn .toggleIcon {
   @apply text-gray-900 rounded text-sm mb-[1px] bg-none p-3;
 }
 
-.db-is-not-downloadable {
+.darkblock-is-not-downloadable {
   @apply cursor-not-allowed text-gray-300;
 }
 
-.db-cursor-pointer {
+.darkblock-cursor-pointer {
   @apply cursor-pointer;
 }
 
-.db-toggleBtn {
+.darkblock-toggleBtn {
   @apply w-2 h-2;
 }
 
-.db-titlebox-menu {
+.darkblock-titlebox-menu {
   @apply pl-4 pb-1 flex flex-row justify-between text-black;
 }
 
-.db-toggle {
+.darkblock-toggle {
   @apply h-4 w-4 text-black;
 }
 
-.icons {
+.darkblock-icons {
   @apply px-3;
 }
 
-.DarkblockWdget-Stack-Panel .placeholder {
+.DarkblockWdget-Stack-Panel .darkblock-placeholder {
   @apply pl-4 w-fit;
 }
 
-.DarkblockWidget-Stack-Panel .db-dropdown-content .db-dropbtn {
+.DarkblockWidget-Stack-Panel .darkblock-dropdown-content .darkblock-dropbtn {
   @apply flex text-black decoration-0;
 }
 
-.db-dropdown-content {
+.darkblock-dropdown-content {
   @apply inset-0 m-auto rounded shadow-lg shadow-gray-300;
 }
 
-.db-dropdown-content .db-box-menu {
+.darkblock-dropdown-content .darkblock-box-menu {
   @apply h-12 pb-1 rounded w-80 hover:bg-gray-200;
 }
 
-.DarkblockWidget-Stack-Panel .db-dropdown-content {
+.DarkblockWidget-Stack-Panel .darkblock-dropdown-content {
   @apply bg-gray-100 z-40 w-72 h-fit p-5 absolute;
 }
 
-.DarkblockWidget-Stack-Panel .db-dropdown:hover {
+.DarkblockWidget-Stack-Panel .darkblock-dropdown:hover {
   @apply bg-gray-100;
 }
 
-.db-box-menu {
+.darkblock-box-menu {
   @apply flex flex-row items-center w-60 text-black hover:bg-gray-100 hover:w-60;
 }
 
-.db-elipsis-detail-modal {
+.darkblock-elipsis-detail-modal {
   @apply absolute z-30 flex p-4 m-auto bg-gray-100 border-2 border-gray-100 rounded shadow-lg w-72 max-h-72 md:w-80 shadow-gray-300 h-52;
   @apply transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
 }
 
-.db-elipsis-detail-modal .db-dropdown:hover {
+.darkblock-elipsis-detail-modal .darkblock-dropdown:hover {
   @apply bg-gray-100;
 }
 
-.db-elipsis-detail-modal .db-dropdown-content {
+.darkblock-elipsis-detail-modal .darkblock-dropdown-content {
   @apply p-5 absolute;
 }
 
-.db-elipsis-detail-modal .db-titlebox-menu {
+.darkblock-elipsis-detail-modal .darkblock-titlebox-menu {
   @apply pl-4 pb-1 flex flex-row justify-between text-black;
 }
 
@@ -167,79 +167,79 @@ td {
   background: #c0a0b9;
 }
 
-.db-player-modal {
+.darkblock-player-modal {
   @apply text-white bg-[rgb(43,43,43)] z-40 my-7 min-h-[30px] w-[90%] pl-24;
 }
 
-.db-detail-subtitle {
+.darkblock-detail-subtitle {
   @apply mt-6 text-base font-bold;
 }
 
-.db-detail-subtitle-text {
+.darkblock-detail-subtitle-text {
   @apply text-sm text-gray-500;
 }
 
-.db-button-container {
+.darkblock-button-container {
   @apply float-right mt-3;
 }
 
-.db-done-button {
+.darkblock-done-button {
   @apply w-20 p-2 m-4 mt-6 text-white bg-gray-800 rounded-lg;
 }
 
 /* it contains details title and the X button*/
-.db-modal-first-row {
+.darkblock-modal-first-row {
   @apply flex justify-between;
 }
 
-.db-modal-first-row-container {
+.darkblock-modal-first-row-container {
   @apply flex;
 }
 
-.db-modal-title {
+.darkblock-modal-title {
   @apply flex items-center justify-center font-bold;
 }
 
-.db-darkblock-name {
+.darkblock-modal-name {
   @apply pt-1 text-xl font-bold;
 }
 
-.db-darkblock-detail {
+.darkblock-modal-detail {
   @apply max-w-lg mt-8 text-sm text-gray-500;
 }
 
-#db-modal-bg {
+#darkblock-modal-bg {
   @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-90;
 }
 
-#db-modal-box {
+#darkblock-modal-box {
   @apply max-w-3xl px-6 py-4 mx-8 text-left bg-white rounded shadow-lg;
 }
 
-.db-modal-box-container {
+.darkblock-modal-box-container {
   @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-gray-200 bg-opacity-5;
 }
 
-.db-modal-container {
+.darkblock-modal-container {
   @apply fixed inset-0 z-50 flex items-center justify-center m-4 overflow-x-hidden overflow-y-auto outline-none focus:outline-none;
 }
 
-.db-detail-container {
+.darkblock-detail-container {
   @apply block w-4/5 px-2;
 }
 
-.db-cross-button {
+.darkblock-cross-button {
   @apply justify-end w-6 h-6 cursor-pointer;
 }
 
-.db-divider {
+.darkblock-divider {
   @apply my-4;
 }
 
-.db-arrows-container {
+.darkblock-arrows-container {
   @apply px-3 mt-1 mb-1;
 }
 
-.db-right-text {
+.darkblock-right-text {
   @apply text-right size;
 }
