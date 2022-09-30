@@ -19,7 +19,7 @@ const RenderDetailIcon = ({ filetype }) => {
   if (filetype.indexOf("download") > -1) icon = faDownload
   if (filetype.indexOf("upRightFromSquare") > -1) icon = faUpRightFromSquare
 
-  return <FontAwesomeIcon icon={icon} className="ellIcon" />
+  return <FontAwesomeIcon icon={icon} className="Darkblock-ellIcon" />
 }
 export default function EllipsisModal({ db, state = null, open, closeToggle }) {
   const url = db && db.url ? db.url : null

@@ -26,11 +26,11 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
         )}
 
         <div className="DarkblockWidget-Header-Row">
-          {state.value === "signing" && <FontAwesomeIcon icon={faWallet} className="FaWalletIcon awesome" />}
-          {state.value === "display" && <FontAwesomeIcon icon={faCircleCheck} className="FaCheckIcon awesome" />}
+          {state.value === "signing" && <FontAwesomeIcon icon={faWallet} className="Darkblock-FaWalletIcon awesome" />}
+          {state.value === "display" && <FontAwesomeIcon icon={faCircleCheck} className="Darkblock-FaCheckIcon awesome" />}
 
           {(state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error") && (
-            <FontAwesomeIcon icon={faTriangleExclamation} className="FaTriangleIcon awesome" />
+            <FontAwesomeIcon icon={faTriangleExclamation} className="Darkblock-FaTriangleIcon awesome" />
           )}
 
           {state.value !== "auth_failure" &&

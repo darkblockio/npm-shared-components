@@ -9,15 +9,15 @@ const PlayerModal = ({ state = null, children, open, onClose }) => {
     <>
       {open ?  (
         <>
-          <div className='container'>
+          <div className='Darkblock-container'>
             <div className='modal-bg-darkblock'>
               <div id='modal-box-darkblock'>
                 <div onClick={onClose}>
-                  <FontAwesomeIcon icon={faClose} className='awesomePlayerButton' />
+                  <FontAwesomeIcon icon={faClose} className='Darkblock-awesomePlayerButton' />
                   
                 </div>
               </div>
-                <div className='content'>{children}</div>
+                <div className='Darkblock-content'>{children}</div>
             </div>
           </div>
         </>
