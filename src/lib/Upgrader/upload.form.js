@@ -170,21 +170,21 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
   return (
     <div>
       {!minting ? (
-        <form onSubmit={initDarkblockCreation} className="db-upgrade-form">
+        <form onSubmit={initDarkblockCreation} className="Darkblock-upgrade-form">
           <FileUpload fileState={fileState} setFileState={setFileState}></FileUpload>
-          <h3 className="db-upgrade-title-input">Name</h3>
+          <h3 className="Darkblock-upgrade-title-input">Name</h3>
           <input
             type="text"
-            className="db-upgrade-name-input"
+            className="Darkblock-upgrade-name-input"
             id="name"
             value={name}
             onChange={(e) => {
               setName(e.target.value)
             }}
           />
-          <h3 className="db-upgrade-title-input">Description (optional)</h3>
+          <h3 className="Darkblock-upgrade-title-input">Description (optional)</h3>
           <textarea
-            className="db-upgrade-description-input"
+            className="Darkblock-upgrade-description-input"
             cols={50}
             rows={3}
             maxLength={charLimit}
@@ -193,52 +193,52 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
               setDarkblockDescription(e.target.value)
             }}
           ></textarea>
-          <p className="db-upgrade-description-char-count">{`${
+          <p className="Darkblock-upgrade-description-char-count">{`${
             charLimit - darkblockDescription.length
           }/${charLimit} characters remaining`}</p>
           <br />
-          <div className="db-allowDownload">
+          <div className="Darkblock-allowDownload">
             <input
-              className="db-downloadable-check"
+              className="Darkblock-downloadable-check"
               type="checkbox"
               checked={isDownloadable}
               onChange={(e) => {
                 setIsDownloadable(e.target.checked)
               }}
             />
-            <label className="db-downloadable-text">Allow download</label>
+            <label className="Darkblock-downloadable-text">Allow download</label>
           </div>
           <button
             disabled={!fileState || !fileState.name || !name}
             type="submit"
             id="darkblock-submit"
-            className="db-upgrade-create-button"
+            className="Darkblock-upgrade-create-button"
           >
             Create
           </button>
         </form>
       ) : null}
       {open ? (
-        <div className="db-upgrade-modal-container">
-          <div id="db-upgrade-modal-bg">
+        <div className="Darkblock-upgrade-modal-container">
+          <div id="Darkblock-upgrade-modal-bg">
             <div>
               {mintingState === "starting" && (
                 <>
-                  <div className="db-minting-container">
-                    <h3 className="db-minting-header-text">Your unlockable content is being created...</h3>
+                  <div className="Darkblock-minting-container">
+                    <h3 className="Darkblock-minting-header-text">Your unlockable content is being created...</h3>
                     <div>
-                      <video autoPlay playsInline loop className="db-minting-video-loop">
+                      <video autoPlay playsInline loop className="Darkblock-minting-video-loop">
                         <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
                       </video>
                     </div>
-                    <div className="db-minting-progress-container">
-                      <div className="db-minting-progress-bar" style={{ width: `${progress}%` }}>
+                    <div className="Darkblock-minting-progress-container">
+                      <div className="Darkblock-minting-progress-bar" style={{ width: `${progress}%` }}>
                         {progress}%
                       </div>
                     </div>
-                    <div className="db-minting-state-msg">{mintingStateMsg}</div>
-                    <div className="db-minting-warning-container">
-                      <p className="db-minting-warning">
+                    <div className="Darkblock-minting-state-msg">{mintingStateMsg}</div>
+                    <div className="Darkblock-minting-warning-container">
+                      <p className="Darkblock-minting-warning">
                         Please DO NOT close this page until this process is finished. Depending on the file size and
                         your internet connection the upload time may take up to a few minutes.
                       </p>
@@ -248,15 +248,15 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
               )}
               {mintingState === "complete" && (
                 <>
-                  <div className="db-minting-container">
-                    <h3 className="db-minting-header-text">Your unlockable content has been created</h3>
+                  <div className="Darkblock-minting-container">
+                    <h3 className="Darkblock-minting-header-text">Your unlockable content has been created</h3>
                     <div>
-                      <video className="db-minting-video-loop">
+                      <video className="Darkblock-minting-video-loop">
                         <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
                       </video>
                     </div>
                     <button
-                      className="db-minting-complete-add-another"
+                      className="Darkblock-minting-complete-add-another"
                       onClick={() => {
                         clearForm()
                         setMintingState("starting")
@@ -268,7 +268,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
                       Make Another
                     </button>
                     <button
-                      className="db-minting-complete-done"
+                      className="Darkblock-minting-complete-done"
                       onClick={() => {
                         clearForm()
                         setMintingState("starting")
@@ -285,15 +285,15 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
               )}
               {mintingState === "error" && (
                 <>
-                  <div className="db-minting-container">
-                    <h3 className="db-minting-header-text">Error Trying to Upload File</h3>
+                  <div className="Darkblock-minting-container">
+                    <h3 className="Darkblock-minting-header-text">Error Trying to Upload File</h3>
                     <div>
-                      <video className="db-minting-video-loop">
+                      <video className="Darkblock-minting-video-loop">
                         <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
                       </video>
                     </div>
                     <button
-                      className="db-minting-try-again"
+                      className="Darkblock-minting-try-again"
                       onClick={() => {
                         setMintingState("starting")
                         setMinting(false)

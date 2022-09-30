@@ -45,14 +45,14 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
 
           {(title || text) && (
             <div className="DarkblockWidget-Header-titleStack">
-              <div className={red ? "db-title db-title-red" : "db-title"}>{title}</div>
-              <div className="db-content">{text}</div>
+              <div className={red ? "Darkblock-title Darkblock-title-red" : "Darkblock-title"}>{title}</div>
+              <div className="Darkblock-content">{text}</div>
             </div>
           )}
 
           {!!authenticate && (
             <div className="DarkblockWidget-Header-authButton">
-              <button onClick={authenticate} className="db-inner-button">
+              <button onClick={authenticate} className="Darkblock-inner-button">
                 Authenticate Ownership
               </button>
             </div>
