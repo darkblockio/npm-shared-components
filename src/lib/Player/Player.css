@@ -1,36 +1,33 @@
 .DarkblockWidget-Player {
   @apply bg-gray-200 rounded m-auto relative;
-
 }
 
 .DarkblockWidget-Player .Darkblock-zip-panel {
   @apply text-center sm:p-4 sm:my-2 pb-4 text-black;
- 
 }
 
 .DarkblockWidget-Player-Content {
   @apply object-cover h-[74vh];
- 
 }
 
 .DarkblockWidget-Player-Content #Darkblock-seadragon-viewer {
-  @apply h-[74vh]
+  @apply h-[74vh];
 }
 
 .Darkblock-pdfPlayer {
-  @apply w-full h-64 md:h-72 lg:h-96
+  @apply w-full h-64 md:h-72 lg:h-96;
 }
 
 .Darkblock-reactReader {
-  @apply relative h-[100%]
+  @apply relative h-[100%];
 }
 
 #Darkblock-toobarDiv {
-  @apply absolute z-50 left-1 top-1
+  @apply absolute z-50 left-1 top-1;
 }
 
 #Darkblock-seadragon-viewer-spinner {
-  @apply w-12 h-12 text-center m-auto justify-center z-50 absolute inset-0
+  @apply w-12 h-12 text-center m-auto justify-center z-50 absolute inset-0;
 }
 
 .DarkblockWidget-Player-Content iframe {
@@ -43,9 +40,8 @@
   height: 74vh;
 }
 
-
- .Darkblock-audioPlayer {
-  @apply flex items-center justify-center absolute inset-0
+.Darkblock-audioPlayer {
+  @apply flex items-center justify-center absolute inset-0;
 }
 
 .DarkblockWidget-Player-Content .Darkblock-videoPlayer .plyr {
@@ -57,15 +53,15 @@
 }
 
 .Darkblock-zip-panel {
-  @apply absolute inset-0 flex flex-col justify-center items-center
+  @apply absolute inset-0 flex flex-col justify-center items-center;
 }
 .Darkblock-htmlPlayer {
-  @apply h-64 md:h-72 lg:h-96
+  @apply h-64 md:h-72 lg:h-96;
 }
 
 .Darkblock-zip-panel svg {
-  @apply h-6 w-6 ;
-} 
+  @apply h-6 w-6;
+}
 
 .Darkblock-videoPlayer-safeZone {
   @apply py-1 bg-[rgb(43,43,43)];
@@ -76,7 +72,7 @@
 }
 
 .Darkblock-playerBtnDisabled {
-  @apply opacity-40 cursor-default
+  @apply opacity-40 cursor-default;
 }
 
 .Darkblock-arrowIcons {
