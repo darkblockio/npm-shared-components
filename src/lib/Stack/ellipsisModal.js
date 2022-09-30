@@ -32,23 +32,23 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
   return (
     <>
       {open ? (
-        <div className="db-elipsis-detail-modal">
-          <div className="db-dropdown">
-            <div className="db-dropdown-content">
-              <div className="db-titlebox-menu">
+        <div className="darkblock-elipsis-detail-modal">
+          <div className="darkblock-dropdown">
+            <div className="darkblock-dropdown-content">
+              <div className="darkblock-titlebox-menu">
                 {db.name}
                 <button onClick={closeToggle}>
                   <AiOutlineClose />
                 </button>
               </div>
-              <a className="db-box-menu db-cursor-pointer" onClick={() => setShowDetailModal(true)}>
-                <span className="icons">
+              <a className="darkblock-box-menu darkblock-cursor-pointer" onClick={() => setShowDetailModal(true)}>
+                <span className="darkblock-icons">
                   <RenderDetailIcon filetype={"info"} />
                 </span>
-                <span className="placeholder">Details</span>
+                <span className="darkblock-placeholder">Details</span>
               </a>
               <a
-                className={`db-box-menu ${!isDownloadable ? "db-is-not-downloadable" : "db-cursor-pointer"}`}
+                className={`darkblock-box-menu ${!isDownloadable ? "darkblock-is-not-downloadable" : "darkblock-cursor-pointer"}`}
                 onClick={() => {
                   if (isDownloadable) {
                     downloadFile(url, fileFormat, truncateName)
@@ -57,16 +57,16 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
                   }
                 }}
               >
-                <span className="icons">
+                <span className="darkblock-icons">
                   <RenderDetailIcon filetype={"download"} />
                 </span>
-                <span className="placeholder">Download</span>
+                <span className="darkblock-placeholder">Download</span>
               </a>
-              <a target="_blank" rel="noreferrer" className="db-box-menu" href={db.arweaveTXLink}>
-                <span className="icons">
+              <a target="_blank" rel="noreferrer" className="darkblock-box-menu" href={db.arweaveTXLink}>
+                <span className="darkblock-icons">
                   <RenderDetailIcon filetype={"upRightFromSquare"} />
                 </span>
-                <span className="placeholder">Arweave</span>
+                <span className="darkblock-placeholder">Arweave</span>
               </a>
             </div>
           </div>
