@@ -48,7 +48,7 @@ const RenderIcon = ({ filetype }) => {
   if (filetype.indexOf("chevronLeft") > -1) icon = faChevronLeft
   if (filetype.indexOf("chevronRight") > -1) icon = faChevronRight
 
-  return <FontAwesomeIcon icon={icon} className="awesome" />
+  return <FontAwesomeIcon icon={icon} className="Darkblock-awesome" />
 }
 
 const RenderArrowIcon = ({ filetype }) => {
@@ -57,7 +57,7 @@ const RenderArrowIcon = ({ filetype }) => {
   if (filetype.indexOf("faArrowLeft") > -1) icon = faArrowLeft
   if (filetype.indexOf("faArrowRight") > -1) icon = faArrowRight
 
-  return <FontAwesomeIcon icon={icon} className="arrowIcons" />
+  return <FontAwesomeIcon icon={icon} className="Darkblock-arrowIcons" />
 }
 
 const RenderEllipsisIcon = ({ filetype }) => {
@@ -65,7 +65,7 @@ const RenderEllipsisIcon = ({ filetype }) => {
 
   if (filetype.indexOf("ellipsis") > -1) icon = faEllipsisVertical
 
-  return <FontAwesomeIcon icon={icon} className="toggleIcon" />
+  return <FontAwesomeIcon icon={icon} className="Darkblock-toggleIcon" />
 }
 
 const RowContent = ({
@@ -94,7 +94,7 @@ const RowContent = ({
         <td className="darkblock-right-text" onClick={fn}>
           {db.fileSize}
         </td>
-        <td className="date" onClick={fn}>
+        <td className="Darkblock-date" onClick={fn}>
           {d.toLocaleString([], {
             year: "numeric",
             month: "numeric",

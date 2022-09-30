@@ -1,4 +1,4 @@
-.container {
+.Darkblock-container {
   @apply flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 outline-none focus:outline-none z-50 absolute bg-[rgb(43,43,43)];
 }
 
@@ -10,18 +10,12 @@
   @apply cursor-pointer text-white text-right pr-3 mb-1 my-3 w-[10%] float-right;
 }
 
-.content {
+.Darkblock-content {
   @apply mx-auto block w-full h-auto text-white text-center;
 }
 
-.awesomePlayerButton {
+.Darkblock-awesomePlayerButton {
   @apply bg-[rgb(23,23,23)] text-white p-2 pl-3 pr-3 mr-7 rounded-full;
 }
 
-.titlePlayer{
-  @apply flex items-center justify-end px-3 py-2
-}
 
-.dbName{
-  @apply pr-[39%]
-}

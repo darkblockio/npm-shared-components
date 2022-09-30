@@ -39,6 +39,10 @@
   @apply my-4
 }
 
+.DarkblockWidget-Upgrader .Darkblock-upgrade-line-break {
+  @apply my-4
+}
+
 .DarkblockWidget-Upgrader .upgrade-detail-container {
   @apply block w-4/5 px-2;
 }
@@ -147,7 +151,7 @@
   @apply justify-center w-1/2 p-1 text-center text-white bg-gray-900 rounded-xl ;
 }
 
-.DarkblockWidget-Upgrader .minting-complete-info {
+.DarkblockWidget-Upgrader .Darkblock-minting-complete-info {
   @apply px-4 mb-4 text-white;
 }
 

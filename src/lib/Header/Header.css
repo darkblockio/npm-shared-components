@@ -46,14 +46,14 @@
   @apply m-auto;
 }
 
-.FaWalletIcon {
+.Darkblock-FaWalletIcon {
   @apply w-6 h-6;
 }
 
-.FaCheckIcon {
+.Darkblock-FaCheckIcon {
   @apply w-6 h-6 text-green-500;
 }
 
-.FaTriangleIcon {
+.Darkblock-FaTriangleIcon {
   @apply w-6 h-6 text-red-500;
 }
