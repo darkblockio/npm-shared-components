@@ -28,7 +28,7 @@
 }
 
 .DarkblockWidget-Upgrader .upgrade-modal-title {
-  @apply flex justify-center items-center font-bold;
+  @apply flex justify-center items-center font-bold text-gray-600;
 }
 
 .DarkblockWidget-Upgrader .upgrade-cross-button {
