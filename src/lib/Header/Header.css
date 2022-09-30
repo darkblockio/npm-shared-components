@@ -7,7 +7,7 @@
   @apply flex flex-col items-center justify-center flex-auto sm:flex-col;
 }
 
-.DarkblockWidget-Header-Row > .logo {
+.DarkblockWidget-Header-Row > .DarkblockWidget-Header-logo {
   @apply self-center flex-none text-sm font-semibold w-7 h-7;
 }
 
@@ -18,27 +18,27 @@
   @apply w-8 h-8;
 }
 
-.DarkblockWidget-Header-Row > .titleStack {
+.DarkblockWidget-Header-Row > .DarkblockWidget-Header-titleStack {
   @apply flex flex-col flex-wrap self-center justify-center p-1 mt-2 text-base font-bold;
 }
 
-.titleStack > .title {
+.DarkblockWidget-Header-titleStack > .db-title {
   @apply flex items-center justify-center flex-auto py-1 text-base font-bold;
 }
 
-.titleStack > .title-red {
+.DarkblockWidget-Header-titleStack > .db-title-red {
   @apply flex flex-wrap items-center justify-center flex-auto text-base text-center text-black;
 }
 
-.titleStack > .content {
+.DarkblockWidget-Header-titleStack > .db-content {
   @apply flex items-center justify-center flex-auto text-sm font-semibold text-center text-gray-500;
 }
 
-.DarkblockWidget-Header-Row > .authButton {
+.DarkblockWidget-Header-Row > .DarkblockWidget-Header-authButton {
   @apply flex items-center justify-center flex-auto text-sm font-semibold text-center bg-gray-100 sm:flex sm:flex-auto sm:items-center sm:justify-center;
 }
 
-.authButton > .inner-button {
+.DarkblockWidget-Header-authButton > .db-inner-button {
   @apply flex items-center justify-center flex-auto px-4 py-2 font-medium font-bold text-center text-black bg-gray-200 rounded-md w-fit h-fit;
 }
 
