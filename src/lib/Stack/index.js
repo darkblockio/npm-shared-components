@@ -195,14 +195,14 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             <div className="darkblock-arrows-container fa-2xl">
               <button
                 onClick={() => previousDb()}
-                className={selected.i > 0 ? "playerBtn" : "playerBtn playerBtnDisabled"}
+                className={selected.i > 0 ? "Darkblock-playerBtn" : "Darkblock-playerBtn Darkblock-playerBtnDisabled"}
               >
                 <RenderArrowIcon filetype={"faArrowLeft"} />
               </button>
               <button
                 onClick={() => nextDb()}
                 className={
-                  selected.i + 1 !== state.context.display.stack.length ? "playerBtn" : "playerBtn playerBtnDisabled"
+                  selected.i + 1 !== state.context.display.stack.length ? "Darkblock-playerBtn" : "Darkblock-playerBtn Darkblock-playerBtnDisabled"
                 }
               >
                 <RenderArrowIcon filetype={"faArrowRight"} />
