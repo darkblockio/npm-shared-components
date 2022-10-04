@@ -32,10 +32,7 @@ const MyGallery = ({ mediaURL, config }) => {
   return (
     <>
       <div id="Darkblock-seadragon-viewer" onContextMenu={() => false}>
-        <div
-          id="Darkblock-toolbarDiv"
-      
-        ></div>
+        <div id="Darkblock-toolbarDiv"></div>
 
         <div id="Darkblock-seadragon-viewer-spinner" ref={spinner}>
           <Logo loop="true" />
@@ -147,7 +144,7 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
         id="Darkblock-pdf-iframe"
         allowFullScreen
         className="Darkblock-pdfPlayer"
-        src={`https://darkblockio.github.io/pdf.viewer.io/pdfjs/web/viewer.html?file=${encodeURIComponent(mediaURL)}`}
+        src={`https://pdf.darkblock.io/pdfjs/web/viewer.html?file=${encodeURIComponent(mediaURL)}`}
       />
     )
   }
