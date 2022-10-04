@@ -92,6 +92,9 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
       setMintingStateMsg("Generating content signature...")
 
       let nftBlockchain = state.context.nftData.nft.blockchain
+      if (nftBlockchain === "ERC1155") nftBlockchain = "ERC-1155"
+      if (nftBlockchain === "ERC721") nftBlockchain = "ERC-721"
+
       const creatorAddress =
         state.context.platform.toLowerCase() === "tezos" ? state.context.tezos_public_key : state.context.wallet_address
 
