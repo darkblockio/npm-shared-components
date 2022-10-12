@@ -36,7 +36,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
           <div className="darkblock-dropdown">
             <div className="darkblock-dropdown-content">
               <div className="darkblock-titlebox-menu">
-                {db.name}
+                {truncateName}
                 <button onClick={closeToggle}>
                   <AiOutlineClose />
                 </button>
