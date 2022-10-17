@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import FileUpload from "./fileUpload"
 import * as HashUtil from "../utils/hash-util"
 import FooterUpgrader from "../FooterUpgrader"
+import { getSHA256OfFileChunks } from "../utils/hash-util"
 
 const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
   const [darkblockDescription, setDarkblockDescription] = useState("")
@@ -156,7 +157,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
     setProgress(5)
     setMintingStateMsg("Hashing the file...")
 
-    const fileHash = await HashUtil.getSHA256OfFile(fileState)
+    const fileHash = await HashUtil.getSHA256OfFileChunks(fileState)
 
     setProgress(10)
     setMintingStateMsg("Signing file for security...")
