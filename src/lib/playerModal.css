@@ -3,7 +3,7 @@
 }
 
 .modal-bg-darkblock {
-  @apply fixed inset-0  items-center cursor-pointer text-white text-right justify-center pt-2 bg-[rgb(43,43,43)];
+  @apply fixed inset-0  items-center cursor-pointer text-white text-right justify-center pt-2 bg-black;
 }
 
 #modal-box-darkblock {
@@ -17,5 +17,3 @@
 .Darkblock-awesomePlayerButton {
   @apply bg-[rgb(23,23,23)] text-white p-2 pl-3 pr-3 mr-7 rounded-full;
 }
-
-
