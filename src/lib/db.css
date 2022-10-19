@@ -3,11 +3,16 @@
 }
 
 .DarkblockWidget-Footer {
-  @apply relative bottom-0  pt-4 mt-auto text-xs font-bold text-neutral-400;
+  @apply relative bottom-0 inline-block pt-4 mt-auto text-xs font-bold font-medium text-neutral-400 align-middle;
 }
-
-.DarkblockWidget-Footer svg {
-  @apply inline-block;
+.DarkblockWidget-Footer p {
+  @apply inline-block align-bottom;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.DarkblockWidget-Footer div {
+  @apply inline-block align-middle;
+  margin-bottom: 1px;
 }
 
 .DarkblockWidget-Footer svg path {
