@@ -14,8 +14,8 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
           state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error"
             ? "#EF4444"
             : state.value === "display"
-            ? "#22C55E"
-            : "rgb(243 244 246)",
+              ? "#22C55E"
+              : "rgb(243 244 246)",
       }}
     >
       <div className="DarkblockWidget-HeaderContent">
@@ -81,7 +81,7 @@ const Header = ({ onClose, state = null, authenticate, show = true }) => {
     case "no_darkblock":
       title = "No Darkblock Content"
       text =
-        "There is no unlockable content here or if a new NFT, there might be a slight delay between creation of NFT and unlockables because of indexing"
+        "This NFT doesn’t contain unlockable content. If this is a newly minted NFT or the creator just added the unlockable content, there might be a delay due to indexing."
       break
     case "auth_failure":
       title = "Failed to Authenticate Ownership"
