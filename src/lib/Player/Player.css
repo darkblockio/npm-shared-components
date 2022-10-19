@@ -64,7 +64,7 @@
 }
 
 .Darkblock-videoPlayer-safeZone {
-  @apply py-1 bg-[rgb(43,43,43)];
+  @apply py-1 bg-black;
 }
 
 .Darkblock-playerBtn {
