@@ -1,0 +1,18 @@
+#spinner {
+  margin: "auto";
+  background: "none";
+  display: "block";
+  shape-rendering: "auto";
+  animation-play-state: "running";
+  animation-delay: "0s";
+}
+
+#spinner circle {
+  animation-play-state: running;
+  animation-delay: 0s;
+}
+
+#spinner animateTransform {
+  animation-play-state: running;
+  animation-delay: 0s;
+}

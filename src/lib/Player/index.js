@@ -2,11 +2,12 @@ import React, { useEffect, useState, useRef } from "react"
 import OpenSeadragon from "openseadragon"
 import Plyr from "plyr-react"
 import { ReactReader, ReactReaderStyle } from "react-reader"
-import Logo from "../Animations/Logo"
+// import Logo from "../Animations/Logo"
 import { getJsonData } from "../utils"
 import { VideoPlaceHolderBase64 } from "../imgBase64/VideoPlaceHolderBase64"
 import "./plyr.css"
 import "./Player.css"
+import LoadSpinner from "../Animations/LoadSpinner"
 
 const MyGallery = ({ mediaURL, config }) => {
   const spinner = useRef(null)
@@ -35,7 +36,7 @@ const MyGallery = ({ mediaURL, config }) => {
         <div id="Darkblock-toolbarDiv"></div>
 
         <div id="Darkblock-seadragon-viewer-spinner" ref={spinner}>
-          <Logo loop="true" />
+          <LoadSpinner />
         </div>
       </div>
     </>
@@ -247,7 +248,14 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   return (
     <div className="DarkblockWidget-Player">
       <div className="DarkblockWidget-Player-Content">
-        {loaded && <MediaComp mediaURL={mUrl} mediaType={mType} config={config} posterUrl={posterUrl} />}
+        {
+          loaded
+            ? <MediaComp mediaURL={mUrl} mediaType={mType} config={config} posterUrl={posterUrl} />
+            :
+            <div id="Darkblock-seadragon-viewer-spinner">
+              <LoadSpinner />
+            </div>
+        }
       </div>
     </div>
   )
