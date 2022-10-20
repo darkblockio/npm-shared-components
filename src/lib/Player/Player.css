@@ -7,11 +7,11 @@
 }
 
 .DarkblockWidget-Player-Content {
-  @apply object-cover h-[74vh];
+  @apply object-cover h-[74vh] bg-black;
 }
 
 .DarkblockWidget-Player-Content #Darkblock-seadragon-viewer {
-  @apply h-[74vh];
+  @apply h-[74vh] bg-black;
 }
 
 .Darkblock-pdfPlayer {
@@ -41,7 +41,7 @@
 }
 
 .Darkblock-audioPlayer {
-  @apply flex items-center justify-center absolute inset-0;
+  @apply flex items-center justify-center absolute inset-0 bg-black;
 }
 
 .DarkblockWidget-Player-Content .Darkblock-videoPlayer .plyr {
