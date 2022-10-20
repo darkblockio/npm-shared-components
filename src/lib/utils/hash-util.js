@@ -25,10 +25,21 @@ function loading(file, callbackProgress, callbackFinal) {
   }
 }
 
+let lastOffset = 0
+
 function callbackRead(reader, file, evt, callbackProgress, callbackFinal) {
-  callbackProgress(evt.target.result)
-  if (reader.offset + reader.size >= file.size) {
-    callbackFinal()
+  if (lastOffset === reader.offset) {
+    // in order chunk
+    lastOffset = reader.offset + reader.size
+    callbackProgress(evt.target.result)
+    if (reader.offset + reader.size >= file.size) {
+      callbackFinal()
+    }
+  } else {
+    // not in order chunk
+    setTimeout(function () {
+      callbackRead(reader, file, evt, callbackProgress, callbackFinal)
+    }, 10)
   }
 }
 
@@ -49,10 +60,12 @@ export function getSHA256OfFileChunks(f) {
         },
         function (data) {
           let encrypted = SHA256.finalize().toString()
+          lastOffset = 0
           resolve(encrypted)
         }
       )
     } catch (e) {
+      lastOffset = 0
       reject(e)
     }
   })

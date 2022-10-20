@@ -3,7 +3,7 @@
 }
 
 .DarkblockWidget-Player .Darkblock-zip-panel {
-  @apply text-center sm:p-4 sm:my-2 pb-4 text-black;
+  @apply text-center sm:p-4 sm:my-2 pb-4 text-white;
 }
 
 .DarkblockWidget-Player-Content {
@@ -55,6 +55,7 @@
 .Darkblock-zip-panel {
   @apply absolute inset-0 flex flex-col justify-center items-center;
 }
+
 .Darkblock-htmlPlayer {
   @apply h-64 md:h-72 lg:h-96;
 }
