@@ -1,9 +1,9 @@
 .DarkblockWidget-Player {
-  @apply bg-gray-200 rounded m-auto relative;
+  @apply relative m-auto bg-gray-200 rounded;
 }
 
 .DarkblockWidget-Player .Darkblock-zip-panel {
-  @apply text-center sm:p-4 sm:my-2 pb-4 text-black;
+  @apply pb-4 text-center text-black bg-yellow-500 sm:p-4 sm:my-2;
 }
 
 .DarkblockWidget-Player-Content {
@@ -27,7 +27,7 @@
 }
 
 #Darkblock-seadragon-viewer-spinner {
-  @apply w-12 h-12 text-center m-auto justify-center z-50 absolute inset-0;
+  @apply absolute inset-0 z-50 justify-center w-12 h-12 m-auto text-center;
 }
 
 .DarkblockWidget-Player-Content iframe {
@@ -41,11 +41,12 @@
 }
 
 .Darkblock-audioPlayer {
-  @apply flex items-center justify-center absolute inset-0;
+  @apply absolute inset-0 flex items-center justify-center;
 }
 
 .DarkblockWidget-Player-Content .Darkblock-videoPlayer .plyr {
-  @apply object-cover h-full w-full h-[74vh];
+  /* @apply object-cover h-full w-full h-[74vh]; */
+  @apply object-cover h-full w-full h-[74vh] bg-blue-500;
 }
 
 .DarkblockWidget-Player-Content .Darkblock-audioPlayer {
@@ -53,28 +54,29 @@
 }
 
 .Darkblock-zip-panel {
-  @apply absolute inset-0 flex flex-col justify-center items-center;
+  @apply absolute inset-0 flex flex-col items-center justify-center bg-yellow-300;
 }
 .Darkblock-htmlPlayer {
   @apply h-64 md:h-72 lg:h-96;
 }
 
 .Darkblock-zip-panel svg {
-  @apply h-6 w-6;
+  @apply w-6 h-6;
 }
 
 .Darkblock-videoPlayer-safeZone {
-  @apply py-1 bg-black;
+  /* @apply py-1 bg-black ; */
+  @apply py-1 bg-red-500 ;
 }
 
 .Darkblock-playerBtn {
-  @apply mr-2 bg-[rgb(20,20,20)] rounded-full mt-1;
+  @apply w-5 h-5 p-2 mx-6;
 }
 
 .Darkblock-playerBtnDisabled {
-  @apply opacity-40 cursor-default;
+  @apply cursor-default opacity-40;
 }
 
 .Darkblock-arrowIcons {
-  @apply h-4 w-4 p-2;
+  @apply w-4 h-4 p-2;
 }

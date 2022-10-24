@@ -27,7 +27,7 @@ import Titles from "../Titles"
 import "./Stack.css"
 import "../db.css"
 import PlayerModal from "../playerModal"
-
+import { faClose } from "@fortawesome/free-solid-svg-icons"
 import EmptyTable from "../EmptyTable"
 import EllipsisModal from "./ellipsisModal"
 
@@ -181,18 +181,30 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   }
 
   return (
-    <div>
+    <>
       <PlayerModal showModal={showModal} open={showModal} onClose={(e) => handleOnClose(e)}>
         {state.value === "display" && selected && !swapping && (
-          <>
-            <div>
-              <div className="darkblock-player-modal">
-                <div>{selected.db.name}</div>
+          <div className="justify-between h-screen">
+            <div className="flex justify-between px-3 darkblock-player-modal h-[64px]">
+              <div></div>
+              <div className="m-auto">{selected.db.name}</div>
+{/*
+              <div id='modal-box-darkblock'>
+            </div> */}
+
+              <div className="my-auto cursor-pointer">
+                <div onClick={(e) => handleOnClose(e)} >
+                  <FontAwesomeIcon icon={faClose} className='Darkblock-awesomePlayerButton' />
+                </div>
               </div>
-              <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
             </div>
 
-            <div className="darkblock-arrows-container fa-2xl">
+            <div className="">
+              <Player  mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
+            </div>
+
+            <div className="darkblock-arrows-container">
+              <div className="m-auto">
               <button
                 onClick={() => previousDb()}
                 className={selected.i > 0 ? "Darkblock-playerBtn" : "Darkblock-playerBtn Darkblock-playerBtnDisabled"}
@@ -207,8 +219,10 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
               >
                 <RenderArrowIcon filetype={"faArrowRight"} />
               </button>
+              </div>
+
             </div>
-          </>
+          </div>
         )}
       </PlayerModal>
       <div className={config.customCssClass ? `DarkblockWidget-App ${config.customCssClass}` : `DarkblockWidget-App`}>
@@ -298,7 +312,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           )}
         <FooterSharedComponents config={config} state={state} />
       </div>
-    </div>
+    </>
   )
 }
 

@@ -4,7 +4,7 @@
 }
 
 .DarkblockWidget-Stack-Panel .darkblock-stack-table {
-  @apply w-full text-gray-500 border-gray-400 opacity-40 table-auto;
+  @apply w-full text-gray-500 border-gray-400 table-auto opacity-40;
 }
 
 .DarkblockWidget-Stack-Panel .row {
@@ -29,7 +29,7 @@
 }
 
 .DarkblockWidget-Stack-Panel .darkblock-name {
-  @apply flex flex-row items-center truncate text-base text-gray-900;
+  @apply flex flex-row items-center text-base text-gray-900 truncate;
 }
 
 .DarkblockWidget-Stack-Panel .row .Darkblock-date {
@@ -37,7 +37,7 @@
 }
 
 .DarkblockWidget-Stack-Panel .dbdata {
-  @apply mt-10 border-b-2 border-t-2 border-gray-200 cursor-pointer hover:bg-gray-100;
+  @apply mt-10 border-t-2 border-b-2 border-gray-200 cursor-pointer hover:bg-gray-100;
 }
 
 /*on select after coming back from modal*/
@@ -70,7 +70,7 @@ td {
 }
 
 .DarkblockWidget-Stack-Panel .details {
-  @apply w-full px-4  text-xs bg-gray-100 md:text-sm;
+  @apply w-full px-4 text-xs bg-gray-100 md:text-sm;
 }
 
 .DarkblockWidget-Stack-Panel .darkblock-dropbtn .toggleIcon {
@@ -78,7 +78,7 @@ td {
 }
 
 .darkblock-is-not-downloadable {
-  @apply cursor-not-allowed text-gray-300;
+  @apply text-gray-300 cursor-not-allowed;
 }
 
 .darkblock-cursor-pointer {
@@ -90,11 +90,11 @@ td {
 }
 
 .darkblock-titlebox-menu {
-  @apply pl-4 pb-1 flex flex-row justify-between text-black;
+  @apply flex flex-row justify-between pb-1 pl-4 text-black;
 }
 
 .darkblock-toggle {
-  @apply h-4 w-4 text-black;
+  @apply w-4 h-4 text-black;
 }
 
 .darkblock-icons {
@@ -118,7 +118,7 @@ td {
 }
 
 .DarkblockWidget-Stack-Panel .darkblock-dropdown-content {
-  @apply bg-gray-100 z-40 w-72 h-fit p-5 absolute;
+  @apply absolute z-40 p-5 bg-gray-100 w-72 h-fit;
 }
 
 .DarkblockWidget-Stack-Panel .darkblock-dropdown:hover {
@@ -126,7 +126,7 @@ td {
 }
 
 .darkblock-box-menu {
-  @apply flex flex-row items-center w-60 text-black hover:bg-gray-100 hover:w-60;
+  @apply flex flex-row items-center text-black w-60 hover:bg-gray-100 hover:w-60;
 }
 
 .darkblock-elipsis-detail-modal {
@@ -139,11 +139,11 @@ td {
 }
 
 .darkblock-elipsis-detail-modal .darkblock-dropdown-content {
-  @apply p-5 absolute;
+  @apply absolute p-5;
 }
 
 .darkblock-elipsis-detail-modal .darkblock-titlebox-menu {
-  @apply pl-4 pb-1 flex flex-row justify-between text-black;
+  @apply flex flex-row justify-between pb-1 pl-4 text-black;
 }
 
 /*player function */
@@ -168,7 +168,8 @@ td {
 }
 
 .darkblock-player-modal {
-  @apply text-white bg-black z-40 my-7 min-h-[30px] w-[90%] pl-24;
+  /* @apply text-white bg-black z-40 my-7 min-h-[30px] w-[90%] pl-24; */
+  @apply z-40 w-full text-white bg-black;
 }
 
 .darkblock-detail-subtitle {
@@ -237,7 +238,7 @@ td {
 }
 
 .darkblock-arrows-container {
-  @apply px-3 mt-1 mb-1;
+  @apply h-[64px] sticky top-[100vh] w-full flex;
 }
 
 .darkblock-right-text {
