@@ -1,17 +1,19 @@
 .DarkblockWidget-Player {
-  @apply relative m-auto bg-gray-200 rounded;
+  @apply relative m-auto bg-gray-200;
 }
 
 .DarkblockWidget-Player .Darkblock-zip-panel {
-  @apply pb-4 text-center text-black bg-yellow-500 sm:p-4 sm:my-2;
+  @apply pb-4 text-center text-black sm:p-4 sm:my-2;
 }
 
 .DarkblockWidget-Player-Content {
-  @apply object-cover h-[74vh];
+  /* @apply object-cover h-[74vh]; */
+  @apply object-cover h-full ;
 }
 
 .DarkblockWidget-Player-Content #Darkblock-seadragon-viewer {
-  @apply h-[74vh];
+  /* @apply h-[74vh]; */
+  @apply h-full;
 }
 
 .Darkblock-pdfPlayer {
@@ -31,12 +33,14 @@
 }
 
 .DarkblockWidget-Player-Content iframe {
-  @apply w-full h-96  sm:h-[30rem] md:h-[38rem] lg:h-[40rem] xl:h-[44rem];
-  height: 74vh;
+  /* @apply w-full h-96  sm:h-[30rem] md:h-[38rem] lg:h-[40rem] xl:h-[44rem]; */
+  /* height: 74vh; */
+  @apply w-full h-full;
 }
 
 .DarkblockWidget-Player-Content model-viewer {
-  @apply h-96 sm:h-[30rem] md:h-[38rem] lg:h-[40rem] w-full xl:h-[44rem];
+  /* @apply h-96 sm:h-[30rem] md:h-[38rem] lg:h-[40rem] w-full xl:h-[44rem]; */
+  @apply w-full ;
   height: 74vh;
 }
 
@@ -45,8 +49,8 @@
 }
 
 .DarkblockWidget-Player-Content .Darkblock-videoPlayer .plyr {
-  /* @apply object-cover h-full w-full h-[74vh]; */
-  @apply object-cover h-full w-full h-[74vh] bg-blue-500;
+  @apply object-cover w-full h-[74vh] ;
+  /* -mb-[90px] */
 }
 
 .DarkblockWidget-Player-Content .Darkblock-audioPlayer {

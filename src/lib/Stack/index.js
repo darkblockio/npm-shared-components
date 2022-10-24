@@ -184,7 +184,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     <>
       <PlayerModal showModal={showModal} open={showModal} onClose={(e) => handleOnClose(e)}>
         {state.value === "display" && selected && !swapping && (
-          <div className="justify-between h-screen">
+          <div className="flex flex-col justify-between h-screen">
             <div className="flex justify-between px-3 darkblock-player-modal h-[64px]">
               <div></div>
               <div className="m-auto">{selected.db.name}</div>
@@ -199,9 +199,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
               </div>
             </div>
 
-            <div className="">
-              <Player  mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
-            </div>
+            <Player  mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
 
             <div className="darkblock-arrows-container">
               <div className="m-auto">

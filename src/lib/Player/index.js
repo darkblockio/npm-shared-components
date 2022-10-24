@@ -245,8 +245,8 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   }, [mediaType])
 
   return (
-    <div className="DarkblockWidget-Player">
-      <div className="DarkblockWidget-Player-Content">
+    <div className="flex-1 w-full bg-red-300 DarkblockWidget-Player">
+      <div className="bg-blue-400 DarkblockWidget-Player-Content">
         {loaded && <MediaComp mediaURL={mUrl} mediaType={mType} config={config} posterUrl={posterUrl} />}
       </div>
     </div>
