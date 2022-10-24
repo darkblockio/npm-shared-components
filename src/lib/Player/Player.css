@@ -22,7 +22,7 @@
   @apply relative h-[100%];
 }
 
-#Darkblock-toobarDiv {
+#Darkblock-toolbarDiv {
   @apply absolute z-50 left-1 top-1;
 }
 
