@@ -6,14 +6,18 @@
   @apply fixed inset-0 bg-black;
 }
 
-/* #modal-box-darkblock {
-  @apply cursor-pointer text-white text-right pr-3 mb-1 my-3 w-[10%] float-right;
-} */
-
 .Darkblock-content {
   @apply block w-full h-auto mx-auto text-center text-white;
 }
 
 .Darkblock-awesomePlayerButton {
   @apply w-5 h-5 p-2;
+}
+
+.Darkblock-player-modal-container {
+  @apply flex flex-col justify-between h-screen;
+}
+
+.Darkblock-player-modal-close-button {
+  @apply  my-auto cursor-pointer;
 }

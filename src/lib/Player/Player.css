@@ -1,5 +1,5 @@
 .DarkblockWidget-Player {
-  @apply relative m-auto bg-gray-200;
+  @apply relative flex-1 w-full m-auto bg-gray-200;
 }
 
 .DarkblockWidget-Player .Darkblock-zip-panel {
@@ -7,7 +7,7 @@
 }
 
 .DarkblockWidget-Player-Content {
-  @apply object-cover h-full ;
+  @apply object-cover h-full;
 }
 
 .DarkblockWidget-Player-Content #Darkblock-seadragon-viewer {
@@ -34,10 +34,12 @@
   @apply w-full h-full;
 }
 
-.DarkblockWidget-Player-Content model-viewer {
-  /* @apply h-96 sm:h-[30rem] md:h-[38rem] lg:h-[40rem] w-full xl:h-[44rem]; */
-  @apply w-full h-full bg-green-500;
-  height: 74vh;
+.Darkblock-model-viewer-player {
+  @apply absolute inset-0 flex w-full m-auto;
+}
+
+.Darkblock-model-viewer-player model-viewer {
+  @apply w-full h-full;
 }
 
 .Darkblock-audioPlayer {
@@ -57,7 +59,7 @@
 }
 
 .Darkblock-zip-panel {
-  @apply absolute inset-0 flex flex-col items-center justify-center bg-yellow-300;
+  @apply absolute inset-0 flex flex-col items-center justify-center;
 }
 .Darkblock-htmlPlayer {
   @apply h-64 md:h-72 lg:h-96;

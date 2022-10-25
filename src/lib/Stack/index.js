@@ -184,15 +184,12 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     <>
       <PlayerModal showModal={showModal} open={showModal} onClose={(e) => handleOnClose(e)}>
         {state.value === "display" && selected && !swapping && (
-          <div className="flex flex-col justify-between h-screen">
-            <div className="flex justify-between px-3 darkblock-player-modal h-[64px]">
-              <div></div>
-              <div className="m-auto">{selected.db.name}</div>
-{/*
-              <div id='modal-box-darkblock'>
-            </div> */}
+          <div className="Darkblock-player-modal-container">
+            <div className="darkblock-player-modal">
+              <div className="w-5 px-2"></div>
+              <div className="Darkblock-player-modal-container-title-name">{selected.db.name}</div>
 
-              <div className="my-auto cursor-pointer">
+              <div className="Darkblock-player-modal-close-button">
                 <div onClick={(e) => handleOnClose(e)} >
                   <FontAwesomeIcon icon={faClose} className='Darkblock-awesomePlayerButton' />
                 </div>
@@ -203,22 +200,21 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
             <div className="darkblock-arrows-container">
               <div className="m-auto">
-              <button
-                onClick={() => previousDb()}
-                className={selected.i > 0 ? "Darkblock-playerBtn" : "Darkblock-playerBtn Darkblock-playerBtnDisabled"}
-              >
-                <RenderArrowIcon filetype={"faArrowLeft"} />
-              </button>
-              <button
-                onClick={() => nextDb()}
-                className={
-                  selected.i + 1 !== state.context.display.stack.length ? "Darkblock-playerBtn" : "Darkblock-playerBtn Darkblock-playerBtnDisabled"
-                }
-              >
-                <RenderArrowIcon filetype={"faArrowRight"} />
-              </button>
+                <button
+                  onClick={() => previousDb()}
+                  className={selected.i > 0 ? "Darkblock-playerBtn" : "Darkblock-playerBtn Darkblock-playerBtnDisabled"}
+                >
+                  <RenderArrowIcon filetype={"faArrowLeft"} />
+                </button>
+                <button
+                  onClick={() => nextDb()}
+                  className={
+                    selected.i + 1 !== state.context.display.stack.length ? "Darkblock-playerBtn" : "Darkblock-playerBtn Darkblock-playerBtnDisabled"
+                  }
+                >
+                  <RenderArrowIcon filetype={"faArrowRight"} />
+                </button>
               </div>
-
             </div>
           </div>
         )}

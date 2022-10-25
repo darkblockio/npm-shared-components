@@ -123,7 +123,7 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
 
   if (mediaType == "encrypted(model/gltf-binary)" || mediaType == "(model/gltf-binary)") {
     return (
-      <div>
+      <div className="Darkblock-model-viewer-player">
         <model-viewer
           alt="testing"
           ar
@@ -243,8 +243,8 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   }, [mediaType])
 
   return (
-    <div className="flex-1 w-full bg-blue-300 DarkblockWidget-Player">
-      <div className="h-full bg-yellow-400 DarkblockWidget-Player-Content">
+    <div className="DarkblockWidget-Player">
+      <div className="DarkblockWidget-Player-Content">
         {loaded && <MediaComp mediaURL={mUrl} mediaType={mType} config={config} posterUrl={posterUrl} />}
       </div>
     </div>
