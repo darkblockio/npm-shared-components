@@ -22,7 +22,7 @@
   @apply relative h-[100%];
 }
 
-#Darkblock-toobarDiv {
+#Darkblock-toolbarDiv {
   @apply absolute z-50 left-1 top-1;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .Darkblock-audioPlayer {
-  @apply absolute inset-0 flex items-center justify-center;
+  @apply absolute inset-0 flex items-center justify-center bg-black;
 }
 
 .Darkblock-videoPlayer {
@@ -61,6 +61,7 @@
 .Darkblock-zip-panel {
   @apply absolute inset-0 flex flex-col items-center justify-center;
 }
+
 .Darkblock-htmlPlayer {
   @apply h-64 md:h-72 lg:h-96;
 }
