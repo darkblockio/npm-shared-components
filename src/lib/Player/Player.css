@@ -3,11 +3,11 @@
 }
 
 .DarkblockWidget-Player .Darkblock-zip-panel {
-  @apply pb-4 text-center text-black sm:p-4 sm:my-2;
+  @apply pb-4 text-center text-white sm:p-4 sm:my-2;
 }
 
 .DarkblockWidget-Player-Content {
-  @apply object-cover h-full;
+  @apply object-cover h-full bg-black;
 }
 
 .DarkblockWidget-Player-Content #Darkblock-seadragon-viewer {
