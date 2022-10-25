@@ -180,10 +180,8 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
     mediaSrc.type = "video"
 
     return (
-      <div className="Darkblock-videoPlayer">
-        <div className="Darkblock-videoPlayer-safeZone">
-          <Plyr source={mediaSrc} loop />
-        </div>
+      <div  className="Darkblock-videoPlayer">
+        <Plyr source={mediaSrc} loop />
       </div>
     )
   }
@@ -245,8 +243,8 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   }, [mediaType])
 
   return (
-    <div className="flex-1 w-full bg-red-300 DarkblockWidget-Player">
-      <div className="bg-blue-400 DarkblockWidget-Player-Content">
+    <div className="flex-1 w-full bg-blue-300 DarkblockWidget-Player">
+      <div className="h-full bg-yellow-400 DarkblockWidget-Player-Content">
         {loaded && <MediaComp mediaURL={mUrl} mediaType={mType} config={config} posterUrl={posterUrl} />}
       </div>
     </div>

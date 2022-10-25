@@ -7,12 +7,10 @@
 }
 
 .DarkblockWidget-Player-Content {
-  /* @apply object-cover h-[74vh]; */
   @apply object-cover h-full ;
 }
 
 .DarkblockWidget-Player-Content #Darkblock-seadragon-viewer {
-  /* @apply h-[74vh]; */
   @apply h-full;
 }
 
@@ -33,14 +31,12 @@
 }
 
 .DarkblockWidget-Player-Content iframe {
-  /* @apply w-full h-96  sm:h-[30rem] md:h-[38rem] lg:h-[40rem] xl:h-[44rem]; */
-  /* height: 74vh; */
   @apply w-full h-full;
 }
 
 .DarkblockWidget-Player-Content model-viewer {
   /* @apply h-96 sm:h-[30rem] md:h-[38rem] lg:h-[40rem] w-full xl:h-[44rem]; */
-  @apply w-full ;
+  @apply w-full h-full bg-green-500;
   height: 74vh;
 }
 
@@ -48,9 +44,12 @@
   @apply absolute inset-0 flex items-center justify-center;
 }
 
-.DarkblockWidget-Player-Content .Darkblock-videoPlayer .plyr {
-  @apply object-cover w-full h-[74vh] ;
-  /* -mb-[90px] */
+.Darkblock-videoPlayer {
+  @apply absolute inset-0 flex w-full m-auto;
+}
+
+.Darkblock-videoPlayer .plyr{
+  @apply w-full;
 }
 
 .DarkblockWidget-Player-Content .Darkblock-audioPlayer {
@@ -66,11 +65,6 @@
 
 .Darkblock-zip-panel svg {
   @apply w-6 h-6;
-}
-
-.Darkblock-videoPlayer-safeZone {
-  /* @apply py-1 bg-black ; */
-  @apply py-1 bg-red-500 ;
 }
 
 .Darkblock-playerBtn {
