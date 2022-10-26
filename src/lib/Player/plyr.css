@@ -977,6 +977,7 @@ a.plyr__control:before {
   background: var(--plyr-video-control-background-hover, var(--plyr-color-main, var(--plyr-color-main, #00b3ff)));
   color: #fff;
   color: var(--plyr-video-control-color-hover, #fff);
+  @apply bg-neutral-500;
 }
 .plyr__control--overlaid {
   background: #00b3ff;
