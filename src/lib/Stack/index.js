@@ -27,7 +27,7 @@ import Titles from "../Titles"
 import "./Stack.css"
 import "../db.css"
 import PlayerModal from "../playerModal"
-
+import { faClose } from "@fortawesome/free-solid-svg-icons"
 import EmptyTable from "../EmptyTable"
 import EllipsisModal from "./ellipsisModal"
 
@@ -181,34 +181,42 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   }
 
   return (
-    <div>
+    <>
       <PlayerModal showModal={showModal} open={showModal} onClose={(e) => handleOnClose(e)}>
         {state.value === "display" && selected && !swapping && (
-          <>
-            <div>
-              <div className="darkblock-player-modal">
-                <div>{selected.db.name}</div>
+          <div className="Darkblock-player-modal-container">
+            <div className="darkblock-player-modal">
+              <div className="w-5 px-2"></div>
+              <div className="Darkblock-player-modal-container-title-name">{selected.db.name}</div>
+
+              <div className="Darkblock-player-modal-close-button">
+                <div onClick={(e) => handleOnClose(e)} >
+                  <FontAwesomeIcon icon={faClose} className='Darkblock-awesomePlayerButton' />
+                </div>
               </div>
-              <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
             </div>
 
-            <div className="darkblock-arrows-container fa-2xl">
-              <button
-                onClick={() => previousDb()}
-                className={selected.i > 0 ? "Darkblock-playerBtn" : "Darkblock-playerBtn Darkblock-playerBtnDisabled"}
-              >
-                <RenderArrowIcon filetype={"faArrowLeft"} />
-              </button>
-              <button
-                onClick={() => nextDb()}
-                className={
-                  selected.i + 1 !== state.context.display.stack.length ? "Darkblock-playerBtn" : "Darkblock-playerBtn Darkblock-playerBtnDisabled"
-                }
-              >
-                <RenderArrowIcon filetype={"faArrowRight"} />
-              </button>
+            <Player  mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
+
+            <div className="darkblock-arrows-container">
+              <div className="m-auto">
+                <button
+                  onClick={() => previousDb()}
+                  className={selected.i > 0 ? "Darkblock-playerBtn" : "Darkblock-playerBtn Darkblock-playerBtnDisabled"}
+                >
+                  <RenderArrowIcon filetype={"faArrowLeft"} />
+                </button>
+                <button
+                  onClick={() => nextDb()}
+                  className={
+                    selected.i + 1 !== state.context.display.stack.length ? "Darkblock-playerBtn" : "Darkblock-playerBtn Darkblock-playerBtnDisabled"
+                  }
+                >
+                  <RenderArrowIcon filetype={"faArrowRight"} />
+                </button>
+              </div>
             </div>
-          </>
+          </div>
         )}
       </PlayerModal>
       <div className={config.customCssClass ? `DarkblockWidget-App ${config.customCssClass}` : `DarkblockWidget-App`}>
@@ -298,7 +306,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           )}
         <FooterSharedComponents config={config} state={state} />
       </div>
-    </div>
+    </>
   )
 }
 

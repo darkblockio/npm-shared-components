@@ -1,17 +1,17 @@
 .DarkblockWidget-Player {
-  @apply bg-gray-200 rounded m-auto relative;
+  @apply relative flex-1 w-full m-auto bg-gray-200;
 }
 
 .DarkblockWidget-Player .Darkblock-zip-panel {
-  @apply text-center sm:p-4 sm:my-2 pb-4 text-white;
+  @apply pb-4 text-center text-white sm:p-4 sm:my-2;
 }
 
 .DarkblockWidget-Player-Content {
-  @apply object-cover h-[74vh] bg-black;
+  @apply object-cover h-full bg-black;
 }
 
 .DarkblockWidget-Player-Content #Darkblock-seadragon-viewer {
-  @apply h-[74vh] bg-black;
+  @apply h-full;
 }
 
 .Darkblock-pdfPlayer {
@@ -27,25 +27,31 @@
 }
 
 #Darkblock-seadragon-viewer-spinner {
-  @apply w-12 h-12 text-center m-auto justify-center z-50 absolute inset-0;
+  @apply absolute inset-0 z-50 justify-center w-12 h-12 m-auto text-center;
 }
 
 .DarkblockWidget-Player-Content iframe {
-  @apply w-full h-96  sm:h-[30rem] md:h-[38rem] lg:h-[40rem] xl:h-[44rem];
-  height: 74vh;
+  @apply w-full h-full;
 }
 
-.DarkblockWidget-Player-Content model-viewer {
-  @apply h-96 sm:h-[30rem] md:h-[38rem] lg:h-[40rem] w-full xl:h-[44rem];
-  height: 74vh;
+.Darkblock-model-viewer-player {
+  @apply absolute inset-0 flex w-full m-auto;
+}
+
+.Darkblock-model-viewer-player model-viewer {
+  @apply w-full h-full;
 }
 
 .Darkblock-audioPlayer {
-  @apply flex items-center justify-center absolute inset-0 bg-black;
+  @apply absolute inset-0 flex items-center justify-center bg-black;
 }
 
-.DarkblockWidget-Player-Content .Darkblock-videoPlayer .plyr {
-  @apply object-cover h-full w-full h-[74vh];
+.Darkblock-videoPlayer {
+  @apply absolute inset-0 flex w-full m-auto;
+}
+
+.Darkblock-videoPlayer .plyr{
+  @apply w-full;
 }
 
 .DarkblockWidget-Player-Content .Darkblock-audioPlayer {
@@ -53,7 +59,7 @@
 }
 
 .Darkblock-zip-panel {
-  @apply absolute inset-0 flex flex-col justify-center items-center;
+  @apply absolute inset-0 flex flex-col items-center justify-center;
 }
 
 .Darkblock-htmlPlayer {
@@ -61,21 +67,17 @@
 }
 
 .Darkblock-zip-panel svg {
-  @apply h-6 w-6;
-}
-
-.Darkblock-videoPlayer-safeZone {
-  @apply py-1 bg-black;
+  @apply w-6 h-6;
 }
 
 .Darkblock-playerBtn {
-  @apply mr-2 bg-[rgb(20,20,20)] rounded-full mt-1;
+  @apply w-5 h-5 p-2 mx-6;
 }
 
 .Darkblock-playerBtnDisabled {
-  @apply opacity-40 cursor-default;
+  @apply cursor-default opacity-40;
 }
 
 .Darkblock-arrowIcons {
-  @apply h-4 w-4 p-2;
+  @apply w-4 h-4 p-2;
 }
