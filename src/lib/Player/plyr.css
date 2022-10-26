@@ -723,11 +723,13 @@ a.plyr__control:before {
 .plyr__progress input[type="range"] {
   position: relative;
   z-index: 2;
+  color: rgb(229 229 229);
 }
 .plyr__progress .plyr__tooltip {
   font-size: 13px;
   font-size: var(--plyr-font-size-time, var(--plyr-font-size-small, 13px));
   left: 0;
+  @apply bg-white bg-neutral-200;
 }
 .plyr__progress__buffer {
   -webkit-appearance: none;
@@ -817,6 +819,7 @@ a.plyr__control:before {
   margin-right: calc(var(--plyr-control-spacing, 10px) / 2);
   position: relative;
   z-index: 2;
+  color: rgb(229 229 229);
 }
 .plyr--is-ios .plyr__volume {
   min-width: 0;
@@ -826,21 +829,25 @@ a.plyr__control:before {
   display: block;
 }
 .plyr--audio .plyr__controls {
-  background: #fff;
+  /* background: #fff; */
   background: var(--plyr-audio-controls-background, #fff);
   border-radius: inherit;
-  color: #4a5464;
-  color: var(--plyr-audio-control-color, #4a5464);
+  /* color: #4a5464; */
+  color: #FFF;
+  /* color: var(--plyr-audio-control-color, #4a5464); */
+  color: var(--plyr-audio-control-color, #FFF);
   padding: 10px;
   padding: var(--plyr-control-spacing, 10px);
+  @apply bg-neutral-700 rounded-[12px];
 }
 .plyr--audio .plyr__control.plyr__tab-focus,
 .plyr--audio .plyr__control:hover,
 .plyr--audio .plyr__control[aria-expanded="true"] {
-  background: #00b3ff;
+  /* background: #00b3ff; */
   background: var(--plyr-audio-control-background-hover, var(--plyr-color-main, var(--plyr-color-main, #00b3ff)));
   color: #fff;
   color: var(--plyr-audio-control-color-hover, #fff);
+  @apply bg-neutral-500;
 }
 .plyr--full-ui.plyr--audio input[type="range"]::-webkit-slider-runnable-track {
   background-color: rgba(193, 200, 209, 0.6);
@@ -970,6 +977,7 @@ a.plyr__control:before {
   background: var(--plyr-video-control-background-hover, var(--plyr-color-main, var(--plyr-color-main, #00b3ff)));
   color: #fff;
   color: var(--plyr-video-control-color-hover, #fff);
+  @apply bg-neutral-500;
 }
 .plyr__control--overlaid {
   background: #00b3ff;
