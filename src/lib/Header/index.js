@@ -4,8 +4,12 @@ import Logo from "../Animations/Logo"
 import { AiOutlineClose } from "react-icons/ai"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faWallet, faCircleCheck, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
+import { useTranslation } from "react-i18next"
+import '../../i18n'
 
 const setHeader = (onClose, state, title, text, red = false, authenticate = null) => {
+  const { t } = useTranslation()
+
   return (
     <div
       className="DarkblockWidget-Header"
@@ -53,7 +57,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
           {!!authenticate && (
             <div className="DarkblockWidget-Header-authButton">
               <button onClick={authenticate} className="Darkblock-inner-button">
-                Authenticate Ownership
+                {t('header.authenticate')}
               </button>
             </div>
           )}
@@ -66,58 +70,56 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
 const Header = ({ onClose, state = null, authenticate, show = true }) => {
   var title = ""
   var text = ""
+  const { t } = useTranslation()
 
   switch (state.value) {
     case "no_wallet":
-      title = "No wallet connected"
-      text = "Please connect a wallet to view Darkblock unlockable content."
-
+      title = t('state.noWalletTitle')
+      text = t('state.noWalletText')
       break
     case "start_failure":
-      title = "An Error Ocurred"
-      text = "Please reload the page and try again"
+      title = t('state.startFailureTitle')
+      text = t('state.startFailureText')
       break
-
     case "no_darkblock":
-      title = "No Darkblock Content"
-      text =
-        "This NFT doesn’t contain unlockable content. If this is a newly minted NFT or the creator just added the unlockable content, there might be a delay due to indexing."
+      title = t('state.noDarkblockTitle')
+      text = t('state.noDarkblockText')
       break
     case "auth_failure":
-      title = "Failed to Authenticate Ownership"
-      text = "This wallet does not have access to this Darkblock."
+      title = t('state.authFailureTitle')
+      text = t('state.authFailureText')
       break
     case "auth_cancel":
-      title = "Failed to Authenticate Ownership"
-      text = "This wallet does not have access to this Darkblock."
+      title = t('state.authCancelTitle')
+      text = t('state.authCancelText')
       break
     case "started":
-      title = "Darkblock Content"
-      text = "This NFT has unlockable content which only the owner can access."
+      title = t('state.startedTitle')
+      text = t('state.startedText')
       break
     case "wallet_connected":
-      title = "Darkblock Content"
-      text = "This NFT has unlockable content which only the owner can access."
+      title = t('state.walletConnectedTitle')
+      text = t('state.walletConnectedText')
       break
     case "decrypt_error":
-      title = "An Error Ocurred"
-      text = "Please try again."
+      title = t('state.decryptErrorTitle')
+      text = t('state.decryptErrorText')
       break
     case "signing":
-      title = "Signature Requested"
-      text = "Please sign with your wallet"
+      title = t('state.signingTitle')
+      text = t('state.signingText')
       break
     case "authenticated":
-      title = "Ownership Authenticated"
-      text = "Decrypting..."
+      title = t('state.ownershipAuth')
+      text = t('state.decrypting')
       break
     case "decrypting":
-      title = "Ownership Authenticated"
-      text = "Decrypting..."
+      title = t('state.ownershipAuth')
+      text = t('state.decrypting')
       break
     case "display":
-      title = "Ownership Authenticated"
-      text = "You can now access the content"
+      title = t('state.ownershipAuth')
+      text = t('state.displayText')
       break
     default:
   }

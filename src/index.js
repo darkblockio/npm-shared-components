@@ -6,6 +6,7 @@ import widgetMachine from "./lib/widgetMachine"
 import upgradeMachine from "./lib/UpgradeMachine"
 import Upgrader from "./lib/Upgrader"
 import * as utils from "./lib/utils"
+import './i18n'
 
 export default {
   Header,

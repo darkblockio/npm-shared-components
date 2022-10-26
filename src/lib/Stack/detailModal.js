@@ -1,9 +1,11 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 
 const DetailModal = ({ db, open, onClose }) => {
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
+  const { t } = useTranslation()
 
   return (
     <>
@@ -19,19 +21,19 @@ const DetailModal = ({ db, open, onClose }) => {
                   <div id="darkblock-modal-box">
                     <div className="darkblock-modal-first-row">
                       <div className="darkblock-modal-first-row-container"></div>
-                      <div className="darkblock-modal-title">Details</div>
+                      <div className="darkblock-modal-title">{t('details.title')}</div>
                       <img className='darkblock-cross-button' src="https://img.icons8.com/ios/50/000000/multiply.png" />
                     </div>
                     <hr className="darkblock-divider" />
                     <div className="darkblock-detail-container">
                       <div className="darkblock-modal-name">{db.name}</div>
                       <div className="darkblock-modal-detail">{db.details}</div>
-                      <div className="darkblock-detail-subtitle">Size: </div>
+                      <div className="darkblock-detail-subtitle">{t('details.size')}: </div>
                       <div className="darkblock-detail-subtitle-text">{db.fileSize}</div>
-                      <div className="darkblock-detail-subtitle">File Type: </div>
+                      <div className="darkblock-detail-subtitle">{t('details.fileType')}: </div>
                       <div className="darkblock-detail-subtitle-text">{fileFormat}</div>
                       <div className="darkblock-detail-subtitle">
-                        Date Added:
+                        {t('details.dateAdded')}:
                       </div>
                       <div className="darkblock-detail-subtitle-text">
                         {d.toLocaleString([], {
@@ -47,7 +49,7 @@ const DetailModal = ({ db, open, onClose }) => {
                     </div>
                     <div className="darkblock-button-container">
                       <button onClick={() => onClose(true)} className="darkblock-done-button">
-                        Done
+                        {t('details.done')}
                       </button>
                     </div>
                   </div>

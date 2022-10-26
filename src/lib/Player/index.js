@@ -8,6 +8,9 @@ import { VideoPlaceHolderBase64 } from "../imgBase64/VideoPlaceHolderBase64"
 import "./plyr.css"
 import "./Player.css"
 import LoadSpinner from "../Animations/LoadSpinner"
+import { useTranslation } from "react-i18next"
+import '../../i18n'
+import { t } from "i18next"
 
 const MyGallery = ({ mediaURL, config }) => {
   const spinner = useRef(null)
@@ -157,7 +160,7 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
             <path d="M8 19H11V22H13V19H16L12 15L8 19ZM16 4H13V1H11V4H8L12 8L16 4ZM4 9V11H20V9H4Z" fill="white" />
             <path d="M4 12H20V14H4V12Z" fill="white" />
           </svg>
-          <p>Compressed file</p>
+          <p>{t('player.compressedFile')}</p>
         </div>
       </>
     )
@@ -181,7 +184,7 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
     mediaSrc.type = "video"
 
     return (
-      <div  className="Darkblock-videoPlayer">
+      <div className="Darkblock-videoPlayer">
         <Plyr source={mediaSrc} loop />
       </div>
     )

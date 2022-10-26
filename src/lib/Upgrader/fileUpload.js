@@ -1,4 +1,5 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 
 const formats = [
   "aac",
@@ -29,13 +30,14 @@ const formats = [
 ]
 
 const FileUpload = ({ fileState, setFileState }) => {
+  const { t } = useTranslation()
   return (
     <div className="Darkblock-fileupload-container">
       <div>
-        <h4 className="Darkblock-fileupload-header">Upload a file</h4>
-        <p className="Darkblock-fileupload-header-supported">Supported File Formats:</p>
+        <h4 className="Darkblock-fileupload-header">{t('fileUpload')}</h4>
+        <p className="Darkblock-fileupload-header-supported">{t('supportedFileFormats')}:</p>
         <p className="Darkblock-fileupload-formats">{formats.join(", ")}</p>
-        <p className="Darkblock-fileupload-info">Max file size 350MB</p>
+        <p className="Darkblock-fileupload-info">{t('maxFileSize')}</p>
         <div style={{ display: "flex", alignItems: "center" }} className="hidden">
           <span id="size" />
         </div>

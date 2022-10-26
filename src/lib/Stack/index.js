@@ -30,6 +30,7 @@ import PlayerModal from "../playerModal"
 import { faClose } from "@fortawesome/free-solid-svg-icons"
 import EmptyTable from "../EmptyTable"
 import EllipsisModal from "./ellipsisModal"
+import '../../i18n'
 
 const RenderIcon = ({ filetype }) => {
   let icon = faQuestionCircle
@@ -196,7 +197,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
               </div>
             </div>
 
-            <Player  mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
+            <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
 
             <div className="darkblock-arrows-container">
               <div className="m-auto">
