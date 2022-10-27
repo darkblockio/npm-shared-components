@@ -24,6 +24,7 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "axios": "^0.27.2",
     "crypto-js": "^4.1.1",
+    "detect-browser-language": "^0.0.2",
     "i18next": "^22.0.2",
     "openseadragon": "^3.0.0",
     "photoswipe": "^4.1.3",
