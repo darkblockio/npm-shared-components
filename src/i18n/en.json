@@ -55,5 +55,6 @@
   "upgrader.description": "Description (optional)",
   "upgrader.makeAnother": "Make another",
   "upgrader.allowDownload": "Allow Download",
-  "upgrader.create": "Create"
+  "upgrader.create": "Create",
+  "upgrader.characters": "Characters remaining"
 }

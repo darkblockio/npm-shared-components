@@ -55,5 +55,6 @@
   "upgrader.description": "Descripcion (opcional)",
   "upgrader.makeAnother": "Hacer otro",
   "upgrader.allowDownload": "Permitir descarga",
-  "upgrader.create": "Crear"
+  "upgrader.create": "Crear",
+  "upgrader.characters": "Caracteres restantes"
 }

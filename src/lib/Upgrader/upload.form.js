@@ -199,7 +199,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
             }}
           ></textarea>
           <p className="Darkblock-upgrade-description-char-count">{`${charLimit - darkblockDescription.length
-            }/${charLimit} characters remaining`}</p>
+            }/${charLimit} ${t('upgrader.characters')}`}</p>
           <br />
           <div className="Darkblock-allowDownload">
             <input
