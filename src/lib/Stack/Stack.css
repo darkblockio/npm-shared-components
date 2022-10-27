@@ -245,5 +245,5 @@ td {
 }
 
 .Darkblock-player-modal-container-title-name {
-  @apply m-auto;
+  @apply m-auto text-xs text-neutral-400;
 }

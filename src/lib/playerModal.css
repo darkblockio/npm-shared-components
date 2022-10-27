@@ -19,5 +19,5 @@
 }
 
 .Darkblock-player-modal-close-button {
-  @apply  my-auto cursor-pointer;
+  @apply  my-auto cursor-pointer text-neutral-300;
 }
