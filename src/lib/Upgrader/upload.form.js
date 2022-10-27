@@ -3,6 +3,7 @@ import FileUpload from "./fileUpload"
 import * as HashUtil from "../utils/hash-util"
 import FooterUpgrader from "../FooterUpgrader"
 import { getSHA256OfFileChunks } from "../utils/hash-util"
+import { useTranslation } from "react-i18next"
 
 const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
   const [darkblockDescription, setDarkblockDescription] = useState("")
@@ -14,7 +15,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
   const [minting, setMinting] = useState(false)
   const [progress, setProgress] = useState(0)
   const [open, setOpen] = useState(false)
-
+  const { t } = useTranslation()
   const clearForm = () => {
     setDarkblockDescription("")
     setName("")
@@ -90,7 +91,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
 
   const uploadFile = async () => {
     if (fileState && state.context.wallet_address && name) {
-      setMintingStateMsg("Generating content signature...")
+      setMintingStateMsg(t('upgrader.generating'))
 
       let nftBlockchain = state.context.nftData.nft.blockchain
       if (nftBlockchain === "ERC1155") nftBlockchain = "ERC-1155"
@@ -122,7 +123,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
         let percentComplete = Math.ceil((e.loaded / e.total) * 100)
 
         if (percentComplete > 10 && percentComplete <= 90) {
-          setMintingStateMsg("Uploading to arweave...")
+          setMintingStateMsg(t('upgrader.uploading'))
           setProgress(percentComplete)
         }
       }
@@ -136,7 +137,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
           setProgress(100)
           setTimeout(() => {
             clearForm()
-            setMintingState("complete")
+            setMintingState(t('upgrader.complete'))
           }, 500)
         }
         if (this.status == 400 || this.status == 500) {
@@ -155,12 +156,12 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
     setOpen(true)
     setMinting(true)
     setProgress(5)
-    setMintingStateMsg("Hashing the file...")
+    setMintingStateMsg(t('upgrader.hashing'))
 
     const fileHash = await HashUtil.getSHA256OfFileChunks(fileState)
 
     setProgress(10)
-    setMintingStateMsg("Signing file for security...")
+    setMintingStateMsg(t('upgrader.signing'))
 
     if (state && state.context) {
       state.context.fileHash = fileHash
@@ -176,7 +177,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
       {!minting ? (
         <form onSubmit={initDarkblockCreation} className="Darkblock-upgrade-form">
           <FileUpload fileState={fileState} setFileState={setFileState}></FileUpload>
-          <h3 className="Darkblock-upgrade-title-input">Name</h3>
+          <h3 className="Darkblock-upgrade-title-input">{t('upgrader.name')}</h3>
           <input
             type="text"
             className="Darkblock-upgrade-name-input"
@@ -186,7 +187,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
               setName(e.target.value)
             }}
           />
-          <h3 className="Darkblock-upgrade-title-input">Description (optional)</h3>
+          <h3 className="Darkblock-upgrade-title-input">{t('upgrader.description')}</h3>
           <textarea
             className="Darkblock-upgrade-description-input"
             cols={50}
@@ -197,9 +198,8 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
               setDarkblockDescription(e.target.value)
             }}
           ></textarea>
-          <p className="Darkblock-upgrade-description-char-count">{`${
-            charLimit - darkblockDescription.length
-          }/${charLimit} characters remaining`}</p>
+          <p className="Darkblock-upgrade-description-char-count">{`${charLimit - darkblockDescription.length
+            }/${charLimit} ${t('upgrader.characters')}`}</p>
           <br />
           <div className="Darkblock-allowDownload">
             <input
@@ -210,7 +210,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
                 setIsDownloadable(e.target.checked)
               }}
             />
-            <label className="Darkblock-downloadable-text">Allow download</label>
+            <label className="Darkblock-downloadable-text">{t('upgrader.allowDownload')}</label>
           </div>
           <button
             disabled={!fileState || !fileState.name || !name}
@@ -218,7 +218,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
             id="darkblock-submit"
             className="Darkblock-upgrade-create-button"
           >
-            Create
+            {t('upgrader.create')}
           </button>
         </form>
       ) : null}
@@ -229,7 +229,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
               {mintingState === "starting" && (
                 <>
                   <div className="Darkblock-minting-container">
-                    <h3 className="Darkblock-minting-header-text">Your unlockable content is being created...</h3>
+                    <h3 className="Darkblock-minting-header-text">{t('upgrader.minted')}</h3>
                     <div>
                       <video autoPlay playsInline loop className="Darkblock-minting-video-loop">
                         <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
@@ -242,10 +242,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
                     </div>
                     <div className="Darkblock-minting-state-msg">{mintingStateMsg}</div>
                     <div className="Darkblock-minting-warning-container">
-                      <p className="Darkblock-minting-warning">
-                        Please DO NOT close this page until this process is finished. Depending on the file size and
-                        your internet connection the upload time may take up to a few minutes.
-                      </p>
+                      <p className="Darkblock-minting-warning">{t("upgrader.mintingWarning")}</p>
                     </div>
                   </div>
                 </>
@@ -253,7 +250,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
               {mintingState === "complete" && (
                 <>
                   <div className="Darkblock-minting-container">
-                    <h3 className="Darkblock-minting-header-text">Your unlockable content has been created</h3>
+                    <h3 className="Darkblock-minting-header-text">{t('upgrader.minted')}</h3>
                     <div>
                       <video className="Darkblock-minting-video-loop">
                         <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
@@ -269,7 +266,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
                         reset()
                       }}
                     >
-                      Make Another
+                      {t('upgrader.makeAnother')}
                     </button>
                     <button
                       className="Darkblock-minting-complete-done"
@@ -282,7 +279,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
                         onClose(true)
                       }}
                     >
-                      I&apos;m Done
+                      {t('upgrader.done')}
                     </button>
                   </div>
                 </>
@@ -290,7 +287,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
               {mintingState === "error" && (
                 <>
                   <div className="Darkblock-minting-container">
-                    <h3 className="Darkblock-minting-header-text">Error Trying to Upload File</h3>
+                    <h3 className="Darkblock-minting-header-text">{t('upgrader.error')}</h3>
                     <div>
                       <video className="Darkblock-minting-video-loop">
                         <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
@@ -305,7 +302,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
                         reset()
                       }}
                     >
-                      Try Again
+                      {t('upgrader.tryAgain')}
                     </button>
                   </div>
                 </>

@@ -1,20 +1,22 @@
 // import "./Main.scoped.scss"
 import React from "react"
+import { useTranslation } from "react-i18next"
+import '../../i18n'
 import "./Panel.scoped.css"
-import StaticDBLogo from "./staticDBLogo"
 
 function Panel({ state = null }) {
   let ctx = state.context.display
+  const { t } = useTranslation()
 
   return (
     <div className="DarkblockWidget-Main">
       <div className="row-db">
         <div className="col-left">
-          <div className="heading">File Format</div>
+          <div className="heading">{t('panel.fileFormat')}</div>
           <div className="content">{ctx.fileFormat}</div>
         </div>
         <div className="col-right">
-          <div className="heading">File Size</div>
+          <div className="heading">{t('panel.fileSize')}</div>
           <div className="content">{ctx.fileSize}</div>
         </div>
       </div>

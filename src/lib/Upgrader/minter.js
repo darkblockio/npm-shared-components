@@ -1,7 +1,11 @@
 
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const Minter = ({ state, progress, mintingStateMsg }) => {
+
+    const { t } = useTranslation()
+
     return (
         <div className="Darkblock-upgrade-modal-container">
             <div id="Darkblock-upgrade-modal-bg">
@@ -9,7 +13,7 @@ const Minter = ({ state, progress, mintingStateMsg }) => {
                     {state === "starting" && (
                         <>
                             <div className="Darkblock-minting-container">
-                                <h3 className="Darkblock-minting-header-text">Your unlockable content is being created...</h3>
+                                <h3 className="Darkblock-minting-header-text">{t('upgrader.minting')}</h3>
                                 <div>
                                     <video autoPlay playsInline loop className="Darkblock-minting-video-loop">
                                         <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
@@ -23,8 +27,7 @@ const Minter = ({ state, progress, mintingStateMsg }) => {
                                 <div className="Darkblock-minting-state-msg">{mintingStateMsg}</div>
                                 <div className="Darkblock-minting-warning-container">
                                     <p className="Darkblock-minting-warning">
-                                        Please DO NOT close this page until this process is finished. Depending on the file size and
-                                        your internet connection the upload time may take up to a few minutes.
+                                        {t('upgrader.mintingWarning')}
                                     </p>
                                 </div>
                             </div>
@@ -33,7 +36,7 @@ const Minter = ({ state, progress, mintingStateMsg }) => {
                     {state === "complete" && (
                         <>
                             <div className="Darkblock-minting-container">
-                                <h3 className="Darkblock-minting-header-text">Your unlockable content has been created</h3>
+                                <h3 className="Darkblock-minting-header-text">{t('upgrader.minted')}</h3>
                                 <div>
                                     <video className="Darkblock-minting-video-loop">
                                         <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
@@ -62,7 +65,7 @@ const Minter = ({ state, progress, mintingStateMsg }) => {
                                         onClose(true)
                                     }}
                                 >
-                                    I&apos;m Done
+                                    {t('upgrader.done')}
                                 </button>
                             </div>
                         </>
@@ -70,7 +73,7 @@ const Minter = ({ state, progress, mintingStateMsg }) => {
                     {state === "error" && (
                         <>
                             <div className="Darkblock-minting-container">
-                                <h3 className="Darkblock-minting-header-text">Error Trying to Upload File</h3>
+                                <h3 className="Darkblock-minting-header-text">{t('upgrader.error')}</h3>
                                 <div>
                                     <video className="Darkblock-minting-video-loop">
                                         <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
@@ -85,7 +88,7 @@ const Minter = ({ state, progress, mintingStateMsg }) => {
                                         reset()
                                     }}
                                 >
-                                    Try Again
+                                    {t('upgrader.tryAgain')}
                                 </button>
                             </div>
                         </>

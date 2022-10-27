@@ -3,11 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import UpgradeModal from "./upgrade.modal"
 import "./Upgrader.css"
+import '../../i18n'
+import { useTranslation } from "react-i18next"
 
 const Upgrader = ({ state = null, config, apiKey = null, authenticate, reset }) => {
   const [showButton, setShowButton] = useState(false)
   const [apiKeyValid, setApiKeyValid] = useState(false)
   const [showUpgrade, setShowUpgrade] = useState(false)
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (apiKey && apiKey.length > 0) {
@@ -36,7 +39,7 @@ const Upgrader = ({ state = null, config, apiKey = null, authenticate, reset }) 
         <>
           <button type={"button"} onClick={() => setShowUpgrade(true)} className="Darkblock-upgrade-add-content">
             <FontAwesomeIcon icon={faPlus} />
-            Add Content
+            {t('upgrader.addContent')}
           </button>
           <UpgradeModal
             apiKey={apiKey}
