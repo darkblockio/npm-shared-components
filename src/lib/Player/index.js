@@ -126,16 +126,8 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
   }
 
 
-  if (mediaType == "encrypted(application/pdf)" || mediaType == "(application/pdf)") {
-    return (
-      <iframe
-        id="Darkblock-pdf-iframe"
-        allowFullScreen
-        className="Darkblock-pdfPlayer"
-        src={`https://pdf.darkblock.io/pdfjs/web/viewer.html?file=${encodeURIComponent(mediaURL)}`}
-      />
-    )
-  }
+
+
   if (mediaType == "encrypted(application/zip)") {
     return (
       <>
@@ -175,6 +167,10 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
   }
 
   if (mediaType === "encrypted(model/gltf-binary)" || mediaType === "(model/gltf-binary)") {
+    return ''
+  }
+
+  if (mediaType == "encrypted(application/pdf)" || mediaType == "(application/pdf)") {
     return ''
   }
 
@@ -228,7 +224,7 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
       })
     }
 
-    if (mediaType !== "encrypted(model/gltf-binary)" && mediaType !== "(model/gltf-binary)") {
+    if ((mediaType !== "encrypted(model/gltf-binary)" && mediaType !== "(model/gltf-binary)") && mediaType !== "encrypted(application/pdf)" && mediaType == "(application/pdf)") {
       setLoaded(true)
     }
   }
@@ -247,6 +243,13 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
     }
   }, [])
 
+  const onPDFloaded = () => {
+    setTimeout(() => {
+      setLoaded(true)
+    }, 1500);
+  }
+
+
   useEffect(() => {
     jsonParse(mediaType)
   }, [mediaType])
@@ -255,12 +258,22 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
     <div className="DarkblockWidget-Player">
       <div className="DarkblockWidget-Player-Content">
         {
-          loaded && (mediaType !== "encrypted(model/gltf-binary)" || mediaType !== "(model/gltf-binary)")
+          loaded && (mediaType !== "encrypted(model/gltf-binary)" || mediaType !== "(model/gltf-binary)") && (mediaType !== "encrypted(application/pdf)" || mediaType !== "(application/pdf)")
             ? <MediaComp mediaURL={mUrl} mediaType={mType} config={config} posterUrl={posterUrl} />
             :
             <div id="Darkblock-seadragon-viewer-spinner">
               <LoadSpinner />
             </div>
+        }
+
+        {(mediaType == "encrypted(application/pdf)" || mediaType == "(application/pdf)") &&
+          <iframe
+            id="Darkblock-pdf-iframe"
+            allowFullScreen
+            onLoad={onPDFloaded}
+            className="Darkblock-pdfPlayer"
+            src={`https://pdf.darkblock.io/pdfjs/web/viewer.html?file=${encodeURIComponent(mediaURL)}`}
+          />
         }
 
         {/* 3d Model player separated of mediaComp because it has to be added an event listener when is fully rendered */}
