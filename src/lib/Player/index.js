@@ -125,23 +125,7 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
     return <iframe id="Darkblock-pdf-html-iframe" allowFullScreen className="Darkblock-htmlPlayer" src={mediaURL} />
   }
 
-  if (mediaType == "encrypted(model/gltf-binary)" || mediaType == "(model/gltf-binary)") {
-    return (
-      <div className="Darkblock-model-viewer-player">
-        <model-viewer
-          alt="testing"
-          ar
-          autoplay
-          ar-modes="webxr scene-viewer quick-look"
-          camera-controls
-          enable-pan
-          seamless-poster
-          shadow-intensity="1"
-          src={mediaURL}
-        />
-      </div>
-    )
-  }
+
   if (mediaType == "encrypted(application/pdf)" || mediaType == "(application/pdf)") {
     return (
       <iframe
@@ -188,6 +172,10 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
         <Plyr source={mediaSrc} loop />
       </div>
     )
+  }
+
+  if (mediaType === "encrypted(model/gltf-binary)" || mediaType === "(model/gltf-binary)") {
+    return ''
   }
 
   return (
@@ -239,8 +227,25 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
         }
       })
     }
-    setLoaded(true)
+
+    if (mediaType !== "encrypted(model/gltf-binary)" && mediaType !== "(model/gltf-binary)") {
+      setLoaded(true)
+    }
   }
+
+  useEffect(() => {
+
+    if (mediaType == "encrypted(model/gltf-binary)" || mediaType == "(model/gltf-binary)") {
+      const modelViewer = document.getElementById('modelViewer')
+      if (modelViewer && modelViewer !== null) {
+        modelViewer.addEventListener("progress", (event) => {
+          if (event.detail.totalProgress === 1) {
+            setLoaded(true)
+          }
+        })
+      }
+    }
+  }, [])
 
   useEffect(() => {
     jsonParse(mediaType)
@@ -250,12 +255,31 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
     <div className="DarkblockWidget-Player">
       <div className="DarkblockWidget-Player-Content">
         {
-          loaded
+          loaded && (mediaType !== "encrypted(model/gltf-binary)" || mediaType !== "(model/gltf-binary)")
             ? <MediaComp mediaURL={mUrl} mediaType={mType} config={config} posterUrl={posterUrl} />
             :
             <div id="Darkblock-seadragon-viewer-spinner">
               <LoadSpinner />
             </div>
+        }
+
+        {/* 3d Model player separated of mediaComp because it has to be added an event listener when is fully rendered */}
+        {(mediaType == "encrypted(model/gltf-binary)" || mediaType == "(model/gltf-binary)") &&
+          <div className="Darkblock-model-viewer-player">
+            <model-viewer
+              id='modelViewer'
+              alt="testing"
+              ar
+              autoplay
+              ar-modes="webxr scene-viewer quick-look"
+              camera-controls
+              loaded
+              enable-pan
+              seamless-poster
+              shadow-intensity="1"
+              src={mediaURL}
+            />
+          </div>
         }
       </div>
     </div>
