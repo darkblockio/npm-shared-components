@@ -224,7 +224,7 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
       })
     }
 
-    if ((mediaType !== "encrypted(model/gltf-binary)" && mediaType !== "(model/gltf-binary)") && mediaType !== "encrypted(application/pdf)" && mediaType == "(application/pdf)") {
+    if ((mediaType !== "encrypted(model/gltf-binary)" && mediaType !== "(model/gltf-binary)") && (mediaType !== "encrypted(application/pdf)" && mediaType !== "(application/pdf)")) {
       setLoaded(true)
     }
   }
