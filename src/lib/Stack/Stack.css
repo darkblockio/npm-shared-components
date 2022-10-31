@@ -37,7 +37,7 @@
 }
 
 .DarkblockWidget-Stack-Panel .dbdata {
-  @apply mt-10 border-t-2 border-b-2 border-gray-200 cursor-pointer hover:bg-gray-100;
+  @apply mt-10 border-gray-200 cursor-pointer border-b-[1px] hover:bg-gray-100;
 }
 
 /*on select after coming back from modal*/
