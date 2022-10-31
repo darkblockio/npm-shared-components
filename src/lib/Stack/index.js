@@ -71,7 +71,6 @@ const RenderEllipsisIcon = ({ filetype }) => {
 
 const RowContent = ({
   db,
-
   f = null,
   counter = "",
   selected = false,
@@ -102,7 +101,6 @@ const RowContent = ({
             day: "numeric",
           })}
         </td>
-
         <td className="darkblock-toggleBtn">
           <div
             onClick={() => {

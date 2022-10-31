@@ -15,7 +15,7 @@
     @apply h-4 bg-gray-100 rounded w-44
 }
 .Darkblock-EmptyRowContainer {
-    @apply border border-gray-200
+    @apply  border-gray-200 border-b-[1px] ;
 }
 .Darkblock-EmptyDataCell {
     @apply hidden sm:table-cell
@@ -24,11 +24,11 @@
     @apply w-20
 }
 .Darkblock-EmptyTableContainer {
-    @apply w-full border border-gray-400
+    @apply w-full;
 }
 .Darkblock-EmptyTableRow {
-    @apply mt-10 border border-gray-200 cursor-pointer 
+    @apply mt-10 border-gray-200 cursor-pointer border-y-[1px];
 }
 .Darkblock-EmptyTableColumn {
-    @apply hidden w-20 sm:table-cell
+    @apply hidden w-20 sm:table-cell;
 }

@@ -20,7 +20,7 @@ const EmptyNameElement = () => {
 
 const EmptyRow = () => {
   return (
-    <tr className="Darkblock-EmptyRowContainter">
+    <tr className="Darkblock-EmptyRowContainer">
       <td>
         <EmptyNameElement />
       </td>
