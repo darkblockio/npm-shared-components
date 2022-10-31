@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faWallet, faCircleCheck, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
 import { useTranslation } from "react-i18next"
 import '../../i18n'
+import LoadSpinnerState from "../Animations/LoadSpinnerState"
 
 const setHeader = (onClose, state, title, text, red = false, authenticate = null) => {
   const { t } = useTranslation()
@@ -40,11 +41,21 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
           {state.value !== "auth_failure" &&
             state.value !== "start_failure" &&
             state.value !== "decrypt_error" &&
+            state.value !== "loading_arweave" &&
+            state.value !== "authenticated" &&
+            state.value !== "decrypting" &&
             state.value !== "signing" &&
             state.value !== "display" && (
               <div className="DarkblockWidget-Header-logo">
                 <Logo className="Darkblock-Icon" />
               </div>
+            )}
+
+          {(state.value === "loading_arweave" ||
+            state.value === "authenticated" ||
+            state.value === "decrypting") && (
+
+              <LoadSpinnerState className="Darkblock-Icon" />
             )}
 
           {(title || text) && (

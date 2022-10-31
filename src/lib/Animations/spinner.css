@@ -1,4 +1,4 @@
-#spinner {
+.spinner {
   margin: "auto";
   background: "none";
   display: "block";
@@ -7,12 +7,12 @@
   animation-delay: "0s";
 }
 
-#spinner circle {
+.spinner circle {
   animation-play-state: running;
   animation-delay: 0s;
 }
 
-#spinner animateTransform {
+.spinner animateTransform {
   animation-play-state: running;
   animation-delay: 0s;
 }
