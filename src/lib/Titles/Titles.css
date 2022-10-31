@@ -14,7 +14,7 @@
 }
 
 .Darkblock-format-header {
-  @apply pl-44 pr-6 text-right
+  @apply pr-3 text-right pl-44;
 }
 
 .Darkblock-format-date {
