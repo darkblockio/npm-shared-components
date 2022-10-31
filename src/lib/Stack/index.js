@@ -66,7 +66,7 @@ const RenderEllipsisIcon = ({ filetype }) => {
 
   if (filetype.indexOf("ellipsis") > -1) icon = faEllipsisVertical
 
-  return <FontAwesomeIcon icon={icon} className="Darkblock-toggleIcon" />
+  return <FontAwesomeIcon icon={icon} size="4px" className="Darkblock-toggleIcon"  />
 }
 
 const RowContent = ({
@@ -86,7 +86,7 @@ const RowContent = ({
 
   return (
     <>
-      <tr className={`dbdata ${isRowActive ? "dbdataSelected" : ""}`}>
+      <tr className={`dbdata ${isRowActive && "dbdataSelected"}`}>
         <td className="darkblock-name" onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
           <span>{`${counter} ${truncatedName}`}</span>
