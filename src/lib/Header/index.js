@@ -1,12 +1,13 @@
 import React from "react"
 import "./Header.css"
-import Logo from "../Animations/Logo"
 import { AiOutlineClose } from "react-icons/ai"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faWallet, faCircleCheck, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
 import { useTranslation } from "react-i18next"
 import '../../i18n'
 import LoadSpinnerState from "../Animations/LoadSpinnerState"
+import Darkblocklogo from "../Animations/Logo/DarklblockLogo"
+
 
 const setHeader = (onClose, state, title, text, red = false, authenticate = null) => {
   const { t } = useTranslation()
@@ -47,7 +48,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
             state.value !== "signing" &&
             state.value !== "display" && (
               <div className="DarkblockWidget-Header-logo">
-                <Logo className="Darkblock-Icon" />
+                <Darkblocklogo />
               </div>
             )}
 
