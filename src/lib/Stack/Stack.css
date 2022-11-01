@@ -168,7 +168,7 @@ td {
 }
 
 .darkblock-player-modal {
-  @apply z-40 w-full text-white bg-black h-[64px] flex justify-between px-3 ;
+  @apply z-40 w-full text-white bg-black h-[64px] flex justify-between px-3;
 }
 
 .darkblock-detail-subtitle {
@@ -226,6 +226,10 @@ td {
 
 .darkblock-detail-container {
   @apply block w-4/5 px-2;
+}
+
+.darkblock-elipsis-cross-button {
+  @apply absolute text-gray-500 top-0 right-0 w-10 h-10;
 }
 
 .darkblock-cross-button {

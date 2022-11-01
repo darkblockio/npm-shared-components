@@ -1,12 +1,12 @@
 import React from "react"
 import "./Header.css"
-import { AiOutlineClose } from "react-icons/ai"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faWallet, faCircleCheck, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
 import { useTranslation } from "react-i18next"
 import '../../i18n'
 import LoadSpinnerState from "../Animations/LoadSpinnerState"
 import Darkblocklogo from "../Animations/Logo/DarklblockLogo"
+import Cross from "../Cross"
 
 
 const setHeader = (onClose, state, title, text, red = false, authenticate = null) => {
@@ -25,9 +25,9 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
       }}
     >
       <div className="DarkblockWidget-HeaderContent">
-        {onClose !== false && (
+        {onClose !== false && (state.value === "no_wallet" || state.value === "wallet_connected" || state.value === "display") && (
           <button className="DarkblockWidget-closeBtn" onClick={onClose}>
-            <AiOutlineClose />
+            <Cross />
           </button>
         )}
 

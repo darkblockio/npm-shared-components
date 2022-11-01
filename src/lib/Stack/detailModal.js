@@ -1,5 +1,6 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+import Cross from "../Cross"
 
 const DetailModal = ({ db, open, onClose }) => {
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
@@ -22,7 +23,10 @@ const DetailModal = ({ db, open, onClose }) => {
                     <div className="darkblock-modal-first-row">
                       <div className="darkblock-modal-first-row-container"></div>
                       <div className="darkblock-modal-title">{t('details.title')}</div>
-                      <img className='darkblock-cross-button' src="https://img.icons8.com/ios/50/000000/multiply.png" />
+                      {/* <img className='darkblock-cross-button' src="https://img.icons8.com/ios/50/000000/multiply.png" /> */}
+                      <button className='darkblock-cross-button'>
+                        <Cross />
+                      </button>
                     </div>
                     <hr className="darkblock-divider" />
                     <div className="darkblock-detail-container">
