@@ -7,10 +7,10 @@ import {
   faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { AiOutlineClose } from "react-icons/ai"
 import { downloadFile } from "../utils"
 import DetailModal from "./detailModal"
 import { useTranslation } from "react-i18next"
+import Cross from "../Cross"
 
 
 const RenderDetailIcon = ({ filetype }) => {
@@ -39,8 +39,8 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
             <div className="darkblock-dropdown-content">
               <div className="darkblock-titlebox-menu">
                 {truncateName}
-                <button onClick={closeToggle}>
-                  <AiOutlineClose />
+                <button className="darkblock-elipsis-cross-button" onClick={closeToggle}>
+                  <Cross />
                 </button>
               </div>
               <a className="darkblock-box-menu darkblock-cursor-pointer" onClick={() => setShowDetailModal(true)}>
