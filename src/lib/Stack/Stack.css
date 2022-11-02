@@ -33,8 +33,26 @@
 }
 
 .DarkblockWidget-Stack-Panel .row .Darkblock-date {
-  @apply hidden text-base text-gray-500 sm:table-cell whitespace-nowrap;
+  @apply text-base text-gray-500  whitespace-nowrap;
 }
+.Darkblock-date {
+  @apply hidden md:table-cell;
+}
+.darkblock-right-text {
+  @apply hidden md:table-cell text-right size;
+}
+
+.darkblock-toggle {
+  @apply w-4 h-4 text-black;
+}
+
+.darkblock-toggle-container{
+  @apply text-center md:text-right
+}
+
+/* .darkblock-toggleBtn {
+  @apply  h-2;
+} */
 
 .DarkblockWidget-Stack-Panel .dbdata {
   @apply mt-10 border-gray-200 cursor-pointer border-b-[1px] hover:bg-gray-100;
@@ -85,16 +103,8 @@ td {
   @apply cursor-pointer;
 }
 
-.darkblock-toggleBtn {
-  @apply w-2 h-2;
-}
-
 .darkblock-titlebox-menu {
   @apply flex flex-row justify-between pb-1 pl-4 text-black;
-}
-
-.darkblock-toggle {
-  @apply w-4 h-4 text-black;
 }
 
 .darkblock-icons {
@@ -242,10 +252,6 @@ td {
 
 .darkblock-arrows-container {
   @apply h-[64px] sticky top-[100vh] w-full flex;
-}
-
-.darkblock-right-text {
-  @apply text-right size;
 }
 
 .Darkblock-player-modal-container-title-name {
