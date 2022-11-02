@@ -2,14 +2,12 @@ import React, { useEffect, useState, useRef } from "react"
 import OpenSeadragon from "openseadragon"
 import Plyr from "plyr-react"
 import { ReactReader, ReactReaderStyle } from "react-reader"
-// import Logo from "../Animations/Logo"
 import { getJsonData } from "../utils"
 import { VideoPlaceHolderBase64 } from "../imgBase64/VideoPlaceHolderBase64"
 import "./plyr.css"
 import "./Player.css"
 import LoadSpinner from "../Animations/LoadSpinner"
-import { useTranslation } from "react-i18next"
-import '../../i18n'
+import "../../i18n"
 import { t } from "i18next"
 
 const MyGallery = ({ mediaURL, config }) => {
@@ -125,9 +123,6 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
     return <iframe id="Darkblock-pdf-html-iframe" allowFullScreen className="Darkblock-htmlPlayer" src={mediaURL} />
   }
 
-
-
-
   if (mediaType == "encrypted(application/zip)") {
     return (
       <>
@@ -136,7 +131,7 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
             <path d="M8 19H11V22H13V19H16L12 15L8 19ZM16 4H13V1H11V4H8L12 8L16 4ZM4 9V11H20V9H4Z" fill="white" />
             <path d="M4 12H20V14H4V12Z" fill="white" />
           </svg>
-          <p>{t('player.compressedFile')}</p>
+          <p>{t("player.compressedFile")}</p>
         </div>
       </>
     )
@@ -167,11 +162,11 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
   }
 
   if (mediaType === "encrypted(model/gltf-binary)" || mediaType === "(model/gltf-binary)") {
-    return ''
+    return ""
   }
 
   if (mediaType == "encrypted(application/pdf)" || mediaType == "(application/pdf)") {
-    return ''
+    return ""
   }
 
   return (
@@ -224,15 +219,19 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
       })
     }
 
-    if ((mediaType !== "encrypted(model/gltf-binary)" && mediaType !== "(model/gltf-binary)") && (mediaType !== "encrypted(application/pdf)" && mediaType !== "(application/pdf)")) {
+    if (
+      mediaType !== "encrypted(model/gltf-binary)" &&
+      mediaType !== "(model/gltf-binary)" &&
+      mediaType !== "encrypted(application/pdf)" &&
+      mediaType !== "(application/pdf)"
+    ) {
       setLoaded(true)
     }
   }
 
   useEffect(() => {
-
     if (mediaType == "encrypted(model/gltf-binary)" || mediaType == "(model/gltf-binary)") {
-      const modelViewer = document.getElementById('modelViewer')
+      const modelViewer = document.getElementById("modelViewer")
       if (modelViewer && modelViewer !== null) {
         modelViewer.addEventListener("progress", (event) => {
           if (event.detail.totalProgress === 1) {
@@ -246,9 +245,8 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   const onPDFloaded = () => {
     setTimeout(() => {
       setLoaded(true)
-    }, 1500);
+    }, 1500)
   }
-
 
   useEffect(() => {
     jsonParse(mediaType)
@@ -257,16 +255,17 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   return (
     <div className="DarkblockWidget-Player">
       <div className="DarkblockWidget-Player-Content">
-        {
-          loaded && (mediaType !== "encrypted(model/gltf-binary)" || mediaType !== "(model/gltf-binary)") && (mediaType !== "encrypted(application/pdf)" || mediaType !== "(application/pdf)")
-            ? <MediaComp mediaURL={mUrl} mediaType={mType} config={config} posterUrl={posterUrl} />
-            :
-            <div id="Darkblock-seadragon-viewer-spinner">
-              <LoadSpinner />
-            </div>
-        }
+        {loaded &&
+        (mediaType !== "encrypted(model/gltf-binary)" || mediaType !== "(model/gltf-binary)") &&
+        (mediaType !== "encrypted(application/pdf)" || mediaType !== "(application/pdf)") ? (
+          <MediaComp mediaURL={mUrl} mediaType={mType} config={config} posterUrl={posterUrl} />
+        ) : (
+          <div id="Darkblock-seadragon-viewer-spinner">
+            <LoadSpinner />
+          </div>
+        )}
 
-        {(mediaType == "encrypted(application/pdf)" || mediaType == "(application/pdf)") &&
+        {(mediaType == "encrypted(application/pdf)" || mediaType == "(application/pdf)") && (
           <iframe
             id="Darkblock-pdf-iframe"
             allowFullScreen
@@ -274,13 +273,13 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
             className="Darkblock-pdfPlayer"
             src={`https://pdf.darkblock.io/pdfjs/web/viewer.html?file=${encodeURIComponent(mediaURL)}`}
           />
-        }
+        )}
 
         {/* 3d Model player separated of mediaComp because it has to be added an event listener when is fully rendered */}
-        {(mediaType == "encrypted(model/gltf-binary)" || mediaType == "(model/gltf-binary)") &&
+        {(mediaType == "encrypted(model/gltf-binary)" || mediaType == "(model/gltf-binary)") && (
           <div className="Darkblock-model-viewer-player">
             <model-viewer
-              id='modelViewer'
+              id="modelViewer"
               alt="testing"
               ar
               autoplay
@@ -293,7 +292,7 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
               src={mediaURL}
             />
           </div>
-        }
+        )}
       </div>
     </div>
   )
