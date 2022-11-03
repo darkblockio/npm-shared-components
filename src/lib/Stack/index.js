@@ -132,6 +132,19 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     setShowModal(false)
   }
 
+  const handleEscKey = () => {
+    if (event.key === "Escape") {
+      setShowModal(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleEscKey, false)
+    return () => {
+      document.removeEventListener("keydown", handleEscKey, false)
+    }
+  }, [])
+
   useEffect(() => {
     if (state.value === "display") {
       setSelected({
