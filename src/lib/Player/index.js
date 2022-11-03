@@ -137,6 +137,16 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
     )
   }
 
+  if (mediaType.indexOf("image/gif") > -1) {
+    return (
+      <img
+        id="Darkblock-gif"
+        className="Darkblock-gifViewer"
+        src={mediaURL}
+      />
+    )
+  }
+
   if (mediaType == "encrypted(image/svg+xml)" || mediaType.indexOf("image") > -1)
     return <MyGallery mediaURL={mediaURL} config={config} />
 
@@ -256,8 +266,8 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
     <div className="DarkblockWidget-Player">
       <div className="DarkblockWidget-Player-Content">
         {loaded &&
-        (mediaType !== "encrypted(model/gltf-binary)" || mediaType !== "(model/gltf-binary)") &&
-        (mediaType !== "encrypted(application/pdf)" || mediaType !== "(application/pdf)") ? (
+          (mediaType !== "encrypted(model/gltf-binary)" || mediaType !== "(model/gltf-binary)") &&
+          (mediaType !== "encrypted(application/pdf)" || mediaType !== "(application/pdf)") ? (
           <MediaComp mediaURL={mUrl} mediaType={mType} config={config} posterUrl={posterUrl} />
         ) : (
           <div id="Darkblock-seadragon-viewer-spinner">

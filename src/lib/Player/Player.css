@@ -18,6 +18,10 @@
   @apply w-full h-64 md:h-72 lg:h-96;
 }
 
+.Darkblock-gifViewer {
+  @apply w-auto h-auto m-auto;
+}
+
 .Darkblock-reactReader {
   @apply relative h-[100%];
 }
