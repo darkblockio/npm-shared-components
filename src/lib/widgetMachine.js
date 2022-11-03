@@ -1,7 +1,7 @@
 import { createMachine } from "xstate"
 import { humanFileSize, shortenEthAddr, getCreator, getArweaveData } from "./utils"
 
-const widgetMachine = (tokenId, contractAddress, platform) => {
+const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
   let baseLink
 
   switch (platform) {
@@ -53,8 +53,8 @@ const widgetMachine = (tokenId, contractAddress, platform) => {
         invoke: {
           src: () =>
             Promise.all([
-              getCreator(contractAddress, tokenId, platform),
-              getArweaveData(platform === "Solana" ? tokenId : contractAddress + ":" + tokenId, platform),
+              getCreator(contractAddress, tokenId, platform, dev),
+              getArweaveData(platform === "Solana" ? tokenId : contractAddress + ":" + tokenId, platform, dev),
             ]),
           onDone: [
             {

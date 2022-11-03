@@ -22,10 +22,12 @@ export async function getJsonData(url) {
     })
 }
 
-export async function getNFTData(contract, id, platform) {
+export async function getNFTData(contract, id, platform, dev = false) {
   const pageSize = 50
+  const baseUrl = dev ? 'https://dev1.darkblock.io/v1' : 'https://api.darkblock.io/v1'
+
   return await fetch(
-    `https://api.darkblock.io/v1/nft/metadata?platform=${platform}&contract=${contract}&token=${id}&offest=0&page_size=${pageSize}`
+    `${baseUrl}/nft/metadata?platform=${platform}&contract=${contract}&token=${id}&offest=0&page_size=${pageSize}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -40,9 +42,11 @@ export async function getNFTData(contract, id, platform) {
     })
 }
 
-export async function getArweaveData(id, platform) {
+export async function getArweaveData(id, platform, dev = false) {
+  const baseUrl = dev ? 'https://dev1.darkblock.io/v1' : 'https://api.darkblock.io/v1'
+
   try {
-    const response = await fetch(`https://api.darkblock.io/v1/darkblock/info?nft_id=${id}&nft_platform=${platform}`)
+    const response = await fetch(`${baseUrl}/darkblock/info?nft_id=${id}&nft_platform=${platform}`)
     const data = await response.json()
     return data
   } catch (e) {
@@ -50,10 +54,12 @@ export async function getArweaveData(id, platform) {
   }
 }
 
-export async function getOwner(contractAddr, tokenId, platform, owner = "") {
+export async function getOwner(contractAddr, tokenId, platform, owner = "", dev = false) {
+  const baseUrl = dev ? 'https://dev1.darkblock.io/v1' : 'https://api.darkblock.io/v1'
+
   try {
     const response = await fetch(
-      `https://api.darkblock.io/v1/nft/owner?platform=${platform}&contract_address=${contractAddr}&token_id=${tokenId}&owner=${owner}`
+      `${baseUrl}/nft/owner?platform=${platform}&contract_address=${contractAddr}&token_id=${tokenId}&owner=${owner}`
     )
     const asset = await response.json()
     return asset
@@ -62,10 +68,12 @@ export async function getOwner(contractAddr, tokenId, platform, owner = "") {
   }
 }
 
-export async function getCreator(contractAddr, tokenId, platform) {
+export async function getCreator(contractAddr, tokenId, platform, dev = false) {
+  const baseUrl = dev ? 'https://dev1.darkblock.io/v1' : 'https://api.darkblock.io/v1'
+
   try {
     const response = await fetch(
-      `https://api.darkblock.io/v1/nft/creator?platform=${platform}&contract_address=${contractAddr}&token_id=${tokenId}`
+      `${baseUrl}/nft/creator?platform=${platform}&contract_address=${contractAddr}&token_id=${tokenId}`
     )
     const asset = await response.json()
     return asset

@@ -1,7 +1,7 @@
 import { createMachine } from "xstate"
 import { getCreator, getNFTData } from "./utils"
 
-const upgradeMachine = (tokenId, contractAddress, platform) => {
+const upgradeMachine = (tokenId, contractAddress, platform, dev = false) => {
   return createMachine({
     id: "widget-upgrade",
     initial: "idle",
@@ -30,8 +30,8 @@ const upgradeMachine = (tokenId, contractAddress, platform) => {
         invoke: {
           src: () =>
             Promise.all([
-              getCreator(contractAddress, tokenId, platform),
-              getNFTData(platform === "Solana" ? "" : contractAddress, tokenId, platform),
+              getCreator(contractAddress, tokenId, platform, dev),
+              getNFTData(platform === "Solana" ? "" : contractAddress, tokenId, platform, dev),
             ]),
           onDone: [
             {
