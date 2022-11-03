@@ -14,11 +14,11 @@
 }
 
 .Darkblock-format-header {
-  @apply hidden md:table-cell pr-3 text-right pl-44;
+  @apply hidden pr-3 text-right sm:table-cell pl-44;
 }
 
 .Darkblock-format-date {
-  @apply  hidden md:table-cell left-0 text-left;
+  @apply  left-0 hidden text-left sm:table-cell;
 }
 
 .Darkblock-format-icon {
