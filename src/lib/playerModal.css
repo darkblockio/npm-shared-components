@@ -11,7 +11,7 @@
 }
 
 .Darkblock-awesomePlayerButton {
-  @apply w-5 h-5 p-2;
+  @apply w-6 h-6 p-2;
 }
 
 .Darkblock-player-modal-container {
@@ -19,5 +19,5 @@
 }
 
 .Darkblock-player-modal-close-button {
-  @apply  my-auto cursor-pointer text-neutral-300;
+  @apply  z-50 my-auto cursor-pointer text-neutral-300;
 }

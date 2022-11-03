@@ -71,7 +71,7 @@
 }
 
 .Darkblock-playerBtn {
-  @apply w-5 h-5 p-2 mx-6 text-neutral-300;
+  @apply w-6 h-6 p-2 mx-6 text-neutral-300;
 }
 
 .Darkblock-playerBtnDisabled {
