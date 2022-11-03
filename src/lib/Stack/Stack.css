@@ -179,7 +179,7 @@ td {
 }
 
 .darkblock-elipsis-detail-modal {
-  @apply absolute z-30 flex p-4 m-auto bg-gray-100 border-2 border-gray-100 rounded shadow-lg w-72 max-h-72 md:w-80 shadow-gray-300 h-52;
+  @apply absolute z-30 flex p-4 m-auto bg-gray-100 border-2 border-gray-100 rounded shadow-lg w-80 max-h-72 shadow-gray-300 h-52;
   @apply transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
 }
 
