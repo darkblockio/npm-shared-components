@@ -46,18 +46,6 @@
   @apply w-4 h-4 text-black;
 }
 
-.darkblock-toggle-container{
-  @apply text-center md:text-right
-}
-
-/* .darkblock-toggleBtn {
-  @apply  h-2;
-} */
-
-.DarkblockWidget-Stack-Panel .dbdata {
-  @apply group-hover:bg-red-200 group-hover:text-red-800;
-}
-
 .DarkblockWidget-Stack-Panel .dbdata {
   @apply mt-10 border-gray-200 cursor-pointer border-b-[1px] hover:bg-gray-50;
 }
@@ -66,14 +54,6 @@
 .DarkblockWidget-Stack-Panel .dbdataSelected {
   @apply pr-2 mt-10;
   background-color: #E5E5E3;
-}
-
-.DarkblockWidget-Stack-Panel .dbdataSelected .darkblock-toggle-container .darkblock-toggle {
-  background-color: #F5F5F2;
-}
-
-.DarkblockWidget-Stack-Panel .dbdataSelected .Darkblock-toggleIcon {
-  @apply text-black;
 }
 
 .DarkblockWidget-Stack-Panel .size {
@@ -128,11 +108,11 @@ td {
   @apply flex justify-center;
 }
 
-.DarkblockWidget-Stack-Panel .dbdata:hover .darkblock-toggle-container .darkblock-toggle {
+.DarkblockWidget-Stack-Panel .dbdata .darkblock-toggle-container:hover .darkblock-toggle {
   @apply bg-[#F5F5F2];
 }
 
-.DarkblockWidget-Stack-Panel .dbdata:hover .darkblock-toggle-container .Darkblock-toggleIcon {
+.DarkblockWidget-Stack-Panel .dbdata .darkblock-toggle-container:hover .Darkblock-toggleIcon {
   @apply text-black;
 }
 
