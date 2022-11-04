@@ -260,6 +260,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             state.value !== "loading_arweave" &&
             state.value !== "started" &&
             state.value !== "start_failure" &&
+            state.value !== "retal_nft" &&
             state.value !== "no_darkblock" ? (
             <div className="DarkblockWidget-Stack-Panel">
               <table className="darkblock-stack-table" style={{ opacity: opacity }}>

@@ -41,6 +41,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
 
           {state.value !== "auth_failure" &&
             state.value !== "start_failure" &&
+            state.value !== "rental_nft" &&
             state.value !== "decrypt_error" &&
             state.value !== "loading_arweave" &&
             state.value !== "authenticated" &&
@@ -100,6 +101,10 @@ const Header = ({ onClose, state = null, authenticate, show = true }) => {
     case "auth_failure":
       title = t('state.authFailureTitle')
       text = t('state.authFailureText')
+      break
+    case "rental_nft":
+      title = t('state.rentalNftTitle')
+      text = t('state.rentalNftText')
       break
     case "auth_cancel":
       title = t('state.authCancelTitle')

@@ -243,6 +243,7 @@ const states = [
   "wallet_connected",
   "authenticated",
   "auth_failure",
+  "rental_nft",
   "decrypting",
   "decrypt_error",
   "signing",
