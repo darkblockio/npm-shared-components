@@ -1,5 +1,5 @@
 import { createMachine } from "xstate"
-import { humanFileSize, shortenEthAddr, getCreator, getArweaveData } from "./utils"
+import { humanFileSize, shortenEthAddr, getCreator, getArweaveData, getDarkblockInfo } from "./utils"
 
 const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
   let baseLink
@@ -55,6 +55,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
             Promise.all([
               getCreator(contractAddress, tokenId, platform, dev),
               getArweaveData(platform === "Solana" ? tokenId : contractAddress + ":" + tokenId, platform, dev),
+              getDarkblockInfo( tokenId, platform )
             ]),
           onDone: [
             {
@@ -126,6 +127,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
               },
             },
             { target: "no_darkblock" },
+            { target: "rental_nft" },
           ],
           onError: { target: "start_failure" },
         },
@@ -161,6 +163,24 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
         on: {
           SIGN: "signing",
         },
+      },
+      rental_nft: {
+        // invoke: {
+        //   src: () =>
+        //     getDarkblockInfo( tokenId, platform ),
+        //     // Promise.all([
+        //     //   getCreator(contractAddress, tokenId, platform, dev),
+        //     //   getArweaveData(platform === "Solana" ? tokenId : contractAddress + ":" + tokenId, platform, dev),
+        //     // ]),
+        //   onDone: [
+        //     { target: "started" },
+        //     { target: "no_darkblock" },
+        //   ],
+        //   onError: { target: "start_failure" },
+        // },
+        on: {
+          REJECT: "no_darkblock"
+        }
       },
       decrypting: {
         on: {

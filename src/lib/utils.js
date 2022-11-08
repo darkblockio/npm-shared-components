@@ -138,3 +138,18 @@ export async function downloadFile(url, fileFormat, filename = "") {
     window.URL.revokeObjectURL(raw)
   }
 }
+
+export async function getDarkblockInfo(tokenId, platform) {
+  // const baseUrl = dev ? 'https://dev1.darkblock.io/v1' : 'https://api.darkblock.io/v1'
+  const baseUrl = 'https://dev1.darkblock.io/v1'
+
+  try {
+    const response = await fetch(
+      `${baseUrl}/darkblock/info?nft_id=${tokenId}&nft_platform=${platform}`
+    )
+    const info = await response.json()
+    return info
+  } catch (e) {
+    return []
+  }
+}
