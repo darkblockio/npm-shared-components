@@ -1,5 +1,5 @@
 import { createMachine } from "xstate"
-import { humanFileSize, shortenEthAddr, getCreator, getArweaveData, getDarkblockInfo } from "./utils"
+import { humanFileSize, shortenEthAddr, getCreator, getArweaveData } from "./utils"
 
 const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
   let baseLink
@@ -33,6 +33,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
         arweaveTXLink: "",
         details: "",
         stack: [],
+        rental: false,
       },
       baseLink,
       tokenId,
@@ -55,7 +56,6 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
             Promise.all([
               getCreator(contractAddress, tokenId, platform, dev),
               getArweaveData(platform === "Solana" ? tokenId : contractAddress + ":" + tokenId, platform, dev),
-              getDarkblockInfo( tokenId, platform )
             ]),
           onDone: [
             {
@@ -69,6 +69,10 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
                     if (tag.name === "ArtId") context.artId = tag.value
                     if (tag.name === "Description") context.display.details = tag.value
                   })
+                }
+
+                if (context?.arweaveData?.info === "rental expired!") {
+                  context.display.rental = true
                 }
 
                 if (
@@ -127,7 +131,6 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
               },
             },
             { target: "no_darkblock" },
-            { target: "rental_nft" },
           ],
           onError: { target: "start_failure" },
         },
@@ -163,24 +166,6 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
         on: {
           SIGN: "signing",
         },
-      },
-      rental_nft: {
-        // invoke: {
-        //   src: () =>
-        //     getDarkblockInfo( tokenId, platform ),
-        //     // Promise.all([
-        //     //   getCreator(contractAddress, tokenId, platform, dev),
-        //     //   getArweaveData(platform === "Solana" ? tokenId : contractAddress + ":" + tokenId, platform, dev),
-        //     // ]),
-        //   onDone: [
-        //     { target: "started" },
-        //     { target: "no_darkblock" },
-        //   ],
-        //   onError: { target: "start_failure" },
-        // },
-        on: {
-          REJECT: "no_darkblock"
-        }
       },
       decrypting: {
         on: {

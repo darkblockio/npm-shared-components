@@ -66,11 +66,7 @@ const RenderEllipsisIcon = ({ filetype }) => {
 
   if (filetype.indexOf("ellipsis") > -1) icon = faEllipsisVertical
 
-<<<<<<< HEAD
-  return <FontAwesomeIcon icon={icon}  className="Darkblock-toggleIcon"  />
-=======
   return <FontAwesomeIcon icon={icon} size="lg" className="Darkblock-toggleIcon" />
->>>>>>> main
 }
 
 const RowContent = ({ db, f = null, counter = "", selected = false, index = 0, showDetailModal }) => {
