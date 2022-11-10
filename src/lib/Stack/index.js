@@ -30,7 +30,7 @@ import PlayerModal from "../playerModal"
 import { faClose } from "@fortawesome/free-solid-svg-icons"
 import EmptyTable from "../EmptyTable"
 import EllipsisModal from "./ellipsisModal"
-import '../../i18n'
+import "../../i18n"
 
 const RenderIcon = ({ filetype }) => {
   let icon = faQuestionCircle
@@ -66,18 +66,15 @@ const RenderEllipsisIcon = ({ filetype }) => {
 
   if (filetype.indexOf("ellipsis") > -1) icon = faEllipsisVertical
 
+<<<<<<< HEAD
   return <FontAwesomeIcon icon={icon}  className="Darkblock-toggleIcon"  />
+=======
+  return <FontAwesomeIcon icon={icon} size="lg" className="Darkblock-toggleIcon" />
+>>>>>>> main
 }
 
-const RowContent = ({
-  db,
-  f = null,
-  counter = "",
-  selected = false,
-  index = 0,
-  showDetailModal,
-}) => {
-  let fn = f && typeof f === "function" ? f : () => { }
+const RowContent = ({ db, f = null, counter = "", selected = false, index = 0, showDetailModal }) => {
+  let fn = f && typeof f === "function" ? f : () => {}
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
   let truncatedName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
@@ -126,6 +123,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [opacity, setOpacity] = useState(0.4)
   const [showDetails, setShowDetails] = useState(false)
   const [detailDB, setDetailDB] = useState(null)
+  const [height, setHeight] = useState(window.innerHeight)
+  const doc = document.documentElement
 
   const handleOnClose = (e) => {
     e.preventDefault()
@@ -192,6 +191,19 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     setSelected({ type: nextDb.fileFormat, mediaURL: urls[nextIndex], i: nextIndex, db: nextDb })
   }
 
+  const documentHeight = () => {
+    setHeight(window.innerHeight)
+    doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
+  }
+
+  useEffect(() => {
+    doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
+    window.addEventListener('resize', documentHeight)
+    return () => {
+      window.removeEventListener('resize', documentHeight)
+    }
+  }, [height])
+
   return (
     <>
       <PlayerModal showModal={showModal} open={showModal} onClose={(e) => handleOnClose(e)}>
@@ -202,8 +214,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
               <div className="Darkblock-player-modal-container-title-name">{selected.db.name}</div>
 
               <div className="Darkblock-player-modal-close-button">
-                <div onClick={(e) => handleOnClose(e)} >
-                  <FontAwesomeIcon icon={faClose} className='Darkblock-awesomePlayerButton' />
+                <div onClick={(e) => handleOnClose(e)}>
+                  <FontAwesomeIcon icon={faClose} className="Darkblock-awesomePlayerButton" />
                 </div>
               </div>
             </div>
@@ -221,7 +233,9 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                 <button
                   onClick={() => nextDb()}
                   className={
-                    selected.i + 1 !== state.context.display.stack.length ? "Darkblock-playerBtn" : "Darkblock-playerBtn Darkblock-playerBtnDisabled"
+                    selected.i + 1 !== state.context.display.stack.length
+                      ? "Darkblock-playerBtn"
+                      : "Darkblock-playerBtn Darkblock-playerBtnDisabled"
                   }
                 >
                   <RenderArrowIcon filetype={"faArrowRight"} />
@@ -255,68 +269,66 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           />
         )}
 
-        {
-          state.value !== "idle" &&
-            state.value !== "loading_arweave" &&
-            state.value !== "started" &&
-            state.value !== "start_failure" &&
-            state.value !== "retal_nft" &&
-            state.value !== "no_darkblock" ? (
-            <div className="DarkblockWidget-Stack-Panel">
-              <table className="darkblock-stack-table" style={{ opacity: opacity }}>
-                <tbody>
-                  <Titles state={state} />
-                  {state.context.display.stack.map((db, i) => {
-                    if (state.value === "display") {
-                      let sel = selected ? selected.i === i : false
-                      return (
-                        <RowContent
-                          db={db}
-                          sel={sel}
-                          f={() => {
-                            setSwapping(true)
-                            setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i, db: db })
-                            setShowModal(true)
-                          }}
-                          index={i}
-                          key={i}
-                          counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
-                          selected={selected}
-                          state={state.value}
-                          url={urls[i]}
-                          showDetailModal={(value) => {
-                            value.url = urls[i]
-                            setDetailDB(value)
-                            setShowDetails(true)
-                          }}
-                        />
-                      )
-                    } else {
-                      return (
-                        <RowContent
-                          db={db}
-                          index={i}
-                          key={i}
-                          counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
-                          selected={selected}
-                          showDetailModal={(value) => {
-                            value.url = null
-                            setDetailDB(value)
-                            setShowDetails(true)
-                          }}
-                          f={() => {
-                            setShowHeader(!showHeader)
-                          }}
-                        />
-                      )
-                    }
-                  })}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <EmptyTable />
-          )}
+        {state.value !== "idle" &&
+        state.value !== "loading_arweave" &&
+        state.value !== "started" &&
+        state.value !== "start_failure" &&
+        state.value !== "no_darkblock" ? (
+          <div className="DarkblockWidget-Stack-Panel">
+            <table className="darkblock-stack-table" style={{ opacity: opacity }}>
+              <tbody>
+                <Titles state={state} />
+                {state.context.display.stack.map((db, i) => {
+                  if (state.value === "display") {
+                    let sel = selected ? selected.i === i : false
+                    return (
+                      <RowContent
+                        db={db}
+                        sel={sel}
+                        f={() => {
+                          setSwapping(true)
+                          setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i, db: db })
+                          setShowModal(true)
+                        }}
+                        index={i}
+                        key={i}
+                        counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
+                        selected={selected}
+                        state={state.value}
+                        url={urls[i]}
+                        showDetailModal={(value) => {
+                          value.url = urls[i]
+                          setDetailDB(value)
+                          setShowDetails(true)
+                        }}
+                      />
+                    )
+                  } else {
+                    return (
+                      <RowContent
+                        db={db}
+                        index={i}
+                        key={i}
+                        counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
+                        selected={selected}
+                        showDetailModal={(value) => {
+                          value.url = null
+                          setDetailDB(value)
+                          setShowDetails(true)
+                        }}
+                        f={() => {
+                          setShowHeader(!showHeader)
+                        }}
+                      />
+                    )
+                  }
+                })}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <EmptyTable />
+        )}
         <FooterSharedComponents config={config} state={state} />
       </div>
     </>

@@ -137,7 +137,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
           setProgress(100)
           setTimeout(() => {
             clearForm()
-            setMintingState(t('upgrader.complete'))
+            setMintingState('complete')
           }, 500)
         }
         if (this.status == 400 || this.status == 500) {
