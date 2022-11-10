@@ -75,7 +75,7 @@
 }
 
 .Darkblock-playerBtn {
-  @apply w-6 h-6 p-2 mx-6 text-neutral-300;
+  @apply w-8 h-8 mx-6;
 }
 
 .Darkblock-playerBtnDisabled {
@@ -83,5 +83,5 @@
 }
 
 .Darkblock-arrowIcons {
-  @apply w-4 h-4 p-2;
+  @apply m-auto;
 }

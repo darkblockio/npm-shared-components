@@ -119,6 +119,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [opacity, setOpacity] = useState(0.4)
   const [showDetails, setShowDetails] = useState(false)
   const [detailDB, setDetailDB] = useState(null)
+  const [height, setHeight] = useState(window.innerHeight)
+  const doc = document.documentElement
 
   const handleOnClose = (e) => {
     e.preventDefault()
@@ -184,6 +186,19 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     setSwapping(true)
     setSelected({ type: nextDb.fileFormat, mediaURL: urls[nextIndex], i: nextIndex, db: nextDb })
   }
+
+  const documentHeight = () => {
+    setHeight(window.innerHeight)
+    doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
+  }
+
+  useEffect(() => {
+    doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
+    window.addEventListener('resize', documentHeight)
+    return () => {
+      window.removeEventListener('resize', documentHeight)
+    }
+  }, [height])
 
   return (
     <>
