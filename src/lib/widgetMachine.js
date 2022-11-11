@@ -71,7 +71,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
                   })
                 }
 
-                if (context?.arweaveData?.info === "rental expired!") {
+                if (context && context.arweaveData && context.arweaveData.info === "rental expired!") {
                   context.display.rental = true
                 }
 
