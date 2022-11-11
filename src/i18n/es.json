@@ -21,6 +21,8 @@
   "state.noDarkblockTitle": "Sin contenido de Darkblock",
   "state.noDarkblockText": "Este NFT no contiene contenido desbloqueable. Si se trata de un NFT recién minteado o si el creador acaba de agregar el contenido desbloqueable, puede haber un retraso debido a la indexación.",
   "state.authFailureTitle": "No se pudo autenticar la propiedad",
+  "state.rentalNftTitle": "El Alquiler de Contenido a Caducado",
+  "state.rentalNftText":"Este acceso de NFT no contiene contenido desbloqueable porque el período de acceso ha expirado.",
   "state.authFailureText": "Esta billetera no tiene acceso a este Darkblock.",
   "state.authCancelTitle": "No se pudo autenticar la propiedad",
   "state.authCancelText": "Esta billetera no tiene acceso a este Darkblock.",

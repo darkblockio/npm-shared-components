@@ -22,6 +22,8 @@
   "state.noDarkblockText": "This NFT doesn’t contain unlockable content. If this is a newly minted NFT or the creator just added the unlockable content, there might be a delay due to indexing.",
   "state.authFailureTitle": "Failed to Authenticate Ownership",
   "state.authFailureText": "This wallet does not have access to this Darkblock.",
+  "state.rentalNftTitle": "Content Rental Expired",
+  "state.rentalNftText":"This access NFT doesn't contain unlockable content because the access period has expired.",
   "state.authCancelTitle": "Failed to Authenticate Ownership",
   "state.authCancelText": "This wallet does not have access to this Darkblock.",
   "state.startedTitle": "Darkblock Content",

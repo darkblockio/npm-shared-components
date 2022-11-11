@@ -94,8 +94,13 @@ const Header = ({ onClose, state = null, authenticate, show = true }) => {
       text = t('state.startFailureText')
       break
     case "no_darkblock":
-      title = t('state.noDarkblockTitle')
-      text = t('state.noDarkblockText')
+      if (state.context.display.rental) {
+        title = t('state.rentalNftTitle')
+        text = t('state.rentalNftText')
+      } else {
+        title = t('state.noDarkblockTitle')
+        text = t('state.noDarkblockText')
+      }
       break
     case "auth_failure":
       title = t('state.authFailureTitle')
