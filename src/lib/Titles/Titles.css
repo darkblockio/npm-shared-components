@@ -14,15 +14,15 @@
 }
 
 .Darkblock-format-header {
-  @apply hidden pr-3 text-right sm:table-cell pl-44;
+  @apply hidden pr-3 text-right w-24 sm:table-cell ;
 }
 
 .Darkblock-format-date {
-  @apply  left-0 hidden text-left sm:table-cell;
+  @apply  left-0 hidden text-right w-32 pr-3 sm:table-cell;
 }
 
 .Darkblock-format-icon {
-  @apply  p-4 text-center;
+  @apply  p-4 text-center w-12;
 }
 
 /*hiding parts of header and table info on responsive */

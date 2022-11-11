@@ -36,7 +36,7 @@
   @apply text-base text-gray-500 whitespace-nowrap;
 }
 .Darkblock-date {
-  @apply hidden sm:table-cell;
+  @apply hidden text-right pr-3 sm:table-cell;
 }
 .darkblock-right-text {
   @apply hidden text-right sm:table-cell size;
