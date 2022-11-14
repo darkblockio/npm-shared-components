@@ -4,6 +4,7 @@ import * as HashUtil from "../utils/hash-util"
 import FooterUpgrader from "../FooterUpgrader"
 import { getSHA256OfFileChunks } from "../utils/hash-util"
 import { useTranslation } from "react-i18next"
+import Button from "../Button"
 
 const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
   const [darkblockDescription, setDarkblockDescription] = useState("")
@@ -212,14 +213,12 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
             />
             <label className="Darkblock-downloadable-text">{t('upgrader.allowDownload')}</label>
           </div>
-          <button
-            disabled={!fileState || !fileState.name || !name}
+          <Button state={!fileState || !fileState.name || !name}
+            variant='primary'
             type="submit"
-            id="darkblock-submit"
-            className="Darkblock-upgrade-create-button"
-          >
+            id="darkblock-submit" className="Darkblock-upgrade-create-button">
             {t('upgrader.create')}
-          </button>
+          </Button>
         </form>
       ) : null}
       {open ? (
@@ -256,20 +255,19 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
                         <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
                       </video>
                     </div>
-                    <button
-                      className="Darkblock-minting-complete-add-another"
+                    <Button className="Darkblock-minting-complete-add-another"
+                      variant="gray"
                       onClick={() => {
                         clearForm()
                         setMintingState("starting")
                         setMinting(false)
                         setOpen(false)
                         reset()
-                      }}
-                    >
-                      {t('upgrader.makeAnother')}
-                    </button>
-                    <button
-                      className="Darkblock-minting-complete-done"
+                      }}>{t('upgrader.makeAnother')}
+                    </Button>
+
+                    <Button className="Darkblock-minting-complete-done"
+                      variant="white"
                       onClick={() => {
                         clearForm()
                         setMintingState("starting")
@@ -277,10 +275,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset }) => {
                         setOpen(false)
                         reset("finished")
                         onClose(true)
-                      }}
-                    >
-                      {t('upgrader.done')}
-                    </button>
+                      }}>{t('upgrader.done')}</Button>
                   </div>
                 </>
               )}

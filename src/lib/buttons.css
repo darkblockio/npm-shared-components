@@ -1,0 +1,39 @@
+.darkblock-done-button {
+  @apply w-20 p-2 m-4 mt-6 text-white rounded-lg;
+}
+
+.Darkblock-auth-button {
+  @apply flex items-center justify-center flex-auto px-4 py-2 font-medium font-bold text-center text-black  rounded-md w-fit h-fit;
+}
+
+.Darkblock-upgrade-create-button {
+  @apply float-right px-6 py-2 mr-2 font-semibold text-gray-200 rounded hover:bg-gray-600;
+}
+
+.Darkblock-upgrade-add-content {
+  @apply flex flex-row items-center text-black rounded px-4 py-1 cursor-pointer;
+}
+
+.Darkblock-minting-complete-add-another {
+  @apply inline-block w-2/5 p-2 mt-2 mb-4 text-center text-white border border-white rounded hover:bg-gray-500;
+}
+
+.Darkblock-minting-complete-done {
+  @apply inline-block w-2/5 p-2 mt-2 mb-4 ml-2 font-bold text-center text-black  border border-black rounded hover:text-white hover:bg-gray-500;
+}
+
+.primary {
+  @apply bg-black;
+}
+
+.secondary {
+  @apply bg-neutral-200;
+}
+
+.white {
+  @apply bg-white;
+}
+
+.gray {
+  @apply bg-neutral-700;
+}
