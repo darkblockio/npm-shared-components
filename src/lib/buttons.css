@@ -23,17 +23,17 @@
 }
 
 .primary {
-  @apply bg-black;
+  @apply bg-black !important;
 }
 
 .secondary {
-  @apply bg-neutral-200;
+  @apply bg-neutral-200 !important;
 }
 
 .white {
-  @apply bg-white;
+  @apply bg-white !important;
 }
 
 .gray {
-  @apply bg-neutral-700;
+  @apply bg-neutral-700 !important;
 }

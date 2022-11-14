@@ -3,7 +3,7 @@ import "./buttons.css"
 
 const Button = ({ variant = "", state = "", type = null, children, className, id = null, onClick = "" }) => {
   return (
-    <button disabled={state} className={`${variant} ${className}`} type={type} id={id} onClick={onClick}>
+    <button className={`${variant} ${className}`} disabled={state} type={type} id={id} onClick={onClick}>
       {children}
     </button>
   )
