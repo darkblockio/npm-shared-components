@@ -60,8 +60,8 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
 
           {(title || text) && (
             <div className="DarkblockWidget-Header-titleStack">
-              <div className={red ? "Darkblock-title Darkblock-title-red" : "Darkblock-title"}>{title}</div>
-              <div className="Darkblock-content">{text}</div>
+              <h3 className={red ? "Darkblock-title Darkblock-title-red" : "Darkblock-title"}>{title}</h3>
+              <div className="Darkblock-dialog-message">{text}</div>
             </div>
           )}
 
