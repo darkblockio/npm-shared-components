@@ -32,7 +32,6 @@
   @apply flex flex-row items-center text-base text-gray-900 col-span-8 sm:col-span-7 md:col-span-8 lg:col-span-9;
 }
 
-
 .DarkblockWidget-Stack-Panel .Darkblock-name .Darkblock-truncate {
   @apply truncate;
 }
