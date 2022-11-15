@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react"
 import Stack from "../lib/Stack"
 import "../lib/main.css"
 
-const stories = storiesOf("Shared components - stack", module)
+const stories = storiesOf("Shared components - stack")
 const state = {
   value: "",
   context: {
@@ -17,7 +17,7 @@ const state = {
       stack: [
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
-          name: "JSON - Movie Sample",
+          name: "JSON - Movie Sample dlasfbajlfasjfaslfbaslfjasfjasfjasfasjfvasjlfvaslgskgjbsjgbsldgbslg-blsdgbjsdlgjbsDGLsdjbga-djlfgb<sldgjbsljgbslgjbsdjgbs<lgjb<wortbwsjbgd{srohgfdkldfkgadpryihdighdfngdzfklhnzldfksklfñlgadlfkghreñgirehgañerklgndflkgtyeoiryahrkgdfndlfknafdkadf´hairhriohartirsriofdgsñdjgbsjkdgbzñdsjkgldgnsdgsdlgksnfdfjsdlkgjsdlgksdjlgkjglsdkjgñkdgjsldkjgslkdlkdsjsgsldkgjsldkgjsdklgjsdlkgjsldkgsjsdlkgjdphroiyeprhelhjdfñlkhjdfkjhjstoriuyreyperyopreiyeropyirpeo",
           details:
             "And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.",
           datecreated: "1652708376981",
@@ -95,7 +95,7 @@ const state = {
         },
         {
           artId: "527c9adb-e8eb-46a2-b882-0b805d4776a7",
-          name: "Big Video - Sample",
+          name: "Big Video - Sample dlasfbajlfasjfaslfbaslfjasfjasfjasfasjfvasjlfvaslgskgjbsjgbsldgbslg-blsdgbjsdlgjbsDGLsdjbga-djlfgb<sldgjbsljgbslgjbsdjgbs<lgjb<wortbwsjbgd{srohgfdkldfkgadpryihdighdfngdzfklhnzldfksklfñlgadlfkghreñgirehgañerklgndflkgtyeoiryahrkgdfndlfknafdkadf´hairhriohartirsriofdgsñdjgbsjkdgbzñdsjkgldgnsdgsdlgksnfdfjsdlkgjsdlgksdjlgkjglsdkjgñkdgjsldkjgslkdlkdsjsgsldkgjsldkgjsdklgjsdlkgjsldkgsjsdlkgjdphroiyeprhelhjdfñlkhjdfkjhjstoriuyreyperyopreiyeropyirpeo",
           details:
             "Now that we know who you are, I know who I am. I’m not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain’s going to be? He’s the exact opposite of the hero. And most times they’re friends, like you and me! ",
           datecreated: "1652708412041",
