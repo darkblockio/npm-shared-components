@@ -4,27 +4,30 @@
 
 
  .Darkblock-rowheader {
-  @apply sticky top-0 z-10 h-[48px] text-sm font-semibold text-gray-500 bg-white cursor-pointer;
+  @apply sticky top-0 z-10 h-[48px] text-sm font-semibold text-gray-500 bg-white cursor-pointer grid grid-cols-12 relative;
 }
 
 /* flex-grow fixed border-gray-300 w-[98%] cursor-pointer text-[13px] font-semibold bg-white z-30 */
 
 .Darkblock-name-header {
-  @apply pl-2 text-left;
+  @apply pl-2 text-left col-span-8 flex items-center;
 }
 
 .Darkblock-format-header {
-  @apply hidden pr-3 text-right w-24 sm:table-cell ;
+  @apply hidden text-right w-28 sm:table-cell ;
 }
 
 .Darkblock-format-date {
-  @apply  left-0 hidden text-right w-32 pr-3 sm:table-cell;
+  @apply hidden text-right w-28 sm:table-cell;
 }
 
 .Darkblock-format-icon {
-  @apply  p-4 text-center w-12;
+  @apply  p-4 text-center;
 }
 
+.Darkblock-items-header {
+  @apply w-64 flex items-center absolute right-0 h-[48px];
+}
 /*hiding parts of header and table info on responsive */
 .DarkblockWidget-Stack-Panel .format-header {
   @apply hidden sm:table-cell;
