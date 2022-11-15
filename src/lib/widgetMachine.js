@@ -33,6 +33,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
         arweaveTXLink: "",
         details: "",
         stack: [],
+        rental: false,
       },
       baseLink,
       tokenId,
@@ -68,6 +69,10 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
                     if (tag.name === "ArtId") context.artId = tag.value
                     if (tag.name === "Description") context.display.details = tag.value
                   })
+                }
+
+                if (context && context.arweaveData && context.arweaveData.info === "rental expired!") {
+                  context.display.rental = true
                 }
 
                 if (

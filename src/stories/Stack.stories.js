@@ -13,6 +13,7 @@ const state = {
       arweaveTXLink: "arweaveTXLink",
       arweaveTX: "Eaw4uaBnij0tgA8QpeyIOBixcZeDXFxBSVljEA3uEtw",
       details: "Description maybe?",
+      rental: false,
       stack: [
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
