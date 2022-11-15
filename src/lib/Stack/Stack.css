@@ -29,7 +29,7 @@
 } */
 
 .DarkblockWidget-Stack-Panel .Darkblock-name {
-  @apply flex flex-row items-center text-base text-gray-900 col-span-9;
+  @apply flex flex-row items-center text-base text-gray-900 col-span-8 sm:col-span-7 md:col-span-8 lg:col-span-9;
 } 
 
 .DarkblockWidget-Stack-Panel .Darkblock-name .Darkblock-truncate {
@@ -238,7 +238,7 @@ td {
 }
 
 .darkblock-modal-name {
-  @apply pt-1 text-xl font-bold;
+  @apply pt-1 text-xl font-bold truncate;
 }
 
 .darkblock-modal-detail {
