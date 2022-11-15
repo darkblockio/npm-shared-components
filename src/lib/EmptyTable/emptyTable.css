@@ -5,7 +5,7 @@
     @apply h-4 bg-gray-100 rounded w-20
 }
 .Darkblock-EmptyElementDivLg {
-    @apply h-4 bg-gray-100 rounded w-full
+    @apply h-4 bg-gray-100 rounded w-44
 }
 .Darkblock-EmptyNameElement {
     @apply flex items-center pt-0 my-4 text-left animate-pulse
