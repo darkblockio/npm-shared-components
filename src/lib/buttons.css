@@ -23,17 +23,17 @@
 }
 
 .primary {
-  @apply bg-black !important;
+  @apply bg-black disabled:bg-neutral-500 hover:bg-neutral-800 !important;
 }
 
 .secondary {
-  @apply bg-neutral-200 !important;
+  @apply bg-neutral-200 disabled:bg-neutral-200 hover:bg-neutral-300 !important;
 }
 
 .white {
-  @apply bg-white !important;
+  @apply bg-white disabled:bg-white hover:bg-neutral-50 hover:text-black !important;
 }
 
 .gray {
-  @apply bg-neutral-700 !important;
+  @apply bg-neutral-700 disabled:bg-neutral-700 hover:bg-neutral-600 !important;
 }
