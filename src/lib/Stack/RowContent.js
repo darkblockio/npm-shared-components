@@ -7,7 +7,6 @@ const RowContent = ({ db, f = null, counter = "", selected = false, index = 0, s
   let fn = f && typeof f === "function" ? f : () => {}
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
-  // let truncatedName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
 
   return (
     <>

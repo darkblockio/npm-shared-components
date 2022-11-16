@@ -249,11 +249,11 @@ td {
 }
 
 #darkblock-modal-box {
-  @apply max-w-3xl px-6 py-4 mx-8 text-left bg-white rounded shadow-lg;
+  @apply max-w-xs sm:max-w-lg lg:max-w-3xl px-6 py-4 mx-8 text-left bg-white rounded shadow-lg;
 }
 
 .darkblock-modal-box-container {
-  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-gray-200 bg-opacity-5;
+  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-gray-200 bg-opacity-5 pt-32 pb-7 sm:pt-16;
 }
 
 .darkblock-modal-container {
@@ -261,7 +261,7 @@ td {
 }
 
 .darkblock-detail-container {
-  @apply block w-4/5 px-2;
+  @apply block w-full px-2;
 }
 
 .darkblock-elipsis-cross-button {
@@ -281,5 +281,5 @@ td {
 }
 
 .Darkblock-player-modal-container-title-name {
-  @apply m-auto text-xs text-neutral-400;
+  @apply m-auto text-xs text-neutral-400 truncate;
 }
