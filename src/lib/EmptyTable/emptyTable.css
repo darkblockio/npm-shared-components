@@ -17,10 +17,10 @@
     @apply h-4 bg-gray-100 rounded w-44
 }
 .Darkblock-EmptyRowContainer {
-    @apply grid grid-cols-12 gap-4 px-2 py-2 items-center border-gray-200 border-b-[1px];
+    @apply grid grid-cols-12 gap-4 px-2 items-center border-gray-200 border-b-[1px];
 }
 .Darkblock-EmptyHeaderContainer {
-    @apply grid grid-cols-12 gap-4 px-2 py-2 border-gray-200 border-y-[1px]
+    @apply grid grid-cols-12 gap-4 px-2 border-gray-200 border-y-[1px]
 }
 .Darkblock-SingleElementWrapper {
     @apply col-span-8
