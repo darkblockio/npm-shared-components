@@ -1,35 +1,40 @@
 import React from "react"
-import "./Header.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faWallet, faCircleCheck, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
-import { useTranslation } from "react-i18next"
-import "../../i18n"
+
 import LoadSpinnerState from "../Animations/LoadSpinnerState"
 import Darkblocklogo from "../Animations/Logo/DarklblockLogo"
 import Cross from "../Cross"
 
+import { useTranslation } from "react-i18next"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faWallet, faCircleCheck, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
+
+import "./Header.css"
+import "../../i18n"
+
 const setHeader = (onClose, state, title, text, red = false, authenticate = null) => {
   const { t } = useTranslation()
+  const errorState = ["auth_failure", "start_failure", "decrypt_error"]
+  const successState = ["loading_arweave", "authenticated", "decrypting"]
+  const walletState = ["no_wallet", "wallet_connected", "display"]
+  const moreStates = [...errorState, ...successState, "signing", "display"]
 
   return (
     <div
       className="DarkblockWidget-Header"
       style={{
-        borderColor:
-          state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error"
-            ? "#EF4444"
-            : state.value === "display"
-            ? "#22C55E"
-            : "rgb(243 244 246)",
+        borderColor: errorState.includes(state.value)
+          ? "#EF4444"
+          : state.value === "display"
+          ? "#22C55E"
+          : "rgb(243 244 246)",
       }}
     >
       <div className="DarkblockWidget-HeaderContent">
-        {onClose !== false &&
-          (state.value === "no_wallet" || state.value === "wallet_connected" || state.value === "display") && (
-            <button className="DarkblockWidget-closeBtn" onClick={onClose}>
-              <Cross />
-            </button>
-          )}
+        {onClose !== false && walletState.includes(state.value) && (
+          <button className="DarkblockWidget-closeBtn" onClick={onClose}>
+            <Cross />
+          </button>
+        )}
 
         <div className="DarkblockWidget-Header-Row">
           {state.value === "signing" && <FontAwesomeIcon icon={faWallet} className="Darkblock-FaWalletIcon awesome" />}
@@ -37,26 +42,17 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
             <FontAwesomeIcon icon={faCircleCheck} className="Darkblock-FaCheckIcon awesome" />
           )}
 
-          {(state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error") && (
+          {errorState.includes(state.value) && (
             <FontAwesomeIcon icon={faTriangleExclamation} className="Darkblock-FaTriangleIcon awesome" />
           )}
 
-          {state.value !== "auth_failure" &&
-            state.value !== "start_failure" &&
-            state.value !== "decrypt_error" &&
-            state.value !== "loading_arweave" &&
-            state.value !== "authenticated" &&
-            state.value !== "decrypting" &&
-            state.value !== "signing" &&
-            state.value !== "display" && (
-              <div className="DarkblockWidget-Header-logo">
-                <Darkblocklogo />
-              </div>
-            )}
-
-          {(state.value === "loading_arweave" || state.value === "authenticated" || state.value === "decrypting") && (
-            <LoadSpinnerState className="Darkblock-Icon" />
+          {!moreStates.includes(state.value) && (
+            <div className="DarkblockWidget-Header-logo">
+              <Darkblocklogo />
+            </div>
           )}
+
+          {successState.includes(state.value) && <LoadSpinnerState className="Darkblock-Icon" />}
 
           {(title || text) && (
             <div className="DarkblockWidget-Header-titleStack">
@@ -82,6 +78,8 @@ const Header = ({ onClose, state = null, authenticate }) => {
   var title = ""
   var text = ""
   const { t } = useTranslation()
+  const authErrorState = ["auth_failure", "auth_cancel"]
+  const authState = [...authErrorState, "wallet_connected"]
 
   switch (state.value) {
     case "no_wallet":
@@ -145,10 +143,8 @@ const Header = ({ onClose, state = null, authenticate }) => {
     state,
     title,
     text,
-    state.value === "auth_failure" || state.value === "auth_cancel" ? true : false,
-    state.value === "auth_failure" || state.value === "auth_cancel" || state.value === "wallet_connected"
-      ? authenticate
-      : null
+    authErrorState.includes(state.value) ? true : false,
+    authState.includes(state.value) ? authenticate : null
   )
 }
 
