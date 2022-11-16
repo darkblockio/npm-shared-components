@@ -78,7 +78,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
   )
 }
 
-const Header = ({ onClose, state = null, authenticate, show = true }) => {
+const Header = ({ onClose, state = null, authenticate }) => {
   var title = ""
   var text = ""
   const { t } = useTranslation()
