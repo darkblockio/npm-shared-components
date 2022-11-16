@@ -9,6 +9,7 @@ import "./Player.css"
 import LoadSpinner from "../Animations/LoadSpinner"
 import "../../i18n"
 import { t } from "i18next"
+import ReactAudioPlayer from "react-audio-player"
 
 const MyGallery = ({ mediaURL, config }) => {
   const spinner = useRef(null)
@@ -155,7 +156,10 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
     return (
       <>
         <div className="Darkblock-audioPlayer">
-          <Plyr source={mediaSrc} />
+          <ReactAudioPlayer
+            src={mediaSrc.sources[0].src}
+            controls={true}
+          />
         </div>
       </>
     )
