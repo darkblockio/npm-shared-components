@@ -3,8 +3,8 @@
   @apply relative flex-grow w-full overflow-y-auto h-80;
 }
 
-.DarkblockWidget-Stack-Panel .darkblock-stack-table {
-  @apply w-full text-gray-500 border-gray-400 table-auto opacity-40;
+.DarkblockWidget-Stack-Panel .Darkblock-Stack-Table {
+  @apply w-full text-gray-500 border-gray-400  opacity-40;
 }
 
 .DarkblockWidget-Stack-Panel .row {
@@ -24,36 +24,46 @@
   @apply w-4 h-4 p-2 ml-2 mr-2 text-gray-900 bg-gray-100 rounded;
 }
 
-.DarkblockWidget-Stack-Panel .row .darkblock-name {
+/* .DarkblockWidget-Stack-Panel .row .darkblock-name {
   @apply whitespace-nowrap sm:w-[30px];
+} */
+
+.DarkblockWidget-Stack-Panel .Darkblock-name {
+  @apply flex flex-row items-center text-base text-gray-900 col-span-8 sm:col-span-7 md:col-span-8 lg:col-span-9;
 }
 
-.DarkblockWidget-Stack-Panel .darkblock-name {
-  @apply flex flex-row items-center text-base text-gray-900 truncate;
+.DarkblockWidget-Stack-Panel .Darkblock-name .Darkblock-truncate {
+  @apply truncate;
 }
 
 .DarkblockWidget-Stack-Panel .row .Darkblock-date {
   @apply text-base text-gray-500 whitespace-nowrap;
 }
-.Darkblock-date {
-  @apply hidden text-right pr-3 sm:table-cell;
+
+.Darkblock-items {
+  @apply w-12 sm:w-60 flex items-center absolute right-0
 }
+
+.Darkblock-date {
+  @apply hidden text-right pr-2 w-28 sm:table-cell;
+}
+
 .darkblock-right-text {
-  @apply hidden text-right sm:table-cell size;
+  @apply hidden text-right w-24 sm:table-cell;
 }
 
 .darkblock-toggle {
-  @apply w-4 h-4 text-black;
+  @apply w-12 h-12 text-black;
 }
 
 .DarkblockWidget-Stack-Panel .dbdata {
-  @apply mt-10 border-gray-200 cursor-pointer border-b-[1px] hover:bg-gray-50;
+  @apply flex items-center p-2 border-gray-200 cursor-pointer border-b-[1px] hover:bg-gray-50 grid grid-cols-12 relative;
 }
 
 /*on select after coming back from modal*/
 .DarkblockWidget-Stack-Panel .dbdataSelected {
-  @apply pr-2 mt-10;
-  background-color: #E5E5E3;
+  @apply p-2;
+  background-color: #e5e5e3;
 }
 
 .DarkblockWidget-Stack-Panel .size {
@@ -212,10 +222,6 @@ td {
   @apply float-right mt-3;
 }
 
-.darkblock-done-button {
-  @apply w-20 p-2 m-4 mt-6 text-white bg-gray-800 rounded-lg;
-}
-
 /* it contains details title and the X button*/
 .darkblock-modal-first-row {
   @apply flex justify-between;
@@ -230,7 +236,7 @@ td {
 }
 
 .darkblock-modal-name {
-  @apply pt-1 text-xl font-bold;
+  @apply pt-1 text-xl font-bold truncate;
 }
 
 .darkblock-modal-detail {
@@ -242,11 +248,11 @@ td {
 }
 
 #darkblock-modal-box {
-  @apply max-w-3xl px-6 py-4 mx-8 text-left bg-white rounded shadow-lg;
+  @apply max-w-xs sm:max-w-lg lg:max-w-3xl px-6 py-4 mx-8 text-left bg-white rounded shadow-lg;
 }
 
 .darkblock-modal-box-container {
-  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-gray-200 bg-opacity-5;
+  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-gray-200 bg-opacity-5 pt-32 pb-7 sm:pt-16;
 }
 
 .darkblock-modal-container {
@@ -254,7 +260,7 @@ td {
 }
 
 .darkblock-detail-container {
-  @apply block w-4/5 px-2;
+  @apply block w-full px-2;
 }
 
 .darkblock-elipsis-cross-button {
@@ -274,5 +280,5 @@ td {
 }
 
 .Darkblock-player-modal-container-title-name {
-  @apply m-auto text-xs text-neutral-400;
+  @apply m-auto text-xs text-neutral-400 truncate;
 }
