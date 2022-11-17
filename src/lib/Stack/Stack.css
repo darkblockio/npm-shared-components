@@ -30,7 +30,7 @@
 
 .DarkblockWidget-Stack-Panel .Darkblock-name {
   @apply flex flex-row items-center text-base text-gray-900 col-span-8 sm:col-span-7 md:col-span-8 lg:col-span-9;
-} 
+}
 
 .DarkblockWidget-Stack-Panel .Darkblock-name .Darkblock-truncate {
   @apply truncate;
@@ -43,9 +43,11 @@
 .Darkblock-items {
   @apply w-12 sm:w-60 flex items-center absolute right-0
 }
+
 .Darkblock-date {
   @apply hidden text-right pr-2 w-28 sm:table-cell;
 }
+
 .darkblock-right-text {
   @apply hidden text-right w-24 sm:table-cell;
 }
@@ -55,13 +57,13 @@
 }
 
 .DarkblockWidget-Stack-Panel .dbdata {
-  @apply  flex items-center p-2 border-gray-200 cursor-pointer border-b-[1px] hover:bg-gray-50 grid grid-cols-12 relative;
+  @apply flex items-center p-2 border-gray-200 cursor-pointer border-b-[1px] hover:bg-gray-50 grid grid-cols-12 relative;
 }
 
 /*on select after coming back from modal*/
 .DarkblockWidget-Stack-Panel .dbdataSelected {
   @apply p-2;
-  background-color: #E5E5E3;
+  background-color: #e5e5e3;
 }
 
 .DarkblockWidget-Stack-Panel .size {
@@ -218,10 +220,6 @@ td {
 
 .darkblock-button-container {
   @apply float-right mt-3;
-}
-
-.darkblock-done-button {
-  @apply w-20 p-2 m-4 mt-6 text-white bg-gray-800 rounded-lg;
 }
 
 /* it contains details title and the X button*/

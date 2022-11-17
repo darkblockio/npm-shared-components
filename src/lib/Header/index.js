@@ -1,15 +1,14 @@
 import React from "react"
 
+import "./Header.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faWallet, faCircleCheck, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
+import { useTranslation } from "react-i18next"
+import '../../i18n'
 import LoadSpinnerState from "../Animations/LoadSpinnerState"
 import Darkblocklogo from "../Animations/Logo/DarklblockLogo"
 import Cross from "../Cross"
-
-import { useTranslation } from "react-i18next"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faWallet, faCircleCheck, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
-
-import "./Header.css"
-import "../../i18n"
+import Button from "../Button"
 
 const setHeader = (onClose, state, title, text, red = false, authenticate = null) => {
   const { t } = useTranslation()
@@ -22,15 +21,16 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
     <div
       className="DarkblockWidget-Header"
       style={{
-        borderColor: errorState.includes(state.value)
-          ? "#EF4444"
-          : state.value === "display"
-          ? "#22C55E"
-          : "rgb(243 244 246)",
+        borderColor:
+          state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error"
+            ? "#EF4444"
+            : state.value === "display"
+              ? "#22C55E"
+              : "rgb(243 244 246)",
       }}
     >
       <div className="DarkblockWidget-HeaderContent">
-        {onClose !== false && walletState.includes(state.value) && (
+        {onClose !== false && (state.value === "no_wallet" || state.value === "wallet_connected" || state.value === "display") && (
           <button className="DarkblockWidget-closeBtn" onClick={onClose}>
             <Cross />
           </button>
@@ -38,9 +38,8 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
 
         <div className="DarkblockWidget-Header-Row">
           {state.value === "signing" && <FontAwesomeIcon icon={faWallet} className="Darkblock-FaWalletIcon awesome" />}
-          {state.value === "display" && (
-            <FontAwesomeIcon icon={faCircleCheck} className="Darkblock-FaCheckIcon awesome" />
-          )}
+          {state.value === "display" &&
+            <FontAwesomeIcon icon={faCircleCheck} className="Darkblock-FaCheckIcon awesome" />}
 
           {errorState.includes(state.value) && (
             <FontAwesomeIcon icon={faTriangleExclamation} className="Darkblock-FaTriangleIcon awesome" />
@@ -63,9 +62,8 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
 
           {!!authenticate && (
             <div className="DarkblockWidget-Header-authButton">
-              <button onClick={authenticate} className="Darkblock-inner-button">
-                {t("header.authenticate")}
-              </button>
+              <Button variant="secondary" className="Darkblock-auth-button"
+                      onClick={authenticate}>{t("header.authenticate")}</Button>
             </div>
           )}
         </div>
@@ -83,57 +81,52 @@ const Header = ({ onClose, state = null, authenticate }) => {
 
   switch (state.value) {
     case "no_wallet":
-      title = t("state.noWalletTitle")
-      text = t("state.noWalletText")
+      title = t('state.noWalletTitle')
+      text = t('state.noWalletText')
       break
     case "start_failure":
-      title = t("state.startFailureTitle")
-      text = t("state.startFailureText")
+      title = t('state.startFailureTitle')
+      text = t('state.startFailureText')
       break
     case "no_darkblock":
-      if (state && state.context && state.context.display && state.context.display.rental) {
-        title = t("state.rentalNftTitle")
-        text = t("state.rentalNftText")
-      } else {
-        title = t("state.noDarkblockTitle")
-        text = t("state.noDarkblockText")
-      }
+      title = t('state.noDarkblockTitle')
+      text = t('state.noDarkblockText')
       break
     case "auth_failure":
-      title = t("state.authFailureTitle")
-      text = t("state.authFailureText")
+      title = t('state.authFailureTitle')
+      text = t('state.authFailureText')
       break
     case "auth_cancel":
-      title = t("state.authCancelTitle")
-      text = t("state.authCancelText")
+      title = t('state.authCancelTitle')
+      text = t('state.authCancelText')
       break
     case "started":
-      title = t("state.startedTitle")
-      text = t("state.startedText")
+      title = t('state.startedTitle')
+      text = t('state.startedText')
       break
     case "wallet_connected":
-      title = t("state.walletConnectedTitle")
-      text = t("state.walletConnectedText")
+      title = t('state.walletConnectedTitle')
+      text = t('state.walletConnectedText')
       break
     case "decrypt_error":
-      title = t("state.decryptErrorTitle")
-      text = t("state.decryptErrorText")
+      title = t('state.decryptErrorTitle')
+      text = t('state.decryptErrorText')
       break
     case "signing":
-      title = t("state.signingTitle")
-      text = t("state.signingText")
+      title = t('state.signingTitle')
+      text = t('state.signingText')
       break
     case "authenticated":
-      title = t("state.ownershipAuth")
-      text = t("state.decrypting")
+      title = t('state.ownershipAuth')
+      text = t('state.decrypting')
       break
     case "decrypting":
-      title = t("state.ownershipAuth")
-      text = t("state.decrypting")
+      title = t('state.ownershipAuth')
+      text = t('state.decrypting')
       break
     case "display":
-      title = t("state.ownershipAuth")
-      text = t("state.displayText")
+      title = t('state.ownershipAuth')
+      text = t('state.displayText')
       break
     default:
   }

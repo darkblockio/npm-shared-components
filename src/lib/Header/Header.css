@@ -25,8 +25,10 @@
 
 .DarkblockWidget-Header-titleStack > .Darkblock-title {
   @apply w-full pt-2 pb-1 font-bold text-center;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .DarkblockWidget-Header-titleStack > .Darkblock-title-red {
@@ -36,17 +38,13 @@
 .DarkblockWidget-Header-titleStack > .Darkblock-dialog-message   {
   @apply w-full pb-2 text-base text-center text-neutral-500;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 16px;
   letter-spacing: -0.01em;
 }
 
 .DarkblockWidget-Header-Row > .DarkblockWidget-Header-authButton {
   @apply flex items-center justify-center flex-auto text-sm font-semibold text-center bg-gray-100 sm:flex sm:flex-auto sm:items-center sm:justify-center;
-}
-
-.DarkblockWidget-Header-authButton > .Darkblock-inner-button {
-  @apply flex items-center justify-center flex-auto px-4 py-2 font-medium font-bold text-center text-black bg-gray-200 rounded-md w-fit h-fit;
 }
 
 .DarkblockWidget-HeaderContent {

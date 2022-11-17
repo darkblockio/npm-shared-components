@@ -5,6 +5,7 @@ import UpgradeModal from "./upgrade.modal"
 import "./Upgrader.css"
 import '../../i18n'
 import { useTranslation } from "react-i18next"
+import Button from "../Button"
 
 const Upgrader = ({ state = null, config, apiKey = null, authenticate, reset }) => {
   const [showButton, setShowButton] = useState(false)
@@ -37,10 +38,9 @@ const Upgrader = ({ state = null, config, apiKey = null, authenticate, reset }) 
         }
       >
         <>
-          <button type={"button"} onClick={() => setShowUpgrade(true)} className="Darkblock-upgrade-add-content">
-            <FontAwesomeIcon icon={faPlus} />
+          <Button type={"button"} variant="secondary" onClick={() => setShowUpgrade(true)} className="Darkblock-upgrade-add-content"><FontAwesomeIcon icon={faPlus} />
             {t('upgrader.addContent')}
-          </button>
+          </Button>
           <UpgradeModal
             apiKey={apiKey}
             state={state}
