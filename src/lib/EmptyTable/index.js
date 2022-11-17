@@ -60,6 +60,8 @@ const EmptyTable = () => {
       <EmptyRow />
       <EmptyRow />
       <EmptyRow />
+      <EmptyRow />
+      <EmptyRow />
     </div>
   )
 }

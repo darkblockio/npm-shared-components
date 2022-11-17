@@ -4,7 +4,7 @@
 
 
  .Darkblock-rowheader {
-  @apply sticky top-0 z-10 h-[48px] text-sm font-semibold text-gray-500 bg-white cursor-pointer grid grid-cols-12 relative;
+  @apply sticky top-0 z-10 h-9 text-sm font-semibold text-gray-500 bg-white cursor-pointer grid grid-cols-12 relative border-b-[1px];
 }
 
 /* flex-grow fixed border-gray-300 w-[98%] cursor-pointer text-[13px] font-semibold bg-white z-30 */
@@ -26,7 +26,7 @@
 }
 
 .Darkblock-items-header {
-  @apply w-64 flex items-center absolute right-0 h-[48px];
+  @apply w-64 flex items-center absolute right-0 h-9;
 }
 /*hiding parts of header and table info on responsive */
 .DarkblockWidget-Stack-Panel .format-header {
