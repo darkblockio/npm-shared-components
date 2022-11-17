@@ -2,7 +2,7 @@ const { faRightToBracket } = require("@fortawesome/free-solid-svg-icons");
 
 module.exports = {
   mode: 'jit',
-  content: ["./src/lib/**/*.js"],
+  content: ["./src/lib/**/*.js", "./src/lib/**/*.jsx"],
   theme: {
     screens: {
       mobile: "320px",

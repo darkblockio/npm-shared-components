@@ -1,14 +1,9 @@
-
 .DarkblockWidget-Upgrader {
   @apply flex items-center w-auto;
 }
 
-.DarkblockWidget-Upgrader .Darkblock-upgrade-add-content {
-  @apply flex flex-row items-center bg-gray-100 text-black rounded px-4 py-1 cursor-pointer
-}
-
 .DarkblockWidget-Upgrader svg {
-  @apply text-black mr-1
+  @apply text-black mr-1;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-modal-container {
@@ -36,19 +31,15 @@
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-line-break {
-  @apply my-4
+  @apply my-4;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-line-break {
-  @apply my-4
+  @apply my-4;
 }
 
 .DarkblockWidget-Upgrader .upgrade-detail-container {
   @apply block w-4/5 px-2;
-}
-
-.DarkblockWidget-Upgrader .Darkblock-upgrade-create-button {
-  @apply float-right px-6 py-2 mr-2 font-semibold text-gray-200 bg-gray-800 rounded hover:bg-gray-600;
 }
 
 #Darkblock-upgrade-modal-bg {
@@ -63,8 +54,8 @@
   @apply mx-4 bg-white;
 }
 
-.DarkblockWidget-Upgrader .Darkblock-upgrade-title-input{
-  @apply font-bold text-sm
+.DarkblockWidget-Upgrader .Darkblock-upgrade-title-input {
+  @apply font-bold text-sm;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-name-input {
@@ -80,23 +71,23 @@
 }
 
 .DarkblockWidget-Upgrader .Darkblock-allowDownload {
-  @apply flex flex-row items-center
+  @apply flex flex-row items-center;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-downloadable-text {
-  @apply inline-block text-sm font-bold text-gray-800 ;
+  @apply inline-block text-sm font-bold text-gray-800;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-downloadable-check {
-  @apply w-4 h-4 mr-2 transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-2 border-gray-800 rounded-sm appearance-none cursor-pointer checked:bg-gray-600 checked:border-gray-600 focus:outline-none ;
+  @apply w-4 h-4 mr-2 transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-2 border-gray-800 rounded-sm appearance-none cursor-pointer checked:bg-gray-600 checked:border-gray-600 focus:outline-none;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-fileupload-container {
   @apply py-4 text-black rounded-xl;
 }
 
-.DarkblockWidget-Upgrader .Darkblock-fileupload-button{
-  @apply font-bold
+.DarkblockWidget-Upgrader .Darkblock-fileupload-button {
+  @apply font-bold;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-fileupload-header {
@@ -120,7 +111,7 @@
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-container {
-  @apply bg-black rounded-xl text-center pb-4 px-3
+  @apply bg-black rounded-xl text-center pb-4 px-3;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-header-text {
@@ -148,19 +139,11 @@
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-warning {
-  @apply justify-center w-1/2 p-1 text-center text-white bg-gray-900 rounded-xl ;
+  @apply justify-center w-1/2 p-1 text-center text-white bg-gray-900 rounded-xl;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-complete-info {
   @apply px-4 mb-4 text-white;
-}
-
-.DarkblockWidget-Upgrader .Darkblock-minting-complete-add-another {
-  @apply inline-block w-2/5 p-2 mt-2 mb-4 text-center text-white bg-black border border-white rounded hover:bg-gray-500;
-}
-
-.DarkblockWidget-Upgrader .Darkblock-minting-complete-done {
-  @apply inline-block w-2/5 p-2 mt-2 mb-4 ml-2 font-bold text-center text-black bg-gray-300 border border-black rounded hover:text-white hover:bg-gray-500;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-try-again {

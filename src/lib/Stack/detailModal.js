@@ -1,5 +1,6 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+import Button from "../Button"
 import Cross from "../Cross"
 
 const DetailModal = ({ db, open, onClose }) => {
@@ -52,9 +53,9 @@ const DetailModal = ({ db, open, onClose }) => {
 
                     </div>
                     <div className="darkblock-button-container">
-                      <button onClick={() => onClose(true)} className="darkblock-done-button">
+                      <Button variant="primary" onClick={() => onClose(true)} className="darkblock-done-button">
                         {t('details.done')}
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </div>
