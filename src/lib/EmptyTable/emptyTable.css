@@ -1,5 +1,5 @@
 .Darkblock-EmptyElement {
-    @apply mx-2 my-4 animate-pulse
+    @apply mx-2 my-4 animate-pulse flex items-center
 }
 .Darkblock-EmptyElementDiv {
     @apply h-4 bg-gray-100 rounded w-20
@@ -17,19 +17,19 @@
     @apply h-4 bg-gray-100 rounded w-44
 }
 .Darkblock-EmptyRowContainer {
-    @apply grid grid-cols-12 gap-4 px-2 items-center border-gray-200 border-b-[1px];
+    @apply grid grid-cols-12 gap-4 px-2 items-center border-gray-200 border-b-[1px] h-12;
 }
 .Darkblock-EmptyHeaderContainer {
-    @apply grid grid-cols-12 gap-4 px-2 border-gray-200 border-y-[1px]
+    @apply grid grid-cols-12 gap-4 px-2 border-gray-200 border-b-[1px] h-9; 
 }
 .Darkblock-SingleElementWrapper {
-    @apply col-span-8
+    @apply col-span-8 flex items-center h-9
 }
 .Darkblock-MultipleElementWrapper {
-    @apply col-span-4 justify-self-end
+    @apply col-span-4 justify-self-end flex items-center h-9
 }
 .Darkblock-EmptyElementFlexWrapper {
-    @apply flex
+    @apply flex h-9 items-center
 }
 .Darkblock-EmptyElementHide {
     @apply hidden sm:block
