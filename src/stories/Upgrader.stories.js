@@ -14,7 +14,7 @@ const config = {
   debug: false, // debug flag to console.log some variables
 }
 
-const apiKey = "" //Darkblock API key goes here
+const apiKey = "api_key_goes_here" //Darkblock API key goes here
 
 const widget = (stateval) => {
   state.value = stateval
