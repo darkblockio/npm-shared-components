@@ -1,14 +1,17 @@
 import React, { useEffect, useState, useRef } from "react"
+
 import OpenSeadragon from "openseadragon"
 import Plyr from "plyr-react"
+import LoadSpinner from "../Animations/LoadSpinner"
+
 import { ReactReader, ReactReaderStyle } from "react-reader"
 import { getJsonData } from "../utils"
 import { VideoPlaceHolderBase64 } from "../imgBase64/VideoPlaceHolderBase64"
+import { t } from "i18next"
+
 import "./plyr.css"
 import "./Player.css"
-import LoadSpinner from "../Animations/LoadSpinner"
 import "../../i18n"
-import { t } from "i18next"
 
 const MyGallery = ({ mediaURL, config }) => {
   const spinner = useRef(null)
@@ -48,6 +51,12 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
   const renditionRef = useRef(null)
   const [selections, setSelections] = useState([])
   const [location, setLocation] = useState(0)
+  const mediaTypeBinaryAndPdf = [
+    "encrypted(model/gltf-binary)",
+    "(model/gltf-binary)",
+    "encrypted(application/pdf)",
+    "(application/pdf)",
+  ]
 
   if (typeof window === "undefined") {
     return <></>
@@ -172,13 +181,7 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
   }
 
   if (mediaType.indexOf("image/gif") > -1) {
-    return (
-      <img
-        id="Darkblock-gif"
-        className="Darkblock-gifViewer"
-        src={mediaURL}
-      />
-    )
+    return <img id="Darkblock-gif" className="Darkblock-gifViewer" src={mediaURL} />
   }
 
   if (mediaType == "encrypted(image/svg+xml)" || mediaType.indexOf("image") > -1)
@@ -207,11 +210,7 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
     )
   }
 
-  if (mediaType === "encrypted(model/gltf-binary)" || mediaType === "(model/gltf-binary)") {
-    return ""
-  }
-
-  if (mediaType == "encrypted(application/pdf)" || mediaType == "(application/pdf)") {
+  if (mediaTypeBinaryAndPdf.includes(mediaType)) {
     return ""
   }
 
@@ -235,6 +234,9 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   const [mUrl, setMUrl] = useState(mediaURL)
   const [mType, setMType] = useState(mediaType)
   const [posterUrl, setPosterUrl] = useState(null)
+  const mediaTypeBinary = ["encrypted(model/gltf-binary)", "(model/gltf-binary)"]
+  const mediaTypePdf = ["encrypted(application/pdf)", "(application/pdf)"]
+  const mediaTypeBinaryAndPdf = [...mediaTypeBinary, ...mediaTypePdf]
 
   useEffect(() => {
     // load 3d modal viewer script
@@ -265,18 +267,13 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
       })
     }
 
-    if (
-      mediaType !== "encrypted(model/gltf-binary)" &&
-      mediaType !== "(model/gltf-binary)" &&
-      mediaType !== "encrypted(application/pdf)" &&
-      mediaType !== "(application/pdf)"
-    ) {
+    if (!mediaTypeBinaryAndPdf.includes(mediaType)) {
       setLoaded(true)
     }
   }
 
   useEffect(() => {
-    if (mediaType == "encrypted(model/gltf-binary)" || mediaType == "(model/gltf-binary)") {
+    if (mediaTypeBinary.includes(mediaType)) {
       const modelViewer = document.getElementById("modelViewer")
       if (modelViewer && modelViewer !== null) {
         modelViewer.addEventListener("progress", (event) => {
@@ -301,9 +298,7 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   return (
     <div className="DarkblockWidget-Player">
       <div className="DarkblockWidget-Player-Content">
-        {loaded &&
-          (mediaType !== "encrypted(model/gltf-binary)" || mediaType !== "(model/gltf-binary)") &&
-          (mediaType !== "encrypted(application/pdf)" || mediaType !== "(application/pdf)") ? (
+        {loaded && !mediaTypeBinaryAndPdf.includes(mediaType) ? (
           <MediaComp mediaURL={mUrl} mediaType={mType} config={config} posterUrl={posterUrl} />
         ) : (
           <div id="Darkblock-seadragon-viewer-spinner">
@@ -311,7 +306,7 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
           </div>
         )}
 
-        {(mediaType == "encrypted(application/pdf)" || mediaType == "(application/pdf)") && (
+        {mediaTypePdf.includes(mediaType) && (
           <iframe
             id="Darkblock-pdf-iframe"
             allowFullScreen
@@ -322,7 +317,7 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
         )}
 
         {/* 3d Model player separated of mediaComp because it has to be added an event listener when is fully rendered */}
-        {(mediaType == "encrypted(model/gltf-binary)" || mediaType == "(model/gltf-binary)") && (
+        {mediaTypeBinary.includes(mediaType) && (
           <div className="Darkblock-model-viewer-player">
             <model-viewer
               id="modelViewer"

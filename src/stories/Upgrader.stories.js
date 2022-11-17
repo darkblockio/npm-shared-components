@@ -10,11 +10,11 @@ const state = {
 }
 
 const config = {
-  customCssClass: "", // pass here a class name you plan to use
+  customCssClass: "api_key_goes_here", // pass here a class name you plan to use
   debug: false, // debug flag to console.log some variables
 }
 
-const apiKey = "dgtqh26mv8mtgemq4tys47d4a2ax" //internal DB key - not for public use
+const apiKey = "api_key_goes_here" //Darkblock API key goes here
 
 const widget = (stateval) => {
   state.value = stateval

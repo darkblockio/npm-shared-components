@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react"
 import Stack from "../lib/Stack"
 import "../lib/main.css"
 
-const stories = storiesOf("Shared components - stack", module)
+const stories = storiesOf("Shared components - stack")
 const state = {
   value: "",
   context: {

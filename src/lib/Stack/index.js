@@ -1,115 +1,21 @@
 import React, { useState, useEffect } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-import {
-  faGlobe,
-  faQuestionCircle,
-  faFilePdf,
-  faFilm,
-  faImage,
-  faFileZipper,
-  faMusic,
-  faCube,
-  faAngleDown,
-  faAngleUp,
-  faBook,
-  faChevronLeft,
-  faChevronRight,
-  faArrowLeft,
-  faArrowRight,
-  faEllipsisVertical,
-} from "@fortawesome/free-solid-svg-icons"
+import RowContent from "./RowContent"
 import FooterSharedComponents from "../Footer"
 import Player from "../Player"
 import Header from "../Header"
 import Titles from "../Titles"
+import PlayerModal from "../playerModal"
+import EmptyTable from "../EmptyTable"
+import EllipsisModal from "./ellipsisModal"
+
+import { faClose } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { RenderArrowIcon } from "./AuxFunctions"
 
 import "./Stack.css"
 import "../db.css"
-import PlayerModal from "../playerModal"
-import { faClose } from "@fortawesome/free-solid-svg-icons"
-import EmptyTable from "../EmptyTable"
-import EllipsisModal from "./ellipsisModal"
 import "../../i18n"
-
-const RenderIcon = ({ filetype }) => {
-  let icon = faQuestionCircle
-
-  if (filetype.indexOf("html") > -1) icon = faGlobe
-  if (filetype.indexOf("video") > -1) icon = faFilm
-  if (filetype.indexOf("audio") > -1) icon = faMusic
-  if (filetype.indexOf("image") > -1) icon = faImage
-  if (filetype.indexOf("pdf") > -1) icon = faFilePdf
-  if (filetype.indexOf("zip") > -1) icon = faFileZipper
-  if (filetype.indexOf("model") > -1) icon = faCube
-  if (filetype.indexOf("usdz") > -1) icon = faCube
-  if (filetype.indexOf("up") > -1) icon = faAngleUp
-  if (filetype.indexOf("down") > -1) icon = faAngleDown
-  if (filetype.indexOf("epub") > -1) icon = faBook
-  if (filetype.indexOf("chevronLeft") > -1) icon = faChevronLeft
-  if (filetype.indexOf("chevronRight") > -1) icon = faChevronRight
-
-  return <FontAwesomeIcon icon={icon} className="Darkblock-awesome" />
-}
-
-const RenderArrowIcon = ({ filetype }) => {
-  let icon = faQuestionCircle
-
-  if (filetype.indexOf("faArrowLeft") > -1) icon = faArrowLeft
-  if (filetype.indexOf("faArrowRight") > -1) icon = faArrowRight
-
-  return <FontAwesomeIcon icon={icon} className="Darkblock-arrowIcons" />
-}
-
-const RenderEllipsisIcon = ({ filetype }) => {
-  let icon = faQuestionCircle
-
-  if (filetype.indexOf("ellipsis") > -1) icon = faEllipsisVertical
-
-  return <FontAwesomeIcon icon={icon} size="lg" className="Darkblock-toggleIcon" />
-}
-
-const RowContent = ({ db, f = null, counter = "", selected = false, index = 0, showDetailModal }) => {
-  let fn = f && typeof f === "function" ? f : () => {}
-  let d = new Date(0)
-  d.setUTCMilliseconds(db.datecreated)
-  let truncatedName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
-
-  const isRowActive = selected.i === index
-
-  return (
-    <>
-      <tr className={`dbdata ${isRowActive && "dbdataSelected"}`}>
-        <td className="darkblock-name" onClick={fn}>
-          <RenderIcon filetype={db.fileFormat} />
-          <span>{`${counter} ${truncatedName}`}</span>
-        </td>
-        <td className="darkblock-right-text" onClick={fn}>
-          {db.fileSize}
-        </td>
-        <td className="Darkblock-date" onClick={fn}>
-          {d.toLocaleString([], {
-            year: "numeric",
-            month: "numeric",
-            day: "numeric",
-          })}
-        </td>
-        <td className="darkblock-toggleBtn">
-          <div
-            onClick={() => {
-              showDetailModal(db)
-            }}
-            className="darkblock-toggle-container"
-          >
-            <button className="darkblock-toggle">
-              <RenderEllipsisIcon filetype={"ellipsis"} />
-            </button>
-          </div>
-        </td>
-      </tr>
-    </>
-  )
-}
 
 const Stack = ({ state = null, authenticate, urls, config }) => {
   const [selected, setSelected] = useState()
@@ -127,11 +33,39 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     setShowModal(false)
   }
 
-  const handleEscKey = () => {
+  const handleEscKey = (event) => {
     if (event.key === "Escape") {
       setShowModal(false)
     }
   }
+
+  const previousDb = () => {
+    if (selected.i === 0) return
+
+    const nextIndex = selected.i - 1
+    const nextDb = state.context.display.stack[nextIndex]
+
+    setSwapping(true)
+    setSelected({ type: nextDb.fileFormat, mediaURL: urls[nextIndex], i: nextIndex, db: nextDb })
+  }
+
+  const nextDb = () => {
+    const dbCount = state.context.display.stack.length
+    if (dbCount === selected.i + 1) return
+
+    const nextIndex = selected.i + 1
+    const nextDb = state.context.display.stack[nextIndex]
+
+    setSwapping(true)
+    setSelected({ type: nextDb.fileFormat, mediaURL: urls[nextIndex], i: nextIndex, db: nextDb })
+  }
+
+  const documentHeight = () => {
+    setHeight(window.innerHeight)
+    doc.style.setProperty("--doc-height", `${window.innerHeight}px`)
+  }
+
+  const stateValue = ["idle", "loading_arweave", "started", "start_failure", "no_darkblock"]
 
   useEffect(() => {
     document.addEventListener("keydown", handleEscKey, false)
@@ -166,37 +100,11 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     }
   }, [swapping])
 
-  const previousDb = () => {
-    if (selected.i === 0) return
-
-    const nextIndex = selected.i - 1
-    const nextDb = state.context.display.stack[nextIndex]
-
-    setSwapping(true)
-    setSelected({ type: nextDb.fileFormat, mediaURL: urls[nextIndex], i: nextIndex, db: nextDb })
-  }
-
-  const nextDb = () => {
-    const dbCount = state.context.display.stack.length
-    if (dbCount === selected.i + 1) return
-
-    const nextIndex = selected.i + 1
-    const nextDb = state.context.display.stack[nextIndex]
-
-    setSwapping(true)
-    setSelected({ type: nextDb.fileFormat, mediaURL: urls[nextIndex], i: nextIndex, db: nextDb })
-  }
-
-  const documentHeight = () => {
-    setHeight(window.innerHeight)
-    doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
-  }
-
   useEffect(() => {
-    doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
-    window.addEventListener('resize', documentHeight)
+    doc.style.setProperty("--doc-height", `${window.innerHeight}px`)
+    window.addEventListener("resize", documentHeight)
     return () => {
-      window.removeEventListener('resize', documentHeight)
+      window.removeEventListener("resize", documentHeight)
     }
   }, [height])
 
@@ -265,14 +173,10 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           />
         )}
 
-        {state.value !== "idle" &&
-        state.value !== "loading_arweave" &&
-        state.value !== "started" &&
-        state.value !== "start_failure" &&
-        state.value !== "no_darkblock" ? (
+        {!stateValue.includes(state.value) ? (
           <div className="DarkblockWidget-Stack-Panel">
-            <table className="darkblock-stack-table" style={{ opacity: opacity }}>
-              <tbody>
+            <div className="Darkblock-Stack-Table" style={{ opacity: opacity }}>
+              <div>
                 <Titles state={state} />
                 {state.context.display.stack.map((db, i) => {
                   if (state.value === "display") {
@@ -319,8 +223,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                     )
                   }
                 })}
-              </tbody>
-            </table>
+              </div>
+            </div>
           </div>
         ) : (
           <EmptyTable />

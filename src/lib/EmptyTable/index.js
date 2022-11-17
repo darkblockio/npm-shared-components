@@ -1,10 +1,9 @@
-import React from "react"
 import "./emptyTable.css"
 
-const EmptyElement = () => {
+const EmptyElement = ({ lg, hide }) => {
   return (
-    <div className="Darkblock-EmptyElement">
-      <div className="Darkblock-EmptyElementDiv"></div>
+    <div className={`Darkblock-EmptyElement ${hide && "Darkblock-EmptyElementHide"}`}>
+      <div className={`Darkblock-EmptyElementDiv${lg ? "Lg" : ""}`}></div>
     </div>
   )
 }
@@ -18,49 +17,50 @@ const EmptyNameElement = () => {
   )
 }
 
-const EmptyRow = () => {
+const EmptyHeader = () => {
   return (
-    <tr className="Darkblock-EmptyRowContainer">
-      <td>
+    <div className="Darkblock-EmptyHeaderContainer">
+      <div className="Darkblock-SingleElementWrapper">
+        <EmptyElement lg />
+      </div>
+      <div className="Darkblock-MultipleElementWrapper">
+        <div className="Darkblock-EmptyElementFlexWrapper">
+          <EmptyElement hide />
+          <EmptyElement hide />
+          <EmptyElement />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const EmptyRow = () => {
+  // EmptyRow component to CSS Grid with tailwind classes and use it here
+  return (
+    <div className="Darkblock-EmptyRowContainer">
+      <div className="Darkblock-SingleElementWrapper">
         <EmptyNameElement />
-      </td>
-      <td className="Darkblock-EmptyDataCell ">
-        <EmptyElement />
-      </td>
-      <td className="Darkblock-EmptyDataCell">
-        <EmptyElement />
-      </td>
-      <td className="Darkblock-EmptyDataCellLast">
-        <EmptyElement />
-      </td>
-    </tr>
+      </div>
+      <div className="Darkblock-MultipleElementWrapper">
+        <div className="Darkblock-EmptyElementFlexWrapper">
+          <EmptyElement hide />
+          <EmptyElement hide />
+          <EmptyElement />
+        </div>
+      </div>
+    </div>
   )
 }
 
 const EmptyTable = () => {
   return (
-    <table>
-      <tbody className="Darkblock-EmptyTableContainer">
-        <tr className="Darkblock-EmptyTableRow">
-          <th scope="col" className="">
-            <EmptyElement />
-          </th>
-          <th scope="col" className="Darkblock-EmptyTableColumn">
-            <EmptyElement />
-          </th>
-          <th scope="col" className="Darkblock-EmptyTableColumn">
-            <EmptyElement />
-          </th>
-          <th scope="col" className="Darkblock-EmptyDataCellLast">
-            <EmptyElement />
-          </th>
-        </tr>
-        <EmptyRow />
-        <EmptyRow />
-        <EmptyRow />
-        <EmptyRow />
-      </tbody>
-    </table>
+    <div>
+      <EmptyHeader />
+      <EmptyRow />
+      <EmptyRow />
+      <EmptyRow />
+      <EmptyRow />
+    </div>
   )
 }
 
