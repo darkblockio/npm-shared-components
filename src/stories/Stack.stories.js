@@ -201,7 +201,7 @@ const stackMediaURLs = [
   "https://darkblock-media.s3.amazonaws.com/samples/movie-with-poster.json",
   "https://darkblock-media.s3.amazonaws.com/samples/html.html",
   "https://darkblock-media.s3.amazonaws.com/samples/dancing.glb",
-  "https://darkblock-media.s3.amazonaws.com/samples/music.mp3",
+  "https://gateway.darkblock.io/proxy?artid=031dbeaf-713d-482f-89a7-2db5a373c5cb&session_token=1668628971025_0x8d124f207336f29a8cc6e9e902344d53e187919ff9581314474d86a929beebce2787575442116cea936491e6cdd6ba813e646bfa1a0f74a94c5096f98f21fbe21c&token_id=1&contract=0x3a29f9f90ea83893b70ed7725afab758d9779acb&platform=Polygon&owner=0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
   "https://darkblock-media.s3.amazonaws.com/samples/image.png",
   "https://darkblock-media.s3.amazonaws.com/samples/movie.mp4",
   "https://darkblock-media.s3.amazonaws.com/samples/bigmovie.mp4",

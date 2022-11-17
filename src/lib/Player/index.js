@@ -9,7 +9,6 @@ import "./Player.css"
 import LoadSpinner from "../Animations/LoadSpinner"
 import "../../i18n"
 import { t } from "i18next"
-import ReactAudioPlayer from "react-audio-player"
 
 const MyGallery = ({ mediaURL, config }) => {
   const spinner = useRef(null)
@@ -97,6 +96,40 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
     }
   }, [setSelections, selections])
 
+
+  useEffect(() => {
+    var getDuration = function (next) {
+      let audioPlayerDoc = document.getElementById('audioPlayer')
+
+      audioPlayerDoc.addEventListener("loadedmetadata", function (e) {
+        if (this.duration != Infinity) {
+          audioPlayerDoc.style.display = 'block'
+          var duration = this.duration
+          // audioPlayerDoc.remove();
+          next(duration);
+          // audioPlayerDoc.currentTime = duration
+          // console.log('entering')
+        }
+      }, false);
+
+      audioPlayerDoc.addEventListener("durationchange", function (e) {
+        if (this.duration != Infinity) {
+          audioPlayerDoc.style.display = 'block'
+        }
+      }, false);
+      audioPlayerDoc.load();
+      audioPlayerDoc.currentTime = 24 * 60 * 60; //fake big time
+      //audioPlayerDoc.volume = 0;
+      //audioPlayerDoc.play();
+      //waiting...
+    };
+
+    getDuration(
+      function (duration) {
+        console.log("calculating duration...");
+      });
+  }, [])
+
   if (mediaType == "encrypted(application/epub+zip)" && typeof window !== "undefined") {
     return (
       <div className="Darkblock-reactReader">
@@ -156,10 +189,9 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
     return (
       <>
         <div className="Darkblock-audioPlayer">
-          <ReactAudioPlayer
-            src={mediaSrc.sources[0].src}
-            controls={true}
-          />
+          <audio controls id='audioPlayer' preload="metadata" style={{ display: 'none' }}>
+            <source src={mediaSrc.sources[0].src} type="audio/mpeg"></source>
+          </audio>
         </div>
       </>
     )
