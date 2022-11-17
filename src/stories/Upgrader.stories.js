@@ -14,7 +14,7 @@ const config = {
   debug: false, // debug flag to console.log some variables
 }
 
-const apiKey = "dgtqh26mv8mtgemq4tys47d4a2ax" //internal DB key - not for public use
+const apiKey = "" //Darkblock API key goes here
 
 const widget = (stateval) => {
   state.value = stateval
