@@ -41,7 +41,7 @@
 }
 
 .Darkblock-items {
-  @apply w-12 sm:w-60 flex items-center absolute right-0
+  @apply w-12 h-12 sm:w-60 flex items-center absolute right-0
 }
 
 .Darkblock-date {
@@ -107,7 +107,7 @@ td {
 }
 
 .darkblock-toggleBtn {
-  @apply w-8 px-1;
+  @apply w-12;
 }
 
 .darkblock-titlebox-menu {

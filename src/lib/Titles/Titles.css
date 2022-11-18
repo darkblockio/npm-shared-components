@@ -22,7 +22,7 @@
 }
 
 .Darkblock-format-icon {
-  @apply  p-4 text-center;
+  @apply  w-12;
 }
 
 .Darkblock-items-header {
