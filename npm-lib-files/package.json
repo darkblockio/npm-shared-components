@@ -1,6 +1,6 @@
 {
   "name": "@darkblock.io/shared-components",
-  "version": "0.2.30",
+  "version": "0.2.31",
   "description": "Darkblock.io React Shared Component Library",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",

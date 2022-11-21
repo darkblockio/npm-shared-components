@@ -1,3 +1,4 @@
+import React from "react"
 import "./emptyTable.css"
 
 const EmptyElement = ({ lg, hide }) => {
