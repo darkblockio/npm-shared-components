@@ -3,10 +3,10 @@
 }
 
 .DarkblockWidget-Footer {
-  @apply relative bottom-0 inline-block pt-4 mt-auto text-xs font-bold font-medium text-neutral-400 align-middle;
+  @apply relative bottom-0 inline-block pt-4 mt-auto text-xs font-bold font-medium pl-4 text-neutral-400 align-middle;
 }
 .DarkblockWidget-Footer p {
-  @apply inline-block align-bottom;
+  @apply inline-block align-middle;
   margin-block-start: 0em;
   margin-block-end: 0em;
 }

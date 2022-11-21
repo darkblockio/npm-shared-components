@@ -8,7 +8,7 @@ const Titles = ({ state }) => {
   const { t } = useTranslation()
 
   return (
-    <div className="Darkblock-rowheader">
+    <div className="Darkblock-rowheader Darkblock-TableHeaderText">
       <div className="Darkblock-name-header">
         <span>{t("titles.name")}</span>
         <span> ({db})</span>

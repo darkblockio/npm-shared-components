@@ -57,7 +57,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
             <div className="DarkblockWidget-Header-titleStack">
               <h3 className={red ? "Darkblock-title Darkblock-title-red" : "Darkblock-title"}>{title}</h3>
               <div className="Darkblock-dialog-message">{text}</div>
-            </div>
+            </div>  
           )}
 
           {!!authenticate && (
@@ -72,7 +72,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
   )
 }
 
-const Header = ({ onClose, state = null, authenticate }) => {
+const   Header = ({ onClose, state = null, authenticate }) => {
   var title = ""
   var text = ""
   const { t } = useTranslation()

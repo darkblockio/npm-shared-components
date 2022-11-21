@@ -1,3 +1,214 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* 
+
+H1 - - - - - - - - - - - - - -
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: -0.02em; 
+- - - - - - - - - - - - - - - - 
+
+H2 - - - - - - - - - - - - - - 
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.03em;
+
+H3 - - - - - - - - - - - - - - - 
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 15px;
+line-height: 20px;
+letter-spacing: -0.02em;
+- - - - - - - - - - - - - - - - -
+
+Body - - - - - - - - - - - - - - -  
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 20px;
+letter-spacing: -0.02em;
+- - - - - - - - - - - - - - - - - -
+
+Body Small - - - - - - - - - - - - - - -  
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 20px;
+letter-spacing: -0.01em;
+- - - - - - - - - - - - - - - - - -
+
+Button Large - - - - - - - - - - - 
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.02em;
+- - - - - - - - - - - - - - - - - - 
+
+Button Medium - - - - - - - - - - -
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 24px;
+letter-spacing: -0.02em;
+- - - - - - - - - - - - - - - - - - -
+
+Button Medium - - - - - - - - - - -
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 24px;
+letter-spacing: -0.02em;
+- - - - - - - - - - - - - - - - - - -
+
+Table Header - - - - - - - - - - -
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 13px;
+line-height: 20px;
+- - - - - - - - - - - - - - - - - - -
+
+Dialog Message - - - - - - - - - - -
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 13px;
+line-height: 16px;
+letter-spacing: -0.01em;
+- - - - - - - - - - - - - - - - - - -
+
+Badge Label - - - - - - - - - - -
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 16px;
+- - - - - - - - - - - - - - - - - - -
+
+Footer Text - - - - - - - - - - -
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 20px;
+letter-spacing: -0.01em;
+- - - - - - - - - - - - - - - - - - -
+*/
+
+@layer base {
+  html {
+    font-family: Inter, system-ui, sans-serif;
+  }
+}
+
+@layer base {
+  .Darkblock-H1 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .Darkblock-H2 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.03em;
+  }
+
+  .Darkblock-H3 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .Darkblock-BodyText {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .Darkblock-BodyTextSmall {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .Darkblock-ButtonLargeText {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .Darkblock-ButtonMediumText {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .Darkblock-ButtonSmallText {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .Darkblock-TableHeaderText {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .Darkblock-DialogMessageText {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .Darkblock-BadgeLabelText {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  .Darkblock-FooterText {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+  }
+}
