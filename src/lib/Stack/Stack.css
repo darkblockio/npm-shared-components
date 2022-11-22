@@ -62,8 +62,7 @@
 
 /*on select after coming back from modal*/
 .DarkblockWidget-Stack-Panel .dbdataSelected {
-  @apply p-2;
-  background-color: #e5e5e3;
+  @apply bg-[#e5e5e3];
 }
 
 .DarkblockWidget-Stack-Panel .size {
@@ -99,11 +98,11 @@ td {
 }
 
 .darkblock-is-not-downloadable {
-  @apply text-gray-300 cursor-not-allowed;
+  @apply flex flex-row items-center text-neutral-400 cursor-not-allowed h-10;
 }
 
 .darkblock-cursor-pointer {
-  @apply cursor-pointer;
+  @apply flex flex-row items-center text-black w-60 hover:bg-gray-200 cursor-pointer h-10 rounded;
 }
 
 .darkblock-toggleBtn {
@@ -112,6 +111,10 @@ td {
 
 .darkblock-titlebox-menu {
   @apply flex flex-row justify-between pb-1 pl-4 text-black;
+}
+
+.darkblock-title-menu {
+  @apply truncate;
 }
 
 .darkblock-toggle-container {
@@ -153,7 +156,7 @@ td {
 }
 
 .darkblock-dropdown-content .darkblock-box-menu {
-  @apply h-12 pb-1 rounded w-80 hover:bg-gray-200;
+  @apply h-10 pb-1 rounded w-80 hover:bg-gray-200;
 }
 
 .DarkblockWidget-Stack-Panel .darkblock-dropdown-content {
