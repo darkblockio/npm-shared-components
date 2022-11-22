@@ -1,3 +1,4 @@
+import React from "react"
 import "./emptyTable.css"
 
 const EmptyElement = ({ lg, hide }) => {
@@ -56,6 +57,8 @@ const EmptyTable = () => {
   return (
     <div>
       <EmptyHeader />
+      <EmptyRow />
+      <EmptyRow />
       <EmptyRow />
       <EmptyRow />
       <EmptyRow />

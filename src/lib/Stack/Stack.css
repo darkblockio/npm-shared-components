@@ -41,7 +41,7 @@
 }
 
 .Darkblock-items {
-  @apply w-12 sm:w-60 flex items-center absolute right-0
+  @apply w-12 h-12 sm:w-60 flex items-center absolute right-0
 }
 
 .Darkblock-date {
@@ -57,7 +57,7 @@
 }
 
 .DarkblockWidget-Stack-Panel .dbdata {
-  @apply flex items-center p-2 border-gray-200 cursor-pointer border-b-[1px] hover:bg-gray-50 grid grid-cols-12 relative;
+  @apply border-gray-200 cursor-pointer border-b-[1px] hover:bg-gray-50 grid grid-cols-12 relative h-12;
 }
 
 /*on select after coming back from modal*/
@@ -107,7 +107,7 @@ td {
 }
 
 .darkblock-toggleBtn {
-  @apply w-8 px-1;
+  @apply w-12;
 }
 
 .darkblock-titlebox-menu {
