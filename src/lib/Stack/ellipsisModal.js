@@ -12,7 +12,6 @@ import DetailModal from "./detailModal"
 import { useTranslation } from "react-i18next"
 import Cross from "../Cross"
 
-
 const RenderDetailIcon = ({ filetype }) => {
   let icon = faQuestionCircle
   if (filetype.indexOf("ellipsis") > -1) icon = faEllipsisVertical
@@ -38,7 +37,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
           <div className="darkblock-dropdown">
             <div className="darkblock-dropdown-content">
               <div className="darkblock-titlebox-menu">
-                {truncateName}
+                <span className="darkblock-title-menu">{db.name}</span>
                 <button className="darkblock-elipsis-cross-button" onClick={closeToggle}>
                   <Cross />
                 </button>
@@ -47,10 +46,10 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
                 <span className="darkblock-icons">
                   <RenderDetailIcon filetype={"info"} />
                 </span>
-                <span className="darkblock-placeholder">{t('elipsis.details')}</span>
+                <span className="darkblock-placeholder">{t("elipsis.details")}</span>
               </a>
               <a
-                className={`darkblock-box-menu ${!isDownloadable ? "darkblock-is-not-downloadable" : "darkblock-cursor-pointer"}`}
+                className={`${!isDownloadable ? "darkblock-is-not-downloadable" : "darkblock-cursor-pointer"}`}
                 onClick={() => {
                   if (isDownloadable) {
                     downloadFile(url, fileFormat, truncateName)
@@ -62,7 +61,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
                 <span className="darkblock-icons">
                   <RenderDetailIcon filetype={"download"} />
                 </span>
-                <span className="darkblock-placeholder">{t('elipsis.download')}</span>
+                <span className="darkblock-placeholder">{t("elipsis.download")}</span>
               </a>
               <a target="_blank" rel="noreferrer" className="darkblock-box-menu" href={db.arweaveTXLink}>
                 <span className="darkblock-icons">
