@@ -1,6 +1,6 @@
 import React from "react"
 import StaticDBLogo from "../Panel/staticDBLogo"
-import '../../i18n'
+import "../../i18n"
 import { useTranslation } from "react-i18next"
 
 export default function FooterSharedComponents(config, state) {
@@ -9,7 +9,7 @@ export default function FooterSharedComponents(config, state) {
   return (
     <>
       <div className="DarkblockWidget-Footer">
-        <p>{t('footer.poweredBy')} &nbsp;</p>
+        <p className="Darkblock-FooterText">{t("footer.poweredBy")} &nbsp;</p>
         <div>
           <StaticDBLogo />
         </div>

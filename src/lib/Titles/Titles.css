@@ -1,20 +1,20 @@
- .tableContainer{
+.tableContainer {
   @apply table-auto ml-2 text-[13px] fixed w-screen cursor-pointer font-semibold z-30 top-0;
- }
+}
 
 
- .Darkblock-rowheader {
-  @apply sticky top-0 z-10 h-9 text-sm font-semibold text-gray-500 bg-white cursor-pointer grid grid-cols-12 relative border-b-[1px];
+.Darkblock-rowheader {
+  @apply sticky top-0 z-10 h-[48px] text-gray-500 bg-white cursor-pointer grid grid-cols-12 border-b-[1px];
 }
 
 /* flex-grow fixed border-gray-300 w-[98%] cursor-pointer text-[13px] font-semibold bg-white z-30 */
 
 .Darkblock-name-header {
-  @apply pl-2 text-left col-span-8 flex items-center;
+  @apply pl-4 text-left col-span-8 flex items-center;
 }
 
 .Darkblock-format-header {
-  @apply hidden text-right w-28 sm:table-cell ;
+  @apply hidden text-right w-28 sm:table-cell;
 }
 
 .Darkblock-format-date {
