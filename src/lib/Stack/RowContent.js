@@ -13,9 +13,9 @@ const RowContent = ({ db, f = null, counter = "", selected = false, index = 0, s
       <div className={`dbdata ${isRowActive && "dbdataSelected"}`}>
         <div className="Darkblock-name" onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
-          <span className="Darkblock-truncate">{`${counter} ${db.name}`}</span>
+          <span className="Darkblock-truncate Darkblock-BodyText">{`${counter} ${db.name}`}</span>
         </div>
-        <div className="Darkblock-items">
+        <div className="Darkblock-items Darkblock-BodyTextSmall">
           <div className="darkblock-right-text" onClick={fn}>
             {db.fileSize}
           </div>
