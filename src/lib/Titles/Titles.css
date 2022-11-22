@@ -3,7 +3,7 @@
 }
 
 .Darkblock-rowheader {
-  @apply sticky top-0 z-10 h-[48px] text-gray-500 bg-white cursor-pointer grid grid-cols-12 relative;
+  @apply sticky top-0 z-10 h-[48px] text-gray-500 bg-white cursor-pointer grid grid-cols-12;
 }
 
 /* flex-grow fixed border-gray-300 w-[98%] cursor-pointer text-[13px] font-semibold bg-white z-30 */
