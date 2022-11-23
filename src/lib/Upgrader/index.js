@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import UpgradeModal from "./upgrade.modal"
 import "./Upgrader.css"
-import '../../i18n'
+import "../../i18n"
 import { useTranslation } from "react-i18next"
 import Button from "../Button"
 
-const Upgrader = ({ state = null, config, apiKey = null, authenticate, reset }) => {
+const Upgrader = ({ state = null, config, apiKey = null, authenticate, reset, dev = false }) => {
   const [showButton, setShowButton] = useState(false)
   const [apiKeyValid, setApiKeyValid] = useState(false)
   const [showUpgrade, setShowUpgrade] = useState(false)
@@ -38,8 +38,14 @@ const Upgrader = ({ state = null, config, apiKey = null, authenticate, reset }) 
         }
       >
         <>
-          <Button type={"button"} variant="secondary" onClick={() => setShowUpgrade(true)} className="Darkblock-upgrade-add-content"><FontAwesomeIcon icon={faPlus} />
-            {t('upgrader.addContent')}
+          <Button
+            type={"button"}
+            variant="secondary"
+            onClick={() => setShowUpgrade(true)}
+            className="Darkblock-upgrade-add-content"
+          >
+            <FontAwesomeIcon icon={faPlus} />
+            {t("upgrader.addContent")}
           </Button>
           <UpgradeModal
             apiKey={apiKey}
@@ -49,6 +55,7 @@ const Upgrader = ({ state = null, config, apiKey = null, authenticate, reset }) 
             className="Darkblock-upgrade-modal"
             authenticate={authenticate}
             reset={reset}
+            dev={dev}
           />
         </>
       </div>
