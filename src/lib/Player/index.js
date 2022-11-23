@@ -262,7 +262,7 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   return (
     <div className="DarkblockWidget-Player">
       <div className="DarkblockWidget-Player-Content">
-        {loaded && !mediaTypeBinaryAndPdf.includes(mediaType) ? (
+        {loaded ? (
           <MediaComp mediaURL={mUrl} mediaType={mType} config={config} posterUrl={posterUrl} />
         ) : (
           <div id="Darkblock-seadragon-viewer-spinner">
