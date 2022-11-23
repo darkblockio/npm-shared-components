@@ -2,7 +2,7 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 import UpgradeForm from "./upload.form"
 
-const UpgradeModal = ({ apiKey, state, open, onClose, authenticate, reset }) => {
+const UpgradeModal = ({ apiKey, state, open, onClose, authenticate, reset, dev }) => {
   const { t } = useTranslation()
   return (
     <>
@@ -14,7 +14,7 @@ const UpgradeModal = ({ apiKey, state, open, onClose, authenticate, reset }) => 
                 <div id="Darkblock-upgrade-modal-box">
                   <div className="Darkblock-upgrade-modal-first-row">
                     <div className="Darkblock-upgrade-modal-first-row-container"></div>
-                    <div className="Darkblock-upgrade-modal-title">{t('upgrader.title')}</div>
+                    <div className="Darkblock-upgrade-modal-title">{t("upgrader.title")}</div>
                     <img
                       alt={"close"}
                       className="Darkblock-upgrade-cross-button"
@@ -30,6 +30,7 @@ const UpgradeModal = ({ apiKey, state, open, onClose, authenticate, reset }) => 
                       onClose={() => onClose(true)}
                       authenticate={authenticate}
                       reset={reset}
+                      dev={dev}
                     />
                   </div>
                 </div>
