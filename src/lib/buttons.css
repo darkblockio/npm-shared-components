@@ -16,6 +16,7 @@
 
 .Darkblock-minting-complete-add-another {
   @apply inline-block w-2/5 p-2 mt-2 mb-4 text-center text-white border border-white rounded hover:bg-gray-500;
+  
 }
 
 .Darkblock-minting-complete-done {
