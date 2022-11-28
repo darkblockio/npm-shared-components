@@ -104,3 +104,9 @@
     letter-spacing: -0.01em;
   }
 }
+
+@layer components {
+  .Darkblock-model-viewer-player {
+  @apply absolute inset-0 z-10 flex w-full m-auto bg-gradient-3D;
+}
+}

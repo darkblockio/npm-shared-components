@@ -14,7 +14,10 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", 'ui-sans-serif', 'system-ui', "sans-serif"],
+        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+      },
+      backgroundImage: {
+        "gradient-3D": "linear-gradient(180deg, #F5F5F5 0%, #E5E5E5 100%)",
       },
     },
   },
