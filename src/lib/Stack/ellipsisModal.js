@@ -37,38 +37,50 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
           <div className="darkblock-dropdown">
             <div className="darkblock-dropdown-content">
               <div className="darkblock-titlebox-menu">
-                <span className="darkblock-title-menu">{db.name}</span>
+                <span className="darkblock-title-menu Darkblock-TableHeaderText">{db.name}</span>
                 <button className="darkblock-elipsis-cross-button" onClick={closeToggle}>
                   <Cross />
                 </button>
               </div>
-              <a className="darkblock-box-menu darkblock-cursor-pointer" onClick={() => setShowDetailModal(true)}>
-                <span className="darkblock-icons">
-                  <RenderDetailIcon filetype={"info"} />
-                </span>
-                <span className="darkblock-placeholder">{t("elipsis.details")}</span>
-              </a>
-              <a
-                className={`${!isDownloadable ? "darkblock-is-not-downloadable" : "darkblock-cursor-pointer"}`}
-                onClick={() => {
-                  if (isDownloadable) {
-                    downloadFile(url, fileFormat, truncateName)
-                  } else {
-                    return null
-                  }
-                }}
-              >
-                <span className="darkblock-icons">
-                  <RenderDetailIcon filetype={"download"} />
-                </span>
-                <span className="darkblock-placeholder">{t("elipsis.download")}</span>
-              </a>
-              <a target="_blank" rel="noreferrer" className="darkblock-box-menu" href={db.arweaveTXLink}>
-                <span className="darkblock-icons">
-                  <RenderDetailIcon filetype={"upRightFromSquare"} />
-                </span>
-                <span className="darkblock-placeholder">Arweave</span>
-              </a>
+              <div className="darkblock-box-menu-items">
+                <a
+                  className="Darkblock-BodyText darkblock-box-menu darkblock-cursor-pointer"
+                  onClick={() => setShowDetailModal(true)}
+                >
+                  <span className="darkblock-icons">
+                    <RenderDetailIcon filetype={"info"} />
+                  </span>
+                  <span className="darkblock-placeholder">{t("elipsis.details")}</span>
+                </a>
+                <a
+                  className={`Darkblock-BodyText ${
+                    !isDownloadable ? "darkblock-is-not-downloadable" : "darkblock-cursor-pointer"
+                  }`}
+                  onClick={() => {
+                    if (isDownloadable) {
+                      downloadFile(url, fileFormat, truncateName)
+                    } else {
+                      return null
+                    }
+                  }}
+                >
+                  <span className="darkblock-icons">
+                    <RenderDetailIcon filetype={"download"} />
+                  </span>
+                  <span className="darkblock-placeholder">{t("elipsis.download")}</span>
+                </a>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className="darkblock-box-menu Darkblock-BodyText"
+                  href={db.arweaveTXLink}
+                >
+                  <span className="darkblock-icons">
+                    <RenderDetailIcon filetype={"upRightFromSquare"} />
+                  </span>
+                  <span className="darkblock-placeholder">Arweave</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

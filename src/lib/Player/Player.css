@@ -38,10 +38,6 @@
   @apply w-full h-full;
 }
 
-.Darkblock-model-viewer-player {
-  @apply absolute inset-0 z-10 flex w-full m-auto;
-}
-
 .Darkblock-model-viewer-player model-viewer {
   @apply w-full h-full;
 }

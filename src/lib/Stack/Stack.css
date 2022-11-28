@@ -96,13 +96,15 @@ td {
 .DarkblockWidget-Stack-Panel .darkblock-dropbtn .toggleIcon {
   @apply text-gray-900 rounded text-sm mb-[1px] bg-none p-3;
 }
-
+.darkblock-box-menu-items{
+  @apply w-72 h-32 ml-4 mt-[3px];
+}
 .darkblock-is-not-downloadable {
-  @apply flex flex-row items-center text-neutral-400 cursor-not-allowed h-10;
+  @apply flex flex-row items-center text-neutral-400 cursor-not-allowed h-10 mb-1;
 }
 
 .darkblock-cursor-pointer {
-  @apply flex flex-row items-center text-black w-60 hover:bg-gray-200 cursor-pointer h-10 rounded;
+  @apply flex flex-row items-center text-black w-full hover:bg-gray-200 cursor-pointer h-10 rounded mb-1;
 }
 
 .darkblock-toggleBtn {
@@ -110,11 +112,11 @@ td {
 }
 
 .darkblock-titlebox-menu {
-  @apply flex flex-row justify-between pb-1 pl-4 text-black;
+  @apply flex flex-row justify-between items-end text-black mt-[5px];
 }
 
 .darkblock-title-menu {
-  @apply truncate;
+  @apply flex items-center h-8 pl-4 truncate;
 }
 
 .darkblock-toggle-container {
@@ -156,11 +158,11 @@ td {
 }
 
 .darkblock-dropdown-content .darkblock-box-menu {
-  @apply h-10 pb-1 rounded w-80 hover:bg-gray-200;
+  @apply h-10 rounded w-80 hover:bg-gray-200;
 }
 
 .DarkblockWidget-Stack-Panel .darkblock-dropdown-content {
-  @apply absolute z-40 p-5 bg-gray-100 w-72 h-fit;
+  @apply absolute z-40 bg-gray-100 w-80 h-52;
 }
 
 .DarkblockWidget-Stack-Panel .darkblock-dropdown:hover {
@@ -168,11 +170,11 @@ td {
 }
 
 .darkblock-box-menu {
-  @apply flex flex-row items-center text-black w-60 hover:bg-gray-100 hover:w-60;
+  @apply flex flex-row items-center text-black w-full hover:bg-gray-100 hover:w-full mb-1;
 }
 
 .darkblock-elipsis-detail-modal {
-  @apply absolute z-30 flex p-4 m-auto bg-gray-100 border-2 border-gray-100 rounded shadow-lg w-80 max-h-72 shadow-gray-300 h-52;
+  @apply absolute z-30 flex p-4 m-auto bg-gray-100 rounded shadow-lg w-80 max-h-72 shadow-gray-300 h-52;
   @apply transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
 }
 
@@ -181,11 +183,11 @@ td {
 }
 
 .darkblock-elipsis-detail-modal .darkblock-dropdown-content {
-  @apply absolute p-5;
+  @apply absolute;
 }
 
 .darkblock-elipsis-detail-modal .darkblock-titlebox-menu {
-  @apply flex flex-row justify-between pb-1 pl-4 text-black;
+  @apply flex flex-row justify-between h-12 pl-4 text-black;
 }
 
 /*player function */
