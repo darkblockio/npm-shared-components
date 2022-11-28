@@ -218,9 +218,10 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev }) => {
           <Button
             state={!fileState || !fileState.name || !name}
             variant="primary"
+            size="large"
             type="submit"
             id="darkblock-submit"
-            className="Darkblock-upgrade-create-button"
+            layout="upgradeCreate"
           >
             {t("upgrader.create")}
           </Button>
@@ -261,8 +262,10 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev }) => {
                       </video>
                     </div>
                     <Button
-                      className="Darkblock-minting-complete-add-another"
-                      variant="gray"
+                      layout="mintingAddAnother"
+                      size="large"
+                      variant="secondary"
+                      color="gray"
                       onClick={() => {
                         clearForm()
                         setMintingState("starting")
@@ -275,8 +278,10 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev }) => {
                     </Button>
 
                     <Button
-                      className="Darkblock-minting-complete-done"
-                      variant="white"
+                      layout="mintingDone"
+                      variant="primary"
+                      size="large"
+                      color="white"
                       onClick={() => {
                         clearForm()
                         setMintingState("starting")

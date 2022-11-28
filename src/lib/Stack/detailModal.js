@@ -47,7 +47,7 @@ const DetailModal = ({ db, open, onClose }) => {
                       <div className="darkblock-detail-subtitle-text">{db.arweaveTX}</div>
                     </div>
                     <div className="darkblock-button-container">
-                      <Button variant="primary" layout="done" onClick={() => onClose(true)}>
+                      <Button variant="primary" size="large" layout="done" onClick={() => onClose(true)}>
                         {t("details.done")}
                       </Button>
                     </div>
