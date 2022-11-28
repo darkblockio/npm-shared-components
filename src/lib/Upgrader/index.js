@@ -41,8 +41,9 @@ const Upgrader = ({ state = null, config, apiKey = null, authenticate, reset, de
           <Button
             type={"button"}
             variant="secondary"
+            size="medium"
             onClick={() => setShowUpgrade(true)}
-            className="Darkblock-upgrade-add-content"
+            layout="upgradeAddContent"
           >
             <FontAwesomeIcon icon={faPlus} />
             {t("upgrader.addContent")}

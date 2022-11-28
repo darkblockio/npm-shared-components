@@ -64,7 +64,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
 
           {!!authenticate && (
             <div className="DarkblockWidget-Header-authButton">
-              <Button variant="secondary" className="Darkblock-auth-button" onClick={authenticate}>
+              <Button variant="secondary" layout="auth" size="medium" onClick={authenticate}>
                 {t("header.authenticate")}
               </Button>
             </div>

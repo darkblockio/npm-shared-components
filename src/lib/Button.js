@@ -1,9 +1,52 @@
 import React from "react"
+import { cva } from "class-variance-authority"
 import "./buttons.css"
 
-const Button = ({ variant = "", state = "", type = null, children, className, id = null, onClick = "" }) => {
+const buttonStyles = cva([], {
+  variants: {
+    variant: {
+      primary: ["Darkblock-primary-button"],
+      secondary: ["Darkblock-secondary-button"],
+    },
+    size: {
+      medium: ["Darkblock-ButtonMediumText", "py-1", "px-3", "rounded-md"],
+      large: ["Darkblock-ButtonLargeText", "py-3", "px-4", "rounded-lg"],
+    },
+    color: {
+      white: ["white"],
+      gray: ["gray"],
+    },
+    layout: {
+      done: ["Darkblock-done-button"],
+      auth: ["Darkblock-auth-button"],
+      upgradeCreate: ["Darkblock-upgrade-create-button"],
+      upgradeAddContent: ["Darkblock-upgrade-add-content"],
+      mintingAddAnother: ["Darkblock-minting-complete-add-another"],
+      mintingDone: ["Darkblock-minting-complete-done"],
+    },
+  },
+})
+
+const Button = ({
+  variant = "",
+  state = "",
+  type = null,
+  children,
+  size,
+  color,
+  layout,
+  className,
+  id = null,
+  onClick = "",
+}) => {
   return (
-    <button className={`${variant} ${className}`} disabled={state} type={type} id={id} onClick={onClick}>
+    <button
+      className={buttonStyles({ variant, layout, size, color, className })}
+      disabled={state}
+      type={type}
+      id={id}
+      onClick={onClick}
+    >
       {children}
     </button>
   )
