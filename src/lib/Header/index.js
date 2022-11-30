@@ -19,33 +19,47 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
   const [counter, setCounter] = useState(null)
   const [counterString, setCounterString] = useState("")
 
-  // useEffect(() => {
-  //   console.log("state", state)
-  // }, [])
+  const secondsToTime = (secs) => {
+    let hours = Math.floor(secs / (60 * 60))
+
+    let divisor_for_minutes = secs % (60 * 60)
+    let minutes = Math.floor(divisor_for_minutes / 60)
+
+    let divisor_for_seconds = divisor_for_minutes % 60
+    let seconds = Math.ceil(divisor_for_seconds)
+
+    hours = ("00" + minutes).slice(-2)
+    minutes = ("00" + minutes).slice(-2)
+    seconds = ("00" + seconds).slice(-2)
+
+    let obj = {
+      hours: hours,
+      minutes: minutes,
+      seconds: seconds,
+    }
+    return obj
+  }
 
   useEffect(() => {
-    // console.log("counter", counter)
     if (counter > 0) {
       setTimeout(() => {
         setCounter(counter - 1)
-        let minutes = parseInt(counter / 60, 10)
-        let seconds = parseInt(counter % 60, 10)
-
-        minutes = ("00" + minutes).slice(-2)
-        seconds = ("00" + seconds).slice(-2)
-
-        setCounterString(`${minutes}:${seconds}`)
+        state.context.display.expireSeconds = counter - 1
+        const timerValues = secondsToTime(counter)
+        setCounterString(`${timerValues.minutes}:${timerValues.seconds}`)
       }, 1000)
     } else {
-      // console.log("DONE!!!!!")
+      setCounterString("")
     }
   }, [counter])
 
-  if (authenticate && state.context.display.expireSeconds) {
-    if (!counter && parseInt(state.context.display.expireSeconds) > 0) {
-      setCounter(state.context.display.expireSeconds)
+  useEffect(() => {
+    if (authenticate && state.context.display.expireSeconds) {
+      if (!counter && parseInt(state.context.display.expireSeconds) > 0) {
+        setCounter(state.context.display.expireSeconds)
+      }
     }
-  }
+  }, [])
 
   return (
     <div
@@ -66,7 +80,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
               <Cross />
             </button>
           )}
-        {!!authenticate && counter && counter > 0 && (
+        {counterString.length > 0 && (
           <div className="DarkblockWidget-Header-countdownTimer">
             <FontAwesomeIcon icon={faStopwatch} className="Darkblock-FaStopwatchIcon" />
             <span>{counterString}</span>
