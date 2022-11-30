@@ -34,6 +34,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
         details: "",
         stack: [],
         rental: false,
+        expireSeconds: null,
       },
       baseLink,
       tokenId,
@@ -63,6 +64,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
               cond: (context, event) => {
                 context.creator = event.data[0]
                 context.arweaveData = event.data[1]
+                context.display.expireSeconds = null
 
                 if (!!context.arweaveData.darkblock && context.arweaveData.darkblock.tags) {
                   context.arweaveData.darkblock.tags.forEach((tag) => {
@@ -74,6 +76,9 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
                 if (context && context.arweaveData && context.arweaveData.info === "rental expired!") {
                   context.display.rental = true
                 }
+
+                console.log("-=-===--=-=- set expire seconds -==--=-=-=-=-=-=-")
+                // context.display.expireSeconds = 174
 
                 if (
                   !!context.creator.creator_address &&

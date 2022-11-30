@@ -1,8 +1,8 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import "./Header.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faWallet, faCircleCheck, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
+import { faWallet, faCircleCheck, faTriangleExclamation, faStopwatch } from "@fortawesome/free-solid-svg-icons"
 import { useTranslation } from "react-i18next"
 import "../../i18n"
 import LoadSpinnerState from "../Animations/LoadSpinnerState"
@@ -16,6 +16,36 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
   const successState = ["loading_arweave", "authenticated", "decrypting"]
   const walletState = ["no_wallet", "wallet_connected", "display"]
   const moreStates = [...errorState, ...successState, "signing", "display"]
+  const [counter, setCounter] = useState(null)
+  const [counterString, setCounterString] = useState("")
+
+  // useEffect(() => {
+  //   console.log("state", state)
+  // }, [])
+
+  useEffect(() => {
+    // console.log("counter", counter)
+    if (counter > 0) {
+      setTimeout(() => {
+        setCounter(counter - 1)
+        let minutes = parseInt(counter / 60, 10)
+        let seconds = parseInt(counter % 60, 10)
+
+        minutes = ("00" + minutes).slice(-2)
+        seconds = ("00" + seconds).slice(-2)
+
+        setCounterString(`${minutes}:${seconds}`)
+      }, 1000)
+    } else {
+      // console.log("DONE!!!!!")
+    }
+  }, [counter])
+
+  if (authenticate && state.context.display.expireSeconds) {
+    if (!counter && parseInt(state.context.display.expireSeconds) > 0) {
+      setCounter(state.context.display.expireSeconds)
+    }
+  }
 
   return (
     <div
@@ -36,7 +66,12 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
               <Cross />
             </button>
           )}
-
+        {!!authenticate && counter && counter > 0 && (
+          <div className="DarkblockWidget-Header-countdownTimer">
+            <FontAwesomeIcon icon={faStopwatch} className="Darkblock-FaStopwatchIcon" />
+            <span>{counterString}</span>
+          </div>
+        )}
         <div className="DarkblockWidget-Header-Row">
           {state.value === "signing" && <FontAwesomeIcon icon={faWallet} className="Darkblock-FaWalletIcon awesome" />}
           {state.value === "display" && (
