@@ -305,8 +305,9 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev }) => {
                         <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
                       </video>
                     </div>
-                    <button
-                      className="Darkblock-minting-try-again"
+                    <Button
+                      layout="mintingTryAgain"
+                      size="large"
                       onClick={() => {
                         setMintingState("starting")
                         setMinting(false)
@@ -315,7 +316,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev }) => {
                       }}
                     >
                       {t("upgrader.tryAgain")}
-                    </button>
+                    </Button>
                   </div>
                 </>
               )}
