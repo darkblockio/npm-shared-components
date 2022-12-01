@@ -7,6 +7,10 @@
   html {
     font-family: Inter, system-ui, sans-serif;
   }
+
+  button {
+    border: none;
+  }
 }
 
 @layer base {
@@ -103,11 +107,14 @@
     line-height: 20px;
     letter-spacing: -0.01em;
   }
+
+  .Darkblock-Translate-50-50 {
+    transform: translate(-50%, -50%);
+  }
 }
 
 @layer components {
   .Darkblock-model-viewer-player {
-  @apply absolute inset-0 z-10 flex w-full m-auto bg-gradient-3D;
+    @apply absolute inset-0 z-10 flex w-full m-auto bg-gradient-3D;
+  }
 }
-}
-

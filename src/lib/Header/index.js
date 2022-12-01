@@ -69,7 +69,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
 
   return (
     <div
-      className="DarkblockWidget-Header"
+      className="DarkblockWidget-Header Darkblock-Translate-50-50"
       style={{
         borderColor:
           state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error"
