@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-
 import "./Header.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faWallet, faCircleCheck, faTriangleExclamation, faStopwatch } from "@fortawesome/free-solid-svg-icons"
@@ -14,7 +13,6 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
   const { t } = useTranslation()
   const errorState = ["auth_failure", "start_failure", "decrypt_error"]
   const successState = ["loading_arweave", "authenticated", "decrypting"]
-  const walletState = ["no_wallet", "wallet_connected", "display"]
   const moreStates = [...errorState, ...successState, "signing", "display"]
   const [counter, setCounter] = useState(null)
   const [counterString, setCounterString] = useState("")
@@ -28,7 +26,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
     let divisor_for_seconds = divisor_for_minutes % 60
     let seconds = Math.ceil(divisor_for_seconds)
 
-    hours = ("00" + minutes).slice(-2)
+    hours = ("00" + hours).slice(-2)
     minutes = ("00" + minutes).slice(-2)
     seconds = ("00" + seconds).slice(-2)
 
@@ -46,7 +44,12 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
         setCounter(counter - 1)
         state.context.display.expireSeconds = counter - 1
         const timerValues = secondsToTime(counter)
-        setCounterString(`${timerValues.minutes}:${timerValues.seconds}`)
+        let timerString = ""
+        if (parseInt(timerValues.hours) > 0) {
+          timerString = `${timerValues.hours}:`
+        }
+        timerString = `${timerString}${timerValues.minutes}:${timerValues.seconds}`
+        setCounterString(timerString)
       }, 1000)
     } else {
       setCounterString("")
@@ -54,12 +57,15 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
   }, [counter])
 
   useEffect(() => {
-    if (authenticate && state.context.display.expireSeconds) {
-      if (!counter && parseInt(state.context.display.expireSeconds) > 0) {
-        setCounter(state.context.display.expireSeconds)
-      }
+    if (
+      !counter &&
+      authenticate &&
+      state.context.display.expireSeconds &&
+      parseInt(state.context.display.expireSeconds) > 0
+    ) {
+      setCounter(parseInt(state.context.display.expireSeconds))
     }
-  }, [])
+  }, [state])
 
   return (
     <div
@@ -80,7 +86,7 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
               <Cross />
             </button>
           )}
-        {counterString.length > 0 && (
+        {!!authenticate && counterString && counterString.length > 0 && (
           <div className="DarkblockWidget-Header-countdownTimer">
             <FontAwesomeIcon icon={faStopwatch} className="Darkblock-FaStopwatchIcon" />
             <span>{counterString}</span>

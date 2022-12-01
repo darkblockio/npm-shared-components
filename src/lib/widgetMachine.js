@@ -77,8 +77,9 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
                   context.display.rental = true
                 }
 
-                console.log("-=-===--=-=- set expire seconds -==--=-=-=-=-=-=-")
-                // context.display.expireSeconds = 174
+                if (context && context.arweaveData && context.arweaveData.expiration) {
+                  context.display.expireSeconds = context.arweaveData.expiration.in_seconds
+                }
 
                 if (
                   !!context.creator.creator_address &&
