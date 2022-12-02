@@ -7,6 +7,10 @@
   html {
     font-family: Inter, system-ui, sans-serif;
   }
+
+  button {
+    border: none;
+  }
 }
 
 @layer base {
@@ -103,4 +107,9 @@
     line-height: 20px;
     letter-spacing: -0.01em;
   }
+
+  .Darkblock-Translate-50-50 {
+    transform: translate(-50%, -50%);
+  }
 }
+
