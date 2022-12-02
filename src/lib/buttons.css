@@ -22,6 +22,10 @@
   @apply inline-block w-2/5 mt-2 mb-4 ml-2 font-bold text-center text-black  border border-black rounded hover:text-white hover:bg-gray-500;
 }
 
+.Darkblock-minting-try-again {
+  @apply inline-block w-2/5 mt-2 mb-4 text-center text-white bg-black border border-white rounded hover:bg-gray-500;
+}
+
 .Darkblock-primary-button {
   @apply bg-black disabled:bg-neutral-500 disabled:text-neutral-400 hover:bg-neutral-800 !important;
 }
