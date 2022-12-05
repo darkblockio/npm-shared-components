@@ -22,6 +22,10 @@
   @apply w-auto h-auto m-auto;
 }
 
+.Darkblock-imageViewer {
+  @apply w-auto h-auto m-auto max-h-[80vh];
+}
+
 .Darkblock-reactReader {
   @apply relative h-[100%];
 }
@@ -43,7 +47,7 @@
 }
 
 .Darkblock-model-viewer-player model-viewer {
-  background-image: linear-gradient(180deg, #F5F5F5 0%, #E5E5E5 100%);
+  background-image: linear-gradient(180deg, #f5f5f5 0%, #e5e5e5 100%);
   @apply w-full h-full;
 }
 
