@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from "react"
 import Plyr from "plyr-react"
 import LoadSpinner from "../Animations/LoadSpinner"
 
-import { ReactReader, ReactReaderStyle } from "react-reader"
+import { ReactReader } from "react-reader"
 import { getJsonData } from "../utils"
 import { VideoPlaceHolderBase64 } from "../imgBase64/VideoPlaceHolderBase64"
 import { t } from "i18next"
@@ -12,7 +12,7 @@ import "./plyr.css"
 import "./Player.css"
 import "../../i18n"
 
-const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
+const MediaComp = ({ mediaURL, mediaType, posterUrl }) => {
   const renditionRef = useRef(null)
   const [selections, setSelections] = useState([])
   const [location, setLocation] = useState(0)
