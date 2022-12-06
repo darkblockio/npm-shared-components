@@ -13,8 +13,8 @@ const buttonStyles = cva([], {
       large: ["Darkblock-ButtonLargeText", "py-3", "px-4", "rounded-lg"],
     },
     color: {
-      white: ["white"],
-      gray: ["gray"],
+      white: ["Darkblock-white"],
+      gray: ["Darkblock-gray"],
     },
     layout: {
       done: ["Darkblock-done-button"],
@@ -23,7 +23,7 @@ const buttonStyles = cva([], {
       upgradeAddContent: ["Darkblock-upgrade-add-content"],
       mintingAddAnother: ["Darkblock-minting-complete-add-another"],
       mintingDone: ["Darkblock-minting-complete-done"],
-      mintingTryAgain: ["white"],
+      mintingTryAgain: ["Darkblock-white"],
     },
   },
 })
