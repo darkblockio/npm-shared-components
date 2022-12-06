@@ -76,7 +76,7 @@ const Minter = ({ state, progress, mintingStateMsg }) => {
                   </video>
                 </div>
                 <button
-                  className="Darkblock-minting-try-again"
+                  className="Darkblock-white"
                   onClick={() => {
                     setMintingState("starting")
                     setMinting(false)

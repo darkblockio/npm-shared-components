@@ -34,10 +34,10 @@
   @apply bg-neutral-200 disabled:bg-neutral-200 disabled:text-neutral-300 hover:bg-neutral-300 !important;
 }
 
-.white {
+.Darkblock-white {
   @apply bg-white disabled:bg-white hover:bg-neutral-200 disabled:text-neutral-300 hover:text-black !important;
 }
 
-.gray {
+.Darkblock-gray {
   @apply bg-neutral-700 disabled:bg-neutral-700 disabled:text-neutral-500 hover:bg-neutral-600 !important;
 }
