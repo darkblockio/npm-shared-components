@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from "react"
 import Plyr from "plyr-react"
 import LoadSpinner from "../Animations/LoadSpinner"
 
-import { ReactReader } from "react-reader"
+import { ReactReader, ReactReaderStyle} from "react-reader"
 import { getJsonData } from "../utils"
 import { VideoPlaceHolderBase64 } from "../imgBase64/VideoPlaceHolderBase64"
 import { t } from "i18next"
