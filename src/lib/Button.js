@@ -23,7 +23,7 @@ const buttonStyles = cva([], {
       upgradeAddContent: ["Darkblock-upgrade-add-content"],
       mintingAddAnother: ["Darkblock-minting-complete-add-another"],
       mintingDone: ["Darkblock-minting-complete-done"],
-      mintingTryAgain: ["Darkblock-minting-try-again"],
+      mintingTryAgain: ["white"],
     },
   },
 })
