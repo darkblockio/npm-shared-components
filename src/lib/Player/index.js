@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useRef } from "react"
 
-import OpenSeadragon from "openseadragon"
 import Plyr from "plyr-react"
 import LoadSpinner from "../Animations/LoadSpinner"
 
-import { ReactReader, ReactReaderStyle } from "react-reader"
+import { ReactReader } from "react-reader"
 import { getJsonData } from "../utils"
 import { VideoPlaceHolderBase64 } from "../imgBase64/VideoPlaceHolderBase64"
 import { t } from "i18next"
@@ -13,41 +12,7 @@ import "./plyr.css"
 import "./Player.css"
 import "../../i18n"
 
-const MyGallery = ({ mediaURL, config }) => {
-  const spinner = useRef(null)
-
-  useEffect(() => {
-    var viewer = OpenSeadragon({
-      id: "Darkblock-seadragon-viewer",
-      showRotationControl: config.showRotationControl,
-      autoHideControls: config.autoHideControls,
-      controlsFadeDelay: config.controlsFadeDelay,
-      prefixUrl: "//app.darkblock.io/opensea/",
-      tileSources: {
-        url: mediaURL,
-        type: "image",
-      },
-      toolbar: "Darkblock-toolbarDiv",
-    })
-    viewer.addOnceHandler("tile-drawn", () => {
-      spinner.current.style.display = "none"
-    })
-  }, [])
-
-  return (
-    <>
-      <div id="Darkblock-seadragon-viewer" onContextMenu={() => false}>
-        <div id="Darkblock-toolbarDiv"></div>
-
-        <div id="Darkblock-seadragon-viewer-spinner" ref={spinner}>
-          <LoadSpinner />
-        </div>
-      </div>
-    </>
-  )
-}
-
-const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
+const MediaComp = ({ mediaURL, mediaType, posterUrl }) => {
   const renditionRef = useRef(null)
   const [selections, setSelections] = useState([])
   const [location, setLocation] = useState(0)
@@ -151,7 +116,7 @@ const MediaComp = ({ mediaURL, mediaType, config, posterUrl }) => {
   }
 
   if (mediaType == "encrypted(image/svg+xml)" || mediaType.indexOf("image") > -1)
-    return <MyGallery mediaURL={mediaURL} config={config} />
+    return <img className="Darkblock-imageViewer" src={mediaURL} />
 
   if (mediaType.indexOf("audio") > -1) {
     mediaSrc.type = "audio"
