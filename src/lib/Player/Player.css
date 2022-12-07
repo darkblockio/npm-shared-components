@@ -7,7 +7,7 @@
 }
 
 .DarkblockWidget-Player-Content {
-  @apply object-cover h-full bg-black;
+  @apply object-cover h-full bg-black flex;
 }
 
 .DarkblockWidget-Player-Content #Darkblock-seadragon-viewer {
@@ -22,8 +22,10 @@
   @apply w-auto h-auto m-auto;
 }
 
+/* center img with tailwind on container */
+
 .Darkblock-imageViewer {
-  @apply w-auto h-auto m-auto max-h-[80vh];
+  @apply w-auto h-auto m-auto max-h-[80vh] object-contain;
 }
 
 .Darkblock-reactReader {
