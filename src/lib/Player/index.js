@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useMemo, useState, useRef } from "react"
 
 import Plyr from "plyr-react"
 import LoadSpinner from "../Animations/LoadSpinner"
 
-import { ReactReader, ReactReaderStyle} from "react-reader"
+import { ReactReader, ReactReaderStyle } from "react-reader"
 import { getJsonData } from "../utils"
 import { VideoPlaceHolderBase64 } from "../imgBase64/VideoPlaceHolderBase64"
 import { t } from "i18next"
@@ -14,6 +14,8 @@ import "../../i18n"
 
 const MediaComp = ({ mediaURL, mediaType, posterUrl }) => {
   const renditionRef = useRef(null)
+  const videoRef = useRef(null)
+  const audioRef = useRef(null)
   const [selections, setSelections] = useState([])
   const [location, setLocation] = useState(0)
   const mediaTypeBinaryAndPdf = [
@@ -70,6 +72,13 @@ const MediaComp = ({ mediaURL, mediaType, posterUrl }) => {
     }
   }, [setSelections, selections])
 
+  useEffect(() => {
+    return () => {
+      videoRef.current != null && videoRef.current.destroy()
+      audioRef.current != null && audioRef.current.destroy()
+    }
+  }, [])
+
   if (mediaType == "encrypted(application/epub+zip)" && typeof window !== "undefined") {
     return (
       <div className="Darkblock-reactReader">
@@ -120,11 +129,17 @@ const MediaComp = ({ mediaURL, mediaType, posterUrl }) => {
 
   if (mediaType.indexOf("audio") > -1) {
     mediaSrc.type = "audio"
+
+    const source = useMemo(
+      () => ({ type: mediaSrc.type, poster: mediaSrc.poster, sources: mediaSrc.sources }),
+      [mediaSrc]
+    )
+
+    const plyrVideo = useMemo(() => <Plyr ref={audioRef} source={source} />, [source])
+
     return (
       <>
-        <div className="Darkblock-audioPlayer">
-          <Plyr source={mediaSrc} />
-        </div>
+        <div className="Darkblock-audioPlayer">{plyrVideo}</div>
       </>
     )
   }
@@ -132,11 +147,14 @@ const MediaComp = ({ mediaURL, mediaType, posterUrl }) => {
   if (mediaType.indexOf("video") > -1) {
     mediaSrc.type = "video"
 
-    return (
-      <div className="Darkblock-videoPlayer">
-        <Plyr source={mediaSrc} loop />
-      </div>
+    const source = useMemo(
+      () => ({ type: mediaSrc.type, poster: mediaSrc.poster, sources: mediaSrc.sources }),
+      [mediaSrc]
     )
+
+    const plyrVideo = useMemo(() => <Plyr ref={videoRef} source={source} loop />, [source])
+
+    return <div className="Darkblock-videoPlayer">{plyrVideo}</div>
   }
 
   if (mediaTypeBinaryAndPdf.includes(mediaType)) {
