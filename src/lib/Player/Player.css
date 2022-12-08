@@ -19,7 +19,7 @@
 }
 
 .Darkblock-gifViewer {
-  @apply w-auto h-auto m-auto;
+  @apply w-auto h-auto m-auto max-h-[80vh] object-contain;
 }
 
 /* center img with tailwind on container */
