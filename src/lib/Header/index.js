@@ -68,62 +68,66 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
   }, [state])
 
   return (
-    <div
-      className="DarkblockWidget-Header Darkblock-Translate-50-50"
-      style={{
-        borderColor:
-          state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error"
-            ? "#EF4444"
-            : state.value === "display"
-            ? "#22C55E"
-            : "rgb(243 244 246)",
-      }}
-    >
-      <div className="DarkblockWidget-HeaderContent">
-        {onClose !== false &&
-          (state.value === "no_wallet" || state.value === "wallet_connected" || state.value === "display") && (
-            <button className="DarkblockWidget-closeBtn" onClick={onClose}>
-              <Cross />
-            </button>
+    <div className="DarkblockWidget-Header-Container">
+      <div
+        className="DarkblockWidget-Header"
+        style={{
+          borderColor:
+            state.value === "auth_failure" || state.value === "start_failure" || state.value === "decrypt_error"
+              ? "#EF4444"
+              : state.value === "display"
+              ? "#22C55E"
+              : "rgb(243 244 246)",
+        }}
+      >
+        <div className="DarkblockWidget-HeaderContent">
+          {onClose !== false &&
+            (state.value === "no_wallet" || state.value === "wallet_connected" || state.value === "display") && (
+              <button className="DarkblockWidget-closeBtn" onClick={onClose}>
+                <Cross />
+              </button>
+            )}
+          {!!authenticate && counterString && counterString.length > 0 && (
+            <div className="DarkblockWidget-Header-countdownTimer">
+              <FontAwesomeIcon icon={faStopwatch} className="Darkblock-FaStopwatchIcon" />
+              <span>{counterString}</span>
+            </div>
           )}
-        {!!authenticate && counterString && counterString.length > 0 && (
-          <div className="DarkblockWidget-Header-countdownTimer">
-            <FontAwesomeIcon icon={faStopwatch} className="Darkblock-FaStopwatchIcon" />
-            <span>{counterString}</span>
+          <div className="DarkblockWidget-Header-Row">
+            {state.value === "signing" && (
+              <FontAwesomeIcon icon={faWallet} className="Darkblock-FaWalletIcon awesome" />
+            )}
+            {state.value === "display" && (
+              <FontAwesomeIcon icon={faCircleCheck} className="Darkblock-FaCheckIcon awesome" />
+            )}
+
+            {errorState.includes(state.value) && (
+              <FontAwesomeIcon icon={faTriangleExclamation} className="Darkblock-FaTriangleIcon awesome" />
+            )}
+
+            {!moreStates.includes(state.value) && (
+              <div className="DarkblockWidget-Header-logo">
+                <Darkblocklogo />
+              </div>
+            )}
+
+            {successState.includes(state.value) && <LoadSpinnerState className="Darkblock-Icon" />}
+
+            {(title || text) && (
+              <div className="DarkblockWidget-Header-titleStack">
+                <h3 className={red ? "Darkblock-title Darkblock-title-red" : "Darkblock-title"}>{title}</h3>
+                <div className="Darkblock-dialog-message">{text}</div>
+              </div>
+            )}
+
+            {!!authenticate && (
+              <div className="DarkblockWidget-Header-authButton">
+                <Button variant="secondary" layout="auth" size="medium" onClick={authenticate}>
+                  {t("header.authenticate")}
+                </Button>
+              </div>
+            )}
           </div>
-        )}
-        <div className="DarkblockWidget-Header-Row">
-          {state.value === "signing" && <FontAwesomeIcon icon={faWallet} className="Darkblock-FaWalletIcon awesome" />}
-          {state.value === "display" && (
-            <FontAwesomeIcon icon={faCircleCheck} className="Darkblock-FaCheckIcon awesome" />
-          )}
-
-          {errorState.includes(state.value) && (
-            <FontAwesomeIcon icon={faTriangleExclamation} className="Darkblock-FaTriangleIcon awesome" />
-          )}
-
-          {!moreStates.includes(state.value) && (
-            <div className="DarkblockWidget-Header-logo">
-              <Darkblocklogo />
-            </div>
-          )}
-
-          {successState.includes(state.value) && <LoadSpinnerState className="Darkblock-Icon" />}
-
-          {(title || text) && (
-            <div className="DarkblockWidget-Header-titleStack">
-              <h3 className={red ? "Darkblock-title Darkblock-title-red" : "Darkblock-title"}>{title}</h3>
-              <div className="Darkblock-dialog-message">{text}</div>
-            </div>
-          )}
-
-          {!!authenticate && (
-            <div className="DarkblockWidget-Header-authButton">
-              <Button variant="secondary" layout="auth" size="medium" onClick={authenticate}>
-                {t("header.authenticate")}
-              </Button>
-            </div>
-          )}
         </div>
       </div>
     </div>
