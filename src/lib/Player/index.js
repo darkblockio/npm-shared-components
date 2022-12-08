@@ -14,8 +14,6 @@ import "../../i18n"
 
 const MediaComp = ({ mediaURL, mediaType, posterUrl }) => {
   const renditionRef = useRef(null)
-  const videoRef = useRef(null)
-  const audioRef = useRef(null)
   const [selections, setSelections] = useState([])
   const [location, setLocation] = useState(0)
   const mediaTypeBinaryAndPdf = [
@@ -71,13 +69,6 @@ const MediaComp = ({ mediaURL, mediaType, posterUrl }) => {
       }
     }
   }, [setSelections, selections])
-
-  useEffect(() => {
-    return () => {
-      videoRef.current != null && videoRef.current.destroy()
-      audioRef.current != null && audioRef.current.destroy()
-    }
-  }, [])
 
   if (mediaType == "encrypted(application/epub+zip)" && typeof window !== "undefined") {
     return (
@@ -135,7 +126,7 @@ const MediaComp = ({ mediaURL, mediaType, posterUrl }) => {
       [mediaSrc]
     )
 
-    const plyrVideo = useMemo(() => <Plyr ref={audioRef} source={source} />, [source])
+    const plyrVideo = useMemo(() => <Plyr source={source} />, [source])
 
     return (
       <>
@@ -152,7 +143,7 @@ const MediaComp = ({ mediaURL, mediaType, posterUrl }) => {
       [mediaSrc]
     )
 
-    const plyrVideo = useMemo(() => <Plyr ref={videoRef} source={source} loop />, [source])
+    const plyrVideo = useMemo(() => <Plyr source={source} loop />, [source])
 
     return <div className="Darkblock-videoPlayer">{plyrVideo}</div>
   }
