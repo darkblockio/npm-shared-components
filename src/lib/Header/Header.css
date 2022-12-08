@@ -2,7 +2,7 @@
   @apply absolute grid w-full h-full;
 }
 .DarkblockWidget-Header {
-  @apply  z-30 flex p-4 m-auto bg-gray-100 border-2 border-gray-100 rounded shadow-lg place-content-center w-80 max-h-72 shadow-gray-300 h-52;
+  @apply relative z-30 flex p-4 m-auto bg-gray-100 border-2 border-gray-100 rounded shadow-lg place-content-center w-80 max-h-72 shadow-gray-300 h-52;
   /* @apply top-1/2 left-1/2; */
   /* transform: translate(-50%, -50%); */
 }
@@ -52,7 +52,7 @@
 }
 
 .DarkblockWidget-HeaderContent {
-  @apply m-auto ;
+  @apply m-auto;
 }
 
 .Darkblock-FaWalletIcon {

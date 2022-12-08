@@ -80,13 +80,13 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
               : "rgb(243 244 246)",
         }}
       >
+        {onClose !== false &&
+          (state.value === "no_wallet" || state.value === "wallet_connected" || state.value === "display") && (
+            <button className="DarkblockWidget-closeBtn" onClick={onClose}>
+              <Cross />
+            </button>
+          )}
         <div className="DarkblockWidget-HeaderContent">
-          {onClose !== false &&
-            (state.value === "no_wallet" || state.value === "wallet_connected" || state.value === "display") && (
-              <button className="DarkblockWidget-closeBtn" onClick={onClose}>
-                <Cross />
-              </button>
-            )}
           {!!authenticate && counterString && counterString.length > 0 && (
             <div className="DarkblockWidget-Header-countdownTimer">
               <FontAwesomeIcon icon={faStopwatch} className="Darkblock-FaStopwatchIcon" />
