@@ -1,6 +1,6 @@
 {
   "name": "@darkblock.io/shared-components",
-  "version": "0.2.36",
+  "version": "0.2.37",
   "description": "Darkblock.io React Shared Component Library",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
@@ -22,9 +22,8 @@
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "openseadragon": "^3.0.0",
     "photoswipe": "^4.1.3",
-    "plyr-react": "^3.2.1",
+    "plyr-react": "^5.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-lottie": "^1.2.3",
