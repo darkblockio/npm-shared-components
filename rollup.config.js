@@ -8,6 +8,7 @@ import json from "@rollup/plugin-json"
 
 export default [
   {
+    external: ["react", "react-dom"],
     input: "./src/index.js",
     output: [
       {
