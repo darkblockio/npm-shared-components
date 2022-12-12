@@ -2,7 +2,7 @@ import React from "react"
 
 import { RenderEllipsisIcon, RenderIcon } from "./AuxFunctions"
 
-const RowContent = ({ db, f = null, counter = "", selected = false, index = 0, showDetailModal }) => {
+const RowContent = ({ db, f = null, selected = false, index = 0, showDetailModal }) => {
   const isRowActive = selected.i === index
   let fn = f && typeof f === "function" ? f : () => {}
   let d = new Date(0)
@@ -13,7 +13,7 @@ const RowContent = ({ db, f = null, counter = "", selected = false, index = 0, s
       <div className={`dbdata ${isRowActive && "dbdataSelected"}`}>
         <div className="Darkblock-name" onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
-          <span className="Darkblock-truncate Darkblock-BodyText">{`${counter} ${db.name}`}</span>
+          <span className="Darkblock-truncate Darkblock-BodyText">{`${db.name}`}</span>
         </div>
         <div className="Darkblock-items Darkblock-BodyTextSmall">
           <div className="darkblock-right-text" onClick={fn}>
