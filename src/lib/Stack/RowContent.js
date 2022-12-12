@@ -1,16 +1,16 @@
-import React from "react"
-
+import React, { useState } from "react"
 import { RenderEllipsisIcon, RenderIcon } from "./AuxFunctions"
 
 const RowContent = ({ db, f = null, selected = false, index = 0, showDetailModal }) => {
-  const isRowActive = selected.i === index
+  const [selectedRow, setSelectedRow] = useState(false)
+  const isRowActive = selected.i === index && selectedRow
   let fn = f && typeof f === "function" ? f : () => {}
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
 
   return (
     <>
-      <div className={`dbdata ${isRowActive && "dbdataSelected"}`}>
+      <div className={`dbdata ${isRowActive && "dbdataSelected"}`} onClick={() => setSelectedRow(true)}>
         <div className="Darkblock-name" onClick={fn}>
           <RenderIcon filetype={db.fileFormat} />
           <span className="Darkblock-truncate Darkblock-BodyText">{`${db.name}`}</span>
