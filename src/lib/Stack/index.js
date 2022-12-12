@@ -192,7 +192,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                         }}
                         index={i}
                         key={i}
-                        counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
                         selected={selected}
                         state={state.value}
                         url={urls[i]}
@@ -209,7 +208,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                         db={db}
                         index={i}
                         key={i}
-                        counter={state.context.display.stack.length > 10 ? `${i + 1}. ` : ""}
                         selected={selected}
                         showDetailModal={(value) => {
                           value.url = null
