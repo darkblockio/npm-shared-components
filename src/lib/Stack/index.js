@@ -25,7 +25,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [opacity, setOpacity] = useState(0.4)
   const [showDetails, setShowDetails] = useState(false)
   const [detailDB, setDetailDB] = useState(null)
-  const [controls, setcontrols] = useState("default")
   const [height, setHeight] = useState(window.innerHeight)
   const doc = document.documentElement
 
@@ -39,22 +38,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
       setShowModal(false)
     }
   }
-  const handleControlsHeader = () => {
-    if (controls === "fadeOut") return "darkblock-player-modal-fadeout-up"
-    if (controls === "hidden") return "darkblock-player-modal-hidden"
-    else return "darkblock-player-modal"
-  }
 
-  const handleControlsFooter = () => {
-    if (controls === "fadeOut") return "m-auto animate-fadeDown"
-    if (controls === "hidden") return "m-auto invisible"
-    else return "m-auto"
-  }
-
-  const handleChangeEffect = (event) => {
-    event.preventDefault()
-    setcontrols("default")
-  }
   const previousDb = () => {
     if (selected.i === 0) return
 
@@ -117,17 +101,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   }, [swapping])
 
   useEffect(() => {
-    controls === "default" &&
-      setTimeout(() => {
-        setcontrols("fadeOut")
-      }, 3000)
-    controls === "fadeOut" &&
-      setTimeout(() => {
-        setcontrols("hidden")
-      }, 800)
-  }, [controls])
-
-  useEffect(() => {
     doc.style.setProperty("--doc-height", `${window.innerHeight}px`)
     window.addEventListener("resize", documentHeight)
     return () => {
@@ -139,8 +112,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     <>
       <PlayerModal showModal={showModal} open={showModal} onClose={(e) => handleOnClose(e)}>
         {state.value === "display" && selected && !swapping && (
-          <div className="Darkblock-player-modal-container" onMouseOver={handleChangeEffect}>
-            <div className={`${handleControlsHeader()} `}>
+          <div className="Darkblock-player-modal-container">
+            <div className="darkblock-player-modal">
               <div className="w-5 px-2"></div>
               <div className="Darkblock-player-modal-container-title-name">{selected.db.name}</div>
 
@@ -154,7 +127,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             <Player mediaType={selected.type} mediaURL={selected.mediaURL} config={config.imgViewer} />
 
             <div className="darkblock-arrows-container">
-              <div className={`${handleControlsFooter()}`}>
+              <div className="m-auto">
                 <button
                   onClick={() => previousDb()}
                   className={selected.i > 0 ? "Darkblock-playerBtn" : "Darkblock-playerBtn Darkblock-playerBtnDisabled"}
