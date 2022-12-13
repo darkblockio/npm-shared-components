@@ -224,7 +224,7 @@ td {
 }
 
 .darkblock-button-container {
-  @apply float-right mt-3;
+  @apply float-right mt-6;
 }
 
 /* it contains details title and the X button*/
@@ -241,31 +241,34 @@ td {
 }
 
 .darkblock-modal-name {
-  @apply pt-1 text-xl font-bold truncate;
+  @apply text-xl font-bold truncate;
 }
 
 .darkblock-modal-detail {
-  @apply max-w-lg mt-8 text-sm text-gray-500;
+  @apply max-w-lg mt-6 text-sm text-gray-500;
 }
 
 #darkblock-modal-bg {
-  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-90;
+  @apply fixed inset-0 z-30 flex items-start justify-center py-4 overflow-auto bg-black bg-opacity-90;
 }
 
 #darkblock-modal-box {
-  @apply max-w-xs sm:max-w-lg lg:max-w-3xl px-6 py-4 mx-8 text-left bg-white rounded shadow-lg;
+  @apply max-w-xs sm:max-w-lg lg:max-w-3xl px-8 pb-8 pt-5 text-left rounded bg-white;
 }
 
 .darkblock-modal-box-container {
-  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-gray-200 bg-opacity-5 pt-32 pb-7 sm:pt-16;
+  @apply z-30 overflow-auto bg-gray-200 bg-opacity-5 pt-4 mb-4 flex items-center;
 }
 
-.darkblock-modal-container {
+/* .darkblock-modal-container {
   @apply fixed inset-0 z-50 flex items-center justify-center m-4 overflow-x-hidden overflow-y-auto outline-none focus:outline-none;
+} */
+.darkblock-modal-container {
+  @apply fixed inset-0 z-50 flex items-start mt-4 justify-center outline-none focus:outline-none;
 }
 
 .darkblock-detail-container {
-  @apply block w-full px-2;
+  @apply block w-full;
 }
 
 .darkblock-elipsis-cross-button {
@@ -277,7 +280,7 @@ td {
 }
 
 .darkblock-divider {
-  @apply my-4;
+  @apply mt-4 mb-8;
 }
 
 .darkblock-arrows-container {

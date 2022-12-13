@@ -1,5 +1,5 @@
 .Darkblock-done-button {
-  @apply w-20 m-4 mt-6 text-white rounded-lg;
+  @apply w-20 text-white rounded-lg;
 }
 
 .Darkblock-auth-button {
