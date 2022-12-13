@@ -176,6 +176,11 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   const mediaTypePdf = ["encrypted(application/pdf)", "(application/pdf)"]
   const mediaTypeBinaryAndPdf = [...mediaTypeBinary, ...mediaTypePdf]
 
+  const onDisableRightClick = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+
   useEffect(() => {
     // load 3d modal viewer script
     if (typeof window !== "undefined") {
@@ -235,7 +240,7 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
 
   return (
     <div className="DarkblockWidget-Player">
-      <div className="DarkblockWidget-Player-Content">
+      <div className="DarkblockWidget-Player-Content" onContextMenu={(e) => onDisableRightClick(e)}>
         {loaded ? (
           <MediaComp mediaURL={mUrl} mediaType={mType} config={config} posterUrl={posterUrl} />
         ) : (
