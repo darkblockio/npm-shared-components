@@ -4,7 +4,6 @@ import Button from "../Button"
 import Cross from "../Cross"
 
 const DetailModal = ({ db, open, onClose }) => {
-  console.log(db)
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
