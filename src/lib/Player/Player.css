@@ -31,7 +31,7 @@
 }
 
 .Darkblock-reactReader {
-  @apply relative h-[100%];
+  @apply relative h-[100%] w-full;
 }
 
 #Darkblock-toolbarDiv {
