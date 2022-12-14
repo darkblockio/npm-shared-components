@@ -7,7 +7,7 @@
 }
 
 .Darkblock-upgrade-create-button {
-  @apply float-right mr-2 font-semibold text-gray-200 rounded hover:bg-gray-600;
+  @apply float-right font-semibold text-gray-200 rounded hover:bg-gray-600;
 }
 
 .Darkblock-upgrade-add-content {

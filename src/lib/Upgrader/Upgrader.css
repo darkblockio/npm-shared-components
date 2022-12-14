@@ -11,7 +11,7 @@
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-modal-box-container {
-  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-70;
+  @apply fixed inset-0 z-30 flex items-start justify-center overflow-auto bg-black bg-opacity-70 p-4;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-modal-first-row {
@@ -31,13 +31,8 @@
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-line-break {
-  @apply my-4;
+  @apply mt-4 mb-8;
 }
-
-.DarkblockWidget-Upgrader .Darkblock-upgrade-line-break {
-  @apply my-4;
-}
-
 .DarkblockWidget-Upgrader .upgrade-detail-container {
   @apply block w-4/5 px-2;
 }
@@ -47,11 +42,11 @@
 }
 
 #Darkblock-upgrade-modal-box {
-  @apply max-w-xl px-6 py-4 mx-8 text-left bg-white rounded shadow-lg max-h-fit;
+  @apply relative max-w-xl  p-8 pt-5 text-left bg-white rounded shadow-lg max-h-fit;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-form {
-  @apply mx-4 bg-white;
+  @apply bg-white;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-title-input {
@@ -59,7 +54,7 @@
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-name-input {
-  @apply w-full p-2 mt-1 mb-4 text-gray-800 border border-gray-300 rounded focus:ring-gray-500 focus:border-gray-500 sm:text-sm;
+  @apply w-full p-2 mt-1 mb-6 text-gray-800 border border-gray-300 rounded focus:ring-gray-500 focus:border-gray-500 sm:text-sm;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-description-input {
@@ -67,31 +62,30 @@
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-description-char-count {
-  @apply hidden mt-2 text-xs text-gray-600 md:block;
+  @apply hidden mt-2 text-xs text-gray-600 md:block mb-6;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-allowDownload {
-  @apply flex flex-row items-center;
+  @apply flex flex-row items-center mb-6;
 }
 
+.Darkblock-Upload-Footer{
+  @apply absolute bottom-2 flex items-center justify-center w-full
+}
 .DarkblockWidget-Upgrader .Darkblock-downloadable-text {
   @apply inline-block text-sm font-bold text-gray-800;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-downloadable-check {
-  @apply w-4 h-4 mr-2 transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-2 border-gray-800 rounded-sm appearance-none cursor-pointer checked:bg-gray-600 checked:border-gray-600 focus:outline-none;
+  @apply w-4 h-4 mr-2 transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-2 border-gray-600 rounded-sm appearance-none cursor-pointer checked:bg-[url('check.svg')] hover:bg-[url('check.svg')] hover:border-gray-800 checked:border-gray-800 focus:outline-none;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-fileupload-container {
-  @apply py-4 text-black rounded-xl;
-}
-
-.DarkblockWidget-Upgrader .Darkblock-fileupload-button {
-  @apply font-bold;
+  @apply text-black rounded-xl;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-fileupload-header {
-  @apply hidden pb-0 text-base font-bold md:block md:pb-4 md:mb-4;
+  @apply hidden pb-0 text-base font-bold md:block md:mb-6;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-fileupload-header-supported {
@@ -103,11 +97,37 @@
 }
 
 .DarkblockWidget-Upgrader .Darkblock-fileupload-info {
-  @apply py-0 text-xs text-gray-600 md:py-4;
+  @apply py-0 text-xs text-gray-600 md:pt-4;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-fileupload-input-container {
-  @apply w-full px-4 py-4 mt-2 text-sm text-gray-500 bg-gray-200 rounded md:mt-4;
+  @apply w-full px-4 py-4 bg-neutral-100 rounded mb-6 flex relative mt-6;
+}
+#Darkblock-file-select{
+  @apply flex justify-center items-center text-center bg-neutral-200 p-2 font-bold rounded-lg cursor-pointer w-full  
+}
+
+.Darkblock-input-file {
+  @apply hidden
+}
+.Darkblock-file-upload-input{
+  @apply  justify-center items-center; 
+}
+
+.Darkblock-file-upload-image-container{
+  @apply grow max-w-[65%] ml-4 relative inset-0; 
+}
+
+.Darkblock-file-upload-not-image-container{
+  @apply flex grow items-center justify-center text-gray-600 ml-4 text-center;
+}
+
+.Darkblock-file-upload-image{
+  @apply flex items-center justify-center; 
+}
+
+.Darkblock-file-upload-image-name{
+  @apply flex items-center justify-center text-center; 
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-container {
@@ -147,7 +167,7 @@
 }
 
 .DarkblockWidget-Upgrader-Footer {
-  @apply bottom-0 py-5 mt-10 text-xs font-bold text-center text-neutral-400;
+  @apply text-xs font-bold text-center text-neutral-400;
 }
 
 .DarkblockWidget-Upgrader-Footer svg {

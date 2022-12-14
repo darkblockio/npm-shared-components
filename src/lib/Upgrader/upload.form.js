@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react"
 import FileUpload from "./fileUpload"
 import * as HashUtil from "../utils/hash-util"
-import FooterUpgrader from "../FooterUpgrader"
-import { getSHA256OfFileChunks } from "../utils/hash-util"
 import { useTranslation } from "react-i18next"
 import Button from "../Button"
 
@@ -179,12 +177,11 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev }) => {
       {!minting ? (
         <form onSubmit={initDarkblockCreation} className="Darkblock-upgrade-form">
           <FileUpload fileState={fileState} setFileState={setFileState}></FileUpload>
-          <h3 className="Darkblock-upgrade-title-input">{t("upgrader.name")}</h3>
+          <label className="Darkblock-upgrade-title-input">{t("upgrader.name")}</label>
           <input
             type="text"
             className="Darkblock-upgrade-name-input"
             id="name"
-            value={name}
             onChange={(e) => {
               setName(e.target.value)
             }}
@@ -200,10 +197,9 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev }) => {
               setDarkblockDescription(e.target.value)
             }}
           ></textarea>
-          <p className="Darkblock-upgrade-description-char-count">{`${
+          <p className="Darkblock-BodyTextSmall Darkblock-upgrade-description-char-count ">{`${
             charLimit - darkblockDescription.length
           }/${charLimit} ${t("upgrader.characters")}`}</p>
-          <br />
           <div className="Darkblock-allowDownload">
             <input
               className="Darkblock-downloadable-check"
@@ -213,7 +209,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev }) => {
                 setIsDownloadable(e.target.checked)
               }}
             />
-            <label className="Darkblock-downloadable-text">{t("upgrader.allowDownload")}</label>
+            <label className="Darkblock-BodyTextSmall Darkblock-downloadable-text">{t("upgrader.allowDownload")}</label>
           </div>
           <Button
             state={!fileState || !fileState.name || !name}
@@ -324,7 +320,6 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev }) => {
           </div>
         </div>
       ) : null}
-      <FooterUpgrader />
     </div>
   )
 }

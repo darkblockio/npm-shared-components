@@ -41,6 +41,8 @@
   "fileUpload": "Subir un archivo",
   "supportedFileFormats": "Formatos de archivo soportados",
   "maxFileSize": "Tamaño máximo de archivo 350MB",
+  "notFile": "Ningún archivo selecionado",
+  "choose.file": "Seleccionar archivo",
   "upgrader.minting": "Su contenido desbloqueable está siendo creado...",
   "upgrader.mintingWarning": "NO cierre esta página hasta que finalice este proceso. Dependiendo del tamaño del archivo y su conexión a Internet, el tiempo de carga puede demorar unos minutos.",
   "upgrader.minted": "Su contenido desbloqueable ha sido creado",
