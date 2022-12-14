@@ -40,6 +40,8 @@
   "upgrader.addContent": "Add Content",
   "fileUpload": "Upload a file",
   "supportedFileFormats": "Supported File Formats",
+  "notFile": "No File Selected",
+  "choose.file": "Choose File",
   "maxFileSize": "Max file size 350MB",
   "upgrader.minting": "Your unlockable content is being created...",
   "upgrader.mintingWarning": "Please DO NOT close this page until this process is finished. Depending on the file size and your internet connection the upload time may take up to a few minutes.",

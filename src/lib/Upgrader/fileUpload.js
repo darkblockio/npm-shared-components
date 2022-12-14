@@ -59,13 +59,13 @@ const FileUpload = ({ fileState, setFileState }) => {
               }}
             />
             <label id="Darkblock-file-select" htmlFor="file-upload">
-              Seleccionar Archivo
+              {t("choose.file")}
             </label>
           </div>
         </div>
         {!fileState ? (
           <div className="Darkblock-file-upload-not-image-container">
-            <span>Ningún archivo selecionado</span>
+            <span>{t("notFile")}</span>
           </div>
         ) : (
           <div className="Darkblock-file-upload-image-container">
