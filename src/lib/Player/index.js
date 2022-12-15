@@ -229,7 +229,9 @@ const PlayerTemp = ({ mediaURL, mediaType, config }) => {
   }, [])
 
   const onPDFloaded = () => {
-    setLoaded(true)
+    setTimeout(() => {
+      setLoaded(true)
+    }, 1500)
   }
 
   useEffect(() => {
