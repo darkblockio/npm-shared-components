@@ -199,6 +199,7 @@ const state = {
   },
 }
 const stackMediaURLs = [
+
   "https://darkblock-media.s3.amazonaws.com/samples/movie-with-poster.json",
   "https://darkblock-media.s3.amazonaws.com/samples/html.html",
   "https://darkblock-media.s3.amazonaws.com/samples/dancing.glb",
@@ -207,6 +208,7 @@ const stackMediaURLs = [
   "https://darkblock-media.s3.amazonaws.com/samples/movie.mp4",
   "https://darkblock-media.s3.amazonaws.com/samples/bigmovie.mp4",
   "https://darkblock-media.s3.amazonaws.com/samples/book.epub",
+  "https://gateway.darkblock.io/proxy?artid=afec7e57-7a24-477b-a1b9-43a830ae648c&session_token=1671045711537_0x837c0ff048a7bd73726d74d0bdc6d16368e2774c2eef8775c7e631568be49ac67c19bbd48e6815c68d0122ad3328f9e66905328fa7618af2d3dfed2abf3d2b961b&token_id=741&contract=0x0820aeb0add3ffa988d00aea416e98e7099d0aa8&platform=Ethereum&owner=0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
   "https://darkblock-media.s3.amazonaws.com/samples/archive.zip",
   "https://compote.slate.com/images/697b023b-64a5-49a0-8059-27b963453fb1.gif",
   "https://darkblock-media.s3.amazonaws.com/samples/archive.zip",
