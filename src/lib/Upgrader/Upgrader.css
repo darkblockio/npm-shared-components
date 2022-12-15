@@ -69,8 +69,8 @@
   @apply flex flex-row items-center mb-6;
 }
 
-.Darkblock-Upload-Footer{
-  @apply absolute bottom-2 flex items-center justify-center w-full
+.Darkblock-Upload-Footer {
+  @apply absolute bottom-2 flex items-center justify-center w-full;
 }
 .DarkblockWidget-Upgrader .Darkblock-downloadable-text {
   @apply inline-block text-sm font-bold text-gray-800;
@@ -103,31 +103,31 @@
 .DarkblockWidget-Upgrader .Darkblock-fileupload-input-container {
   @apply w-full px-4 py-4 bg-neutral-100 rounded mb-6 flex relative mt-6;
 }
-#Darkblock-file-select{
-  @apply flex justify-center items-center text-center bg-neutral-200 p-2 font-bold rounded-lg cursor-pointer w-full  
+#Darkblock-file-select {
+  @apply flex justify-center items-center text-center bg-neutral-200 p-2 font-bold rounded-lg cursor-pointer w-full;
 }
 
 .Darkblock-input-file {
-  @apply hidden
+  @apply hidden;
 }
-.Darkblock-file-upload-input{
-  @apply  justify-center items-center; 
-}
-
-.Darkblock-file-upload-image-container{
-  @apply grow max-w-[65%] ml-4 relative inset-0; 
+.Darkblock-file-upload-input {
+  @apply justify-center items-center;
 }
 
-.Darkblock-file-upload-not-image-container{
+.Darkblock-file-upload-image-container {
+  @apply grow max-w-[65%] ml-4 relative inset-0;
+}
+
+.Darkblock-file-upload-not-image-container {
   @apply flex grow items-center justify-center text-gray-600 ml-4 text-center;
 }
 
-.Darkblock-file-upload-image{
-  @apply flex items-center justify-center; 
+.Darkblock-file-upload-image {
+  @apply flex items-center justify-center;
 }
 
-.Darkblock-file-upload-image-name{
-  @apply flex items-center justify-center text-center; 
+.Darkblock-file-upload-image-name {
+  @apply flex items-center justify-center text-center;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-container {
@@ -135,19 +135,19 @@
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-header-text {
-  @apply px-5 pt-12 pb-4 mb-4 text-xl font-bold text-white;
+  @apply px-5 pt-12  text-xl font-bold text-white;
 }
 
-.DarkblockWidget-Upgrader .Darkblock-minting-video-loop {
-  @apply mx-auto mb-4 border-2 border-gray-900;
+.DarkblockWidget-Upgrader .Darkblock-image-upgrader {
+  @apply mx-auto max-w-[50%];
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-progress-container {
-  @apply w-1/2 mx-auto mt-8 bg-black border border-white rounded-full;
+  @apply max-w-[70%] mx-auto  bg-black border border-white rounded-[4px];
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-progress-bar {
-  @apply bg-white text-xs font-medium text-black p-0.5 leading-none rounded-l-full;
+  @apply bg-white text-xs font-medium text-black p-1 leading-none rounded-l-[4px];
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-state-msg {
@@ -159,7 +159,7 @@
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-warning {
-  @apply justify-center w-1/2 p-1 text-center text-white bg-gray-900 rounded-xl;
+  @apply justify-center w-full max-w-[70%] whitespace-pre-wrap p-4 text-center text-white bg-neutral-800 rounded-xl;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-complete-info {
