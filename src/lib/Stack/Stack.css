@@ -21,7 +21,11 @@
 
 /*inside table */
 .DarkblockWidget-Stack-Panel .Darkblock-awesome {
-  @apply w-4 h-4 p-2 ml-2 mr-2 text-gray-900 bg-gray-100 rounded;
+  @apply w-4 h-4 p-2 ml-2 mr-2 text-gray-900 bg-neutral-100 rounded;
+}
+
+.Darkblock-awesome path {
+  fill: #737373;
 }
 
 /* .DarkblockWidget-Stack-Panel .row .darkblock-name {
@@ -41,7 +45,7 @@
 }
 
 .Darkblock-items {
-  @apply w-12 h-12 sm:w-60 flex items-center absolute right-0
+  @apply w-12 h-12 sm:w-60 flex items-center absolute right-0;
 }
 
 .Darkblock-date {
@@ -96,7 +100,7 @@ td {
 .DarkblockWidget-Stack-Panel .darkblock-dropbtn .toggleIcon {
   @apply text-gray-900 rounded text-sm mb-[1px] bg-none p-3;
 }
-.darkblock-box-menu-items{
+.darkblock-box-menu-items {
   @apply w-72 h-32 ml-4 mt-[3px];
 }
 .darkblock-is-not-downloadable {
