@@ -4,7 +4,7 @@ import * as HashUtil from "../utils/hash-util"
 import { useTranslation } from "react-i18next"
 import Button from "../Button"
 
-const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev }) => {
+const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev, handleUpload }) => {
   const [darkblockDescription, setDarkblockDescription] = useState("")
   const [name, setName] = useState("")
   const [isDownloadable, setIsDownloadable] = useState(false)
@@ -176,19 +176,19 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev }) => {
     <div>
       {!minting ? (
         <form onSubmit={initDarkblockCreation} className="Darkblock-upgrade-form">
-          <FileUpload fileState={fileState} setFileState={setFileState}></FileUpload>
-          <label className="Darkblock-upgrade-title-input">{t("upgrader.name")}</label>
+          <FileUpload fileState={fileState} setFileState={setFileState} handleUpload={handleUpload}></FileUpload>
+          <label className="Darkblock-InputLabelText">{t("upgrader.name")}</label>
           <input
             type="text"
-            className="Darkblock-upgrade-name-input"
+            className="Darkblock-upgrade-name-input Darkblock-InputLabelText"
             id="name"
             onChange={(e) => {
               setName(e.target.value)
             }}
           />
-          <h3 className="Darkblock-upgrade-title-input">{t("upgrader.description")}</h3>
+          <label className="Darkblock-InputLabelText">{t("upgrader.description")}</label>
           <textarea
-            className="Darkblock-upgrade-description-input"
+            className="Darkblock-upgrade-description-input Darkblock-InputText"
             cols={50}
             rows={3}
             maxLength={charLimit}
@@ -209,7 +209,9 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev }) => {
                 setIsDownloadable(e.target.checked)
               }}
             />
-            <label className="Darkblock-BodyTextSmall Darkblock-downloadable-text">{t("upgrader.allowDownload")}</label>
+            <label className="Darkblock-ButtonSmallText Darkblock-downloadable-text">
+              {t("upgrader.allowDownload")}
+            </label>
           </div>
           <Button
             state={!fileState || !fileState.name || !name}
