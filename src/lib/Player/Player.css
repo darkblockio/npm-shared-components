@@ -19,14 +19,14 @@
 }
 
 .Darkblock-gifViewer {
-  @apply w-auto h-auto m-auto max-h-[80vh] object-contain pointer-events-none;
+  @apply w-auto m-auto object-contain pointer-events-none;
   -webkit-touch-callout: none;
 }
 
 /* center img with tailwind on container */
 
 .Darkblock-imageViewer {
-  @apply w-auto h-auto m-auto max-h-[80vh] object-contain pointer-events-none;
+  @apply w-auto h-auto m-auto object-contain pointer-events-none;
   -webkit-touch-callout: none;
 }
 

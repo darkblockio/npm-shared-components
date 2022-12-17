@@ -109,3 +109,8 @@
   }
 }
 
+@layer utilities {
+  .Darkblock-gifViewer, .Darkblock-imageViewer{
+    height: calc(100vh - 128px);
+  }
+}

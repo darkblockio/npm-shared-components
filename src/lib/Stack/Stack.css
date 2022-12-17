@@ -294,3 +294,20 @@ td {
 .Darkblock-player-modal-container-title-name {
   @apply m-auto text-xs text-neutral-400 truncate;
 }
+
+.darkblock-player-modal-header-hidden{
+  @apply z-40 w-full text-white bg-black h-[64px] flex justify-between px-3;
+}
+.darkblock-player-modal-header-hidden div{
+  @apply invisible;
+}
+.darkblock-player-modal-footer-hidden{
+  @apply m-auto
+}
+.darkblock-player-modal-footer-hidden button{
+  @apply invisible;
+}
+
+.darkblock-player-modal-fadeout-up {
+  @apply z-40 w-full text-white bg-black h-[64px] flex justify-between px-3 animate-fadeUp;
+}
