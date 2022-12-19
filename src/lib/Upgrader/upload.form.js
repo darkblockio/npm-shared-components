@@ -126,7 +126,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev, handleU
         let percentComplete = Math.ceil((e.loaded / e.total) * 100)
 
         if (percentComplete > 10 && percentComplete <= 90) {
-          setMintingStateMsg(t("upgrader.uploading"))
+          setMintingStateMsg(t("upgrader.uploadingArweave"))
           setProgress(percentComplete)
         }
       }
@@ -236,17 +236,12 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev, handleU
                 <>
                   <div className="Darkblock-minting-container">
                     <h3 className="Darkblock-minting-header-text Darkblock-H1">{t("upgrader.minted")}</h3>
-                    <div>
-                      <video autoPlay playsInline loop className="Darkblock-minting-video-loop">
-                        <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
-                      </video>
-                    </div>
+                    <img className="Darkblock-image-upgrader" src={signingImg} />
                     <div className="Darkblock-minting-progress-container">
                       <div className="Darkblock-minting-progress-bar" style={{ width: `${progress}%` }}>
                         {progress}%
                       </div>
                     </div>
-                    <p className="Darkblock-detail-msg Darkblock-BodyText">{getProgressText()}</p>
                     <p className="Darkblock-detail-msg">{mintingStateMsg}</p>
                     <div className="Darkblock-minting-warning-container">
                       <p className="Darkblock-minting-warning Darkblock-BodyText">{t("upgrader.mintingWarning")}</p>
