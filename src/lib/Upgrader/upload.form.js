@@ -175,21 +175,6 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev }) => {
 
   const charLimit = 250
 
-  const getProgressText = () => {
-    if (progress < 40) {
-      return t("upgrader.hashing")
-    }
-    if (progress < 60) {
-      return t("upgrader.signing")
-    }
-    if (progress < 80) {
-      return t("upgrader.uploadingServer")
-    }
-    if (progress < 100) {
-      return t("upgrader.uploadingArweave")
-    }
-  }
-
   return (
     <div>
       {!minting ? (
@@ -250,7 +235,9 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev }) => {
                   <div className="Darkblock-minting-container">
                     <h3 className="Darkblock-minting-header-text Darkblock-H1">{t("upgrader.minted")}</h3>
                     <div>
-                      <img className="Darkblock-image-upgrader" src={signingImg} />
+                      <video autoPlay playsInline loop className="Darkblock-minting-video-loop">
+                        <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
+                      </video>
                     </div>
                     <div className="Darkblock-minting-progress-container">
                       <div className="Darkblock-minting-progress-bar" style={{ width: `${progress}%` }}>

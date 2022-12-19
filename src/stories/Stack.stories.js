@@ -207,6 +207,7 @@ const stackMediaURLs = [
   "https://darkblock-media.s3.amazonaws.com/samples/movie.mp4",
   "https://darkblock-media.s3.amazonaws.com/samples/bigmovie.mp4",
   "https://darkblock-media.s3.amazonaws.com/samples/book.epub",
+  "https://darkblock-media.s3.amazonaws.com/samples/document.pdf",
   "https://darkblock-media.s3.amazonaws.com/samples/archive.zip",
   "https://compote.slate.com/images/697b023b-64a5-49a0-8059-27b963453fb1.gif",
   "https://darkblock-media.s3.amazonaws.com/samples/archive.zip",
