@@ -10,8 +10,8 @@ const Titles = ({ state }) => {
   return (
     <div className="Darkblock-rowheader Darkblock-TableHeaderText">
       <div className="Darkblock-name-header">
-        <span>{t("titles.name")}</span>
-        <span> ({db})</span>
+        <span>{`(${db}`}</span>
+        <span className="pl-1">{db>1 ? t("titles.items") : t("titles.item") }</span>
       </div>
       <div className="Darkblock-items-header">
         <div className="Darkblock-format-header">{t("titles.fileSize")}</div>
