@@ -135,23 +135,23 @@
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-header-text {
-  @apply px-5 pt-12  text-xl font-bold text-white;
+  @apply px-5 pt-12 text-white;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-image-upgrader {
-  @apply mx-auto max-w-[50%];
+  @apply mx-auto max-w-[33%];
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-progress-container {
-  @apply max-w-[70%] mx-auto  bg-black border border-white rounded-[4px];
+  @apply max-w-[55%] mx-auto  bg-black border border-white rounded-[4px];
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-progress-bar {
   @apply bg-white text-xs font-medium text-black p-1 leading-none rounded-l-[4px];
 }
 
-.DarkblockWidget-Upgrader .Darkblock-minting-state-msg {
-  @apply mt-4 text-sm text-white;
+.Darkblock-detail-msg {
+  @apply mt-4 text-neutral-400 whitespace-pre mb-6;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-warning-container {
@@ -159,11 +159,21 @@
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-warning {
-  @apply justify-center w-full max-w-[70%] whitespace-pre-wrap p-4 text-center text-white bg-neutral-800 rounded-xl;
+  @apply justify-center w-full max-w-[55%] whitespace-pre-wrap p-4 text-center text-white bg-neutral-800 rounded-xl;
 }
 
+.Darkblock-complete-button-container {
+  @apply w-full max-w-[65%] mx-auto mt-5;
+}
 .DarkblockWidget-Upgrader .Darkblock-minting-complete-info {
   @apply px-4 mb-4 text-white;
+}
+
+.Darkblock-error-icon-upgrader {
+  @apply mx-auto pt-6;
+}
+.Darkblock-minting-header-error-text {
+  @apply px-5 text-white whitespace-pre my-6;
 }
 
 .DarkblockWidget-Upgrader-Footer {

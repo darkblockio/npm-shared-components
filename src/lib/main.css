@@ -13,99 +13,96 @@
   }
 }
 
-@layer base {
-  .Darkblock-H1 {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
-    letter-spacing: -0.02em;
-  }
-
-  .Darkblock-H2 {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: -0.03em;
-  }
-
-  .Darkblock-H3 {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 20px;
-    letter-spacing: -0.02em;
-  }
-
-  .Darkblock-BodyText {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: -0.02em;
-  }
-
-  .Darkblock-BodyTextSmall {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 20px;
-    letter-spacing: -0.01em;
-  }
-
-  .Darkblock-ButtonLargeText {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: -0.02em;
-  }
-
-  .Darkblock-ButtonMediumText {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.02em;
-  }
-
-  .Darkblock-ButtonSmallText {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 24px;
-    letter-spacing: -0.02em;
-  }
-
-  .Darkblock-TableHeaderText {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 13px;
-    line-height: 20px;
-  }
-
-  .Darkblock-DialogMessageText {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 16px;
-    letter-spacing: -0.01em;
-  }
-
-  .Darkblock-BadgeLabelText {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 10px;
-    line-height: 16px;
-  }
-
-  .Darkblock-FooterText {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 20px;
-    letter-spacing: -0.01em;
-  }
+.Darkblock-H1 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.02em;
 }
 
+.Darkblock-H2 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.03em;
+}
+
+.Darkblock-H3 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+}
+
+.Darkblock-BodyText {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+}
+
+.Darkblock-BodyTextSmall {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+}
+
+.Darkblock-ButtonLargeText {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+}
+
+.Darkblock-ButtonMediumText {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+}
+
+.Darkblock-ButtonSmallText {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+}
+
+.Darkblock-TableHeaderText {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.Darkblock-DialogMessageText {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: -0.01em;
+}
+
+.Darkblock-BadgeLabelText {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 16px;
+}
+
+.Darkblock-FooterText {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+}
