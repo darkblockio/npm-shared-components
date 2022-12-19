@@ -1,5 +1,9 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+import Button from "../Button"
+import signingImg from "../../assets/images/signing.jpg"
+import completeImg from "../../assets/images/complete.jpg"
+import errorImg from "../../assets/images/error.svg"
 
 const Minter = ({ state, progress, mintingStateMsg }) => {
   const { t } = useTranslation()
@@ -11,16 +15,16 @@ const Minter = ({ state, progress, mintingStateMsg }) => {
           {state === "starting" && (
             <>
               <div className="Darkblock-minting-container">
-                <h3 className="Darkblock-minting-header-text">{t("upgrader.minting")}</h3>
-                <img src="../../assets/images/signing.jpg" />
+                <h3 className="Darkblock-minting-header-text Darkblock-H1">{t("upgrader.minted")}</h3>
+                <img className="Darkblock-image-upgrader" src={signingImg} />
                 <div className="Darkblock-minting-progress-container">
                   <div className="Darkblock-minting-progress-bar" style={{ width: `${progress}%` }}>
                     {progress}%
                   </div>
                 </div>
-                <div className="Darkblock-minting-state-msg">{mintingStateMsg}</div>
+                <p className="Darkblock-detail-msg">{mintingStateMsg}</p>
                 <div className="Darkblock-minting-warning-container">
-                  <p className="Darkblock-minting-warning">{t("upgrader.mintingWarning")}</p>
+                  <p className="Darkblock-minting-warning Darkblock-BodyText">{t("upgrader.mintingWarning")}</p>
                 </div>
               </div>
             </>
@@ -28,51 +32,58 @@ const Minter = ({ state, progress, mintingStateMsg }) => {
           {state === "complete" && (
             <>
               <div className="Darkblock-minting-container">
-                <h3 className="Darkblock-minting-header-text">{t("upgrader.minted")}</h3>
+                <h3 className="Darkblock-minting-header-text Darkblock-H1">{t("upgrader.minted")}</h3>
                 <div>
-                  <video className="Darkblock-minting-video-loop">
-                    <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
-                  </video>
+                  <img className="Darkblock-image-upgrader" src={completeImg} />
                 </div>
-                <button
-                  layout="mintingAddAnother"
-                  onClick={() => {
-                    clearForm()
-                    setMintingState("starting")
-                    setMinting(false)
-                    setOpen(false)
-                    reset()
-                  }}
-                >
-                  Make Another
-                </button>
-                <button
-                  layout="mintingDone"
-                  onClick={() => {
-                    clearForm()
-                    setMintingState("starting")
-                    setMinting(false)
-                    setOpen(false)
-                    reset("finished")
-                    onClose(true)
-                  }}
-                >
-                  {t("upgrader.done")}
-                </button>
+                <div className="Darkblock-complete-button-container">
+                  <Button
+                    layout="mintingAddAnother"
+                    size="large"
+                    variant="secondary"
+                    color="gray"
+                    onClick={() => {
+                      clearForm()
+                      setMintingState("starting")
+                      setMinting(false)
+                      setOpen(false)
+                      reset()
+                    }}
+                  >
+                    {t("upgrader.makeAnother")}
+                  </Button>
+
+                  <Button
+                    layout="mintingDone"
+                    variant="primary"
+                    size="large"
+                    color="white"
+                    onClick={() => {
+                      clearForm()
+                      setMintingState("starting")
+                      setMinting(false)
+                      setOpen(false)
+                      reset("finished")
+                      onClose(true)
+                    }}
+                  >
+                    {t("upgrader.done")}
+                  </Button>
+                </div>
               </div>
             </>
           )}
           {state === "error" && (
             <>
               <div className="Darkblock-minting-container">
-                <h3 className="Darkblock-minting-header-text">{t("upgrader.error")}</h3>
                 <div>
-                  <video className="Darkblock-minting-video-loop">
-                    <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
-                  </video>
+                  <img className="Darkblock-error-icon-upgrader" src={errorImg} />
                 </div>
-                <button
-                  className="Darkblock-white"
+                <h3 className="Darkblock-minting-header-error-text Darkblock-H1">{t("upgrader.error")}</h3>
+                <p className="Darkblock-detail-msg Darkblock-BodyText">{t("upgrader.errorDetail")}</p>
+                <Button
+                  layout="mintingTryAgain"
+                  size="large"
                   onClick={() => {
                     setMintingState("starting")
                     setMinting(false)
@@ -81,7 +92,7 @@ const Minter = ({ state, progress, mintingStateMsg }) => {
                   }}
                 >
                   {t("upgrader.tryAgain")}
-                </button>
+                </Button>
               </div>
             </>
           )}
