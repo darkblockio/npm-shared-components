@@ -220,11 +220,11 @@ td {
 }
 
 .darkblock-detail-subtitle {
-  @apply mt-6 text-base font-bold;
+  @apply mt-6;
 }
 
 .darkblock-detail-subtitle-text {
-  @apply text-sm text-gray-500;
+  @apply text-neutral-500;
 }
 
 .darkblock-button-container {
@@ -241,19 +241,22 @@ td {
 }
 
 .darkblock-modal-title {
-  @apply flex items-center justify-center font-bold;
+  @apply flex items-center justify-center;
 }
 
 .darkblock-modal-name {
-  @apply text-xl font-bold truncate;
+  @apply truncate;
 }
 
 .darkblock-modal-detail {
-  @apply max-w-lg mt-6 text-sm text-gray-500;
+  @apply max-w-lg mt-6 text-neutral-500;
 }
 
-#darkblock-modal-bg {
-  @apply fixed inset-0 z-30 flex items-start justify-center py-4 overflow-auto bg-black bg-opacity-90;
+#darkblock-modal-bg-start {
+  @apply fixed inset-0 z-30 flex items-start justify-center overflow-auto bg-black bg-opacity-90;
+}
+#darkblock-modal-bg-center {
+  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-90;
 }
 
 #darkblock-modal-box {

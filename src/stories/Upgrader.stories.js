@@ -10,7 +10,7 @@ const state = {
 }
 
 const config = {
-  customCssClass: "api_key_goes_here", // pass here a class name you plan to use
+  customCssClass: "class_name_goes_here", // pass here a class name you plan to use
   debug: false, // debug flag to console.log some variables
 }
 
