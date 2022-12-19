@@ -20,7 +20,7 @@
     @apply grid grid-cols-12 gap-4 px-2 items-center border-gray-200 border-b-[1px] h-12;
 }
 .Darkblock-EmptyHeaderContainer {
-    @apply grid grid-cols-12 gap-4 px-2 border-gray-200 border-b-[1px] h-9; 
+    @apply grid grid-cols-12 gap-4 px-2 border-gray-200 border-b-[1px] h-[3rem];
 }
 .Darkblock-SingleElementWrapper {
     @apply col-span-8 flex items-center h-9

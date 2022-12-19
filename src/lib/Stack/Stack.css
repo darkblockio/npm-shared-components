@@ -1,6 +1,6 @@
 /*whole component*/
 .DarkblockWidget-Stack-Panel {
-  @apply relative flex-grow w-full overflow-y-auto h-80;
+  @apply relative flex-grow w-full overflow-y-auto h-[21rem];
 }
 
 .DarkblockWidget-Stack-Panel .Darkblock-Stack-Table {
