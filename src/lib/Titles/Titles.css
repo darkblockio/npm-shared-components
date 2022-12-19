@@ -1,11 +1,6 @@
-
-
-
 .Darkblock-rowheader {
-  @apply sticky top-0 z-10 h-[48px] text-gray-500 bg-white cursor-pointer grid grid-cols-12 border-b-[1px];
+  @apply sticky top-0 z-10 h-[3rem] text-gray-500 bg-white cursor-pointer grid grid-cols-12 border-b-[1px];
 }
-
-
 
 .Darkblock-name-header {
   @apply pl-2 text-left col-span-8 flex items-center;
