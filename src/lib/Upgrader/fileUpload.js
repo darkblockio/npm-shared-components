@@ -29,20 +29,20 @@ const formats = [
   "zip",
 ]
 
-const FileUpload = ({ fileState, setFileState }) => {
+const FileUpload = ({ fileState, setFileState, handleUpload }) => {
   const { t } = useTranslation()
   return (
     <div className="Darkblock-fileupload-container">
       <div>
-        <h1 className="Darkblock-fileupload-header">{t("fileUpload")}</h1>
-        <h3 className="Darkblock-fileupload-header-supported">{t("supportedFileFormats")}:</h3>
+        <h1 className="Darkblock-fileupload-header Darkblock-H1">{t("fileUpload")}</h1>
+        <h3 className="Darkblock-fileupload-header-supported Darkblock-H3">{t("supportedFileFormats")}:</h3>
         <p className="Darkblock-fileupload-formats Darkblock-BodyText">{formats.join(", ")}</p>
         <p className="Darkblock-fileupload-info Darkblock-BodyText">{t("maxFileSize")}</p>
         <div style={{ display: "flex", alignItems: "center" }} className="hidden">
           <span id="size" />
         </div>
       </div>
-      <div className="Darkblock-BodyText Darkblock-fileupload-input-container">
+      <div className="Darkblock-fileupload-input-container">
         <div className="Darkblock-file-upload-container">
           <div className="Darkblock-file-upload-input">
             <input
@@ -55,17 +55,18 @@ const FileUpload = ({ fileState, setFileState }) => {
                 if (e.target.files) {
                   let f = e.target.files[0]
                   setFileState(f)
+                  handleUpload()
                 }
               }}
             />
-            <label id="Darkblock-file-select" htmlFor="file-upload">
+            <label className="Darkblock-ButtonMediumText" id="Darkblock-file-select" htmlFor="file-upload">
               {t("choose.file")}
             </label>
           </div>
         </div>
         {!fileState ? (
           <div className="Darkblock-file-upload-not-image-container">
-            <span>{t("notFile")}</span>
+            <p className="Darkblock-BodyText">{t("notFile")}</p>
           </div>
         ) : (
           <div className="Darkblock-file-upload-image-container">
@@ -77,7 +78,7 @@ const FileUpload = ({ fileState, setFileState }) => {
               </label>
             </div>
             <div className="Darkblock-file-upload-image-name">
-              <label htmlFor="file-upload">{fileState?.name}</label>
+              <p className="Darkblock-BodyText">{fileState?.name}</p>
             </div>
           </div>
         )}
