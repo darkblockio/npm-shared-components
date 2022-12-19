@@ -5,6 +5,7 @@ import postcss from "rollup-plugin-postcss"
 import commonjs from "@rollup/plugin-commonjs"
 import { terser } from "rollup-plugin-terser"
 import json from "@rollup/plugin-json"
+import image from '@rollup/plugin-image';
 
 export default [
   {
@@ -40,6 +41,7 @@ export default [
       commonjs(),
       external(),
       resolve(),
+      image(),
       process.env.PROD ? terser() : null,
     ],
   },

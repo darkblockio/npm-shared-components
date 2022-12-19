@@ -12,11 +12,7 @@ const Minter = ({ state, progress, mintingStateMsg }) => {
             <>
               <div className="Darkblock-minting-container">
                 <h3 className="Darkblock-minting-header-text">{t("upgrader.minting")}</h3>
-                <div>
-                  <video autoPlay playsInline loop className="Darkblock-minting-video-loop">
-                    <source src={"https://darkblock-media.s3.amazonaws.com/upload/loading.mp4"} type="video/mp4" />
-                  </video>
-                </div>
+                <img src="../../assets/images/signing.jpg" />
                 <div className="Darkblock-minting-progress-container">
                   <div className="Darkblock-minting-progress-bar" style={{ width: `${progress}%` }}>
                     {progress}%
