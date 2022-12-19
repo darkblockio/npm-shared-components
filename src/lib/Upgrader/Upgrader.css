@@ -10,7 +10,11 @@
   @apply fixed inset-0 z-50 flex items-center justify-center w-full m-4 overflow-x-hidden overflow-y-scroll outline-none focus:outline-none;
 }
 
-.DarkblockWidget-Upgrader .Darkblock-upgrade-modal-box-container {
+.DarkblockWidget-Upgrader .Darkblock-upgrade-modal-box-container-center {
+  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-70;
+}
+
+.DarkblockWidget-Upgrader .Darkblock-upgrade-modal-box-container-start {
   @apply fixed inset-0 z-30 flex items-start justify-center overflow-auto bg-black bg-opacity-70 p-4;
 }
 
@@ -42,27 +46,23 @@
 }
 
 #Darkblock-upgrade-modal-box {
-  @apply relative max-w-xl  p-8 pt-5 text-left bg-white rounded shadow-lg max-h-fit;
+  @apply relative max-w-xl  px-8 pt-5 pb-[90px] text-left bg-white rounded shadow-lg max-h-fit relative;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-form {
   @apply bg-white;
 }
 
-.DarkblockWidget-Upgrader .Darkblock-upgrade-title-input {
-  @apply font-bold text-sm;
-}
-
 .DarkblockWidget-Upgrader .Darkblock-upgrade-name-input {
-  @apply w-full p-2 mt-1 mb-6 text-gray-800 border border-gray-300 rounded focus:ring-gray-500 focus:border-gray-500 sm:text-sm;
+  @apply w-full p-2 mt-1 mb-6 border border-gray-300 rounded focus:ring-gray-500 focus:border-gray-500;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-description-input {
-  @apply block w-full p-2 mt-1 text-gray-800 border border-gray-300 rounded focus:ring-gray-500 focus:border-gray-500 sm:text-sm;
+  @apply block w-full p-2 mt-1 border border-gray-300 rounded focus:ring-gray-500 focus:border-gray-500;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-description-char-count {
-  @apply hidden mt-2 text-xs text-gray-600 md:block mb-6;
+  @apply mt-2 text-neutral-500 block mb-6;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-allowDownload {
@@ -70,14 +70,14 @@
 }
 
 .Darkblock-Upload-Footer{
-  @apply absolute bottom-2 flex items-center justify-center w-full
+  @apply absolute bottom-8 right-0 flex items-center justify-center w-full
 }
 .DarkblockWidget-Upgrader .Darkblock-downloadable-text {
-  @apply inline-block text-sm font-bold text-gray-800;
+  @apply inline-block text-black;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-downloadable-check {
-  @apply w-4 h-4 mr-2 transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-2 border-gray-600 rounded-sm appearance-none cursor-pointer checked:bg-[url('check.svg')] hover:bg-[url('check.svg')] hover:border-gray-800 checked:border-gray-800 focus:outline-none;
+  @apply w-4 h-4 mr-2 transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-2 border-neutral-500 rounded-sm appearance-none cursor-pointer checked:bg-[url('check.svg')]  hover:border-black checked:border-black focus:outline-none;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-fileupload-container {
@@ -85,26 +85,26 @@
 }
 
 .DarkblockWidget-Upgrader .Darkblock-fileupload-header {
-  @apply hidden pb-0 text-base font-bold md:block md:mb-6;
+  @apply pb-6;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-fileupload-header-supported {
-  @apply pb-0 text-sm font-bold leading-relaxed md:pb-2;
+  @apply leading-relaxed pb-2;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-fileupload-formats {
-  @apply py-0 text-xs font-semibold leading-relaxed text-gray-600 md:py-1;
+  @apply leading-relaxed text-neutral-500;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-fileupload-info {
-  @apply py-0 text-xs text-gray-600 md:pt-4;
+  @apply text-neutral-500 pt-2;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-fileupload-input-container {
   @apply w-full px-4 py-4 bg-neutral-100 rounded mb-6 flex relative mt-6;
 }
 #Darkblock-file-select{
-  @apply flex justify-center items-center text-center bg-neutral-200 p-2 font-bold rounded-lg cursor-pointer w-full  
+  @apply flex justify-center items-center text-center bg-neutral-200 p-2 rounded-lg cursor-pointer w-full  
 }
 
 .Darkblock-input-file {
@@ -119,7 +119,7 @@
 }
 
 .Darkblock-file-upload-not-image-container{
-  @apply flex grow items-center justify-center text-gray-600 ml-4 text-center;
+  @apply flex grow items-center justify-center text-neutral-500 ml-4 text-center;
 }
 
 .Darkblock-file-upload-image{
@@ -127,7 +127,7 @@
 }
 
 .Darkblock-file-upload-image-name{
-  @apply flex items-center justify-center text-center; 
+  @apply flex items-center justify-center text-center pt-4; 
 }
 
 .DarkblockWidget-Upgrader .Darkblock-minting-container {
