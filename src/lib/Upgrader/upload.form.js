@@ -126,7 +126,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev, handleU
         let percentComplete = Math.ceil((e.loaded / e.total) * 100)
 
         if (percentComplete > 10 && percentComplete <= 90) {
-          setMintingStateMsg(t("upgrader.uploading"))
+          setMintingStateMsg(t("upgrader.uploadingArweave"))
           setProgress(percentComplete)
         }
       }
