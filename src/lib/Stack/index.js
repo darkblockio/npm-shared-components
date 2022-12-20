@@ -6,7 +6,7 @@ import Player from "../Player"
 import Header from "../Header"
 import Titles from "../Titles"
 import PlayerModal from "../playerModal"
-import EmptyTable from "../EmptyTable"
+import EmptyTable, { EmptyRow } from "../EmptyTable"
 import EllipsisModal from "./ellipsisModal"
 
 import { faClose } from "@fortawesome/free-solid-svg-icons"
@@ -141,6 +141,18 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     }
   }, [height])
 
+  let emptyRows = 6 - state.context.display.stack.length
+
+  const renderEmptyRows = () => {
+    const emptyRowElements = []
+
+    for (let i = 0; i < emptyRows; i++) {
+      emptyRowElements.push(<EmptyRow key={i} empty />)
+    }
+
+    return <div>{emptyRowElements}</div>
+  }
+
   return (
     <>
       <PlayerModal showModal={showModal} open={showModal} onClose={(e) => handleOnClose(e)}>
@@ -262,6 +274,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                     )
                   }
                 })}
+                {renderEmptyRows()}
               </div>
             </div>
           </div>
