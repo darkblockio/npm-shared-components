@@ -1,37 +1,36 @@
 .Darkblock-EmptyElement {
-    @apply mx-2 my-4 animate-pulse flex items-center
+  @apply mx-2 my-4  flex items-center;
 }
 .Darkblock-EmptyElementDiv {
-    @apply h-4 bg-gray-100 rounded w-20
+  @apply h-4 bg-gray-100 rounded w-20;
 }
 .Darkblock-EmptyElementDivLg {
-    @apply h-4 bg-gray-100 rounded w-44
+  @apply h-4 bg-gray-100 rounded w-44;
 }
 .Darkblock-EmptyNameElement {
-    @apply flex items-center pt-0 my-4 text-left animate-pulse
+  @apply flex items-center pt-0 my-4 text-left;
 }
 .Darkblock-EmptyNameElement1 {
-    @apply w-6 h-6 p-2 ml-2 mr-2 bg-gray-100 rounded
+  @apply w-6 h-6 p-2 ml-2 mr-2 bg-gray-100 rounded;
 }
 .Darkblock-EmptyNameElement2 {
-    @apply h-4 bg-gray-100 rounded w-44
+  @apply h-4 bg-gray-100 rounded w-44;
 }
 .Darkblock-EmptyRowContainer {
-    @apply grid grid-cols-12 gap-4 px-2 items-center border-gray-200 border-b-[1px] h-12;
+  @apply grid grid-cols-12 gap-4 px-2 items-center border-gray-200 border-b-[1px] h-12;
 }
 .Darkblock-EmptyHeaderContainer {
-    @apply grid grid-cols-12 gap-4 px-2 border-gray-200 border-b-[1px] h-[3rem];
+  @apply grid grid-cols-12 gap-4 px-2 border-gray-200 border-b-[1px] h-[3rem];
 }
 .Darkblock-SingleElementWrapper {
-    @apply col-span-8 flex items-center h-9
+  @apply col-span-8 flex items-center h-9;
 }
 .Darkblock-MultipleElementWrapper {
-    @apply col-span-4 justify-self-end flex items-center h-9
+  @apply col-span-4 justify-self-end flex items-center h-9;
 }
 .Darkblock-EmptyElementFlexWrapper {
-    @apply flex h-9 items-center
+  @apply flex h-9 items-center;
 }
 .Darkblock-EmptyElementHide {
-    @apply hidden sm:block
+  @apply hidden sm:block;
 }
-
