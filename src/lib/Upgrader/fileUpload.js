@@ -78,7 +78,7 @@ const FileUpload = ({ fileState, setFileState, handleUpload }) => {
               </label>
             </div>
             <div className="Darkblock-file-upload-image-name">
-              <p className="Darkblock-BodyText">{fileState?.name}</p>
+              <p className="Darkblock-BodyText">{fileState.name}</p>
             </div>
           </div>
         )}
