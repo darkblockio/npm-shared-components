@@ -47,7 +47,7 @@
   "choose.file": "Seleccionar archivo",
   "upgrader.minting": "Su contenido desbloqueable está siendo creado..",
   "upgrader.mintingWarning": "NO cierre esta página hasta que finalice este proceso.\nDependiendo del tamaño del archivo y su conexión a Internet, el tiempo de carga puede demorar unos minutos.",
-  "upgrader.minted": "Su contenido desbloqueable esta siendo creado",
+  "upgrader.minted": "Su contenido desbloqueable ha sido creado",
   "upgrader.done": "Hecho",
   "upgrader.error": "Ups...\nalgo salió mal",
   "upgrader.errorDetail": "Ocurrió un error.\nPor favor intente de nuevo.",
