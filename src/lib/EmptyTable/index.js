@@ -35,18 +35,15 @@ const EmptyHeader = () => {
   )
 }
 
-const EmptyRow = () => {
-  // EmptyRow component to CSS Grid with tailwind classes and use it here
+export const EmptyRow = ({ empty }) => {
   return (
     <div className="Darkblock-EmptyRowContainer">
-      <div className="Darkblock-SingleElementWrapper">
-        <EmptyNameElement />
-      </div>
+      <div className="Darkblock-SingleElementWrapper">{empty ? "" : <EmptyNameElement />}</div>
       <div className="Darkblock-MultipleElementWrapper">
         <div className="Darkblock-EmptyElementFlexWrapper">
-          <EmptyElement hide />
-          <EmptyElement hide />
-          <EmptyElement />
+          {empty ? "" : <EmptyElement hide />}
+          {empty ? "" : <EmptyElement hide />}
+          {empty ? "" : <EmptyElement />}
         </div>
       </div>
     </div>
