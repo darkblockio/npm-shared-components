@@ -12,14 +12,17 @@ const UpgradeModal = ({ apiKey, state, open, onClose, authenticate, reset, dev }
   const handleUploadChange = () => {
     let boxes
     setTimeout(() => {
-      boxes = document.querySelector("#Darkblock-upgrade-modal-box")?.clientHeight
-      setModal(boxes)
+      if (document.querySelector("#Darkblock-upgrade-modal-box")) {
+        boxes = document.querySelector("#Darkblock-upgrade-modal-box").clientHeight
+        setModal(boxes)
+      }
     }, 100)
   }
 
   function changeScreen(e) {
     setScreen(e.srcElement.innerHeight)
   }
+
   window.addEventListener("resize", changeScreen)
   return (
     <>

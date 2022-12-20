@@ -183,7 +183,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev, handleU
           <label className="Darkblock-InputLabelText">{t("upgrader.name")}</label>
           <input
             type="text"
-            className="Darkblock-upgrade-name-input Darkblock-InputLabelText"
+            className="Darkblock-upgrade-name-input Darkblock-InputText"
             id="name"
             onChange={(e) => {
               setName(e.target.value)
@@ -208,11 +208,12 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev, handleU
               className="Darkblock-downloadable-check"
               type="checkbox"
               checked={isDownloadable}
+              id="allow"
               onChange={(e) => {
                 setIsDownloadable(e.target.checked)
               }}
             />
-            <label className="Darkblock-ButtonSmallText Darkblock-downloadable-text">
+            <label htmlFor="allow" className="Darkblock-ButtonMediumText Darkblock-downloadable-text">
               {t("upgrader.allowDownload")}
             </label>
           </div>
