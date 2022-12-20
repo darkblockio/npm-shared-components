@@ -54,11 +54,11 @@
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-name-input {
-  @apply w-full p-2 mt-1 mb-6 border border-gray-300 rounded focus:ring-gray-500 focus:border-gray-500;
+  @apply w-full p-2 mt-1 mb-6 border border-gray-300 rounded focus:ring-black focus:border-black outline-black;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-description-input {
-  @apply block w-full p-2 mt-1 border border-gray-300 rounded focus:ring-gray-500 focus:border-gray-500;
+  @apply block w-full p-2 mt-1 border border-gray-300 rounded focus:ring-black focus:border-black outline-black
 }
 
 .DarkblockWidget-Upgrader .Darkblock-upgrade-description-char-count {
@@ -73,7 +73,7 @@
   @apply absolute bottom-8 right-0 flex items-center justify-center w-full;
 }
 .DarkblockWidget-Upgrader .Darkblock-downloadable-text {
-  @apply inline-block text-black;
+  @apply inline-block text-black cursor-pointer;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-downloadable-check {
