@@ -1,7 +1,8 @@
 import { createMachine } from "xstate"
 import { humanFileSize, shortenEthAddr, getCreator, getArweaveData } from "./utils"
+import { filterDarkblocks } from "./utils/filterDarkblocks"
 
-const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
+const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig = null) => {
   let baseLink
 
   switch (platform) {
@@ -130,7 +131,11 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false) => {
                     context.display.stack.sort((a, b) => b.datecreated - a.datecreated)
                   }
 
-                  return true
+                  let preFilteredStack = filterDarkblocks(context.display.stack, dbConfig)
+
+                  context.display.stack = preFilteredStack
+
+                  return context.display.stack.length > 0
                 } else {
                   return false
                 }
