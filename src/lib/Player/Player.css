@@ -30,6 +30,12 @@
   -webkit-touch-callout: none;
 }
 
+.Darkblock-dynamicImageSize {
+  height: calc(100vh - 128px) !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+}
+
 .Darkblock-reactReader {
   @apply relative h-[100%] w-full;
 }
