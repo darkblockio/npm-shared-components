@@ -112,11 +112,11 @@ const MediaComp = ({ mediaURL, mediaType, posterUrl }) => {
   }
 
   if (mediaType.indexOf("image/gif") > -1) {
-    return <img id="Darkblock-gif" className="Darkblock-gifViewer" src={mediaURL} />
+    return <img id="Darkblock-gif" className="Darkblock-gifViewer Darkblock-dynamicImageSize" src={mediaURL} />
   }
 
   if (mediaType == "encrypted(image/svg+xml)" || mediaType.indexOf("image") > -1)
-    return <img className="Darkblock-imageViewer" src={mediaURL} />
+    return <img className="Darkblock-imageViewer Darkblock-dynamicImageSize" src={mediaURL} />
 
   if (mediaType.indexOf("audio") > -1) {
     mediaSrc.type = "audio"
