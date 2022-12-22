@@ -5,6 +5,8 @@ import FooterUpgrader from "../FooterUpgrader"
 import UpgradeForm from "./upload.form"
 
 const UpgradeModal = ({ apiKey, state, open, onClose, authenticate, reset, dev }) => {
+  const [mintingState, setMintingState] = useState("starting")
+
   const [screen, setScreen] = useState(window.innerHeight)
   const [modal, setModal] = useState(794)
 
@@ -30,8 +32,8 @@ const UpgradeModal = ({ apiKey, state, open, onClose, authenticate, reset, dev }
         <div className="Darkblock-upgrade-modal-container">
           <div id="Darkblock-upgrade-modal-bg">
             <div className={`Darkblock-upgrade-modal-box-container-${screen >= modal ? "center" : "start"}`}>
-              <div id="Darkblock-upgrade-modal-box">
-                <div className="Darkblock-upgrade-modal-first-row">
+              <div id={mintingState !== "error" ? "Darkblock-upgrade-modal-box" : ""}>
+                <div className={mintingState !== "error" ? "Darkblock-upgrade-modal-first-row" : ""}>
                   <div className="Darkblock-upgrade-modal-first-row-container"></div>
                   <div className="Darkblock-upgrade-modal-title">{t("upgrader.title")}</div>
 
@@ -39,7 +41,7 @@ const UpgradeModal = ({ apiKey, state, open, onClose, authenticate, reset, dev }
                     <Cross />
                   </button>
                 </div>
-                <hr className="Darkblock-upgrade-line-break" />
+                {mintingState !== "error" && <hr className={"Darkblock-upgrade-line-break"} />}
                 <div className="Darkblock-upgrade-container">
                   <UpgradeForm
                     apiKey={apiKey}
@@ -49,6 +51,8 @@ const UpgradeModal = ({ apiKey, state, open, onClose, authenticate, reset, dev }
                     reset={reset}
                     dev={dev}
                     handleUpload={handleUploadChange}
+                    mintingState={mintingState}
+                    setMintingState={setMintingState}
                   />
                 </div>
                 <div className="Darkblock-Upload-Footer">
