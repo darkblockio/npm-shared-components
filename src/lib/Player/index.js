@@ -16,6 +16,7 @@ const MediaComp = ({ mediaURL, mediaType, posterUrl }) => {
   const renditionRef = useRef(null)
   const [selections, setSelections] = useState([])
   const [location, setLocation] = useState(0)
+  const [isLoaded, setIsLoaded] = useState(false)
   const mediaTypeBinaryAndPdf = [
     "encrypted(model/gltf-binary)",
     "(model/gltf-binary)",
@@ -112,11 +113,34 @@ const MediaComp = ({ mediaURL, mediaType, posterUrl }) => {
   }
 
   if (mediaType.indexOf("image/gif") > -1) {
-    return <img id="Darkblock-gif" className="Darkblock-gifViewer Darkblock-dynamicImageSize" src={mediaURL} />
+    return (
+      <>
+        <img
+          onLoad={() => setIsLoaded(true)}
+          id="Darkblock-gif"
+          className={`Darkblock-gifViewer Darkblock-dynamicImageSize ${isLoaded ? "block" : "hidden"}`}
+          src={mediaURL}
+        />
+        <div className={`${isLoaded ? "hidden" : "block"} m-auto`}>
+          <LoadSpinner />
+        </div>
+      </>
+    )
   }
 
   if (mediaType == "encrypted(image/svg+xml)" || mediaType.indexOf("image") > -1)
-    return <img className="Darkblock-imageViewer Darkblock-dynamicImageSize" src={mediaURL} />
+    return (
+      <>
+        <img
+          className={`Darkblock-imageViewer Darkblock-dynamicImageSize ${isLoaded ? "block" : "hidden"}`}
+          onLoad={() => setIsLoaded(true)}
+          src={mediaURL}
+        />
+        <div className={`${isLoaded ? "hidden" : "block"} m-auto`}>
+          <LoadSpinner />
+        </div>
+      </>
+    )
 
   if (mediaType.indexOf("audio") > -1) {
     mediaSrc.type = "audio"
