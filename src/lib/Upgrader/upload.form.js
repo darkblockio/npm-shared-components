@@ -7,12 +7,21 @@ import signingImg from "../../assets/images/signing.jpg"
 import completeImg from "../../assets/images/complete.jpg"
 import errorImg from "../../assets/images/error.svg"
 
-const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev, handleUpload }) => {
+const UpgradeForm = ({
+  mintingState,
+  setMintingState,
+  apiKey,
+  state,
+  onClose,
+  authenticate,
+  reset,
+  dev,
+  handleUpload,
+}) => {
   const [darkblockDescription, setDarkblockDescription] = useState("")
   const [name, setName] = useState("")
   const [isDownloadable, setIsDownloadable] = useState(false)
   const [fileState, setFileState] = useState({})
-  const [mintingState, setMintingState] = useState("starting")
   const [mintingStateMsg, setMintingStateMsg] = useState("")
   const [minting, setMinting] = useState(false)
   const [progress, setProgress] = useState(0)
@@ -79,7 +88,7 @@ const UpgradeForm = ({ apiKey, state, onClose, authenticate, reset, dev, handleU
           setIsDownloadable(false)
           setMintingState("error")
           setOpen(true)
-        }, 500)
+        }, 100)
       }
     }
   }, [state.value])
