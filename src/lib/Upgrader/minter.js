@@ -15,7 +15,7 @@ const Minter = ({ state, progress, mintingStateMsg }) => {
           {state === "starting" && (
             <>
               <div className="Darkblock-minting-container">
-                <h3 className="Darkblock-minting-header-text Darkblock-H1">{t("upgrader.minted")}</h3>
+                <h3 className="Darkblock-minting-header-text Darkblock-H1">{t("upgrader.minting")}</h3>
                 <img className="Darkblock-image-upgrader" src={signingImg} />
                 <div className="Darkblock-minting-progress-container">
                   <div className="Darkblock-minting-progress-bar" style={{ width: `${progress}%` }}>
