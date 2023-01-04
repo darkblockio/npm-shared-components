@@ -37,6 +37,7 @@
 .DarkblockWidget-Upgrader .Darkblock-upgrade-line-break {
   @apply mt-4 mb-8;
 }
+
 .DarkblockWidget-Upgrader .upgrade-detail-container {
   @apply block w-4/5 px-2;
 }
@@ -72,12 +73,13 @@
 .Darkblock-Upload-Footer {
   @apply absolute bottom-8 right-0 flex items-center justify-center w-full;
 }
+
 .DarkblockWidget-Upgrader .Darkblock-downloadable-text {
   @apply inline-block text-black cursor-pointer;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-downloadable-check {
-  @apply w-4 h-4 mr-2 transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-2 border-neutral-500 rounded-sm appearance-none cursor-pointer checked:bg-[url('check.svg')]  hover:border-black checked:border-black focus:outline-none;
+  @apply w-4 h-4 mr-2 accent-gray-600 hover:border-black cursor-pointer;
 }
 
 .DarkblockWidget-Upgrader .Darkblock-fileupload-container {
@@ -103,6 +105,7 @@
 .DarkblockWidget-Upgrader .Darkblock-fileupload-input-container {
   @apply w-full px-4 py-4 bg-neutral-100 rounded mb-6 flex relative mt-6;
 }
+
 #Darkblock-file-select {
   @apply flex justify-center items-center text-center bg-neutral-200 p-2 rounded-lg cursor-pointer w-full;
 }
@@ -110,6 +113,7 @@
 .Darkblock-input-file {
   @apply hidden;
 }
+
 .Darkblock-file-upload-input {
   @apply justify-center items-center;
 }
@@ -165,6 +169,7 @@
 .Darkblock-complete-button-container {
   @apply w-full max-w-[65%] mx-auto mt-5;
 }
+
 .DarkblockWidget-Upgrader .Darkblock-minting-complete-info {
   @apply px-4 mb-4 text-white;
 }
@@ -172,6 +177,7 @@
 .Darkblock-error-icon-upgrader {
   @apply mx-auto pt-6;
 }
+
 .Darkblock-minting-header-error-text {
   @apply px-5 text-white whitespace-pre my-6;
 }
