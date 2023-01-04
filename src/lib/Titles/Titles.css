@@ -6,6 +6,10 @@
   @apply pl-2 text-left col-span-8 flex items-center;
 }
 
+.Darkblock-name-header-items-count {
+  @apply pl-1;
+}
+
 .Darkblock-format-header {
   @apply hidden text-right w-28 sm:table-cell;
 }
@@ -15,7 +19,7 @@
 }
 
 .Darkblock-format-icon {
-  @apply  w-12;
+  @apply w-12;
 }
 
 .Darkblock-items-header {
