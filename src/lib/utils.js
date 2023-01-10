@@ -1,5 +1,5 @@
 export function shortenEthAddr(addr, platform) {
-  if (platform == "Solana") {
+  if (platform.toLowerCase().includes("solana")) {
     return addr.slice(0, 6) + "..." + addr.slice(addr.length - 4)
   }
 
@@ -24,12 +24,12 @@ export async function getJsonData(url) {
 
 export async function getNFTData(contract, id, platform, dev = false) {
   const pageSize = 50
-  const baseUrl = dev ? 'https://dev1.darkblock.io/v1' : 'https://api.darkblock.io/v1'
+  const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1"
 
   return await fetch(
     `${baseUrl}/nft/metadata?platform=${platform}&contract=${contract}&token=${id}&offest=0&page_size=${pageSize}`
   )
-    .then((response) => response.json())
+    .then((response) => response.json
     .then((data) => {
       return {
         nft: data.data,
@@ -43,7 +43,7 @@ export async function getNFTData(contract, id, platform, dev = false) {
 }
 
 export async function getArweaveData(id, platform, dev = false) {
-  const baseUrl = dev ? 'https://dev1.darkblock.io/v1' : 'https://api.darkblock.io/v1'
+  const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1"
 
   try {
     const response = await fetch(`${baseUrl}/darkblock/info?nft_id=${id}&nft_platform=${platform}`)
@@ -55,7 +55,7 @@ export async function getArweaveData(id, platform, dev = false) {
 }
 
 export async function getOwner(contractAddr, tokenId, platform, owner = "", dev = false) {
-  const baseUrl = dev ? 'https://dev1.darkblock.io/v1' : 'https://api.darkblock.io/v1'
+  const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1"
 
   try {
     const response = await fetch(
@@ -69,7 +69,7 @@ export async function getOwner(contractAddr, tokenId, platform, owner = "", dev 
 }
 
 export async function getCreator(contractAddr, tokenId, platform, dev = false) {
-  const baseUrl = dev ? 'https://dev1.darkblock.io/v1' : 'https://api.darkblock.io/v1'
+  const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1"
 
   try {
     const response = await fetch(
