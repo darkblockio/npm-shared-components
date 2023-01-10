@@ -29,7 +29,7 @@ export async function getNFTData(contract, id, platform, dev = false) {
   return await fetch(
     `${baseUrl}/nft/metadata?platform=${platform}&contract=${contract}&token=${id}&offest=0&page_size=${pageSize}`
   )
-    .then((response) => response.json
+    .then((response) => response.json())
     .then((data) => {
       return {
         nft: data.data,
