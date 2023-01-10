@@ -31,7 +31,7 @@ const upgradeMachine = (tokenId, contractAddress, platform, dev = false) => {
           src: () =>
             Promise.all([
               getCreator(contractAddress, tokenId, platform, dev),
-              getNFTData(platform === "Solana" ? "" : contractAddress, tokenId, platform, dev),
+              getNFTData(platform.toLowerCase().includes("solana") ? "" : contractAddress, tokenId, platform, dev),
             ]),
           onDone: [
             {

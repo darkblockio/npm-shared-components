@@ -7,6 +7,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
 
   switch (platform) {
     case "Solana":
+    case "Solana-Devnet":
       baseLink = "https://explorer.solana.com/address/"
       break
 
@@ -57,7 +58,11 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
           src: () =>
             Promise.all([
               getCreator(contractAddress, tokenId, platform, dev),
-              getArweaveData(platform === "Solana" ? tokenId : contractAddress + ":" + tokenId, platform, dev),
+              getArweaveData(
+                platform.toLowerCase().includes("solana") ? tokenId : contractAddress + ":" + tokenId,
+                platform,
+                dev
+              ),
             ]),
           onDone: [
             {
