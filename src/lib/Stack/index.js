@@ -190,7 +190,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             <div className="Darkblock-Stack-Table" style={{ opacity: opacity }}>
               <div>
                 <Titles state={state} />
-                Map over stack - {state.context.display.stack.length}
                 {state.context.display.stack.map((db, i) => {
                   if (state.value === "display" || state.value === "no_wallet") {
                     let sel = selected ? selected.i === i : false
