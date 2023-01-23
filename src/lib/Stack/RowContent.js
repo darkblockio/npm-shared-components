@@ -4,7 +4,8 @@ import { RenderEllipsisIcon, RenderIcon } from "./AuxFunctions"
 const RowContent = ({ db, f = null, selected = false, index = 0, showDetailModal }) => {
   const [selectedRow, setSelectedRow] = useState(false)
   const isRowActive = selected.i === index && selectedRow
-  let fn = f && typeof f === "function" ? f : () => {}
+  let fn = f && typeof f === "function" ? f : () => {
+  }
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
 

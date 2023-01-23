@@ -86,7 +86,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   }, [state.value])
 
   useEffect(() => {
-    if (state.value == "display") {
+    if (state.value === "display") {
       setOpacity(1)
       setTimeout(() => {
         setShowHeader(true) //it has reverse logic
@@ -117,7 +117,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
       emptyRowElements.push(<EmptyRow key={i} empty />)
     }
 
-    return <div>{emptyRowElements}</div>
+    // return <div>{emptyRowElements}</div>
   }
 
   return (
@@ -190,8 +190,9 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
             <div className="Darkblock-Stack-Table" style={{ opacity: opacity }}>
               <div>
                 <Titles state={state} />
+                Map over stack - {state.context.display.stack.length}
                 {state.context.display.stack.map((db, i) => {
-                  if (state.value === "display") {
+                  if (state.value === "display" || state.value === "no_wallet") {
                     let sel = selected ? selected.i === i : false
                     return (
                       <RowContent

@@ -81,7 +81,10 @@ const setHeader = (onClose, state, title, text, red = false, authenticate = null
         }}
       >
         {onClose !== false &&
-          (state.value === "no_wallet" || state.value === "wallet_connected" || state.value === "display") && (
+          (state.value === "no_wallet" ||
+            state.value === "no_wallet_loading" ||
+            state.value === "wallet_connected" ||
+            state.value === "display") && (
             <button className="DarkblockWidget-closeBtn" onClick={onClose}>
               <Cross />
             </button>
@@ -143,6 +146,7 @@ const Header = ({ onClose, state = null, authenticate }) => {
 
   switch (state.value) {
     case "no_wallet":
+    case "no_wallet_loading":
       title = t("state.noWalletTitle")
       text = t("state.noWalletText")
       break

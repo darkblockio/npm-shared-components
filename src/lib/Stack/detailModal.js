@@ -12,13 +12,16 @@ const DetailModal = ({ db, open, onClose }) => {
   const { t } = useTranslation()
 
   setTimeout(() => {
-    const boxModal = document.getElementById("darkblock-modal-box").clientHeight
-    setModal(boxModal)
+    if (document.querySelector("darkblock-modal-box")) {
+      const boxModal = document.getElementById("darkblock-modal-box").clientHeight
+      setModal(boxModal)
+    }
   }, 100)
 
   function changeScreen(event) {
     setScreen(event.srcElement.innerHeight)
   }
+
   window.addEventListener("resize", changeScreen)
 
   return (
