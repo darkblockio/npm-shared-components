@@ -117,7 +117,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
       emptyRowElements.push(<EmptyRow key={i} empty />)
     }
 
-    // return <div>{emptyRowElements}</div>
+    return <div>{emptyRowElements}</div>
   }
 
   return (
@@ -191,7 +191,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
               <div>
                 <Titles state={state} />
                 {state.context.display.stack.map((db, i) => {
-                  if (state.value === "display" || state.value === "no_wallet") {
+                  if (state.value === "display") {
                     let sel = selected ? selected.i === i : false
                     return (
                       <RowContent
