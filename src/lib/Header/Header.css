@@ -1,0 +1,80 @@
+.DarkblockWidget-Header-Container {
+  @apply absolute grid w-full h-full;
+}
+.DarkblockWidget-Header {
+  @apply relative z-30 flex p-4 m-auto bg-gray-100 border-2 border-gray-100 rounded shadow-lg place-content-center w-80 max-h-72 shadow-gray-300 h-52;
+  /* @apply top-1/2 left-1/2; */
+  /* transform: translate(-50%, -50%); */
+}
+
+.DarkblockWidget-Header-Row {
+  @apply flex flex-col items-center justify-center flex-auto sm:flex-col;
+}
+
+.DarkblockWidget-Header-Row > .DarkblockWidget-Header-logo {
+  @apply self-center flex-none text-sm font-semibold w-7 h-7;
+}
+
+.DarkblockWidget-closeBtn {
+  @apply absolute top-0 right-0 w-10 h-10 text-gray-500;
+}
+
+.Darkblock-Icon {
+  @apply w-8 h-8;
+}
+
+.DarkblockWidget-Header-Row > .DarkblockWidget-Header-titleStack {
+  @apply flex flex-col flex-wrap self-center justify-center p-1 mt-2 text-base font-bold;
+}
+
+.DarkblockWidget-Header-titleStack > .Darkblock-title {
+  @apply w-full pt-2 pb-1 font-bold text-center;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.DarkblockWidget-Header-titleStack > .Darkblock-title-red {
+  @apply flex flex-wrap items-center justify-center flex-auto text-base text-center text-black;
+}
+
+.DarkblockWidget-Header-titleStack > .Darkblock-dialog-message {
+  @apply w-full pb-2 text-base text-center text-neutral-500;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: -0.01em;
+}
+
+.DarkblockWidget-Header-Row > .DarkblockWidget-Header-authButton {
+  @apply flex items-center justify-center flex-auto text-sm font-semibold text-center bg-gray-100 sm:flex sm:flex-auto sm:items-center sm:justify-center;
+}
+
+.DarkblockWidget-HeaderContent {
+  @apply m-auto;
+}
+
+.Darkblock-FaWalletIcon {
+  @apply w-6 h-6;
+}
+
+.Darkblock-FaCheckIcon {
+  @apply w-6 h-6 text-green-500;
+}
+
+.Darkblock-FaTriangleIcon {
+  @apply w-6 h-6 text-red-500;
+}
+
+.DarkblockWidget-Header-countdownTimer {
+  @apply w-1/3 py-1 text-base bg-gray-200 text-neutral-500;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 14px;
+  border-radius: 6px;
+}
+
+.Darkblock-FaStopwatchIcon {
+  @apply w-4 h-4 px-2;
+}

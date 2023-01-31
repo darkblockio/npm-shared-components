@@ -1,0 +1,100 @@
+.DarkblockWidget-Main {
+  padding-top: 72px;
+}
+
+.DarkblockWidget-Main .simple-text {
+  color: #fff;
+}
+.DarkblockWidget-Main > .row-db > .col-left {
+  width: 50%;
+  float: left;
+}
+.DarkblockWidget-Main > .row-db > .col-left > .heading {
+  color: #9a9a9a;
+  font-size: 13px;
+  font-weight: bold;
+}
+.DarkblockWidget-Main > .row-db > .col-left > .content {
+  margin-top: 8px;
+  font-size: 16px;
+  padding: 0;
+}
+.DarkblockWidget-Main > .row-db > .col-right {
+  width: 50%;
+  float: right;
+}
+.DarkblockWidget-Main > .row-db > .col-right > .heading {
+  color: #9a9a9a;
+  font-size: 13px;
+  font-weight: bold;
+}
+.DarkblockWidget-Main > .row-db > .col-right > .content {
+  margin-top: 8px;
+  font-size: 16px;
+  padding: 0;
+}
+.DarkblockWidget-Main > .row-db > .col-full {
+  width: 100%;
+  float: left;
+}
+.DarkblockWidget-Main > .row-db > .col-full > .heading {
+  color: #9a9a9a;
+  font-size: 13px;
+  font-weight: bold;
+}
+.DarkblockWidget-Main > .row-db > .col-full > .content {
+  margin-top: 8px;
+  font-size: 16px;
+  padding: 0;
+}
+.DarkblockWidget-Main > .row-db > .col-full > .content > .underline {
+  text-decoration: underline;
+}
+.DarkblockWidget-Main > .row-db > .col-full > .content > .underline .underline {
+  text-decoration: underline;
+  color: white;
+}
+.DarkblockWidget-Main > .row-db > .col-full > .content > a {
+  color: white;
+}
+.DarkblockWidget-Main > .row-db::after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+}
+.DarkblockWidget-Main > .row-db:nth-child(n + 2) {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.DarkblockWidget-Main > .main-embed-code {
+  width: 174px;
+  height: 32px;
+  font-size: 14px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 600;
+}
+.DarkblockWidget-Main > .main-embed-code > .svg-arrow {
+  float: left;
+  margin-top: 1px;
+}
+.DarkblockWidget-Main > .main-embed-code > .svg-arrow svg {
+  margin-right: -8px;
+}
+.DarkblockWidget-Main > .main-embed-code > .content {
+  margin-left: -3px;
+}
+.DarkblockWidget-Main > .meta-info {
+  color: #9a9a9a;
+  font-size: 12px;
+  margin-top: 32px;
+}
+.DarkblockWidget-Main > .meta-info > a {
+  color: #9a9a9a;
+}
+.DarkblockWidget-Main > .meta-info > svg {
+  display: inline;
+}

@@ -1,0 +1,28 @@
+:root {
+  --doc-height: 100%;
+}
+
+.Darkblock-container {
+  @apply flex justify-center items-center overflow-x-hidden overflow-y-auto inset-0 outline-none focus:outline-none z-50 absolute bg-[rgb(43,43,43)];
+}
+
+.modal-bg-darkblock {
+  @apply fixed inset-0 bg-black;
+}
+
+.Darkblock-content {
+  @apply block w-full mx-auto text-center text-white; /* h-auto */
+}
+
+.Darkblock-awesomePlayerButton {
+  @apply w-6 h-6 p-2;
+}
+
+.Darkblock-player-modal-container {
+  @apply flex flex-col justify-between ;
+  height: var(--doc-height);
+}
+
+.Darkblock-player-modal-close-button {
+  @apply  z-50 my-auto cursor-pointer text-neutral-300;
+}

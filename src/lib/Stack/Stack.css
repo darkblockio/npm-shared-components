@@ -1,0 +1,300 @@
+/*whole component*/
+.DarkblockWidget-Stack-Panel {
+  @apply relative flex-grow w-full overflow-y-auto h-[21rem];
+}
+
+.DarkblockWidget-Stack-Panel .Darkblock-Stack-Table {
+  @apply w-full text-gray-500 border-gray-400  opacity-40;
+}
+
+.DarkblockWidget-Stack-Panel .row {
+  @apply cursor-pointer hover:bg-gray-200;
+}
+
+.DarkblockWidget-Stack-Panel .selected {
+  @apply bg-gray-200;
+}
+
+.DarkblockWidget-Stack-Panel .header {
+  @apply font-bold;
+}
+
+/*inside table */
+.DarkblockWidget-Stack-Panel .Darkblock-awesome {
+  @apply w-4 h-4 p-2 ml-2 mr-2 text-gray-900 bg-neutral-100 rounded;
+}
+
+.Darkblock-awesome path {
+  fill: #737373;
+}
+
+/* .DarkblockWidget-Stack-Panel .row .darkblock-name {
+  @apply whitespace-nowrap sm:w-[30px];
+} */
+
+.DarkblockWidget-Stack-Panel .Darkblock-name {
+  @apply flex flex-row items-center text-base text-gray-900 col-span-8 sm:col-span-7 md:col-span-8 lg:col-span-9;
+}
+
+.DarkblockWidget-Stack-Panel .Darkblock-name .Darkblock-truncate {
+  @apply truncate;
+}
+
+.DarkblockWidget-Stack-Panel .row .Darkblock-date {
+  @apply text-base text-gray-500 whitespace-nowrap;
+}
+
+.Darkblock-items {
+  @apply w-12 h-12 sm:w-60 flex items-center absolute right-0;
+}
+
+.Darkblock-date {
+  @apply hidden text-right pr-2 w-28 sm:table-cell;
+}
+
+.darkblock-right-text {
+  @apply hidden text-right w-24 sm:table-cell;
+}
+
+.darkblock-toggle {
+  @apply w-12 h-12 text-black;
+}
+
+.DarkblockWidget-Stack-Panel .dbdata {
+  @apply border-gray-200 cursor-pointer border-b-[1px] hover:bg-gray-50 grid grid-cols-12 relative h-12;
+}
+
+/*on select after coming back from modal*/
+.DarkblockWidget-Stack-Panel .dbdataSelected {
+  @apply bg-[#e5e5e3];
+}
+
+.DarkblockWidget-Stack-Panel .size {
+  @apply pr-3 text-base whitespace-nowrap;
+}
+
+td {
+  @apply h-[48px];
+}
+
+.DarkblockWidget-Stack-Panel .darkblock-box-menu {
+  @apply flex flex-row items-center pl-1 cursor-pointer;
+}
+
+.DarkblockWidget-Stack-Panel .details {
+  @apply flex flex-wrap px-2 py-4 border-b border-gray-300 cursor-pointer hover:bg-gray-200;
+}
+
+.DarkblockWdget-Stack-Panel .ellIcon {
+  @apply h-4 p-5 mt-1 text-gray-900 rounded;
+}
+
+.DarkblockWidget-Stack-Panel button.download {
+  @apply flex flex-row items-center w-full py-2 mt-4 mb-4 mr-2 font-bold text-center bg-gray-300 border border-black rounded md:w-1/3 text-red-50 hover:text-white hover:bg-gray-500;
+}
+
+.DarkblockWidget-Stack-Panel .details {
+  @apply w-full px-4 text-xs bg-gray-100 md:text-sm;
+}
+
+.DarkblockWidget-Stack-Panel .darkblock-dropbtn .toggleIcon {
+  @apply text-gray-900 rounded text-sm mb-[1px] bg-none p-3;
+}
+.darkblock-box-menu-items {
+  @apply w-72 h-32 ml-4 mt-[3px];
+}
+.darkblock-is-not-downloadable {
+  @apply flex flex-row items-center text-neutral-400 cursor-not-allowed h-10 mb-1;
+}
+
+.darkblock-cursor-pointer {
+  @apply flex flex-row items-center text-black w-full hover:bg-gray-200 cursor-pointer h-10 rounded mb-1;
+}
+
+.darkblock-toggleBtn {
+  @apply w-12;
+}
+
+.darkblock-titlebox-menu {
+  @apply flex flex-row justify-between items-end text-black mt-[5px];
+}
+
+.darkblock-title-menu {
+  @apply flex items-center h-8 pl-4 truncate;
+}
+
+.darkblock-toggle-container {
+  @apply flex justify-center;
+}
+
+.DarkblockWidget-Stack-Panel .dbdata .darkblock-toggle-container:hover .darkblock-toggle {
+  @apply bg-[#F5F5F2];
+}
+
+.DarkblockWidget-Stack-Panel .dbdata .darkblock-toggle-container:hover .Darkblock-toggleIcon {
+  @apply text-black;
+}
+
+.darkblock-toggle {
+  @apply w-[32px] h-[32px] rounded-full;
+}
+
+.Darkblock-toggleIcon {
+  /* bg-neutral-500 */
+  --tw-bg-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-bg-opacity));
+}
+
+.darkblock-icons {
+  @apply px-3;
+}
+
+.DarkblockWdget-Stack-Panel .darkblock-placeholder {
+  @apply pl-4 w-fit;
+}
+
+.DarkblockWidget-Stack-Panel .darkblock-dropdown-content .darkblock-dropbtn {
+  @apply flex text-black decoration-0;
+}
+
+.darkblock-dropdown-content {
+  @apply inset-0 m-auto rounded shadow-lg shadow-gray-300;
+}
+
+.darkblock-dropdown-content .darkblock-box-menu {
+  @apply h-10 rounded w-80 hover:bg-gray-200;
+}
+
+.DarkblockWidget-Stack-Panel .darkblock-dropdown-content {
+  @apply absolute z-40 bg-gray-100 w-80 h-52;
+}
+
+.DarkblockWidget-Stack-Panel .darkblock-dropdown:hover {
+  @apply bg-gray-100;
+}
+
+.darkblock-box-menu {
+  @apply flex flex-row items-center text-black w-full hover:bg-gray-100 hover:w-full mb-1;
+}
+
+.darkblock-elipsis-detail-modal {
+  @apply absolute z-30 flex p-4 m-auto bg-gray-100 rounded shadow-lg w-80 max-h-72 shadow-gray-300 h-52;
+  @apply transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
+}
+
+.darkblock-elipsis-detail-modal .darkblock-dropdown:hover {
+  @apply bg-gray-100;
+}
+
+.darkblock-elipsis-detail-modal .darkblock-dropdown-content {
+  @apply absolute;
+}
+
+.darkblock-elipsis-detail-modal .darkblock-titlebox-menu {
+  @apply flex flex-row justify-between h-12 pl-4 text-black;
+}
+
+/*player function */
+.scrollbar::-webkit-scrollbar {
+  width: 20px;
+  height: 20px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  border-radius: 100vh;
+  background: #f7f4ed;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #e0cbcb;
+  border-radius: 100vh;
+  border: 3px solid #f6f7ed;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #c0a0b9;
+}
+
+.darkblock-player-modal {
+  @apply z-40 w-full text-white bg-black h-[64px] flex justify-between px-3;
+}
+
+.darkblock-detail-subtitle {
+  @apply mt-6;
+}
+
+.darkblock-detail-subtitle-text {
+  @apply text-neutral-500;
+}
+
+.darkblock-button-container {
+  @apply float-right mt-6;
+}
+
+/* it contains details title and the X button*/
+.darkblock-modal-first-row {
+  @apply flex justify-between;
+}
+
+.darkblock-modal-first-row-container {
+  @apply flex;
+}
+
+.darkblock-modal-title {
+  @apply flex items-center justify-center;
+}
+
+.darkblock-modal-name {
+  @apply truncate;
+}
+
+.darkblock-modal-detail {
+  @apply max-w-lg mt-6 text-neutral-500;
+}
+
+#darkblock-modal-bg-start {
+  @apply fixed inset-0 z-30 flex items-start justify-center overflow-auto bg-black bg-opacity-90 p-4;
+}
+#darkblock-modal-bg-center {
+  @apply fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-90 p-4;
+}
+
+#darkblock-modal-box {
+  @apply max-w-xs sm:max-w-lg lg:max-w-3xl px-8 pb-8 pt-5 text-left rounded bg-white;
+}
+
+.darkblock-modal-box-container {
+  @apply z-30 overflow-auto bg-gray-200 bg-opacity-5 pt-4 mb-4 flex items-center;
+}
+
+/* .darkblock-modal-container {
+  @apply fixed inset-0 z-50 flex items-center justify-center m-4 overflow-x-hidden overflow-y-auto outline-none focus:outline-none;
+} */
+.darkblock-modal-container {
+  @apply fixed inset-0 z-50 flex items-start mt-4 justify-center outline-none focus:outline-none;
+}
+
+.darkblock-detail-container {
+  @apply block w-full;
+}
+
+.darkblock-elipsis-cross-button {
+  @apply absolute top-0 right-0 w-10 h-10 text-gray-500;
+}
+
+.darkblock-cross-button {
+  @apply justify-end w-6 h-6 cursor-pointer;
+}
+
+.darkblock-divider {
+  @apply mt-4 mb-8;
+}
+
+.darkblock-arrows-container {
+  @apply h-[64px] sticky top-[100vh] w-full flex;
+}
+
+.Darkblock-player-modal-container-title-name {
+  @apply m-auto text-xs text-neutral-400 truncate;
+}
+

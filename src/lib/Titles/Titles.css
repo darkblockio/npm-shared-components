@@ -1,0 +1,27 @@
+.Darkblock-rowheader {
+  @apply sticky top-0 z-10 h-[3rem] text-gray-500 bg-white cursor-pointer grid grid-cols-12 border-b-[1px];
+}
+
+.Darkblock-name-header {
+  @apply pl-2 text-left col-span-8 flex items-center;
+}
+
+.Darkblock-name-header-items-count {
+  @apply pl-1;
+}
+
+.Darkblock-format-header {
+  @apply hidden text-right w-28 sm:table-cell;
+}
+
+.Darkblock-format-date {
+  @apply hidden text-right w-28 sm:table-cell;
+}
+
+.Darkblock-format-icon {
+  @apply w-12;
+}
+
+.Darkblock-items-header {
+  @apply w-64 flex items-center absolute right-0 h-12;
+}
