@@ -26,7 +26,7 @@ import {
 
 ## Styling - css classes defined in widget
 
-On any other state than `display`.
+On any other state than `display`
 
 ```
 .DarkblockWidget-App {
