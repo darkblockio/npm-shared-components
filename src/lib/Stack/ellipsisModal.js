@@ -85,7 +85,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
           </div>
         </div>
       ) : null}
-      <DetailModal db={db} open={showDetailModal} onClose={() => setShowDetailModal(!showDetailModal)} />
+      <DetailModal db={db} open={showDetailModal} onClose={() => setShowDetailModal(!showDetailModal)} state={state}/>
     </>
   )
 }

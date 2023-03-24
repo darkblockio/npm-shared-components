@@ -3,14 +3,16 @@ import { useTranslation } from "react-i18next"
 import Button from "../Button"
 import Cross from "../Cross"
 
-const DetailModal = ({ db, open, onClose }) => {
+const DetailModal = ({ db, open, onClose, state=null }) => {
   const [screen, setScreen] = useState(window.innerHeight)
   const [modal, setModal] = useState(null)
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
   let d = new Date(0)
   d.setUTCMilliseconds(db.datecreated)
   const { t } = useTranslation()
-
+  const url = db && db.url ? db.url : null
+  const downloadable =
+    state && state.value === "display" && url && db.downloadable.toString().toLowerCase() === "true"
   setTimeout(() => {
     if (document.querySelector("darkblock-modal-box")) {
       const boxModal = document.getElementById("darkblock-modal-box").clientHeight
@@ -29,13 +31,13 @@ const DetailModal = ({ db, open, onClose }) => {
       {open ? (
         <>
           <div className="darkblock-modal-container">
-            <div id={`darkblock-modal-bg-${screen >= modal ? "center" : "start"}`} onClick={() => onClose(true)}>
+            <div id={`darkblock-modal-bg-${screen >= modal ? "center" : "start"}`} >
               <div id="darkblock-modal-box">
                 <div className="darkblock-modal-first-row">
                   <div className="darkblock-modal-first-row-container"></div>
                   <h3 className="darkblock-modal-title Darkblock-H3">{t("details.title")}</h3>
                   {/* <img className='darkblock-cross-button' src="https://img.icons8.com/ios/50/000000/multiply.png" /> */}
-                  <button className="darkblock-cross-button">
+                  <button className="darkblock-cross-button" onClick={() => onClose(true)}>
                     <Cross />
                   </button>
                 </div>
@@ -59,7 +61,7 @@ const DetailModal = ({ db, open, onClose }) => {
                   <div className="darkblock-detail-subtitle-text Darkblock-BodyText">{db.arweaveTX}</div>
                   <h3 className="darkblock-detail-subtitle Darkblock-H3">Downloadable:</h3>
                   <div className="darkblock-detail-subtitle-text Darkblock-BodyText">
-                    {db.downloadable ? "Yes" : "No"}
+                    {downloadable ? "Yes" : "No"}
                   </div>
                 </div>
                 <div className="darkblock-button-container">
