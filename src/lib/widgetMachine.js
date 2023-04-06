@@ -100,6 +100,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                         datecreated,
                         name = "",
                         downloadable = "false"
+                       
 
                       db.tags.forEach((tag) => {
                         if (tag.name === "ArtId") artId = tag.value
@@ -107,6 +108,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                         if (tag.name === "Date-Created") datecreated = tag.value
                         if (tag.name === "Downloadable") downloadable = tag.value
                         if (tag.name === "Name") name = tag.value
+                        if (tag.name === "Verified") verified = tag.value
 
                         if (name === "" && details !== "") name = details
                       })
@@ -114,6 +116,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                       context.display.stack.push({
                         artId,
                         name,
+                        verified,
                         details,
                         datecreated,
                         downloadable,
@@ -213,6 +216,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                         if (tag.name === "Date-Created") datecreated = tag.value
                         if (tag.name === "Downloadable") downloadable = tag.value
                         if (tag.name === "Name") name = tag.value
+                        if(tag.name === "Verified") verified = tag.value
 
                         if (name === "" && details !== "") name = details
                       })
@@ -220,6 +224,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                       context.display.stack.push({
                         artId,
                         name,
+                        verified,
                         details,
                         datecreated,
                         downloadable,

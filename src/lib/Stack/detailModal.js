@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next"
 import Button from "../Button"
 import Cross from "../Cross"
 
+
+
 const DetailModal = ({ db, open, onClose, state=null }) => {
   const [screen, setScreen] = useState(window.innerHeight)
   const [modal, setModal] = useState(null)
@@ -19,6 +21,9 @@ const DetailModal = ({ db, open, onClose, state=null }) => {
       setModal(boxModal)
     }
   }, 100)
+
+
+
 
   function changeScreen(event) {
     setScreen(event.srcElement.innerHeight)

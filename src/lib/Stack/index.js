@@ -13,6 +13,7 @@ import { faClose } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { RenderArrowIcon } from "./AuxFunctions"
 
+
 import "./Stack.css"
 import "../db.css"
 import "../../i18n"
@@ -27,6 +28,8 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [detailDB, setDetailDB] = useState(null)
   const [height, setHeight] = useState(window.innerHeight)
   const doc = document.documentElement
+
+
 
   const handleOnClose = (e) => {
     e.preventDefault()
