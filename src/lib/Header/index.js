@@ -9,6 +9,7 @@ import Darkblocklogo from "../Animations/Logo/DarklblockLogo"
 import Cross from "../Cross"
 import Button from "../Button"
 
+
 const setHeader = (onClose, state, title, text, red = false, authenticate = null) => {
   const { t } = useTranslation()
   const errorState = ["auth_failure", "start_failure", "decrypt_error"]
