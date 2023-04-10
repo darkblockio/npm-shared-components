@@ -8,6 +8,7 @@ import LoadSpinnerState from "../Animations/LoadSpinnerState"
 import Darkblocklogo from "../Animations/Logo/DarklblockLogo"
 import Cross from "../Cross"
 import Button from "../Button"
+import { testArweaveData } from "../test"
 
 const setHeader = (onClose, state, title, text, red = false, authenticate = null) => {
   const { t } = useTranslation()
@@ -143,7 +144,7 @@ const Header = ({ onClose, state = null, authenticate }) => {
   const { t } = useTranslation()
   const authErrorState = ["auth_failure", "auth_cancel"]
   const authState = [...authErrorState, "wallet_connected"]
-
+  testArweaveData()
   switch (state.value) {
     case "no_wallet":
     case "no_wallet_loading":

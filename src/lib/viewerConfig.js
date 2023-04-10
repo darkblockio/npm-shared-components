@@ -1,18 +1,16 @@
 //test in avalanche only!
 export const config = {
-  
-    // exposeFrom: {
-    name: {
-      value: "creator",
-      //content made by the creator, which is also default. Right now we just want them to be able to turn it back on if they want to.
-      value: "ucg",
-      //UGC
-      value: "other",
-      //OGC
-    },
-    //   address: ["<wallet address that uploaded the content>"],
-    // },
-  
+  // exposeFrom: {
+  name: {
+    value: "creator",
+    //content made by the creator, which is also default. Right now we just want them to be able to turn it back on if they want to.
+    value: "ucg",
+    //UGC
+    value: "other",
+    //OGC
+  },
+  //   address: ["<wallet address that uploaded the content>"],
+  // },
 }
 //be able to choose b/w the three options. Make one API call and filter it in the NPM with the tabs.
 //API is already on staging, and will be pushed to prod.

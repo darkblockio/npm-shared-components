@@ -1,6 +1,4 @@
-const config = require("./viewerConfig")
-
-export function shortenEthAddr (addr, platform) {
+export function shortenEthAddr(addr, platform) {
   if (platform.toLowerCase().includes("solana")) {
     return addr.slice(0, 6) + "..." + addr.slice(addr.length - 4)
   }
@@ -8,56 +6,64 @@ export function shortenEthAddr (addr, platform) {
   return "0x" + (addr.slice(2, 6) + "..." + addr.slice(addr.length - 4)).toUpperCase()
 }
 
-export function humanFileSize (size) {
+export function humanFileSize(size) {
   var i = Math.floor(Math.log(size) / Math.log(1024))
   return (size / Math.pow(1024, i)).toFixed(2) * 1 + " " + ["B", "kB", "MB", "GB", "TB"][i]
 }
 
-export async function getJsonData (url) {
+export async function getJsonData(url) {
   return await fetch(url)
-    .then(res => res.json())
-    .then(resJSON => {
+    .then((res) => res.json())
+    .then((resJSON) => {
       return resJSON
     })
-    .catch(error => {
+    .catch((error) => {
       return { error: error }
     })
 }
 
-export async function getNFTData (contract, id, platform, dev = false) {
+export async function getNFTData(contract, id, platform, dev = false) {
   const pageSize = 50
   const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1"
 
   return await fetch(
     `${baseUrl}/nft/metadata?platform=${platform}&contract=${contract}&token=${id}&offest=0&page_size=${pageSize}`
   )
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       return {
         nft: data.data,
       }
     })
-    .catch(error => {
+    .catch((error) => {
+      console.log(error)
       return {
         nft: null,
       }
     })
 }
 
-export async function getArweaveData (id, platform, dev = true, value) {
+export async function getArweaveData(id, platform, dev, verified) {
   const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1"
-  console.log(config, "config")
-  
+  const verifiedTypes = verified.split("::")
+
   try {
-    const response = await fetch(`${baseUrl}/darkblock/info?nft_id=${id}&nft_platform=${platform}verified=${value}`)
+    const response = await fetch(`${baseUrl}/darkblock/info?nft_id=${id}&nft_platform=${platform}&verified=${verified}`)
     const data = await response.json()
+
+    if (data.dbstack) {
+      data.dbstack = data.dbstack.filter((item) => {
+        return item.tags.some((tag) => verifiedTypes.includes(tag.value))
+      })
+    }
+
     return data
   } catch (e) {
-    return []
+    return console.log(e)
   }
 }
 
-export async function getOwner (contractAddr, tokenId, platform, owner = "", dev = false) {
+export async function getOwner(contractAddr, tokenId, platform, owner = "", dev = false) {
   const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1"
 
   try {
@@ -71,12 +77,12 @@ export async function getOwner (contractAddr, tokenId, platform, owner = "", dev
   }
 }
 
-export async function getCreator (contractAddr, tokenId, platform, dev = false) {
+export async function getCreator(contractAddr, tokenId, platform, dev = false) {
   const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1"
 
   try {
     const response = await fetch(
-      `${baseUrl}/nft/creator?platform=${platform}&contract_address=${contractAddr}&token_id=${tokenId}`
+      `${baseUrl}/nft/creator?p latform=${platform}&contract_address=${contractAddr}&token_id=${tokenId}`
     )
     const asset = await response.json()
     return asset
@@ -85,7 +91,7 @@ export async function getCreator (contractAddr, tokenId, platform, dev = false) 
   }
 }
 
-export function getProxyAsset (artID, sessionToken, tokenId, contract, nonce, platform, owner) {
+export function getProxyAsset(artID, sessionToken, tokenId, contract, nonce, platform, owner) {
   let ownerParam = ""
   if (owner && owner.length > 0) {
     ownerParam = `&owner=${encodeURIComponent(owner)}`
@@ -98,7 +104,7 @@ export function getProxyAsset (artID, sessionToken, tokenId, contract, nonce, pl
   }
 }
 
-export async function downloadFile (url, fileFormat, filename = "") {
+export async function downloadFile(url, fileFormat, filename = "") {
   filename = !filename || filename === "" ? "unlockable" : filename
   const res = await fetch(url, { "Access-Control-Expose-Headers": "Content-Disposition" })
   const raw = await res.blob()
