@@ -6,7 +6,7 @@ export const config = {
     //content made by the creator, which is also default. Right now we just want them to be able to turn it back on if they want to.
     value: "ucg",
     //UGC
-    value: "other",
+    value: "ocg",
     //OGC
   },
   //   address: ["<wallet address that uploaded the content>"],

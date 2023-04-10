@@ -43,7 +43,7 @@ export async function getNFTData(contract, id, platform, dev = false) {
     })
 }
 
-export async function getArweaveData(id, platform, dev, verified) {
+export async function getArweaveData(id, platform, dev  = false, verified) {
   const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1"
   const verifiedTypes = verified.split("::")
 
