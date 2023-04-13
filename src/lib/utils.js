@@ -43,25 +43,30 @@ export async function getNFTData(contract, id, platform, dev = false) {
     })
 }
 
-export async function getArweaveData(id, platform, dev  = false, verified) {
-  const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1"
-  const verifiedTypes = verified.split("::")
+export async function getArweaveData(id, platform, dev = false, verified) {
+  const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1";
+  const verifiedParam = verified ? `&verified=${verified}` : '';
 
   try {
-    const response = await fetch(`${baseUrl}/darkblock/info?nft_id=${id}&nft_platform=${platform}&verified=${verified}`)
-    const data = await response.json()
+    const response = await fetch(`${baseUrl}/darkblock/info?nft_id=${id}&nft_platform=${platform}${verifiedParam}`);
+    const data = await response.json();
 
-    if (data.dbstack) {
-      data.dbstack = data.dbstack.filter((item) => {
-        return item.tags.some((tag) => verifiedTypes.includes(tag.value))
-      })
+    if (verified) {
+      const verifiedTypes = verified.split("::");
+
+      if (data.dbstack) {
+        data.dbstack = data.dbstack.filter((item) => {
+          return item.tags.some((tag) => verifiedTypes.includes(tag.value));
+        });
+      }
     }
 
-    return data
+    return data;
   } catch (e) {
-    return console.log(e)
+    return console.log(e);
   }
 }
+
 
 export async function getOwner(contractAddr, tokenId, platform, owner = "", dev = false) {
   const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1"
@@ -82,7 +87,7 @@ export async function getCreator(contractAddr, tokenId, platform, dev = false) {
 
   try {
     const response = await fetch(
-      `${baseUrl}/nft/creator?p latform=${platform}&contract_address=${contractAddr}&token_id=${tokenId}`
+      `${baseUrl}/nft/creator?platform=${platform}&contract_address=${contractAddr}&token_id=${tokenId}`
     )
     const asset = await response.json()
     return asset

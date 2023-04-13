@@ -2,7 +2,7 @@ import { createMachine } from "xstate"
 import { humanFileSize, shortenEthAddr, getCreator, getArweaveData } from "./utils"
 import { filterDarkblocks } from "./utils/filterDarkblocks"
 
-const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig = null) => {
+const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig = null, verified) => {
   let baseLink
 
   switch (platform) {
@@ -42,6 +42,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
       tokenId,
       contractAddress,
       platform,
+      verified
     },
     states: {
       no_wallet_loading: {},
@@ -53,7 +54,8 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
               getArweaveData(
                 platform.toLowerCase().includes("solana") ? tokenId : contractAddress + ":" + tokenId,
                 platform,
-                dev
+                dev,
+                verified
               ),
             ]),
           onDone: [
@@ -158,11 +160,13 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
         invoke: {
           src: () =>
             Promise.all([
-              getCreator(contractAddress, tokenId, platform, dev),
+              getCreator(contractAddress, tokenId, platform, dev, verified
+                ),
               getArweaveData(
                 platform.toLowerCase().includes("solana") ? tokenId : contractAddress + ":" + tokenId,
                 platform,
-                dev
+                dev,
+                verified
               ),
             ]),
           onDone: [
