@@ -1,14 +1,20 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import Cross from "../Cross";
-import QRCode from "qrcode.react";
+import React, { useState, useEffect } from "react";
 import Button from "../Button";
 
-const QrCodeModal = ({ open, onClose, db }) => {
-  
-  const { t } = useTranslation();
+const SenToKindleModal = ({ open, onClose }) => {
   const [screen, setScreen] = useState(window.innerHeight);
   const [modal, setModal] = useState(null);
+  const [dotAnimation, setDotAnimation] = useState(".");
+
+  useEffect(() => {
+    const animationInterval = setInterval(() => {
+      setDotAnimation((prev) => (prev.length < 3 ? prev + "." : "."));
+    }, 500);
+
+    return () => {
+      clearInterval(animationInterval);
+    };
+  }, []);
 
   setTimeout(() => {
     if (document.querySelector("darkblock-modal-box")) {
@@ -17,20 +23,6 @@ const QrCodeModal = ({ open, onClose, db }) => {
       setModal(boxModal);
     }
   }, 100);
-
-  const url = db && db.url ? db.url : null;
-  // const title = db && db.name ? db.name : null;
-  // const text = db && db.details ? db.details : null;
-  const title = null;
-  const text = null;
-  const shareSite = "/https://share.emigre.network";
-  const qrValue = url
-    ? `${shareSite}?url=${encodeURIComponent(url)}&title=${encodeURIComponent(
-        title
-      )}&text=${encodeURIComponent(text)}`
-    : "";
-  console.log(qrValue);
-
 
   return (
     <>
@@ -46,11 +38,10 @@ const QrCodeModal = ({ open, onClose, db }) => {
                 <div className="darkblock-modal-first-row">
                   <div className="darkblock-modal-first-row">
                     <hr className="darkblock-divider" />
-                    <div className="darkblock-qr-container">
-                      {url && <QRCode size={256} value={qrValue} />}
+                    <div className="darkblock-text-container">
+                      <p>Sending to Kindle <br></br> {dotAnimation}</p>
                     </div>
                   </div>
-                  
                 </div>
                 <div className="darkblock-button-container">
                     <Button
@@ -59,7 +50,7 @@ const QrCodeModal = ({ open, onClose, db }) => {
                       layout="done"
                       onClick={() => onClose(true)}
                     >
-                      {t("details.done")}
+                        Done
                     </Button>
                   </div>
               </div>
@@ -71,4 +62,4 @@ const QrCodeModal = ({ open, onClose, db }) => {
   );
 };
 
-export default QrCodeModal;
+export default SenToKindleModal;

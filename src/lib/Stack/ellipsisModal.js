@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import {
   faQrcode,
+  faShareFromSquare,
   faEllipsisVertical,
   faCircleInfo,
   faDownload,
@@ -11,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { downloadFile } from "../utils"
 import DetailModal from "./detailModal"
 import QrCodeModal from "./qrCodeModal"
+import SendToKindleModal from "./sendToKindleModal"
 import { useTranslation } from "react-i18next"
 import Cross from "../Cross"
 
@@ -21,6 +23,7 @@ const RenderDetailIcon = ({ filetype }) => {
   if (filetype.indexOf("download") > -1) icon = faDownload
   if (filetype.indexOf("qrCode") > -1) icon =  icon = faQrcode
   if (filetype.indexOf("upRightFromSquare") > -1) icon = faUpRightFromSquare
+  if (filetype.indexOf("shareFromSquare") > -1) icon = faShareFromSquare
 
   return <FontAwesomeIcon icon={icon} className="Darkblock-ellIcon" />
 }
@@ -29,6 +32,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
   const isDownloadable =
     state && state.value === "display" && url && db.downloadable.toString().toLowerCase() === "true"
   const [showDetailModal, setShowDetailModal] = useState(false)
+  const [senToKindleModal, setSendToKindleModal] = useState(false)
   const [showQrCodeModal, setShowQrCodeModal] = useState(false)
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
   let truncateName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
@@ -73,6 +77,19 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
                   </span>
                   <span className="darkblock-placeholder">{t("elipsis.download")}</span>
                 </a>
+                  
+                  {/* send to kindle section | faShareFromSquare */}
+                  <a
+                  className="Darkblock-BodyText darkblock-box-menu darkblock-cursor-pointer"
+                  onClick={() => setSendToKindleModal(true)}
+                >
+                  <span className="darkblock-icons">
+                    <RenderDetailIcon filetype={"shareFromSquare"} />
+                  </span>
+                  <span className="darkblock-placeholder">Send to Kindle</span>
+                </a>
+
+
 
                   {/* qrCode Section */}
                   <a
@@ -105,6 +122,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
       ) : null}
       <DetailModal db={db} open={showDetailModal} onClose={() => setShowDetailModal(!showDetailModal)} state={state}/>
       <QrCodeModal db={db} open={showQrCodeModal} onClose={() => setShowQrCodeModal(!showQrCodeModal)} state={state}/>
+      <SendToKindleModal db={db} open={senToKindleModal} onClose={() => setSendToKindleModal(!senToKindleModal)} state={state}/>
     </>
   )
 }
