@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import {
+  faQrcode,
   faEllipsisVertical,
   faCircleInfo,
   faDownload,
@@ -9,6 +10,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { downloadFile } from "../utils"
 import DetailModal from "./detailModal"
+import QrCodeModal from "./qrCodeModal"
 import { useTranslation } from "react-i18next"
 import Cross from "../Cross"
 
@@ -17,6 +19,7 @@ const RenderDetailIcon = ({ filetype }) => {
   if (filetype.indexOf("ellipsis") > -1) icon = faEllipsisVertical
   if (filetype.indexOf("info") > -1) icon = faCircleInfo
   if (filetype.indexOf("download") > -1) icon = faDownload
+  if (filetype.indexOf("qrCode") > -1) icon =  icon = faQrcode
   if (filetype.indexOf("upRightFromSquare") > -1) icon = faUpRightFromSquare
 
   return <FontAwesomeIcon icon={icon} className="Darkblock-ellIcon" />
@@ -26,6 +29,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
   const isDownloadable =
     state && state.value === "display" && url && db.downloadable.toString().toLowerCase() === "true"
   const [showDetailModal, setShowDetailModal] = useState(false)
+  const [showQrCodeModal, setShowQrCodeModal] = useState(false)
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
   let truncateName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
 
@@ -69,6 +73,20 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
                   </span>
                   <span className="darkblock-placeholder">{t("elipsis.download")}</span>
                 </a>
+
+                  {/* qrCode Section */}
+                  <a
+                  className="Darkblock-BodyText darkblock-box-menu darkblock-cursor-pointer"
+                  onClick={() => setShowQrCodeModal(true)}
+                >
+
+                  <span className="darkblock-icons">
+                    <RenderDetailIcon filetype={"qrCode"} />
+                  </span>
+                  <span className="darkblock-placeholder">QR Code</span>
+                </a>
+                {/* arweave Section */}
+
                 <a
                   target="_blank"
                   rel="noreferrer"
@@ -86,6 +104,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
         </div>
       ) : null}
       <DetailModal db={db} open={showDetailModal} onClose={() => setShowDetailModal(!showDetailModal)} state={state}/>
+      <QrCodeModal db={db} open={showQrCodeModal} onClose={() => setShowQrCodeModal(!showQrCodeModal)} state={state}/>
     </>
   )
 }

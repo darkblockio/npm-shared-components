@@ -101,7 +101,7 @@ td {
   @apply text-gray-900 rounded text-sm mb-[1px] bg-none p-3;
 }
 .darkblock-box-menu-items {
-  @apply w-72 h-32 ml-4 mt-[3px];
+  @apply w-72 h-64 ml-4 mt-[3px];
 }
 .darkblock-is-not-downloadable {
   @apply flex flex-row items-center text-neutral-400 cursor-not-allowed h-10 mb-1;
@@ -166,7 +166,7 @@ td {
 }
 
 .DarkblockWidget-Stack-Panel .darkblock-dropdown-content {
-  @apply absolute z-40 bg-gray-100 w-80 h-52;
+  @apply absolute z-40 bg-gray-100 w-80 h-fit;
 }
 
 .DarkblockWidget-Stack-Panel .darkblock-dropdown:hover {
@@ -178,7 +178,7 @@ td {
 }
 
 .darkblock-elipsis-detail-modal {
-  @apply absolute z-30 flex p-4 m-auto bg-gray-100 rounded shadow-lg w-80 max-h-72 shadow-gray-300 h-52;
+  @apply absolute z-30 flex p-4 m-auto bg-gray-100 rounded shadow-lg w-80  shadow-gray-300 h-60;
   @apply transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
 }
 
