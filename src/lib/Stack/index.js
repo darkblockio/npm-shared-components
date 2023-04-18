@@ -192,9 +192,9 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
         {!stateValue.includes(state.value) ? (
           <div className="DarkblockWidget-Stack-Panel">
-            <div className="Darkblock-Stack-Table" style={{ opacity: opacity }}>
+            <div >
               <div>
-                <TabsRow state={state} />
+                <TabsRow state={state.value} /> 
                 <Titles state={state} />
                 {state.context.display.stack.map((db, i) => {
                   if (state.value === "display") {
