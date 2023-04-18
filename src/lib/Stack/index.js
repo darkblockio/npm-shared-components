@@ -8,6 +8,8 @@ import Titles from "../Titles"
 import PlayerModal from "../playerModal"
 import EmptyTable, { EmptyRow } from "../EmptyTable"
 import EllipsisModal from "./ellipsisModal"
+import TabsRow from "./tabsRow"
+
 
 import { faClose } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -192,6 +194,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           <div className="DarkblockWidget-Stack-Panel">
             <div className="Darkblock-Stack-Table" style={{ opacity: opacity }}>
               <div>
+                <TabsRow state={state} />
                 <Titles state={state} />
                 {state.context.display.stack.map((db, i) => {
                   if (state.value === "display") {
