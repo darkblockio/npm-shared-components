@@ -27,13 +27,26 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [showDetails, setShowDetails] = useState(false)
   const [detailDB, setDetailDB] = useState(null)
   const [height, setHeight] = useState(window.innerHeight)
-  const [selectedTab, setSelectedTab] = useState("By Owner")
+  const [selectedTab, setSelectedTab] = useState("By Creator")
 
   const doc = document.documentElement
 
   const filteredOgcData = state.context.display.stack.filter((db) => db.verified === "ogc")
   // const filteredUgcData = state.context.display.stack.filter((db) => db.verified === "ugc")
   const filteredCreatorData = state.context.display.stack.filter((db) => db.verified === "creator")
+
+  const getFilteredData = () => {
+    switch (selectedTab) {
+      case "By Owner":
+        return filteredOgcData
+      // case "By Others":
+      //   return filteredUgcData
+      case "By Creator":
+        return filteredCreatorData
+      default:
+        return filteredCreatorData
+    }
+  }
 
   const handleOnClose = (e) => {
     e.preventDefault()
@@ -125,19 +138,6 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     }
 
     return <div>{emptyRowElements}</div>
-  }
-
-  const getFilteredData = () => {
-    switch (selectedTab) {
-      case "By Owner":
-        return filteredOgcData
-      // case "By Others":
-      //   return filteredUgcData
-      case "By Creator":
-        return filteredCreatorData
-      default:
-        return filteredCreatorData
-    }
   }
 
   return (

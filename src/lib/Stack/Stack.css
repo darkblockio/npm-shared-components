@@ -297,3 +297,7 @@ td {
 .Darkblock-player-modal-container-title-name {
   @apply m-auto text-xs text-neutral-400 truncate;
 }
+
+.Darkblock-tab-container {
+  @apply flex border-b gap-2;
+}

@@ -11,7 +11,7 @@ export default function TabsRow({ ogcData, creatorData, setSelectedTab, selected
 
   return (
     <>
-      <div className="flex border-b gap-2">
+      <div className="Darkblock-tab-container">
         {creatorExists && (
           <button
             className={`Darkblock-upgrade-add-content ${selectedTab === "By Creator" ? "active" : ""}`}
