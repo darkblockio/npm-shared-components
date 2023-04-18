@@ -11,7 +11,7 @@
 }
 
 .Darkblock-format-header {
-  @apply hidden text-right w-28 sm:table-cell;
+  @apply hidden text-left w-28 sm:table-cell;
 }
 
 .Darkblock-format-date {

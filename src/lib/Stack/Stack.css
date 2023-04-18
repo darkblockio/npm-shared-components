@@ -49,11 +49,11 @@
 }
 
 .Darkblock-date {
-  @apply hidden text-right pr-2 w-28 sm:table-cell;
+  @apply hidden text-right w-28 sm:table-cell;
 }
 
 .darkblock-right-text {
-  @apply hidden text-right w-24 sm:table-cell;
+  @apply hidden text-right w-[7rem] sm:table-cell;
 }
 
 .darkblock-toggle {
@@ -297,4 +297,3 @@ td {
 .Darkblock-player-modal-container-title-name {
   @apply m-auto text-xs text-neutral-400 truncate;
 }
-

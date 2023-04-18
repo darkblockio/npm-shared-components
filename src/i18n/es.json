@@ -15,7 +15,7 @@
   "panel.fileFormat": "Formato del archivo",
   "panel.fileSize": "Tamaño del archivo",
   "player.compressedFile": "Archivo comprimido",
-  "header.authenticate": "Autenticar propiedad",
+  "header.authenticate": "Autenticar para acceder",
   "state.noWalletTitle": "Billetera no conectada",
   "state.noWalletText": "Por favor, conecte una billetera para ver el contenido desbloqueable de Darkblock.",
   "state.startFailureTitle": "Ocurrió un error",

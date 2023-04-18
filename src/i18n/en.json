@@ -15,7 +15,7 @@
   "panel.fileFormat": "File format",
   "panel.fileSize": "File Size",
   "player.compressedFile": "Compressed file",
-  "header.authenticate": "Authenticate Ownership",
+  "header.authenticate": "Authenticate to Access",
   "state.noWalletTitle": "No wallet connected",
   "state.noWalletText": "Please connect a wallet to view Darkblock unlockable content.",
   "state.startFailureTitle": "An Error Ocurred",
