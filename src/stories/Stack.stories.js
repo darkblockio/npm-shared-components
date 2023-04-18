@@ -28,6 +28,7 @@ const state = {
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
+          verified: "creator",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -41,6 +42,7 @@ const state = {
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
+          verified: "creator",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -54,6 +56,7 @@ const state = {
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "false",
+          verified: "creator",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -67,6 +70,7 @@ const state = {
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
+          verified: "creator",
         },
         {
           artId: "d82c1f41-42c3-4257-ae9d-c9f611610be3",
@@ -93,6 +97,7 @@ const state = {
           arweaveTX: "A5JTy7JOHnR6Ayhi-te1q7T1OJOPpjX44OCHlyXZgJE",
           arweaveTXLink: "https://viewblock.io/arweave/tx/A5JTy7JOHnR6Ayhi-te1q7T1OJOPpjX44OCHlyXZgJE",
           downloadable: "true",
+          verified: "ogc",
         },
         {
           artId: "527c9adb-e8eb-46a2-b882-0b805d4776a7",
@@ -106,6 +111,7 @@ const state = {
           arweaveTX: "IbWbX6-NqaotJBmAiFllMIrcoRI3w0Yi0jDQyNAEa9E",
           arweaveTXLink: "https://viewblock.io/arweave/tx/IbWbX6-NqaotJBmAiFllMIrcoRI3w0Yi0jDQyNAEa9E",
           downloadable: "true",
+          verified: "ugc",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -119,6 +125,7 @@ const state = {
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
+          verified: "ogc",
         },
         {
           artId: "9e62a33b-d596-471f-bf07-d8dc704dda39",
@@ -132,6 +139,7 @@ const state = {
           arweaveTX: "llq3lkWWKohwP_K1I--7T0cNS4HIL5zK7xBonI4wWvw",
           arweaveTXLink: "https://viewblock.io/arweave/tx/llq3lkWWKohwP_K1I--7T0cNS4HIL5zK7xBonI4wWvw",
           downloadable: "true",
+          verified: "ugc",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -145,6 +153,7 @@ const state = {
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
+          verified: "creator",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -157,6 +166,7 @@ const state = {
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://compote.slate.com/images/697b023b-64a5-49a0-8059-27b963453fb1.gif",
           downloadable: "true",
+          verified: "ogc",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -169,6 +179,7 @@ const state = {
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
+          verified: "ugc",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -181,6 +192,7 @@ const state = {
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
+          verified: "ogc",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -193,6 +205,7 @@ const state = {
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
+          verified: "ugc",
         },
       ],
     },

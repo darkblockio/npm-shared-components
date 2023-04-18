@@ -3,8 +3,8 @@ import "./Titles.css"
 import "../../i18n"
 import { useTranslation } from "react-i18next"
 
-const Titles = ({ state }) => {
-  const db = state.context.display.stack.length
+const Titles = ({ getFilteredData }) => {
+  const db = getFilteredData().length
   const { t } = useTranslation()
 
   return (

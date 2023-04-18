@@ -8,13 +8,11 @@ import Titles from "../Titles"
 import PlayerModal from "../playerModal"
 import EmptyTable, { EmptyRow } from "../EmptyTable"
 import EllipsisModal from "./ellipsisModal"
-import TabsRow from "./tabsRow"
-
+import TabsRow from "./TabsRow"
 
 import { faClose } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { RenderArrowIcon } from "./AuxFunctions"
-
 
 import "./Stack.css"
 import "../db.css"
@@ -29,9 +27,13 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
   const [showDetails, setShowDetails] = useState(false)
   const [detailDB, setDetailDB] = useState(null)
   const [height, setHeight] = useState(window.innerHeight)
+  const [selectedTab, setSelectedTab] = useState("By Owner")
+
   const doc = document.documentElement
 
-
+  const filteredOgcData = state.context.display.stack.filter((db) => db.verified === "ogc")
+  // const filteredUgcData = state.context.display.stack.filter((db) => db.verified === "ugc")
+  const filteredCreatorData = state.context.display.stack.filter((db) => db.verified === "creator")
 
   const handleOnClose = (e) => {
     e.preventDefault()
@@ -125,6 +127,19 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
     return <div>{emptyRowElements}</div>
   }
 
+  const getFilteredData = () => {
+    switch (selectedTab) {
+      case "By Owner":
+        return filteredOgcData
+      // case "By Others":
+      //   return filteredUgcData
+      case "By Creator":
+        return filteredCreatorData
+      default:
+        return filteredCreatorData
+    }
+  }
+
   return (
     <>
       <PlayerModal showModal={showModal} open={showModal} onClose={(e) => handleOnClose(e)}>
@@ -194,13 +209,22 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
           <div className="DarkblockWidget-Stack-Panel">
             <div className="Darkblock-Stack-Table" style={{ opacity: opacity }}>
               <div>
-                <TabsRow state={state} />
-                <Titles state={state} />
-                {state.context.display.stack.map((db, i) => {
+                <TabsRow
+                  state={state}
+                  setSelectedTab={setSelectedTab}
+                  selectedTab={selectedTab}
+                  // ugcData={filteredUgcData}
+                  ogcData={filteredOgcData}
+                  creatorData={filteredCreatorData}
+                />
+
+                <Titles getFilteredData={getFilteredData} state={state} />
+                {getFilteredData().map((db, i) => {
                   if (state.value === "display") {
                     let sel = selected ? selected.i === i : false
                     return (
                       <RowContent
+                        verified={db.verified}
                         db={db}
                         sel={sel}
                         f={() => {
