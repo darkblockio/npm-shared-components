@@ -1,6 +1,7 @@
 {
   "elipsis.download": "Download",
   "elipsis.details": "Details",
+  "elipsis.showHide" : "Show/Hide" ,
   "details.title": "Details",
   "details.size": "Size",
   "details.fileType": "File Type",
@@ -15,7 +16,7 @@
   "panel.fileFormat": "File format",
   "panel.fileSize": "File Size",
   "player.compressedFile": "Compressed file",
-  "header.authenticate": "Authenticate Ownership",
+  "header.authenticate": "Authenticate to Access",
   "state.noWalletTitle": "No wallet connected",
   "state.noWalletText": "Please connect a wallet to view Darkblock unlockable content.",
   "state.startFailureTitle": "An Error Ocurred",
