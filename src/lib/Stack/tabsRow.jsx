@@ -1,7 +1,19 @@
-import React from "react"
+import React, {useState} from "react"
+import Cross from "../Cross"
 
-export default function TabsRow({ ogcData, creatorData, setSelectedTab, selectedTab }) {
-  //   const ugcExists = ugcData.length > 0
+export default function TabsRow({ ogcData, creatorData, commData, setSelectedTab, selectedTab}) {
+  const [ isOpen, setIsOpen ] = useState(false)
+  const [isVisible, setIsVisiblie ] = useState(false)
+
+  const handleVisibility = () => {
+    setIsVisiblie(!isVisible)
+  }
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen)
+  }
+
+  const communityExists = commData.length > 0
   const ogcExists = ogcData.length > 0
   const creatorExists = creatorData.length > 0
 
@@ -11,6 +23,8 @@ export default function TabsRow({ ogcData, creatorData, setSelectedTab, selected
 
   return (
     <>
+    <div className="flex pr-5 border-b">
+    
       <div className="Darkblock-tab-container">
         {creatorExists && (
           <button
@@ -37,17 +51,35 @@ export default function TabsRow({ ogcData, creatorData, setSelectedTab, selected
             By Owner
           </button>
         )}
-        {/* {ugcExists && (
+        {communityExists && (
           <button
-            className={`Darkblock-upgrade-add-content ${selectedTab === "By Others" ? "active" : ""}`}
-            onClick={() => handleTabClick("By Others")}
+            className={`Darkblock-upgrade-add-content ${selectedTab === "By Community" ? "active" : ""}`}
+            onClick={() => handleTabClick("By Community")}
           >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9.93667 3.27L7.03984 6.16683L4.10334 3.27L7.03984 0.333496L9.93667 3.27ZM13.6668 7.00016L10.77 9.93667L7.87318 7.00016L10.77 4.10334L13.6668 7.00016ZM6.20651 7.00016L3.27 9.93667L0.333496 7.00016L3.27 4.10334L6.20651 7.00016ZM9.93667 10.77L7.03984 13.6668L4.10334 10.77L7.03984 7.8335L9.93667 10.77Z" />
+            <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 9.16671C20 9.66671 19 10 17.8333 10.1667C17.0833 8.75004 15.5833 7.66671 13.8333 6.91671C14 6.66671 14.1667 6.50004 14.3333 6.25004H15C17.5833 6.16671 20 7.75004 20 9.16671ZM5.66667 6.16671H5C2.41667 6.16671 0 7.75004 0 9.16671C0 9.66671 1 10 2.16667 10.1667C2.91667 8.75004 4.41667 7.66671 6.16667 6.91671L5.66667 6.16671ZM10 7.00004C11.8333 7.00004 13.3333 5.50004 13.3333 3.66671C13.3333 1.83337 11.8333 0.333374 10 0.333374C8.16667 0.333374 6.66667 1.83337 6.66667 3.66671C6.66667 5.50004 8.16667 7.00004 10 7.00004ZM10 7.83337C6.58333 7.83337 3.33333 10 3.33333 12C3.33333 13.6667 10 13.6667 10 13.6667C10 13.6667 16.6667 13.6667 16.6667 12C16.6667 10 13.4167 7.83337 10 7.83337ZM14.75 5.33337H15C16.4167 5.33337 17.5 4.25004 17.5 2.83337C17.5 1.41671 16.4167 0.333374 15 0.333374C14.5833 0.333374 14.25 0.416708 13.9167 0.583374C14.5833 1.41671 15 2.50004 15 3.66671C15 4.25004 14.9167 4.83337 14.75 5.33337ZM5 5.33337H5.25C5.08333 4.83337 5 4.25004 5 3.66671C5 2.50004 5.41667 1.41671 6.08333 0.583374C5.75 0.416708 5.41667 0.333374 5 0.333374C3.58333 0.333374 2.5 1.41671 2.5 2.83337C2.5 4.25004 3.58333 5.33337 5 5.33337Z" fill="#737373"/>
             </svg>
-            By Other
+
+           Community
           </button>
-        )} */}
+        )}
+        </div>
+     {/* <div className="flex flex-row-reverse w-1/4">
+      <div className="Darkblock-upgrade-add-content">
+      <button onClick={toggleModal}>Actions</button>
+      {isOpen && (
+        <div className="darkblock-dropdown-content">
+          <div className="darkblock-title-menu">Title </div>
+          <button className="darkblock-elipsis-cross-button" onClick={toggleModal}>
+                  <Cross />
+                </button>
+
+          <button className="Darkblock-BodyText darkblock-box-menu darkblock-cursor-pointer" onClick={handleVisibility}>Show/Hide</button>
+        
+        </div>
+      )}
+    </div>
+      </div> */}
       </div>
     </>
   )
