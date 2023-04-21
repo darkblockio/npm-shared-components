@@ -52,7 +52,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
             Promise.all([
               getCreator(contractAddress, tokenId, platform, dev),
               getArweaveData(
-                platform.toLowerCase().includes("solana") ? tokenId : contractAddress + ":" + tokenId,
+                platform.toLowerCase().includes("solana") ? tokenId : (contractAddress + (tokenId ? ":" + tokenId : "")),
                 platform,
                 dev,
                 verified
