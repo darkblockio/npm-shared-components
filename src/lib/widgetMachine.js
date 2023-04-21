@@ -110,7 +110,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                         if (tag.name === "Date-Created") datecreated = tag.value
                         if (tag.name === "Downloadable") downloadable = tag.value
                         if (tag.name === "Name") name = tag.value
-                        if (tag.name === "Verified") verified = tag.value
+                        // if (tag.name === "Verified") verified = tag.value
 
                         if (name === "" && details !== "") name = details
                       })
@@ -118,7 +118,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                       context.display.stack.push({
                         artId,
                         name,
-                        verified,
+                        // verified,
                         details,
                         datecreated,
                         downloadable,
@@ -160,7 +160,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
         invoke: {
           src: () =>
             Promise.all([
-              getCreator(contractAddress, tokenId, platform, dev, verified
+              getCreator(contractAddress, tokenId, platform, dev
                 ),
               getArweaveData(
                 platform.toLowerCase().includes("solana") ? tokenId : contractAddress + ":" + tokenId,
@@ -220,7 +220,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                         if (tag.name === "Date-Created") datecreated = tag.value
                         if (tag.name === "Downloadable") downloadable = tag.value
                         if (tag.name === "Name") name = tag.value
-                        if(tag.name === "Verified") verified = tag.value
+                        // if(tag.name === "Verified") verified = tag.value
 
                         if (name === "" && details !== "") name = details
                       })
@@ -228,7 +228,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                       context.display.stack.push({
                         artId,
                         name,
-                        verified,
+                        // verified,
                         details,
                         datecreated,
                         downloadable,
