@@ -1,5 +1,5 @@
 import { createMachine } from "xstate"
-import { getCreator, getNFTData, getOwner } from "./utils"
+import { getCreator, getNFTData } from "./utils"
 
 const upgradeMachine = (tokenId, contractAddress, platform, dev = false) => {
   return createMachine({
@@ -12,8 +12,8 @@ const upgradeMachine = (tokenId, contractAddress, platform, dev = false) => {
       nftData: null,
       platform,
       signature: null,
-      tokenId,
-      address
+      tokenId
+      
     },
     states: {
       no_wallet: {},
