@@ -2,7 +2,7 @@ import { createMachine } from "xstate"
 import { humanFileSize, shortenEthAddr, getCreator, getArweaveData } from "./utils"
 import { filterDarkblocks } from "./utils/filterDarkblocks"
 
-const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig = null, verified) => {
+const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig = null, verified=null) => {
   let baseLink
 
   switch (platform) {
