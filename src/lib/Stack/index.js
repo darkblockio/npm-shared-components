@@ -31,16 +31,16 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
   const doc = document.documentElement
 
-  const filteredOgcData = state.context.display.stack.filter((db) => db.verified === "ogc")
-  // const filteredUgcData = state.context.display.stack.filter((db) => db.verified === "ugc")
-  const filteredCreatorData = state.context.display.stack.filter((db) => db.verified === "creator")
+  const filteredOgcData = state.context.display.stack.filter((db) => !db.target && db.verified === "ogc")
+  const filteredCommData = state.context.display.stack.filter((db) => db.target && db.verified === "ogc")
+  const filteredCreatorData = state.context.display.stack.filter((db) => !db.target && db.verified === "creator")
 
   const getFilteredData = () => {
     switch (selectedTab) {
       case "By Owner":
         return filteredOgcData
-      // case "By Others":
-      //   return filteredUgcData
+      case "By Community":
+        return filteredCommData
       case "By Creator":
         return filteredCreatorData
       default:
@@ -207,62 +207,110 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
         {!stateValue.includes(state.value) ? (
           <div className="DarkblockWidget-Stack-Panel">
-            <div className="Darkblock-Stack-Table" style={{ opacity: opacity }}>
+            <div>
               <div>
-                <TabsRow
-                  state={state}
-                  setSelectedTab={setSelectedTab}
-                  selectedTab={selectedTab}
-                  // ugcData={filteredUgcData}
-                  ogcData={filteredOgcData}
-                  creatorData={filteredCreatorData}
-                />
+                {config.showTabs && (
+                  <TabsRow
+                    state={state}
+                    setSelectedTab={setSelectedTab}
+                    selectedTab={selectedTab}
+                    commData={filteredCommData}
+                    ogcData={filteredOgcData}
+                    creatorData={filteredCreatorData}
+                  />
+                )}
 
                 <Titles getFilteredData={getFilteredData} state={state} />
-                {getFilteredData().map((db, i) => {
-                  if (state.value === "display") {
-                    let sel = selected ? selected.i === i : false
-                    return (
-                      <RowContent
-                        verified={db.verified}
-                        db={db}
-                        sel={sel}
-                        f={() => {
-                          setSwapping(true)
-                          setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i, db: db })
-                          setShowModal(true)
-                        }}
-                        index={i}
-                        key={i}
-                        selected={selected}
-                        state={state.value}
-                        url={urls[i]}
-                        showDetailModal={(value) => {
-                          value.url = urls[i]
-                          setDetailDB(value)
-                          setShowDetails(true)
-                        }}
-                      />
-                    )
-                  } else {
-                    return (
-                      <RowContent
-                        db={db}
-                        index={i}
-                        key={i}
-                        selected={selected}
-                        showDetailModal={(value) => {
-                          value.url = null
-                          setDetailDB(value)
-                          setShowDetails(true)
-                        }}
-                        f={() => {
-                          setShowHeader(!showHeader)
-                        }}
-                      />
-                    )
-                  }
-                })}
+                {config.showTabs
+                  ? getFilteredData().map((db, i) => {
+                      if (state.value === "display") {
+                        let sel = selected ? selected.i === i : false
+                        return (
+                          <RowContent
+                            verified={db.verified}
+                            comm={db.target}
+                            db={db}
+                            sel={sel}
+                            f={() => {
+                              setSwapping(true)
+                              setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i, db: db })
+                              setShowModal(true)
+                            }}
+                            index={i}
+                            key={i}
+                            selected={selected}
+                            state={state.value}
+                            url={urls[i]}
+                            showDetailModal={(value) => {
+                              value.url = urls[i]
+                              setDetailDB(value)
+                              setShowDetails(true)
+                            }}
+                          />
+                        )
+                      } else {
+                        return (
+                          <RowContent
+                            db={db}
+                            index={i}
+                            key={i}
+                            selected={selected}
+                            showDetailModal={(value) => {
+                              value.url = null
+                              setDetailDB(value)
+                              setShowDetails(true)
+                            }}
+                            f={() => {
+                              setShowHeader(!showHeader)
+                            }}
+                          />
+                        )
+                      }
+                    })
+                  : state.context.display.stack.map((db, i) => {
+                      if (state.value === "display") {
+                        let sel = selected ? selected.i === i : false
+                        return (
+                          <RowContent
+                            verified={db.verified}
+                            db={db}
+                            sel={sel}
+                            f={() => {
+                              setSwapping(true)
+                              setSelected({ type: db.fileFormat, mediaURL: urls[i], i: i, db: db })
+                              setShowModal(true)
+                            }}
+                            index={i}
+                            key={i}
+                            selected={selected}
+                            state={state.value}
+                            url={urls[i]}
+                            showDetailModal={(value) => {
+                              value.url = urls[i]
+                              setDetailDB(value)
+                              setShowDetails(true)
+                            }}
+                          />
+                        )
+                      } else {
+                        return (
+                          <RowContent
+                            db={db}
+                            index={i}
+                            key={i}
+                            selected={selected}
+                            showDetailModal={(value) => {
+                              value.url = null
+                              setDetailDB(value)
+                              setShowDetails(true)
+                            }}
+                            f={() => {
+                              setShowHeader(!showHeader)
+                            }}
+                          />
+                        )
+                      }
+                    })}
                 {renderEmptyRows()}
               </div>
             </div>

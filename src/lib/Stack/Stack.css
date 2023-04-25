@@ -178,7 +178,7 @@ td {
 }
 
 .darkblock-elipsis-detail-modal {
-  @apply absolute z-30 flex p-4 m-auto bg-gray-100 rounded shadow-lg w-80 max-h-72 shadow-gray-300 h-52;
+  @apply absolute z-30 flex p-4 m-auto bg-gray-100 rounded shadow-lg w-80 max-h-64 h-full shadow-gray-300;
   @apply transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
 }
 
@@ -194,6 +194,7 @@ td {
   @apply flex flex-row justify-between h-12 pl-4 text-black;
 }
 
+.darkblock
 /*player function */
 .scrollbar::-webkit-scrollbar {
   width: 20px;
@@ -299,5 +300,5 @@ td {
 }
 
 .Darkblock-tab-container {
-  @apply flex border-b gap-2;
+  @apply flex gap-2 w-3/4;
 }

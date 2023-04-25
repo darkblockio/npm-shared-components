@@ -2,6 +2,7 @@ import React from "react"
 import { storiesOf } from "@storybook/react"
 import Stack from "../lib/Stack"
 import "../lib/main.css"
+import { send } from "xstate/lib/actions"
 
 const stories = storiesOf("Shared components - stack")
 const state = {
@@ -29,6 +30,7 @@ const state = {
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
           verified: "creator",
+          status: "visible",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -43,6 +45,7 @@ const state = {
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
           verified: "creator",
+          status: "visible",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -57,6 +60,8 @@ const state = {
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "false",
           verified: "creator",
+          target: "44",
+          status: "visible",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -71,6 +76,7 @@ const state = {
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
           verified: "creator",
+          status: "visible",
         },
         {
           artId: "d82c1f41-42c3-4257-ae9d-c9f611610be3",
@@ -84,6 +90,8 @@ const state = {
           arweaveTX: "sAlhYHbB5teh2Npg0uyKSvfQmg1DoGlhjdhRWOR2etQ",
           arweaveTXLink: "https://viewblock.io/arweave/tx/sAlhYHbB5teh2Npg0uyKSvfQmg1DoGlhjdhRWOR2etQ",
           downloadable: "true",
+          verified: "creator",
+          status: "visible",
         },
         {
           artId: "ad41e546-f023-4785-a232-095e3e1fa165",
@@ -98,6 +106,8 @@ const state = {
           arweaveTXLink: "https://viewblock.io/arweave/tx/A5JTy7JOHnR6Ayhi-te1q7T1OJOPpjX44OCHlyXZgJE",
           downloadable: "true",
           verified: "ogc",
+          target: "3",
+          status: "visible",
         },
         {
           artId: "527c9adb-e8eb-46a2-b882-0b805d4776a7",
@@ -111,7 +121,8 @@ const state = {
           arweaveTX: "IbWbX6-NqaotJBmAiFllMIrcoRI3w0Yi0jDQyNAEa9E",
           arweaveTXLink: "https://viewblock.io/arweave/tx/IbWbX6-NqaotJBmAiFllMIrcoRI3w0Yi0jDQyNAEa9E",
           downloadable: "true",
-          verified: "ugc",
+          verified: "ogc",
+          status: "visible",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -126,6 +137,7 @@ const state = {
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
           verified: "ogc",
+          status: "visible",
         },
         {
           artId: "9e62a33b-d596-471f-bf07-d8dc704dda39",
@@ -139,7 +151,8 @@ const state = {
           arweaveTX: "llq3lkWWKohwP_K1I--7T0cNS4HIL5zK7xBonI4wWvw",
           arweaveTXLink: "https://viewblock.io/arweave/tx/llq3lkWWKohwP_K1I--7T0cNS4HIL5zK7xBonI4wWvw",
           downloadable: "true",
-          verified: "ugc",
+          verified: "ogc",
+          status: "visible",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -154,6 +167,7 @@ const state = {
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
           verified: "creator",
+          status: "visible",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -167,6 +181,8 @@ const state = {
           arweaveTXLink: "https://compote.slate.com/images/697b023b-64a5-49a0-8059-27b963453fb1.gif",
           downloadable: "true",
           verified: "ogc",
+          target: "1",
+          status: "visible",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -179,7 +195,9 @@ const state = {
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
-          verified: "ugc",
+          verified: "ogc",
+          target: "31",
+          status: "visible",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -193,19 +211,22 @@ const state = {
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
           verified: "ogc",
+          target: "2",
+          status: "visible",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
           name: "Other File Type - Sample 4",
           details: "other",
           datecreated: "1652708376981",
-          creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
+          creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160ghn bc0a",
           fileFormat: "encrypted(application/other)",
           fileSize: "5.5 MB",
           arweaveTX: "OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
-          verified: "ugc",
+          verified: "creator",
+          status: "visible",
         },
       ],
     },
@@ -237,6 +258,7 @@ const config = {
     autoHideControls: true,
     controlsFadeDelay: true,
   },
+  showTabs: "false",
 }
 
 const widget = (stateval) => {

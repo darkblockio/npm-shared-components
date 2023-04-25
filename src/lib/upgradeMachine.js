@@ -12,7 +12,8 @@ const upgradeMachine = (tokenId, contractAddress, platform, dev = false) => {
       nftData: null,
       platform,
       signature: null,
-      tokenId,
+      tokenId
+      
     },
     states: {
       no_wallet: {},
@@ -32,6 +33,7 @@ const upgradeMachine = (tokenId, contractAddress, platform, dev = false) => {
             Promise.all([
               getCreator(contractAddress, tokenId, platform, dev),
               getNFTData(platform.toLowerCase().includes("solana") ? "" : contractAddress, tokenId, platform, dev),
+             // getOwner(contractAddress, tokenId, platform, address, dev)
             ]),
           onDone: [
             {
@@ -39,7 +41,8 @@ const upgradeMachine = (tokenId, contractAddress, platform, dev = false) => {
               cond: (context, event) => {
                 context.creator = event.data[0]
                 context.nftData = event.data[1]
-
+                // context.owner = event.data[2]
+                // || !!context.owner.owner_address && !!context.nftData
                 if (!!context.creator.creator_address && !!context.nftData) {
                   return true
                 } else {
