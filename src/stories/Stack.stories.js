@@ -12,11 +12,11 @@ const state = {
       fileFormat: "encrypted(image/jpeg)",
       fileSize: "421.86 kB",
       arweaveTXLink: "arweaveTXLink",
-      arweaveTX: "Eaw4uaBnij0tgA8QpeyIOBixcZeDXFxBSVljEA3uEtw",
+      arweaveTX: "Eaw4uaBnij0tgA8QpeyIOBixcZeDXFxBSVljEA3uEtw", //this is the transaction Id on the arweave. We want
       details: "Description maybe?",
       rental: false,
       expireSeconds: 258,
-      stack: [
+      stack: [ //Yes you have to specify the transaction id on arweave + nft id
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
           name: "JSON - Movie Sample",
@@ -30,7 +30,8 @@ const state = {
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
           verified: "creator",
-          status: "visible",
+          status: "hidden",
+          nftId: "0x6118c71850e5d7b18c2021a17bf897421336f909:1"
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -83,7 +84,7 @@ const state = {
           name: "Image - Sample",
           details:
             "The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother’s keeper and the finder of lost children.",
-          datecreated: "1653018985835",
+          datecreated: "153018985835",
           creatorLink: "https://opensea.io/0x438cba7e454b59a9f897d4731fd3eaef37160c0a",
           fileFormat: "encrypted(image/png)",
           fileSize: "5.5 MB",

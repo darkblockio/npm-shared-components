@@ -27,62 +27,49 @@ const RenderDetailIcon = ({ filetype }) => {
   return <FontAwesomeIcon icon={icon} className="Darkblock-ellIcon" />
 }
 export default function EllipsisModal({ db, state = null, open, closeToggle }) {
-  console.log(state, "state")
-  console.log(db, "db")
   const url = db && db.url ? db.url : null
   const isDownloadable =
     state && state.value === "display" && url && db.downloadable.toString().toLowerCase() === "true"
   const [showDetailModal, setShowDetailModal] = useState(false)
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
   let truncateName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
-
-  // const [isVisible, setIsVisible ] = useState(true)
-  // const handleVisibility = () => {
-  //   setIsVisible(!isVisible)
-  // }
-
+  const [isVisible, setIsVisible] = useState(false)
   const { t } = useTranslation()
 
-  // const creatorAddress =
-  //   state.context.platform.toLowerCase() === "tezos" ? state.context.tezos_public_key : state.context.wallet_address
+//This needs to be adjusted to show and hide only the one darkblock
+  const combinedData = `Arweave TX: ${db.arweaveTX}, NFT ID: ${db.nftId}`;
 
-  // function isCreator() {
-  //   const darkblockCreator = db.darkblock.tags.find((tag) => tag.name === "NFT-Creator").value
-  //   const dbstackCreators = db.dbstack.map((db) => {
-  //     return db.tags.find((tag) => tag.name === "NFT-Creator").value
-  //   })
-
-  //   return darkblockCreator === creatorAddress || dbstackCreators.includes(creatorAddress)
-  // }
-
-  // const toggleVisibility = async (isVisible) => {
-  //   const status = isVisible ? "hidden" : "visible"
-
-  //   const response = await fetch(
-  //     "https://dev1.darkblock.io/v1/darkblock/update/status?apikey=hcwmyaeyetmgcbkksr9nmdyeg9c4",
-  //     {
-  //       method: "PUT",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         tx_ids: db.tx_ids,
-  //         status: status,
-  //         nft_id: db.nft_id,
-  //         platform: state.context.platform,
-  //       }),
-  //     }
-  //   )
-
-  //   const data = await response.json()
-
-  //   if (data.message === "Operation Successful") {
-  //     // Update the UI to reflect the new status (
-  //   } else {
-  //     // ...
-  //   }
-  // }
-
+  const toggleVisibility = async (isVisible) => {
+    const status = isVisible ? "hidden" : "visible"
+    
+    const response = await fetch(
+      //"https://dev1.darkblock.io/v1/darkblock/update/status?apikey=hcwmyaeyetmgcbkksr9nmdyeg9c4",
+      "https://api.darkblock.io/v1/darkblock/update/status?apikey=hcwmyaeyetmgcbkksr9nmdyeg9c4",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: db.id, //check where this is coming from
+          status: status,
+          nft_id: db.nft_id,
+          platform: state.context.platform, //check that this is correct
+        }),
+      }
+      )
+     
+    const data = await response.json()
+    
+    if (data.message === "Operation Successful") {
+      // Update the UI to reflect the new status 
+      setIsVisible(!isVisible)
+      
+    } else {
+      "Sorry we couldn't hide this darkblock"
+    }
+  }
+  
   return (
     <>
       {open ? (
@@ -115,7 +102,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
                       />
                     </svg>
                   </span>
-                  <span className="darkblock-placeholder">{t("elipsis.showHide")}</span>
+                  <span onClick={toggleVisibility} className="darkblock-placeholder">{t("elipsis.showHide")}</span>
                 </a>
 
                 <a
@@ -155,3 +142,15 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
     </>
   )
 }
+
+
+// function isCreator() {
+  //   const darkblockCreator = db.find((tag) => tag.name === "NFT-Creator").value
+  //   const dbstackCreators = db.dbstack.map((db) => {
+  //     return db.find((tag) => tag.name === "NFT-Creator").value
+  //   })
+
+  //   console.log(dbstackCreators, "DarkblockCreator")
+  //   return darkblockCreator === creatorAddress || dbstackCreators.includes(creatorAddress)
+  // }
+  // isCreator()

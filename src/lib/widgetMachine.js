@@ -42,7 +42,8 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
       tokenId,
       contractAddress,
       platform,
-      verified
+      verified,
+      verfiedInfo
     },
     states: {
       no_wallet_loading: {},
@@ -55,8 +56,9 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                 platform.toLowerCase().includes("solana") ? tokenId : contractAddress + ":" + tokenId,
                 platform,
                 dev,
-                verified
-              ),
+                verified,
+                nftData
+              ),      
             ]),
           onDone: [
             {
@@ -110,15 +112,16 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                         if (tag.name === "Date-Created") datecreated = tag.value
                         if (tag.name === "Downloadable") downloadable = tag.value
                         if (tag.name === "Name") name = tag.value
-                        // if (tag.name === "Verified") verified = tag.value
-
+                       // if (tag.name === "Verified") verfiedInfo = tag.value
+                        if (tag.name === "NFT-Id") nftId = tag.value
                         if (name === "" && details !== "") name = details
                       })
 
                       context.display.stack.push({
                         artId,
                         name,
-                        // verified,
+                        verfiedInfo,
+                        nftId,
                         details,
                         datecreated,
                         downloadable,
@@ -167,7 +170,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                 platform,
                 dev,
                 verified
-              ),
+              ),           
             ]),
           onDone: [
             {

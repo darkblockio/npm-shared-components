@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { RenderEllipsisIcon, RenderIcon } from "./AuxFunctions"
-// import VerifiedIcon from "../../assets/images/verified.svg"
+//import VerifiedIcon from "../../assets/images/verified.svg"
 
 const RowContent = ({ db, f = null, selected = false, index = 0, showDetailModal, verified, comm }) => {
   const [selectedRow, setSelectedRow] = useState(false)

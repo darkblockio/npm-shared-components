@@ -10,7 +10,7 @@ export default function FooterSharedComponents(config, state) {
     <>
       <div className="DarkblockWidget-Footer">
         <p className="Darkblock-FooterText">{t("footer.poweredBy")} &nbsp;</p>
-        <div>
+        <div className="pt-0.5">
           <StaticDBLogo />
         </div>
 

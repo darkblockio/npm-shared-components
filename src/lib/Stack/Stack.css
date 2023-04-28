@@ -45,11 +45,11 @@
 }
 
 .Darkblock-items {
-  @apply w-12 h-12 sm:w-60 flex items-center absolute right-0;
+  @apply w-10 h-12 sm:w-60 flex items-center absolute right-0;
 }
 
 .Darkblock-date {
-  @apply hidden text-right w-28 sm:table-cell;
+  @apply hidden text-center w-28 sm:table-cell;
 }
 
 .darkblock-right-text {
@@ -115,6 +115,26 @@ td {
   @apply w-12;
 }
 
+.darkblock-toggleBtn-show-hide {
+  @apply w-10 h-8;
+}
+
+.darkblock-toggle-show-hide {
+  @apply w-[28px] h-[28px] rounded-full ;
+}
+
+.darkblock-modal-first-row-show-hide {
+  @apply flex items-center;
+}
+
+.darkblock-toggle-show-hide:hover {
+  @apply bg-[#F5F5F2] text-black;
+}
+
+.darkblock-cross-button-show-hide {
+  @apply ml-4 
+}
+
 .darkblock-titlebox-menu {
   @apply flex flex-row justify-between items-end text-black mt-[5px];
 }
@@ -167,6 +187,11 @@ td {
 
 .DarkblockWidget-Stack-Panel .darkblock-dropdown-content {
   @apply absolute z-40 bg-gray-100 w-80 h-52;
+}
+
+.darkblock-dropdown-content-ShowHide {
+  @apply flex text-black decoration-0 inset-0 m-auto rounded shadow-lg shadow-gray-300 h-10 rounded w-80 hover:bg-gray-200 absolute z-30 flex p-4 m-auto bg-gray-100 rounded shadow-lg w-80 max-h-64 h-full shadow-gray-300;
+  @apply transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
 }
 
 .DarkblockWidget-Stack-Panel .darkblock-dropdown:hover {
@@ -242,7 +267,7 @@ td {
 }
 
 .darkblock-modal-title {
-  @apply flex items-center justify-center;
+  @apply flex items-center justify-center text-[13px];
 }
 
 .darkblock-modal-name {
@@ -264,8 +289,16 @@ td {
   @apply max-w-xs sm:max-w-lg lg:max-w-3xl px-8 pb-8 pt-5 text-left rounded bg-white;
 }
 
+#darkblock-modal-box-show-hide {
+  @apply max-w-xs sm:max-w-lg lg:max-w-xl bg-white px-4 pt-2 pb-2
+}
+
 .darkblock-modal-box-container {
-  @apply z-30 overflow-auto bg-gray-200 bg-opacity-5 pt-4 mb-4 flex items-center;
+  @apply z-30 overflow-auto bg-gray-200 bg-opacity-5 pt-4 mb-4 flex items-center ;
+}
+
+.darkblock-modal-container-show-hide {
+  @apply fixed right-8 bg-white top-0 border rounded z-50 flex items-start mt-4 justify-center outline-none rounded shadow-lg shadow-gray-300;
 }
 
 /* .darkblock-modal-container {
