@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import Cross from "../Cross"
+
 
 export default function TabsRow({ ogcData, creatorData, commData, setSelectedTab, selectedTab}) {
   const [ isOpen, setIsOpen ] = useState(false)
@@ -20,6 +20,8 @@ export default function TabsRow({ ogcData, creatorData, commData, setSelectedTab
   const handleTabClick = (tabName) => {
     setSelectedTab(tabName)
   }
+
+
 
   return (
     <>

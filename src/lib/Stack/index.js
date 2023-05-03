@@ -220,7 +220,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
                   />
                 )}
 
-                <Titles getFilteredData={getFilteredData} state={state} />
+              {detailDB ? ( <Titles getFilteredData={getFilteredData} state={state} db={detailDB}/>) : (<Titles getFilteredData={getFilteredData} state={state} />) }
                 {config.showTabs
                   ? getFilteredData().map((db, i) => {
                       if (state.value === "display") {

@@ -11,11 +11,11 @@
 }
 
 .Darkblock-format-header {
-  @apply hidden text-left w-28 sm:table-cell;
+  @apply hidden ml-1 text-center w-24 sm:table-cell;
 }
 
 .Darkblock-format-date {
-  @apply hidden text-right w-28 sm:table-cell;
+  @apply hidden text-right w-32 sm:table-cell;
 }
 
 .Darkblock-format-icon {
@@ -23,5 +23,9 @@
 }
 
 .Darkblock-items-header {
-  @apply w-64 flex items-center absolute right-0 h-12;
+  @apply w-60 flex items-center absolute right-0 h-12;
+}
+
+.Darkblock-items {
+  @apply w-12 h-12 sm:w-60 flex items-center absolute right-0;
 }
