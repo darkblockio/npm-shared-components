@@ -31,9 +31,9 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
   const doc = document.documentElement
 
-  const filteredOgcData = state.context.display.stack.filter((db) => !db.target && db.verified === "ogc")
-  const filteredCommData = state.context.display.stack.filter((db) => db.target && db.verified === "ogc")
-  const filteredCreatorData = state.context.display.stack.filter((db) => !db.target && db.verified === "creator")
+  const filteredOgcData = state.context.display.stack.filter((db) => !db.target && db.verifiedInfo === "ogc")
+  const filteredCommData = state.context.display.stack.filter((db) => db.target && db.verifiedInfo === "ogc")
+  const filteredCreatorData = state.context.display.stack.filter((db) => !db.target && db.verifiedInfo === "creator")
 
   const getFilteredData = () => {
     switch (selectedTab) {

@@ -44,9 +44,10 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
     
     const response = await fetch(
       //"https://dev1.darkblock.io/v1/darkblock/update/status?apikey=hcwmyaeyetmgcbkksr9nmdyeg9c4",
+      // add tx-id and nft-id to the url below <epoch>_<signature> walletaddress to the json body
       "https://api.darkblock.io/v1/darkblock/update/status?apikey=hcwmyaeyetmgcbkksr9nmdyeg9c4",
       {
-        method: "PUT",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },

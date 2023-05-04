@@ -43,7 +43,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
       contractAddress,
       platform,
       verified,
-      verfiedInfo
+      
     },
     states: {
       no_wallet_loading: {},
@@ -103,7 +103,8 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                         details = "",
                         datecreated,
                         name = "",
-                        downloadable = "false"
+                        downloadable = "false",
+                        verfiedInfo = ""
                        
 
                       db.tags.forEach((tag) => {
@@ -112,7 +113,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                         if (tag.name === "Date-Created") datecreated = tag.value
                         if (tag.name === "Downloadable") downloadable = tag.value
                         if (tag.name === "Name") name = tag.value
-                       // if (tag.name === "Verified") verfiedInfo = tag.value
+                        if (tag.name === "Verified") verfiedInfo = tag.value
                         if (tag.name === "NFT-Id") nftId = tag.value
                         if (name === "" && details !== "") name = details
                       })
@@ -215,7 +216,8 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                         details = "",
                         datecreated,
                         name = "",
-                        downloadable = "false"
+                        downloadable = "false",
+                        verifiedInfo = ""
 
                       db.tags.forEach((tag) => {
                         if (tag.name === "ArtId") artId = tag.value
@@ -223,7 +225,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                         if (tag.name === "Date-Created") datecreated = tag.value
                         if (tag.name === "Downloadable") downloadable = tag.value
                         if (tag.name === "Name") name = tag.value
-                        // if(tag.name === "Verified") verified = tag.value
+                        if(tag.name === "Verified") verifiedInfo = tag.value
 
                         if (name === "" && details !== "") name = details
                       })
@@ -231,7 +233,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                       context.display.stack.push({
                         artId,
                         name,
-                        // verified,
+                        verifiedInfo,
                         details,
                         datecreated,
                         downloadable,
