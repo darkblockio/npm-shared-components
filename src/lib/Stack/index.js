@@ -33,7 +33,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
   const filteredOgcData = state.context.display.stack.filter((db) => !db.target && db.verifiedInfo === "ogc")
   const filteredCommData = state.context.display.stack.filter((db) => db.target && db.verifiedInfo === "ogc")
-  const filteredCreatorData = state.context.display.stack.filter((db) => !db.target && db.verifiedInfo === "creator")
+  const filteredCreatorData = state.context.display.stack.filter((db) => db.verifiedInfo === "creator" || db.verifiedInfo === "delegate")
 
   const getFilteredData = () => {
     switch (selectedTab) {
