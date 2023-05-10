@@ -8,8 +8,13 @@
 }
 
 .DarkblockWidget-Stack-Panel .row {
-  @apply cursor-pointer hover:bg-gray-200;
+  @apply cursor-pointer;
 }
+
+.DarkblockWidget-Stack-Panel .row:not(.darkblock-is-not-downloadable) {
+  @apply hover:bg-gray-200;
+}
+
 
 .DarkblockWidget-Stack-Panel .selected {
   @apply bg-gray-200;
@@ -163,6 +168,10 @@ td {
 
 .darkblock-dropdown-content .darkblock-box-menu {
   @apply h-10 rounded w-80 hover:bg-gray-200;
+}
+
+.darkblock-dropdown-content .darkblock-is-not-downloadable:hover {
+  background-color: inherit;
 }
 
 .DarkblockWidget-Stack-Panel .darkblock-dropdown-content {
