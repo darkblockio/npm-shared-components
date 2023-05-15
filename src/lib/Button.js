@@ -38,7 +38,7 @@ const Button = ({
   layout,
   className,
   id = null,
-  onClick = "",
+  onClick,
 }) => {
   return (
     <button
