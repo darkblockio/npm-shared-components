@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import QRCode from "qrcode.react";
 import Head from "./components/head";
 import Card from "./components/card";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+// import the qr icon from the free solid svg icons
+import { faQrcode } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RegistrationSteps from "./components/registrationSteps";
 import {
@@ -38,6 +39,8 @@ const SendToKindleModal = ({ open, onClose, url, walletAddress }) => {
   useEffect(() => {
     if (navigator.share) {
       setWebShareAvailable(true);
+    } else {
+      setQrVisible(true);
     }
   }, []);
 
@@ -195,7 +198,8 @@ const SendToKindleModal = ({ open, onClose, url, walletAddress }) => {
                         buttonFunc={() => sendFetch(url, walletAddress)}
                         icon={faPaperPlane}
                       />
-
+                      {qrVisible ? (    
+                        <>         
                       <Card
                         name="Share to the Kindle App"
                         subname="Kindle mobile app required."
@@ -203,17 +207,26 @@ const SendToKindleModal = ({ open, onClose, url, walletAddress }) => {
                         buttonName="Share Now"
                         buttonFunc={() => handleShareClick()}
                         icon={faArrowUpFromBracket}
+                        url={url}
+                        qrVisible={qrVisible}
+                        walletAddress={walletAddress}
                       />
-
-
-                      {qrVisible && (
-                        <QRCode
-                          value={`https://staging.darkblock.io/share?url=${encodeURIComponent(
-                            url
-                          )}&walletAddress=${walletAddress}`}
-                        />
+                      </>
+                      ) : (
+                        <>
+                        <Card
+                        name='Scan QR code to share to Kindle mobile app'
+                        subname="Kindle mobile app required."
+                        description="Download your Darkblock ePub or PDF files and add them to your Kindle app. If you don’t have it installed, you can download it from this device’s app store."
+                        buttonName="Share Now"
+                        buttonFunc={() => handleShareClick()}
+                        icon={faQrcode}
+                        url={url}
+                        qrVisible={qrVisible}
+                        walletAddress={walletAddress}
+                      />
+                      </>
                       )}
-
                     </>
                   )}
                 </div>
