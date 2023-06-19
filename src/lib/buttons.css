@@ -27,7 +27,7 @@
 }
 
 .Darkblock-primary-button {
-  @apply bg-black disabled:bg-neutral-500 disabled:text-neutral-400 hover:bg-neutral-800 !important;
+  @apply bg-black text-white disabled:bg-neutral-500 disabled:text-neutral-400 hover:bg-neutral-800 !important;
 }
 
 .Darkblock-secondary-button {

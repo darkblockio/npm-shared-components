@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { downloadFile } from "../utils"
 import DetailModal from "./detailModal"
 import QrCodeModal from "./qrCodeModal"
-import SendToKindleModal from "./sendToKindleModal"
+import SendToKindleModal from "./modals/sendToKindleModal"
 import { useTranslation } from "react-i18next"
 import Cross from "../Cross"
 
@@ -33,7 +33,7 @@ const RenderDetailIcon = ({ filetype, grayedOut = false }) => {
   );
 
 }
-export default function EllipsisModal({ db, state = null, open, closeToggle }) {
+export default function EllipsisModal({ db, state = null, open, closeToggle, walletAddress }) {
   const url = db && db.url ? db.url : null
   const isDownloadable =
     state && state.value === "display" && url && db.downloadable.toString().toLowerCase() === "true"
@@ -128,7 +128,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
                 </div>
 
                 {/* send to kindle section | faShareFromSquare */}
-                {/* <a
+                <a
                   className="Darkblock-BodyText darkblock-box-menu darkblock-cursor-pointer"
                   onClick={() => setSendToKindleModal(true)}
                 >
@@ -136,7 +136,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
                     <RenderDetailIcon filetype={"shareFromSquare"} />
                   </span>
                   <span className="darkblock-placeholder">Send to Kindle</span>
-                </a> */}
+                </a>
 
 
 
@@ -148,7 +148,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle }) {
       ) : null}
       <DetailModal db={db} open={showDetailModal} onClose={() => setShowDetailModal(!showDetailModal)} state={state} />
       <QrCodeModal db={db} open={showQrCodeModal} onClose={() => setShowQrCodeModal(!showQrCodeModal)} state={state} />
-      {/* <SendToKindleModal db={db} open={senToKindleModal} onClose={() => setSendToKindleModal(!senToKindleModal)} state={state}/> */}
+      <SendToKindleModal db={db} open={senToKindleModal} onClose={() => setSendToKindleModal(!senToKindleModal)} state={state} url={db.url} walletAddress={walletAddress}/>
     </>
   )
 }

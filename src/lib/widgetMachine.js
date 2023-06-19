@@ -2,7 +2,7 @@ import { createMachine } from "xstate"
 import { humanFileSize, shortenEthAddr, getCreator, getArweaveData } from "./utils"
 import { filterDarkblocks } from "./utils/filterDarkblocks"
 
-const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig = null, verified = null) => {
+const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig = null, verified = null, signature = null) => {
   let baseLink
 
   switch (platform) {
@@ -42,7 +42,8 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
       tokenId,
       contractAddress,
       platform,
-      verified
+      verified,
+      signature
     },
     states: {
       no_wallet_loading: {},
@@ -148,6 +149,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
           onError: { target: {} },
         },
       },
+
       idle: {
         on: {
           NO_WALLET: { target: "no_wallet" },
@@ -156,6 +158,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
           },
         },
       },
+
       loading_arweave: {
         invoke: {
           src: () =>
@@ -258,38 +261,45 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
           onError: { target: "start_failure" },
         },
       },
+
       started: {
         on: {
           CONNECT_WALLET: "wallet_connected",
         },
       },
+
       no_darkblock: {
         on: {
           RETRY: "idle",
         },
       },
+
       start_failure: {
         on: {
           RETRY: "idle",
         },
       },
+
       wallet_connected: {
         on: {
           SIGN: "signing",
           DISCONNECT_WALLET: "started",
         },
       },
+
       authenticated: {
         on: {
           DECRYPT: "decrypting",
           DISCONNECT_WALLET: "started",
         },
       },
+
       auth_failure: {
         on: {
           SIGN: "signing",
         },
       },
+
       decrypting: {
         on: {
           SUCCESS: "display",
@@ -297,6 +307,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
           DISCONNECT_WALLET: "started",
         },
       },
+
       decrypt_error: {},
       signing: {
         on: {
@@ -305,6 +316,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
           CANCEL: "wallet_connected",
         },
       },
+
       display: {
         on: {
           DISCONNECT_WALLET: "started",

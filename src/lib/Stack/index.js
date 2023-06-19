@@ -18,7 +18,7 @@ import "./Stack.css"
 import "../db.css"
 import "../../i18n"
 
-const Stack = ({ state = null, authenticate, urls, config }) => {
+const Stack = ({ state = null, authenticate, urls, config, walletAddress }) => {
   const [selected, setSelected] = useState()
   const [swapping, setSwapping] = useState(false)
   const [showModal, setShowModal] = useState(false)
@@ -178,6 +178,7 @@ const Stack = ({ state = null, authenticate, urls, config }) => {
 
         {detailDB && showDetails && (
           <EllipsisModal
+            walletAddress={walletAddress} 
             db={detailDB}
             open={showDetails}
             state={state}
