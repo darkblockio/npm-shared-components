@@ -5,7 +5,11 @@ import Button from "../../../Button";
 import QRCode from "qrcode.react";
 
 
-const Card = ({ icon, name, subname, description, buttonFunc, buttonName, qrVisible, url, walletAddress }) => {
+const Card = ({ icon, name, subname, description, buttonFunc, buttonName, qrVisible, url, walletAddress, showUpdateEmail }) => {
+  const updateEmail = () => {
+    // TODO: Implement update email functionality
+    console.log("Update email");
+  }
   return (
     <div 
       style={{ 
@@ -23,12 +27,14 @@ const Card = ({ icon, name, subname, description, buttonFunc, buttonName, qrVisi
     >
      
         <>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div className='Darkblock-RegCardItem' style={{ display: 'flex', alignItems: 'center' }}>
+
             {icon && <FontAwesomeIcon icon={icon} />}
-            <h2 style={{marginLeft: "10px", marginBottom: "10px" }}>{name}</h2>
+            <h2 style={{ marginLeft: "10px", marginBottom: "auto", marginTop: "auto" }}>{name}</h2>
           </div>
           <h3 style={{marginBottom: ""}}>{subname}</h3>
           <p className="Darkblock-BodyText">{description}</p>
+          {/* {showUpdateEmail && <p className="Darkblock-BodyText" style={{ textDecoration: 'underline', cursor: 'pointer' }} onClick={updateEmail}>Update Email</p>} */}
           {qrVisible ? (
         <QRCode
           style={{ marginTop: "20px" }}

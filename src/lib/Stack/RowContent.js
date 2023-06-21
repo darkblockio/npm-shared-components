@@ -17,10 +17,10 @@ const RowContent = ({ db, f = null, selected = false, index = 0, showDetailModal
           <span className="Darkblock-truncate Darkblock-BodyText">{`${db.name}`}</span>
         </div>
         <div className="Darkblock-items Darkblock-BodyTextSmall">
-          <div className="darkblock-right-text" onClick={fn}>
+          <div className="darkblock-right-text" style={{fontSize: '12px'}} onClick={fn}>
             {db.fileSize}
           </div>
-          <div className="Darkblock-date" onClick={fn}>
+          <div className="Darkblock-date" style={{fontSize: '12px'}} onClick={fn}>
             {d.toLocaleString([], {
               year: "numeric",
               month: "numeric",

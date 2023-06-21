@@ -35,7 +35,7 @@
 }
 
 .Darkblock-white {
-  @apply bg-white disabled:bg-white hover:bg-neutral-200 disabled:text-neutral-300 hover:text-black !important;
+  @apply bg-white text-black disabled:bg-white hover:bg-neutral-200 disabled:text-neutral-300 hover:text-black !important;
 }
 
 .Darkblock-gray {

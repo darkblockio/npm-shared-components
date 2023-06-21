@@ -8,27 +8,28 @@ import { faQrcode } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RegistrationSteps from "./components/registrationSteps";
 import {
-  faEnvelope,
   faArrowUpFromBracket
 } from '@fortawesome/free-solid-svg-icons'; // import the envelope icon
 
 
-const SendToKindleModal = ({ open, onClose, url, walletAddress }) => {
+const SendToKindleModal = ({ open, onClose, url, walletAddress, db }) => {
   const [screen, setScreen] = useState(window.innerHeight);
   const [modal, setModal] = useState(null);
   const [registered, setRegistered] = useState(true);
+  const [showUpdateEmail, setShowUpdateEmail] = useState(false);
   const [emailAddress, setEmailAddress] = useState('');
   const [qrVisible, setQrVisible] = useState(false);
   const [webShareAvailable, setWebShareAvailable] = useState(false);
   const [loading, setLoading] = useState(false);
   const [apiResSuccess, setApiResSuccess] = useState(null);
-
+  const [downloadable, setDownloadable] = useState(false);
   const handleClose = () => {
     // Reset state variables
-    setRegistered(true);
+    // setRegistered(true);
     setEmailAddress('');
-    setQrVisible(false);
-    setWebShareAvailable(false);
+    // setDownloadable(false);
+    // setQrVisible(false);
+    // setWebShareAvailable(false);
     setLoading(false);
     setApiResSuccess(null);
 
@@ -37,15 +38,48 @@ const SendToKindleModal = ({ open, onClose, url, walletAddress }) => {
   };
 
   useEffect(() => {
+    
+    if (db.downloadable.toString().toLowerCase() === "true") {
+
+      setDownloadable(true);
+    } else {
+      setDownloadable(false);
+    }
     if (navigator.share) {
       setWebShareAvailable(true);
     } else {
       setQrVisible(true);
     }
-  }, []);
+  }, [db]);
+
+  
+
+  
+
+  const checkRegistered = async () => {
+    // endpoint to check if user is registered - https://dev1.darkblock.io/v1/kindle/is-registered?wallet_address=<wallet_address>
+    // if registered, setRegistered(true)
+
+    fetch(`https://dev1.darkblock.io/v1/kindle/is-registered?wallet_address=${walletAddress}`)
+      .then(response => response.json())
+      .then(data => {
+        
+        // example response: {"message":"wallet is registered","email_address":"darriulfsson@kindle.com","is_wallet_registered":true}
+        if (data.is_wallet_registered) {
+          setShowUpdateEmail(true);
+          setEmailAddress(data.email_address);
+        } else {
+          setRegistered(false);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     setTimeout(() => {
+      checkRegistered();
       if (document.querySelector("darkblock-modal-box")) {
         const boxModal = document.getElementById("darkblock-modal-box").clientHeight;
         setModal(boxModal);
@@ -53,13 +87,14 @@ const SendToKindleModal = ({ open, onClose, url, walletAddress }) => {
     }, 100);
   }, []);
 
+
   const sendFetch = async (url, walletAddress) => {
     // for testing purposes
     // remove for production build
-    if (registered) {
-      setRegistered(false);
-      return;
-    }
+    // if (registered) {
+    //   setRegistered(false);
+    //   return;
+    // }
     // for testing purposes
 
     setLoading(true);
@@ -75,13 +110,13 @@ const SendToKindleModal = ({ open, onClose, url, walletAddress }) => {
       });
 
       const data = await response.json();
-      console.log(data);
+      
       setLoading(false);
       if (data.message === 'Email sent successfully') {
         setApiResSuccess(true);
       }
       if (data.message === 'registration request') {
-        setRegistered(false);
+        // setRegistered(false);
       }
     } catch (error) {
       console.error('An error occurred:', error);
@@ -131,19 +166,20 @@ const SendToKindleModal = ({ open, onClose, url, walletAddress }) => {
             >
               <div id="darkblock-modal-root">
                 <Head name={"Send to Kindle"} onClose={handleClose} />
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    margin: '0 auto',
-                    maxWidth: '512px',
-                    padding: '16px', // changed this from margin to padding
-                  }}
-                >
 
-                  {loading ? (
+
+                {loading ? (
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      margin: '0 auto',
+                      maxWidth: '512px',
+                      padding: '16px', // changed this from margin to padding
+                    }}
+                  >
                     <div style={{ display: "flex", justifyContent: "center" }}>
                       <div className="lds-roller">
                         <div></div>
@@ -156,8 +192,20 @@ const SendToKindleModal = ({ open, onClose, url, walletAddress }) => {
                         <div></div>
                       </div>
                     </div>
-                  ) : apiResSuccess ? (
-                    <>
+                  </div>
+                ) : apiResSuccess ? (
+                  <>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        margin: '0 auto',
+                        maxWidth: '512px',
+                        padding: '16px', // changed this from margin to padding
+                      }}
+                    >
                       <div style={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                         <FontAwesomeIcon icon={faCheckCircle} style={{ marginBottom: "20px", color: "#00FF00", fontSize: "40px", marginTop: "20px" }} />
                         <h1 style={{ marginBottom: "20px" }} className="Darkblock-H1">Your ebook has been successfully sent to your Kindle!</h1>
@@ -173,68 +221,98 @@ const SendToKindleModal = ({ open, onClose, url, walletAddress }) => {
                           layout="auth"
                           onClick={handleClose}>Done</button>
                       </div>
-                    </>
-                  ) : !registered ? (
-                    <>
+                    </div>
+                  </>
+                ) : !registered ? (
+                  <>
 
-
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'left',
+                        textAlign: 'left',
+                        margin: '0 auto',
+                        maxWidth: '512px',
+                        padding: '16px', // changed this from margin to padding
+                      }}
+                    >
 
                       <RegistrationSteps
                         url={url}
                         walletAddress={walletAddress}
                         handleClose={handleClose}
                       />
+                    </div>
                     </>
-                  ) : (
+                    ) : (
                     <>
 
-                      <h1 className="Darkblock-RegCardItem">Select your preferred method</h1>
-
+                      <h1 style={{ margin: '32px 32px 0 32px'}} className="Darkblock-RegCardItem Darkblock-H1 ">Select your preferred method</h1>
+                      <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        margin: '0 auto',
+                        maxWidth: '512px',
+                        padding: '16px', // changed this from margin to padding
+                      }}
+                    >
                       <Card
-                        name="Connect your Kindle email address"
-                        subname="One-time setup."
-                        description="Receive your Darkblock ePub or PDF files via your Kindle email address which automatically adds the file to all your Kindle devices and apps."
-                        buttonName="Connect Email"
+                        name="Send to Kindle via email"
+                        subname="This will send the file to all your Kindle devices and apps."
+                        description=""
+                        buttonName="Send to my Kindle email"
                         buttonFunc={() => sendFetch(url, walletAddress)}
                         icon={faPaperPlane}
-                      />
-                      {qrVisible ? (    
-                        <>         
-                      <Card
-                        name="Share to the Kindle App"
-                        subname="Kindle mobile app required."
-                        description="Download your Darkblock ePub or PDF files and add them to your Kindle app. If you don’t have it installed, you can download it from this device’s app store."
-                        buttonName="Share Now"
-                        buttonFunc={() => handleShareClick()}
-                        icon={faArrowUpFromBracket}
-                        url={url}
-                        qrVisible={qrVisible}
+                        showUpdateEmail={showUpdateEmail}
                         walletAddress={walletAddress}
                       />
-                      </>
+                      {downloadable && (
+                      !qrVisible ? (
+                        <>
+                          <Card
+                            name="Share to Kindle mobile app"
+                            subname=""
+                            description="Kindle mobile app required."
+                            buttonName="Share Now"
+                            buttonFunc={() => handleShareClick()}
+                            icon={faArrowUpFromBracket}
+                            url={url}
+                            qrVisible={qrVisible}
+                            walletAddress={walletAddress}
+                            
+                          />
+                        </>
                       ) : (
                         <>
-                        <Card
-                        name='Scan QR code to share to Kindle mobile app'
-                        subname="Kindle mobile app required."
-                        description="Download your Darkblock ePub or PDF files and add them to your Kindle app. If you don’t have it installed, you can download it from this device’s app store."
-                        buttonName="Share Now"
-                        buttonFunc={() => handleShareClick()}
-                        icon={faQrcode}
-                        url={url}
-                        qrVisible={qrVisible}
-                        walletAddress={walletAddress}
-                      />
-                      </>
+                          <Card
+                            name='Scan to Kindle'
+                            subname="Kindle mobile app required."
+                            description="Scan the QR code to share the file directly to the Kindle App on your phone/tablet."
+                            buttonName="Share Now"
+                            buttonFunc={() => handleShareClick()}
+                            icon={faQrcode}
+                            url={url}
+                            qrVisible={qrVisible}
+                            walletAddress={walletAddress}
+                          />
+                        </>
+                      )
                       )}
+                       </div>
                     </>
-                  )}
-                </div>
+                )}
+                 
               </div>
             </div>
           </div>
         </>
-      ) : null}
+      ) : null
+      }
     </>
   );
 

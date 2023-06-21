@@ -14,8 +14,10 @@ const Head = ({ name, onClose }) => {
         borderBottom: '1px solid #718096', // Corresponds to text-gray-500 in Tailwind
         position: 'relative' // Make this a positioning context
       }}
+      className='Darkblock-H2'
+      
     >
-      <p>{name}</p>
+     {name}
       <button 
         onClick={onClose} 
         style={{ 

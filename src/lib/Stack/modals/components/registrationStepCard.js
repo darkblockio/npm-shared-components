@@ -144,7 +144,7 @@ const RegistrationStepCard = ({ step, active, buttonFunc, backButtonFunc, cardCl
                 cursor: active !== true ? 'pointer' : 'default',
                 borderRadius: '20px',
                 border: getBorder(),
-                width: '480px',
+                maxWidth: '480px',
                 margin: '0 auto',
                 padding: active === true ? '20px 20px 60px 20px' : '20px 0px 4px 28px',
                 boxSizing: 'border-box',

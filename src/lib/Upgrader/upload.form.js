@@ -284,6 +284,7 @@ const UpgradeForm = ({
                       </Button>
 
                       <Button
+                        style={{ color: "black"}}
                         layout="mintingDone"
                         variant="primary"
                         size="large"

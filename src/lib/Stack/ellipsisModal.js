@@ -41,7 +41,11 @@ export default function EllipsisModal({ db, state = null, open, closeToggle, wal
   const [senToKindleModal, setSendToKindleModal] = useState(false)
   const [showQrCodeModal, setShowQrCodeModal] = useState(false)
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
-  let truncateName = `${db.name.substr(0, 25)}${db.name.length > 25 ? "..." : ""}`
+  
+  let truncateName = db.name.length > 35 
+    ? `${db.name.substr(0, 17)}...${db.name.substr(-17)}`
+    : db.name;
+
 
   const { t } = useTranslation()
 
@@ -49,6 +53,13 @@ export default function EllipsisModal({ db, state = null, open, closeToggle, wal
     ? 'darkblock-box-menu darkblock-is-downloadable'
     : 'darkblock-is-not-downloadable';
 
+ 
+
+
+  const isKindleSupported = (fileFormat) => {
+    const kindleFormats = ["text/plain", "application/rtf", "application/epub+zip", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/png", "image/jpeg", "image/gif", "application/pdf"];
+    return kindleFormats.includes(fileFormat);
+  };
 
   return (
     <>
@@ -57,7 +68,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle, wal
           <div className="darkblock-dropdown">
             <div className="darkblock-dropdown-content">
               <div className="darkblock-titlebox-menu">
-                <span className="darkblock-title-menu Darkblock-TableHeaderText">{db.name}</span>
+                <span className="darkblock-title-menu Darkblock-TableHeaderText">{truncateName}</span>
                 <button className="darkblock-elipsis-cross-button" onClick={closeToggle}>
                   <Cross />
                 </button>
@@ -123,30 +134,35 @@ export default function EllipsisModal({ db, state = null, open, closeToggle, wal
                     <span className="darkblock-icons">
                       <RenderDetailIcon filetype={"qrCode"} grayedOut={!isDownloadable} />
                     </span>
-                    <span className={`darkblock-placeholder ${!isDownloadable ? "text-neutral-400" : ""}`}>QR Code</span>
+                    <span className={`darkblock-placeholder ${!isDownloadable ? "text-neutral-400" : ""}`}>Scan QR code to download</span>
                   </a>
                 </div>
 
-                {/* send to kindle section | faShareFromSquare */}
-                <div className={qrCodeClass}>
+                {isKindleSupported(fileFormat) && (
+                <>
+                  {/* send to kindle section | faShareFromSquare */}
+                  {/* <div className={qrCodeClass}> */}
+                    <div>
 
-                  <a
-                    className={`Darkblock-BodyText darkblock-box-menu ${!isDownloadable ? "darkblock-is-not-downloadable" : "darkblock-cursor-pointer"
-                      }`}
-                    onClick={() => {
-                      if (isDownloadable) {
-                        setSendToKindleModal(true)
-                      } else {
-                        return null
-                      }
-                    }}
-                  >
-                    <span className="darkblock-icons">
-                      <RenderDetailIcon filetype={"shareFromSquare"} grayedOut={!isDownloadable} />
-                    </span>
-                    <span className={`darkblock-placeholder ${!isDownloadable ? "text-neutral-400" : ""}`}>Send to Kindle</span>
-                  </a>
-                </div>
+                    <a
+                    className="Darkblock-BodyText darkblock-box-menu darkblock-cursor-pointer"
+
+                      onClick={() => {
+                        
+                          if (isKindleSupported(fileFormat)) {
+                            setSendToKindleModal(true)
+                          } 
+                      }}
+                    >
+                      <span className="darkblock-icons">
+                        <RenderDetailIcon filetype={"shareFromSquare"}  />
+                      </span>
+                      <span className={"darkblock-placeholder"}>Send to Kindle</span>
+                    </a>
+                  </div>
+                </>
+                )}
+
               </div>
             </div>
           </div>
