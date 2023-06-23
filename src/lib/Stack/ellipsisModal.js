@@ -41,8 +41,8 @@ export default function EllipsisModal({ db, state = null, open, closeToggle, wal
   const [senToKindleModal, setSendToKindleModal] = useState(false)
   const [showQrCodeModal, setShowQrCodeModal] = useState(false)
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
-  
-  let truncateName = db.name.length > 35 
+
+  let truncateName = db.name.length > 35
     ? `${db.name.substr(0, 17)}...${db.name.substr(-17)}`
     : db.name;
 
@@ -53,7 +53,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle, wal
     ? 'darkblock-box-menu darkblock-is-downloadable'
     : 'darkblock-is-not-downloadable';
 
- 
+
 
 
   const isKindleSupported = (fileFormat) => {
@@ -138,30 +138,34 @@ export default function EllipsisModal({ db, state = null, open, closeToggle, wal
                   </a>
                 </div>
 
+
+                {/* send to kindle section | faShareFromSquare */}
                 {isKindleSupported(fileFormat) && (
-                <>
-                  {/* send to kindle section | faShareFromSquare */}
-                  {/* <div className={qrCodeClass}> */}
+                  <>
                     <div>
+                      <a
+                        className={`Darkblock-BodyText darkblock-box-menu ${state && state.value !== "display" ? "darkblock-is-not-active" : "darkblock-cursor-pointer"}`}
+                        onClick={(event) => {
+                          // Prevent onClick event if the state is not 'display'
+                          if (state && state.value !== "display") {
+                            event.preventDefault();
+                            return;
+                          }
 
-                    <a
-                    className="Darkblock-BodyText darkblock-box-menu darkblock-cursor-pointer"
-
-                      onClick={() => {
-                        
                           if (isKindleSupported(fileFormat)) {
                             setSendToKindleModal(true)
-                          } 
-                      }}
-                    >
-                      <span className="darkblock-icons">
-                        <RenderDetailIcon filetype={"shareFromSquare"}  />
-                      </span>
-                      <span className={"darkblock-placeholder"}>Send to Kindle</span>
-                    </a>
-                  </div>
-                </>
+                          }
+                        }}
+                      >
+                        <span className="darkblock-icons">
+                          <RenderDetailIcon filetype={"shareFromSquare"} grayedOut={state && state.value !== "display"} />
+                        </span>
+                        <span className={`darkblock-placeholder ${state && state.value !== "display" ? "text-neutral-400" : ""}`}>Send to Kindle</span>
+                      </a>
+                    </div>
+                  </>
                 )}
+
 
               </div>
             </div>

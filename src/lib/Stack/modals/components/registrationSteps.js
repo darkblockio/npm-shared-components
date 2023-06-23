@@ -57,7 +57,7 @@ const RegistrationSteps = ({ url, walletAddress, handleClose }) => {
             icon: faCircle,
             components: [
                 { type: 'p', content: 'Copy this email address and add it as a new approved email address (blue link under the list).' },
-                { type: 'button', name: 'ebooks@seachles.io', onClick: copyToClipboard },
+                { type: 'button', name: 'ebooks@searchles.com', onClick: copyToClipboard },
                 { type: 'p', content: 'Scroll down to Approved Personal Document E-mail List.' },
                 { type: 'img', src: step3Img_1, alt: 'Amazon settings' },
                 { type: 'img', src: step3Img_2, alt: 'Amazon settings' },

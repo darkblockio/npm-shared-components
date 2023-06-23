@@ -1,4 +1,14 @@
 /*whole component*/
+.darkblock-is-not-active {
+  color: gray;
+  cursor: not-allowed;
+}
+
+.darkblock-is-not-active:hover {
+  background-color: inherit !important;
+}
+
+
 .Darkblock-RegCardItem {
   @apply mb-4;
 }
