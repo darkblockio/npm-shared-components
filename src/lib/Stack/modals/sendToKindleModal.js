@@ -57,10 +57,10 @@ const SendToKindleModal = ({ open, onClose, url, walletAddress, db }) => {
   
 
   const checkRegistered = async () => {
-    // endpoint to check if user is registered - https://dev1.darkblock.io/v1/kindle/is-registered?wallet_address=<wallet_address>
+    // endpoint to check if user is registered - https://api.darkblock.io/v1/kindle/is-registered?wallet_address=<wallet_address>
     // if registered, setRegistered(true)
 
-    fetch(`https://dev1.darkblock.io/v1/kindle/is-registered?wallet_address=${walletAddress}`)
+    fetch(`https://api.darkblock.io/v1/kindle/is-registered?wallet_address=${walletAddress.toLowerCase()}`)
       .then(response => response.json())
       .then(data => {
         
@@ -101,12 +101,12 @@ const SendToKindleModal = ({ open, onClose, url, walletAddress, db }) => {
     const encodedUrl = encodeURIComponent(url);
 
     try {
-      const response = await fetch("https://dev1.darkblock.io/v1/kindle/send-to-kindle", {
+      const response = await fetch("https://api.darkblock.io/v1/kindle/send-to-kindle", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: `wallet_address=${walletAddress}&asset=${encodedUrl}`,
+        body: `wallet_address=${walletAddress.toLowerCase()}&asset=${encodedUrl}`,
       });
 
       const data = await response.json();
@@ -269,6 +269,7 @@ const SendToKindleModal = ({ open, onClose, url, walletAddress, db }) => {
                         buttonFunc={() => sendFetch(url, walletAddress)}
                         icon={faPaperPlane}
                         showUpdateEmail={showUpdateEmail}
+                        emailAddress={emailAddress}
                         walletAddress={walletAddress}
                       />
                       {downloadable && (

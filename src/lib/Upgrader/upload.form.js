@@ -124,7 +124,7 @@ const UpgradeForm = ({
       data.set("name", name)
       data.set("download", isDownloadable)
 
-      const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1"
+      const baseUrl = dev ? "https://api.darkblock.io/v1" : "https://api.darkblock.io/v1"
       const URL = `${baseUrl}/darkblock/upgrade?apikey=${apiKey}`
 
       const xhr = new XMLHttpRequest()

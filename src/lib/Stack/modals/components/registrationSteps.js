@@ -12,7 +12,6 @@ import step3Img_4 from "../../../../assets/images/step3/step3-image-4.jpg"
 import step3Img_5 from "../../../../assets/images/step3/step3-image-5.jpg"
 import step3Img_6 from "../../../../assets/images/step3/step3-image-6.jpg"
 import step4Img from "../../../../assets/images/step4/step4.jpg"
-import { use } from 'i18next';
 
 
 const RegistrationSteps = ({ url, walletAddress, handleClose }) => {
@@ -156,14 +155,15 @@ const RegistrationSteps = ({ url, walletAddress, handleClose }) => {
     const sendRegistration = async () => {
         const encodedUrl = encodeURIComponent(url);
         setLoading(true);
+        
 
         try {
-            const response = await fetch("https://dev1.darkblock.io/v1/kindle/register", {
+            const response = await fetch("https://api.darkblock.io/v1/kindle/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                 },
-                body: `wallet_address=${walletAddress}&email_address=${emailAddress}&asset=${encodedUrl}`,
+                body: `wallet_address=${walletAddress.toLowerCase()}&email_address=${emailAddress}&asset=${encodedUrl}`,
             });
 
             const data = await response.json();
