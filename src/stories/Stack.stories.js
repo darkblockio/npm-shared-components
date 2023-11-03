@@ -57,7 +57,7 @@ const state = {
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "false",
           verified: "creator",
-          target: '44'
+          target: "44",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -100,7 +100,7 @@ const state = {
           arweaveTXLink: "https://viewblock.io/arweave/tx/A5JTy7JOHnR6Ayhi-te1q7T1OJOPpjX44OCHlyXZgJE",
           downloadable: "true",
           verified: "ogc",
-          target: "3"
+          target: "3",
         },
         {
           artId: "527c9adb-e8eb-46a2-b882-0b805d4776a7",
@@ -157,7 +157,6 @@ const state = {
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
           verified: "creator",
-          
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -171,7 +170,7 @@ const state = {
           arweaveTXLink: "https://compote.slate.com/images/697b023b-64a5-49a0-8059-27b963453fb1.gif",
           downloadable: "true",
           verified: "ogc",
-          target: "1"
+          target: "1",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -185,7 +184,7 @@ const state = {
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
           verified: "ogc",
-          target: "31"
+          target: "31",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -199,7 +198,7 @@ const state = {
           arweaveTXLink: "https://viewblock.io/arweave/tx/OL5tuTkN5cVSWLXvZnr-7Mfiju3seVn2k2aDbOu25ws",
           downloadable: "true",
           verified: "ogc",
-          target: "2"
+          target: "2",
         },
         {
           artId: "5bff5cc0-8505-45c5-aebd-28037d1b8a07",
@@ -237,14 +236,14 @@ const stackMediaURLs = [
 
 const config = {
   customCssClass: "", // pass here a class name you plan to use
-  debug: false, // debug flag to console.log some variables
+  debug: true, // debug flag to console.log some variables
   imgViewer: {
     // image viewer control parameters
     showRotationControl: true,
     autoHideControls: true,
     controlsFadeDelay: true,
   },
-  showTabs: "false"
+  showTabs: "false",
 }
 
 const widget = (stateval) => {

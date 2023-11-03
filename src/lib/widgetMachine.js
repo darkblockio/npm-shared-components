@@ -2,7 +2,16 @@ import { createMachine } from "xstate"
 import { humanFileSize, shortenEthAddr, getCreator, getArweaveData } from "./utils"
 import { filterDarkblocks } from "./utils/filterDarkblocks"
 
-const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig = null, verified=null) => {
+const widgetMachine = (
+  tokenId,
+  contractAddress,
+  platform,
+  dev = false,
+  dbConfig = null,
+  verified = null,
+  isCollectionLevel = false,
+  connectedWallet = null
+) => {
   let baseLink
 
   switch (platform) {
@@ -42,7 +51,9 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
       tokenId,
       contractAddress,
       platform,
-      verified
+      verified,
+      isCollectionLevel,
+      connectedWallet,
     },
     states: {
       no_wallet_loading: {},
@@ -55,7 +66,9 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                 platform.toLowerCase().includes("solana") ? tokenId : contractAddress + ":" + tokenId,
                 platform,
                 dev,
-                verified
+                verified,
+                isCollectionLevel,
+                connectedWallet
               ),
             ]),
           onDone: [
@@ -101,8 +114,8 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                         details = "",
                         datecreated,
                         name = "",
-                        downloadable = "false"
-                       
+                        downloadable = "false",
+                        tokenId
 
                       db.tags.forEach((tag) => {
                         if (tag.name === "ArtId") artId = tag.value
@@ -110,6 +123,8 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                         if (tag.name === "Date-Created") datecreated = tag.value
                         if (tag.name === "Downloadable") downloadable = tag.value
                         if (tag.name === "Name") name = tag.value
+                        if (tag.name === "Token-Id") tokenId = tag.value
+
                         // if (tag.name === "Verified") verified = tag.value
 
                         if (name === "" && details !== "") name = details
@@ -127,6 +142,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                         fileSize: humanFileSize(db.data.size) || "",
                         arweaveTX: db.id || "",
                         arweaveTXLink: `https://viewblock.io/arweave/tx/${db.id}`,
+                        tokenId: tokenId ? tokenId : "",
                       })
                     })
 
@@ -160,13 +176,14 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
         invoke: {
           src: () =>
             Promise.all([
-              getCreator(contractAddress, tokenId, platform, dev
-                ),
+              getCreator(contractAddress, tokenId, platform, dev),
               getArweaveData(
                 platform.toLowerCase().includes("solana") ? tokenId : contractAddress + ":" + tokenId,
                 platform,
                 dev,
-                verified
+                verified,
+                isCollectionLevel,
+                connectedWallet
               ),
             ]),
           onDone: [
@@ -206,13 +223,17 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                   context.display.arweaveTX = context.arweaveData.darkblock.id || ""
                   context.display.arweaveTXLink = `https://viewblock.io/arweave/tx/${context.display.arweaveTX}`
 
+                  if (isCollectionLevel && context && context.arweaveData && context.arweaveData.collection_metadata)
+                    context.display.collection_metadata = context.arweaveData.collection_metadata
+
                   if (context.arweaveData.dbstack) {
                     context.arweaveData.dbstack.map((db) => {
                       let artId,
                         details = "",
                         datecreated,
                         name = "",
-                        downloadable = "false"
+                        downloadable = "false",
+                        tokenId
 
                       db.tags.forEach((tag) => {
                         if (tag.name === "ArtId") artId = tag.value
@@ -220,6 +241,8 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                         if (tag.name === "Date-Created") datecreated = tag.value
                         if (tag.name === "Downloadable") downloadable = tag.value
                         if (tag.name === "Name") name = tag.value
+                        if (tag.name === "Token-Id") tokenId = tag.value
+
                         // if(tag.name === "Verified") verified = tag.value
 
                         if (name === "" && details !== "") name = details
@@ -237,6 +260,7 @@ const widgetMachine = (tokenId, contractAddress, platform, dev = false, dbConfig
                         fileSize: humanFileSize(db.data.size) || "",
                         arweaveTX: db.id || "",
                         arweaveTXLink: `https://viewblock.io/arweave/tx/${db.id}`,
+                        tokenId: tokenId ? tokenId : "",
                       })
                     })
 
