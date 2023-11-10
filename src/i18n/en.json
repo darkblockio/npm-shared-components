@@ -1,7 +1,7 @@
 {
   "elipsis.download": "Download",
   "elipsis.details": "Details",
-  "elipsis.showHide" : "Show/Hide" ,
+  "elipsis.showHide": "Show/Hide",
   "details.title": "Details",
   "details.size": "Size",
   "details.fileType": "File Type",
@@ -65,5 +65,7 @@
   "upgrader.makeAnother": "Make another",
   "upgrader.allowDownload": "Allow Download",
   "upgrader.create": "Create",
-  "upgrader.characters": "Characters remaining"
+  "upgrader.characters": "Characters remaining",
+  "embed.copyButtonText": "Copy",
+  "embed.modalTitle": "Embed Code"
 }

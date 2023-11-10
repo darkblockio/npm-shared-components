@@ -115,7 +115,8 @@ const widgetMachine = (
                         datecreated,
                         name = "",
                         downloadable = "false",
-                        tokenId
+                        tokenId,
+                        verified
 
                       db.tags.forEach((tag) => {
                         if (tag.name === "ArtId") artId = tag.value
@@ -125,7 +126,7 @@ const widgetMachine = (
                         if (tag.name === "Name") name = tag.value
                         if (tag.name === "Token-Id") tokenId = tag.value
 
-                        // if (tag.name === "Verified") verified = tag.value
+                        if (tag.name === "Verified") verified = tag.value
 
                         if (name === "" && details !== "") name = details
                       })
@@ -133,7 +134,7 @@ const widgetMachine = (
                       context.display.stack.push({
                         artId,
                         name,
-                        // verified,
+                        verified,
                         details,
                         datecreated,
                         downloadable,
@@ -233,7 +234,8 @@ const widgetMachine = (
                         datecreated,
                         name = "",
                         downloadable = "false",
-                        tokenId
+                        tokenId,
+                        verified
 
                       db.tags.forEach((tag) => {
                         if (tag.name === "ArtId") artId = tag.value
@@ -243,7 +245,7 @@ const widgetMachine = (
                         if (tag.name === "Name") name = tag.value
                         if (tag.name === "Token-Id") tokenId = tag.value
 
-                        // if(tag.name === "Verified") verified = tag.value
+                        if (tag.name === "Verified") verified = tag.value
 
                         if (name === "" && details !== "") name = details
                       })
@@ -251,7 +253,7 @@ const widgetMachine = (
                       context.display.stack.push({
                         artId,
                         name,
-                        // verified,
+                        verified,
                         details,
                         datecreated,
                         downloadable,
