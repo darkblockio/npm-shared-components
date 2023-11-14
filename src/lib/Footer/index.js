@@ -11,16 +11,15 @@ export default function FooterSharedComponents(config, state) {
   return (
     <div className="DarkblockWidget-Footer">
       <div className="Darkblock-Footer-Content">
-        <p className="Darkblock-FooterText-Embed">{t("footer.poweredBy")} &nbsp;</p>
-        <a href="https://darkblock.io" target="_blank" rel="noopener noreferrer">
-          <StaticDBLogo />
+        <a className="Darkblock-FooterText-Embed" href="https://darkblock.io" target="_blank" rel="noopener noreferrer">
+          {t("footer.poweredBy")}
         </a>
       </div>
       <div className="Darkblock-Footer-Buttons">
-        <div className="Darkblock-Footer-Info">
+        {/* <div className="Darkblock-Footer-Info">
           <img src={Info} alt="Info" />
-        </div>
-        <EmbedButton />
+        </div> */}
+        <EmbedButton state={config.state} />
       </div>
       {config.debug && <p className="Darkblock-Footer-Debug">state: {state.value}</p>}
     </div>

@@ -34,6 +34,11 @@
   font-family: Inter;
 }
 
+.DarkblockWidget-Footer a,
+.DarkblockWidget-Footer a:visited {
+  text-decoration: none;
+}
+
 /* Optional: If you want to apply specific color to your SVG, add this */
 .DarkblockWidget-Footer svg path {
   fill: #737373; /* Replace with the desired color */

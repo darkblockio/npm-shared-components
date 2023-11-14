@@ -1,24 +1,60 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import EmbedButtonIcon from "./../../assets/images/embed-this-button.svg"
 import EmbedCodeModal from "../Stack/embedCodeModal"
 
-const EmbedButton = () => {
+const EmbedButton = ({ state }) => {
   const [embedCode, setEmbedCode] = useState("")
   const [showModal, setShowModal] = useState(false) // State to control modal visibility
 
-  const defaultEmbedUrl =
-    "https://staging.darkblock.io/platform/avax/embed/collection/0x7bdc01a74dd59759c3965eb11fd086e225a37563"
+  const platformMap = {
+    "ethereum": "eth",
+    "ethereum-goerli": "eth-goerli",
+    "tezos": "tez",
+    "tezos-ithaca": "tez-ithaca",
+    "avalanche": "avax",
+    "avalanche-fuji": "avax-fuji",
+    "polygon": "matic",
+    "polygon-mumbai": "matic-mumbai",
+    "solana": "sol",
+    "solana-devnet": "sol-devnet",
+  }
 
-  React.useEffect(() => {
-    // Function to generate the embed code
+  const getShortPlatform = (platform) => {
+    return platformMap[platform.toLowerCase()] || ""
+  }
+
+  useEffect(() => {
     function generateEmbedCode() {
-      // Use a default URL if window is not available
-      const currentUrl = typeof window !== "undefined" ? window.location.href : defaultEmbedUrl
-      return `<iframe src="${currentUrl}" width="550px" height="600px" frameborder="0"></iframe>`
+      // Function to construct the URL based on the state context
+      function constructUrl() {
+        if (!state || !state.context) return null
+
+        const { platform, isCollectionLevel, contractAddress, tokenId } = state.context
+
+        if (!platform || !contractAddress) return null
+
+        const baseUrl = "https://app.darkblock.io/platform"
+        const shortPlatform = getShortPlatform(platform)
+
+        return isCollectionLevel
+          ? `${baseUrl}/${shortPlatform}/embed/collection/${contractAddress}`
+          : `${baseUrl}/${shortPlatform}/embed/nft/${contractAddress}/${tokenId}`
+      }
+
+      const currentUrl = constructUrl()
+
+      if (!currentUrl) return ""
+
+      return `<iframe
+      allow="fullscreen"
+      style="border: 1px solid var(--border-neutral-300, #d4d4d4); padding: 8px; border-radius: 12px; height: 540px; width: 550px;"
+      title="darkblock"
+      src="${currentUrl}">
+      </iframe>`
     }
 
     setEmbedCode(generateEmbedCode())
-  }, [defaultEmbedUrl])
+  }, [state.value])
 
   const handleEmbedClick = () => {
     setShowModal(true)
