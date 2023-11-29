@@ -13,6 +13,11 @@ module.exports = {
       xxl: "1536px",
     },
     extend: {
+      zIndex: {
+        1: 1,
+        2: 2,
+        9: 9,
+      },
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
       },

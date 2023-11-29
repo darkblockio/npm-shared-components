@@ -252,6 +252,10 @@ td {
   @apply max-w-lg mt-6 text-neutral-500;
 }
 
+.darkblock-modal-detail-embed {
+  @apply mt-6 text-neutral-500;
+}
+
 #darkblock-modal-bg-start {
   @apply fixed inset-0 z-30 flex items-start justify-center overflow-auto bg-black bg-opacity-90 p-4;
 }

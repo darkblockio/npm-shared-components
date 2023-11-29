@@ -1,7 +1,7 @@
 {
   "elipsis.download": "Download",
   "elipsis.details": "Details",
-  "elipsis.showHide" : "Show/Hide" ,
+  "elipsis.showHide": "Show/Hide",
   "details.title": "Details",
   "details.size": "Size",
   "details.fileType": "File Type",
@@ -12,7 +12,7 @@
   "titles.name": "Name",
   "titles.fileSize": "Size",
   "titles.dateAdded": "Date Added",
-  "footer.poweredBy": "Powered by",
+  "footer.poweredBy": "Powered by Darkblock",
   "panel.fileFormat": "File format",
   "panel.fileSize": "File Size",
   "player.compressedFile": "Compressed file",
@@ -65,5 +65,7 @@
   "upgrader.makeAnother": "Make another",
   "upgrader.allowDownload": "Allow Download",
   "upgrader.create": "Create",
-  "upgrader.characters": "Characters remaining"
+  "upgrader.characters": "Characters remaining",
+  "embed.copyButtonText": "Copy",
+  "embed.modalTitle": "Embed Code"
 }

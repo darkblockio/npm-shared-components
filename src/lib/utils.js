@@ -43,27 +43,67 @@ export async function getNFTData(contract, id, platform, dev = false) {
     })
 }
 
-export async function getArweaveData(id, platform, dev = false, verified) {
+export async function getArweaveData(
+  id,
+  platform,
+  dev = false,
+  verified = "",
+  isCollectionLevel = false,
+  connectedWallet = null
+) {
+  console.log("just putting this here to check if it is published correctly")
   const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1"
-  const verifiedParam = verified ? `&verified=${verified}` : ""
+  let endpoint = "/darkblock/info"
+  const params = new URLSearchParams()
+
+  if (verified) {
+    params.append("verified", verified)
+  }
+
+  if (isCollectionLevel) {
+    // If it's collection level, use the 'id' as the collection identifier
+    const [collectionId] = id.split(":") // Split the 'id' and take the first part as the collection identifier
+    endpoint += "/collection"
+    params.set("id", collectionId)
+    params.set("platform", platform) // Use 'platform' for collection endpoint
+  } else {
+    // If it's not collection level, use the 'id' as the individual NFT identifier
+    params.set("nft_id", id)
+    params.set("nft_platform", platform) // Use 'nft_platform' for individual NFT endpoint
+  }
+
+  if (connectedWallet) {
+    params.append("wallet", connectedWallet)
+  }
+
+  const fullUrl = `${baseUrl}${endpoint}?${params.toString()}`
 
   try {
-    const response = await fetch(`${baseUrl}/darkblock/info?nft_id=${id}&nft_platform=${platform}${verifiedParam}`)
+    const response = await fetch(fullUrl)
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
     const data = await response.json()
 
     if (verified) {
       const verifiedTypes = verified.split("::")
-
       if (data.dbstack) {
-        data.dbstack = data.dbstack.filter((item) => {
-          return item.tags.some((tag) => verifiedTypes.includes(tag.value))
-        })
+        data.dbstack = data.dbstack.filter((item) => item.tags.some((tag) => verifiedTypes.includes(tag.value)))
       }
     }
 
     return data
   } catch (e) {
-    return console.log(e)
+    // Handle errors more gracefully here
+    console.error(e)
+    return {
+      status: "Not Found",
+      dbs_count: 0,
+      dbstack: [],
+      info: e.message,
+    }
   }
 }
 
@@ -84,13 +124,30 @@ export async function getOwner(contractAddr, tokenId, platform, owner = "", dev 
 export async function getCreator(contractAddr, tokenId, platform, dev = false) {
   const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1"
 
-  try {
+  // Function to make the fetch request
+  async function fetchCreator(refresh = false) {
+    const refreshParam = refresh ? "&refresh=true" : ""
     const response = await fetch(
-      `${baseUrl}/nft/creator?platform=${platform}&contract_address=${contractAddr}&token_id=${tokenId}`
+      `${baseUrl}/nft/creator?platform=${platform}&contract_address=${contractAddr}${
+        tokenId && tokenId !== "undefined" ? `&token_id=${tokenId}` : ""
+      }${refreshParam}`
     )
-    const asset = await response.json()
+    return response.json()
+  }
+
+  try {
+    // First attempt without refresh
+    let asset = await fetchCreator()
+
+    // Check if the 'creator_address' is empty or 'all_creators' array is empty
+    if (!asset.creator_address || (Array.isArray(asset.all_creators) && asset.all_creators.length === 0)) {
+      // If data is empty, make a second attempt with refresh
+      asset = await fetchCreator(true)
+    }
+
     return asset
   } catch (e) {
+    console.error(e) // It's better to log the error for debugging
     return []
   }
 }
