@@ -46,9 +46,14 @@ const EmbedButton = ({ state }) => {
       if (!currentUrl) return ""
 
       return `<iframe
-      allow="fullscreen"
-      style="border: 1px solid var(--border-neutral-300, #d4d4d4); padding: 8px; border-radius: 12px; height: 540px; width: 550px;"
       title="darkblock"
+      allow="fullscreen; clipboard-write;"
+      style="border: 1px solid var(--border-neutral-300, #d4d4d4);
+      padding: 16px;
+      height: 628px; 
+      width: 100%; 
+      border-radius: 8px;
+      box-sizing: border-box;"
       src="${currentUrl}">
       </iframe>`
     }
