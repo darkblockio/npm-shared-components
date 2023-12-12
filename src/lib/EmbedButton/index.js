@@ -17,6 +17,7 @@ const EmbedButton = ({ state }) => {
     "polygon-mumbai": "matic-mumbai",
     "solana": "sol",
     "solana-devnet": "sol-devnet",
+    "pulsechain": "pulse",
   }
 
   const getShortPlatform = (platform) => {
