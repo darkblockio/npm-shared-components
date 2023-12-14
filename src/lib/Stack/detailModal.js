@@ -1,43 +1,57 @@
-import React, { useState } from "react"
-import { useTranslation } from "react-i18next"
-import Button from "../Button"
-import Cross from "../Cross"
+import React, { useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
+import Button from "../Button";
+import Cross from "../Cross";
 
-
-
-const DetailModal = ({ db, open, onClose, state=null }) => {
-  const [screen, setScreen] = useState(window.innerHeight)
-  const [modal, setModal] = useState(null)
-  const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
-  let d = new Date(0)
-  d.setUTCMilliseconds(db.datecreated)
-  const { t } = useTranslation()
-  const url = db && db.url ? db.url : null
+const DetailModal = ({ db, open, onClose, state = null }) => {
+  const [screen, setScreen] = useState(window.innerHeight);
+  const [modal, setModal] = useState(null);
+  const modalRef = useRef();
+  const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1);
+  let d = new Date(0);
+  d.setUTCMilliseconds(db.datecreated);
+  const { t } = useTranslation();
+  const url = db && db.url ? db.url : null;
   const downloadable =
-    state && state.value === "display" && url && db.downloadable.toString().toLowerCase() === "true"
+    state &&
+    state.value === "display" &&
+    url &&
+    db.downloadable.toString().toLowerCase() === "true";
+
   setTimeout(() => {
     if (document.querySelector("darkblock-modal-box")) {
-      const boxModal = document.getElementById("darkblock-modal-box").clientHeight
-      setModal(boxModal)
+      const boxModal = document.getElementById("darkblock-modal-box")
+        .clientHeight;
+      setModal(boxModal);
     }
-  }, 100)
-
-
-
+  }, 100);
 
   function changeScreen(event) {
-    setScreen(event.srcElement.innerHeight)
+    setScreen(event.srcElement.innerHeight);
   }
 
-  window.addEventListener("resize", changeScreen)
+  window.addEventListener("resize", changeScreen);
+
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      onClose();
+    }
+  };
 
   return (
     <>
       {open ? (
         <>
-          <div className="darkblock-modal-container">
-            <div id={`darkblock-modal-bg-${screen >= modal ? "center" : "start"}`} >
-              <div id="darkblock-modal-box">
+          <div
+            className="darkblock-modal-container"
+            onClick={handleClickOutside}
+          >
+            <div
+              id={`darkblock-modal-bg-${
+                screen >= modal ? "center" : "start"
+              }`}
+            >
+              <div id="darkblock-modal-box" ref={modalRef}>
                 <div className="darkblock-modal-first-row">
                   <div className="darkblock-modal-first-row-container"></div>
                   <h3 className="darkblock-modal-title Darkblock-H3">{t("details.title")}</h3>

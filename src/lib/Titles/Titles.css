@@ -15,7 +15,7 @@
 }
 
 .Darkblock-format-date {
-  @apply hidden text-right w-28 sm:table-cell;
+  @apply hidden text-left pl-4 w-28 sm:table-cell;
 }
 
 .Darkblock-format-icon {

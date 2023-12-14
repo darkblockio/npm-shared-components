@@ -60,6 +60,7 @@ export async function getArweaveData(
     params.append("verified", verified)
   }
 
+  console.log(id, platform, dev, verified, isCollectionLevel, connectedWallet)
   if (isCollectionLevel) {
     // If it's collection level, use the 'id' as the collection identifier
     const [collectionId] = id.split(":") // Split the 'id' and take the first part as the collection identifier

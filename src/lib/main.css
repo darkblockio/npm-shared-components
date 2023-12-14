@@ -22,11 +22,11 @@
 }
 
 .Darkblock-H2 {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: -0.03em;
+  font-style: normal !important; 
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  letter-spacing: -0.03em !important;
 }
 
 .Darkblock-H3 {
@@ -80,7 +80,7 @@
 .Darkblock-TableHeaderText {
   font-style: normal;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 20px;
 }
 
