@@ -18,6 +18,9 @@ const EmbedButton = ({ state }) => {
     "solana": "sol",
     "solana-devnet": "sol-devnet",
     "pulsechain": "pulse",
+    "base": "base",
+    "base-goerli": "base-goerli",
+    "base-sepolia": "base-sepolia",
   }
 
   const getShortPlatform = (platform) => {
