@@ -51,7 +51,6 @@ export async function getArweaveData(
   isCollectionLevel = false,
   connectedWallet = null
 ) {
-  console.log("just putting this here to check if it is published correctly")
   const baseUrl = dev ? "https://dev1.darkblock.io/v1" : "https://api.darkblock.io/v1"
   let endpoint = "/darkblock/info"
   const params = new URLSearchParams()
@@ -60,7 +59,6 @@ export async function getArweaveData(
     params.append("verified", verified)
   }
 
-  console.log(id, platform, dev, verified, isCollectionLevel, connectedWallet)
   if (isCollectionLevel) {
     // If it's collection level, use the 'id' as the collection identifier
     const [collectionId] = id.split(":") // Split the 'id' and take the first part as the collection identifier
@@ -166,7 +164,9 @@ export function getProxyAsset(artID, sessionToken, tokenId, contract, nonce, pla
   }
 }
 
-export async function downloadFile(url, fileFormat, filename = "") {
+import mime from "mime"
+
+export async function downloadFile(url, fileFormat, filename = "", fileNameTag = "") {
   filename = !filename || filename === "" ? "unlockable" : filename
   const res = await fetch(url, { "Access-Control-Expose-Headers": "Content-Disposition" })
   const raw = await res.blob()
@@ -198,6 +198,26 @@ export async function downloadFile(url, fileFormat, filename = "") {
   if (fileFormat.match(/\/wav/gi)) ext = "wav"
   if (fileFormat.match(/\/webm/gi)) ext = "webm"
   if (fileFormat.match(/\/zip/gi)) ext = "zip"
+  if (fileFormat.match(/\/x-msdos-batch/gi)) ext = "bat"
+
+  // Custom MIME Type Handling
+  if (fileFormat.startsWith("custom/")) ext = fileFormat.split("/")[1]
+
+  if (!ext) {
+    try {
+      ext = mime.getExtension(fileFormat)
+    } catch (e) {
+      console.log("could not determine ext from content-type")
+    }
+  }
+
+  // Fallback to extension from fileNameTag
+  if (!ext && fileNameTag) {
+    const match = fileNameTag.match(/\.[0-9a-z]+$/i) // Regex to extract file extension
+    if (match && match[0]) {
+      ext = match[0].substring(1) // Remove the dot at the beginning
+    }
+  }
 
   if (typeof window !== "undefined") {
     const a = document.createElement("a")
