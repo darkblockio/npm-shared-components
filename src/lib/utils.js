@@ -200,6 +200,14 @@ export async function downloadFile(url, fileFormat, filename = "", fileNameTag =
   if (fileFormat.match(/\/zip/gi)) ext = "zip"
   if (fileFormat.match(/\/x-msdos-batch/gi)) ext = "bat"
 
+  // Fallback to extension from fileNameTag
+  if (!ext && fileNameTag) {
+    const match = fileNameTag.match(/\.[0-9a-z]+$/i) // Regex to extract file extension
+    if (match && match[0]) {
+      ext = match[0].substring(1) // Remove the dot at the beginning
+    }
+  }
+
   // Custom MIME Type Handling
   if (fileFormat.startsWith("custom/")) ext = fileFormat.split("/")[1]
 
@@ -208,14 +216,6 @@ export async function downloadFile(url, fileFormat, filename = "", fileNameTag =
       ext = mime.getExtension(fileFormat)
     } catch (e) {
       console.log("could not determine ext from content-type")
-    }
-  }
-
-  // Fallback to extension from fileNameTag
-  if (!ext && fileNameTag) {
-    const match = fileNameTag.match(/\.[0-9a-z]+$/i) // Regex to extract file extension
-    if (match && match[0]) {
-      ext = match[0].substring(1) // Remove the dot at the beginning
     }
   }
 
