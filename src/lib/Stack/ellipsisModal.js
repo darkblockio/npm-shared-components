@@ -40,6 +40,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle, wal
   const [senToKindleModal, setSendToKindleModal] = useState(false)
   const [showQrCodeModal, setShowQrCodeModal] = useState(false)
   const fileFormat = db.fileFormat.substring(10, db.fileFormat.length - 1)
+  const fileNameTag = db.fileNameTag
 
   let truncateName = db.name.length > 35 ? `${db.name.substr(0, 17)}...${db.name.substr(-17)}` : db.name
 
@@ -115,7 +116,7 @@ export default function EllipsisModal({ db, state = null, open, closeToggle, wal
                   }`}
                   onClick={() => {
                     if (isDownloadable) {
-                      downloadFile(url, fileFormat, truncateName)
+                      downloadFile(url, fileFormat, truncateName, fileNameTag)
                     } else {
                       return null
                     }

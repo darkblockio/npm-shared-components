@@ -66,11 +66,11 @@
 }
 
 .Darkblock-date {
-  @apply hidden text-left pl-4 w-28 sm:table-cell;
+  @apply hidden text-right col-span-2 whitespace-nowrap pl-4 w-28 sm:table-cell;
 }
 
 .darkblock-right-text {
-  @apply hidden text-right w-[7rem] sm:table-cell;
+  @apply hidden text-right col-span-2 w-[7rem] sm:table-cell;
 }
 
 .darkblock-toggle {

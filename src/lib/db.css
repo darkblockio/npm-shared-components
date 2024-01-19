@@ -19,7 +19,7 @@
 
 .Darkblock-Footer-Info,
 .Darkblock-Footer-Embed {
-  @apply flex justify-center items-center gap-2 p-1.5 rounded-[40px];
+  @apply flex justify-center items-center gap-2 p-1.5 rounded-[40px] z-30;
   background: var(--bg-transparent, rgba(255, 255, 255, 0));
 }
 
@@ -31,7 +31,6 @@
 .Darkblock-FooterText-Embed {
   @apply text-[color:var(--text-neutral-500,#737373)] text-xs not-italic font-medium leading-5 tracking-[-0.12px];
   font-feature-settings: "clig" off, "liga" off;
-  font-family: Inter;
 }
 
 .DarkblockWidget-Footer a,

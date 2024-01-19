@@ -118,7 +118,8 @@ const widgetMachine = (
                         name = "",
                         downloadable = "false",
                         tokenId,
-                        verified
+                        verified,
+                        fileNameTag
 
                       db.tags.forEach((tag) => {
                         if (tag.name === "ArtId") artId = tag.value
@@ -131,6 +132,7 @@ const widgetMachine = (
                         if (tag.name === "Verified") verified = tag.value
 
                         if (name === "" && details !== "") name = details
+                        if (tag.name === "File-Name") fileNameTag = tag.value
                       })
 
                       context.display.stack.push({
@@ -146,6 +148,7 @@ const widgetMachine = (
                         arweaveTX: db.id || "",
                         arweaveTXLink: `https://viewblock.io/arweave/tx/${db.id}`,
                         tokenId: tokenId ? tokenId : "",
+                        fileNameTag,
                       })
                     })
 
@@ -239,7 +242,8 @@ const widgetMachine = (
                         name = "",
                         downloadable = "false",
                         tokenId,
-                        verified
+                        verified,
+                        fileNameTag
 
                       db.tags.forEach((tag) => {
                         if (tag.name === "ArtId") artId = tag.value
@@ -252,6 +256,7 @@ const widgetMachine = (
                         if (tag.name === "Verified") verified = tag.value
 
                         if (name === "" && details !== "") name = details
+                        if (tag.name === "File-Name") fileNameTag = tag.value
                       })
 
                       context.display.stack.push({
@@ -267,6 +272,7 @@ const widgetMachine = (
                         arweaveTX: db.id || "",
                         arweaveTXLink: `https://viewblock.io/arweave/tx/${db.id}`,
                         tokenId: tokenId ? tokenId : "",
+                        fileNameTag,
                       })
                     })
 
