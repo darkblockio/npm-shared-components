@@ -21,6 +21,9 @@ const EmbedButton = ({ state }) => {
     "base": "base",
     "base-goerli": "base-goerli",
     "base-sepolia": "base-sepolia",
+    "optimism": "optimism",
+    "optimism-goerli": "optimism-goerli",
+    "optimism-sepolia": "optimism-sepolia",
   }
 
   const getShortPlatform = (platform) => {
